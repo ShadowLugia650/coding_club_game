@@ -1,4 +1,4 @@
-import sys, random
+import sys, random, baseM
 
 sys.path.insert(0, 'dependencies')
 import baseM, pScript, console
@@ -24,7 +24,17 @@ def run(player):
 
 def goodEnd(player):
     print("Upon finishing his story, the mysterious traveller gives you a parting gift before disappearing back into the shadows.")
-    pScript.addItem(player, "Vorpal Blade")
+    pScript.addItem(player, VBlade())
+
+class VBlade(baseM.basicSword):
+    def __init__(self):
+        self.name = "Vorpal Blade"
+        self.desc = "A razor-sharp sword, Outlines of strange and terrifying beasts are engraved on the blade."
+        self.damage = 15
+
+    def __str__(self):
+        return self.name
+
 
 def badEnd():
     print("the man looks at you disappointedly, then retreats back to the shadows.")
@@ -32,7 +42,7 @@ def badEnd():
 def story(player, cost):
     text = ["I met a traveller from an antique land, \nWho said—“Two vast and trunkless legs of stone \nStand in the desert....",
         "Near them, on the sand, \nHalf sunk a shattered visage lies, whose frown, \nAnd wrinkled lip, and sneer of cold command....",
-        "Tell that its sculptor well those passions read Which yet survive, stamped on these lifeless things, \nThe hand that mocked them, and the heart that fed;",
+        "Tell that its sculptor well those passions read \nWhich yet survive, stamped on these lifeless things, \nThe hand that mocked them, and the heart that fed;",
         "And on the pedestal, these words appear:",
         "My name is Ozymandias, King of Kings; \nLook on my Works, ye Mighty, and despair!",
         "Nothing beside remains. Round the decay \n Of that colossal Wreck, boundless and bare \nThe lone and level sands stretch far....",
@@ -46,6 +56,9 @@ def story(player, cost):
                 return False
             if pScript.spendGold(player, cost) == False:
                 return False
+            print("\nThe hooded man continues his story:")
+        else:
+            print("\nThe hooded man begins:")
         print(item)
     return True
 
