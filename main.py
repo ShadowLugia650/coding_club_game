@@ -27,15 +27,14 @@ while Player.alive:
         baseM.ClimbFloorEffects(Player)
     else:
         break
-    if Player.alive == False:
+    if Player.health <=0:
         print("You have died.")
     
 print("Game over.")
 print("rooms cleared:  " + str(rounds))
 print("Ending gold:    " + str(Player.gold))
 print("Ending items:")
-for i in Player.items:
-    print(i)
+console.delayPrint(Player, Player.items)
 
 
 
