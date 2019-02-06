@@ -3,8 +3,10 @@ class PChar(): #intializes the class. The Main handles this, so you don't need i
     def __init__(self):
         self.health = 100
         self.gold = 99
-        self.items = ["loincloth"]
+        self.items = ["Loincloth"]
         self.alive = True
+        self.damage = 3
+        self.block = 3
 
 def checkDeath(Player): #checks if the player is dead. Handled automatically in the damage() function.
     if Player.health <= 0:
@@ -57,18 +59,18 @@ def earnGold(Player, gold): # A function for the player gaining money. ("gold" s
 
 def addItem(Player, item): #adds an item to the list of items
     Player.items.append(item)
-    print("the " + item + " was added to your inventory")
+    print("the " + item.name + " was added to your inventory")
 
 
 def removeItem(Player, item): #adds an item to the list of items. Returns False if the item doesn't exist in the inventory.
     if item in Player.items:
         Player.items.remove(item)
-        print("you lost the " + item)
+        print("you lost the " + item.name)
         if item == "loincloth":
             print("you lost your loincloth! -1 to public decency!")
         return True
     else:
-        print("You don't have the " + item)
+        print("You don't have the " + item.name)
         return False
         
 
