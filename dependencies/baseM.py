@@ -150,8 +150,8 @@ def constructPlayer(data):
     # health / gold / item1,item2,item3
     p = PChar()
     datal = data.split(' / ')
-    p.health = datal[0]
-    p.gold = datal[1]
+    p.health = int(datal[0])
+    p.gold = int(datal[1])
     p.items = datal[2].split(",")
     for i in p.items:
         if i == '':
