@@ -26,10 +26,11 @@ Press 3 to cower away from the heat""")
         response = console.getInput(player, ["1", "2","3"], "Make your choice")
         if response.lower() == "1":
             crossbridge(player)
-               
+            lavadamage=1   
             return player
         if response.lower() == "2":
             shrine(player, syord)
+            lavadamage=1
             return player
         if response.lower() =="3":
             vegetate(player)
