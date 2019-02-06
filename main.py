@@ -12,12 +12,18 @@ sys.path.insert(0, 'Rooms/Impossible')
 import strangerJGv1, battleGhoulM, mirrorsM, owM, shopM, battleZombomanM, lavaroomRCv1, skeletonCalvin
 
 Player = pScript.PChar()
-levels = [strangerJGv1, battleGhoulM, mirrorsM, owM, shopM, battleZombomanM, lavaroomRCv1, skeletonCalvin]
+#levels = [strangerJGv1, battleGhoulM, mirrorsM, owM, shopM, battleZombomanM, lavaroomRCv1, skeletonCalvin]
+
+
+levels = [strangerJGv1, battleGhoulM]
+
+
 #{strangerJGv1 : 2, battleGhoulM : 5, mirrorsM : 1, owM : 2, shopM : 5} 
 consol = ""
 rounds = 0
 
-baseM.initIntro(Player)
+#baseM.initIntro(Player)
+
 while Player.alive:
     room = levels[random.randint(0, (len(levels)-1))]
     consol = console.getInput(Player, ["yes", "no"], "next room? ")
@@ -27,14 +33,15 @@ while Player.alive:
         baseM.ClimbFloorEffects(Player)
     else:
         break
-    if Player.health <=0:
+    if Player.alive == False:
         print("You have died.")
     
 print("Game over.")
 print("rooms cleared:  " + str(rounds))
 print("Ending gold:    " + str(Player.gold))
 print("Ending items:")
-console.delayPrint(Player, Player.items)
+print(Player.items)
+console.delayPrint(Player, "")
 
 
 
