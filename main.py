@@ -34,7 +34,8 @@ print("Game over.")
 print("rooms cleared:  " + str(rounds))
 print("Ending gold:    " + str(Player.gold))
 print("Ending items:")
-print(Player.items)
+for i in Player.items:
+    print(i)
 
 
 
