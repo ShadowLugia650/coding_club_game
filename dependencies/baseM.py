@@ -39,8 +39,11 @@ def initIntro(player):
         if choice.title() in ["Return", "R", "Return To Note", "Note"]:
             input("You walk back to the note, taking it along with the armor and the sword.. [Continue]")
             player.items.append(firstLetter())
+            print("The First Letter was added to your inventory! Use [Inventory] to read it")
             player.items.append(rustySword())
+            print("Rusty Sword was added to your inventory! You're going to need it...")
             player.items.append(frayedCloth())
+            print("Frayed Cloth was added to your inventory!")
             break
         elif choice.title() in ["Continue", "C", "Continue Into Dungeon", "Dungeon"]:
             input("You continue walking into the dungeon and begin to feel very cold...[Continue]")
@@ -85,7 +88,7 @@ def modifyPlayerEffects(Type, player):
 def playerInputFight(player, enemies, defense = 0):
     #Asks for player input during fights (whether they should attack or defend). Returns the amount of block they gain from that turn.
     #You should not need to use this function if you're making a basic fighting room.
-    turn = input("What do you do? [Attack, Defend]\n")
+    turn = input("What do you do? [Attack, Defend, Magic]\n")
     if turn.title() in ["Attack", "A", "Atk"]:
         en, j = getFirstAliveEnemy(enemies)
         dmg = modifyPlayerEffects('atk', player)
@@ -98,6 +101,23 @@ def playerInputFight(player, enemies, defense = 0):
     elif turn.title() in ["Defend", "D", "Def", "Dfnd"]:
         defense += modifyPlayerEffects('def', player)
         print("You defend yourself, blocking against {} damage".format(defense))
+        return defense
+    elif turn.title() in ["Magic", "M", "Mgc", "Alakazam"]:
+        magiclist=[]
+        truemagiclist=[]
+        for n in player.items:
+            if issubclass(n,magicItem):
+                magiclist.append(n.name)
+                truemagiclist.append(n)
+        print (*magiclist, sep=" ")
+        if magiclist is not None:
+            magicchoice = input("Which magic item would you like to use? \n")
+            if magicchoice in magiclist:
+                try:
+                    magicidentifier = magiclist.index(magicchoice)
+                    truemagiclist[magicidentifier].magic()
+                except AttributeError:
+                    print("Oops! That is not a magic item")
         return defense
     else:
         checkCommands(turn, player)
@@ -262,6 +282,14 @@ If th   lett r  as rea hed you  I  m pr bably de d.
  ov
 """
 
+class magicItem(basicItem):
+    # Magic Items should have a function to replace donothing in self.magic. This function will run whenever a player chooses the magic option in a fight
+    def donothing():
+        print("")
+    def __init__(self):
+        self.name = "Magic Item"
+        self.desc = "Abracadabra! Use this item in combat for special abilities"
+        self.magic = donothing()
 class corruptBlood(basicItem):
     def __init__(self):
         self.name = "Corrupt Blood"
