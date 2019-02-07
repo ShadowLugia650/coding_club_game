@@ -152,6 +152,16 @@ class herosBlade(basicSword):
         self.desc = "The weapon of a true hero"
         self.damage = 30
         
+class demonicSword(basicSword):
+    def __init__(self):
+        self.name = "Demonic Sword"
+        self.desc = "A sword infused with demonic energy"
+        self.damage = 10
+        
+    def boostDamage(self, initial):
+        self.damage += 3
+        return initial+self.damage
+        
 #Armor/Shields
 class shield(basicDefensiveItem):
     def __init__(self):
