@@ -158,8 +158,8 @@ def runBasicFight(player, enemies, pBlock = 0):
 def strToClsNm(string):
     sl = string.split(" ")
     cn = sl[0].lower()
-    for i in sl:
-        cn += i.title()
+    for i in range(len(sl)-1):
+        cn += sl[i+1].title()
     return cn
     
 def constructPlayer(data):
