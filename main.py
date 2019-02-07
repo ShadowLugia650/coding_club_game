@@ -29,8 +29,11 @@ while Player.alive:
         room.run(Player)
         rounds += 1
         for i in Player.items:
-            if issubclass(i, itemStats.basicItem):
-                i.onFloorClimb(Player)
+            try:
+                if issubclass(i, itemStats.basicItem):
+                    i.onFloorClimb(Player)
+            except TypeError:
+                pass
     else:
         break
     if Player.alive == False:
