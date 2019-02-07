@@ -1,14 +1,12 @@
 import sys, random
 sys.path.insert(0, "dependencies")
-import console
-import pScript
-import baseM
+import console, pScript, baseM, itemStats
 
 stupidswordvar = 0
 lavadamage = 1
 #main room function
 def run(player):
-    syord = swordOfStupidity()
+    syord = itemStats.swordOfStupidity()
     global stupidswordvar, lavadamage
     print ("""As you enter the room, you feel hot air singe your eyebrows.
 You find yourself in a vast cavern split by a river of lava.
