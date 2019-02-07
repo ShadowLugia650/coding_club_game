@@ -3,7 +3,7 @@ import random
 import sys, random
 
 sys.path.insert(0, 'dependencies')
-import console, pScript, baseM
+import console, pScript, baseM, itemStats
 
 sys.path.insert(0, 'Rooms/Easy')
 sys.path.insert(0, 'Rooms/Medium')
@@ -12,11 +12,11 @@ sys.path.insert(0, 'Rooms/Impossible')
 import strangerJGv1, battleGhoulM, mirrorsM, owM, shopM, battleZombomanM, lavaroomRCv1, skeletonCalvin
 
 Player = pScript.PChar()
-#levels = [strangerJGv1, battleGhoulM, mirrorsM, owM, shopM, battleZombomanM, lavaroomRCv1, skeletonCalvin]
+levels = [strangerJGv1, battleGhoulM, mirrorsM, owM, shopM, battleZombomanM, lavaroomRCv1, skeletonCalvin]
 
 
-levels = [strangerJGv1, battleGhoulM]
-
+#levels = [strangerJGv1, battleGhoulM]
+#Why did you switch it to this?
 
 #{strangerJGv1 : 2, battleGhoulM : 5, mirrorsM : 1, owM : 2, shopM : 5} 
 consol = ""
@@ -30,7 +30,9 @@ while Player.alive:
     if consol == "yes":
         room.run(Player)
         rounds += 1
-        baseM.ClimbFloorEffects(Player)
+        for i in Player.items:
+            if issubclass(i, itemStats.basicItem):
+                i.onFloorClimb(Player)
     else:
         break
     if Player.alive == False:
