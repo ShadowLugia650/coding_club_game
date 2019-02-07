@@ -100,7 +100,7 @@ def playerInputFight(player, enemies, defense = 0):
                 magiclist.append(n.name)
                 truemagiclist.append(n)
         print (*magiclist, sep=" ")
-        if magiclist is not None:
+        if magiclist != []:
             magicchoice = input("Which magic item would you like to use? \n")
             if magicchoice in magiclist:
                 try:
