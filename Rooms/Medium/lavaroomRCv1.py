@@ -1,4 +1,5 @@
-import random
+import sys, random
+sys.path.insert(0, "dependencies")
 import console
 import pScript
 import baseM
@@ -6,11 +7,6 @@ import baseM
 stupidswordvar = 0
 lavadamage = 1
 #main room function
-class swordOfStupidity(baseM.basicSword):
-    def __init__(self):
-        self.name = "Sword of Stupidity"
-        self.desc = "A sword whose power inversely correlates with the intelligence of its wielder"
-        self.damage = 0
 def run(player):
     syord = swordOfStupidity()
     global stupidswordvar, lavadamage
