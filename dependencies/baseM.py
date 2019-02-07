@@ -173,7 +173,7 @@ def constructPlayer(data):
     itms = datal[2].split(",")
     for i in itms:
         if i != '':
-            p.items.append(eval(strToClsNm(i)))
+            p.items.append(eval(strToClsNm(i))())
     return p
     
 def packagePlayer(player):
