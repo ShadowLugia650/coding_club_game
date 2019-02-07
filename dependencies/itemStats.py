@@ -93,5 +93,5 @@ class frayedCloth(basicDefensiveItem):
         self.name = "Frayed Cloth Armor"
         self.desc = "A frayed, deteriorating cloth..."
         self.block = 4
-
+        
 #Magic
