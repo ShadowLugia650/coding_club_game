@@ -71,6 +71,12 @@ class swordOfStupidity(baseM.basicSword):
         self.desc = "A sword whose power inversely correlates with the intelligence of its wielder"
         self.damage = 0
         
+class VBlade(basicSword):
+    def __init__(self):
+        self.name = "Vorpal Blade"
+        self.desc = "A razor-sharp sword, Outlines of strange and terrifying beasts are engraved on the blade."
+        self.damage = 15
+        
 class rustySword(basicSword):
     def __init__(self):
         self.name = "Rusty Sword"
