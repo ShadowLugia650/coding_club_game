@@ -58,7 +58,7 @@ class testerSword(basicSword):
         self.damage = 1000
         
 #Regular Items
-class firstLetter(basicItem):
+class letterFromTheDeceased(basicItem):
     def __init__(self):
         self.name = "Letter From the Deceased"
         self.desc = """The letter is tattered and some words are missing.
@@ -84,7 +84,7 @@ class swordOfStupidity(baseM.basicSword):
         self.desc = "A sword whose power inversely correlates with the intelligence of its wielder"
         self.damage = 0
         
-class VBlade(basicSword):
+class vorpalBlade(basicSword):
     def __init__(self):
         self.name = "Vorpal Blade"
         self.desc = "A razor-sharp sword, Outlines of strange and terrifying beasts are engraved on the blade."
@@ -122,7 +122,7 @@ class loincloth(basicDefensiveItem):
         self.desc = "It's for public decency"
         self.block = 0
 
-class frayedCloth(basicDefensiveItem):
+class frayedClothArmor(basicDefensiveItem):
     def __init__(self):
         self.name = "Frayed Cloth Armor"
         self.desc = "A frayed, deteriorating cloth..."
