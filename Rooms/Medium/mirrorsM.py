@@ -1,7 +1,7 @@
 import sys, random
 
 sys.path.insert(0, 'dependencies')
-import baseM
+import baseM, itemStats
 from pScript import PChar
 
 def initPlayers():
@@ -12,11 +12,11 @@ def initPlayers():
         t.append('')
     #First Player: The Ironclad
     players[0].health = 120
-    players[0].items = ["Heavy Sword", "Shield", "Steel-Plate Armor"]
+    players[0].items = [itemStats.heavySword(), itemStats.basicDefensiveItem(), itemStats.steelPlateArmor()]
     t[0] = "heavy, yet strong"
     #Second Player: The Silent
     players[1].health = 90
-    players[1].items = ["Shiv", "Cloak"]
+    players[1].items = [itemStats.shiv(), itemStats.shiv(), itemStats.cloak()]
     t[1] = "agile and deadly"
     #Third Player: The Defect?
     players[2].health = 100
@@ -25,7 +25,7 @@ def initPlayers():
     #Fourth Player: The lost traveler
     players[3].health = 40
     players[3].gold = 12
-    players[3].items = ["Worn Journal", "Loincloth", "Rusty Knife"]
+    players[3].items = ["Worn Journal", itemStats.loincloth(), itemStats.rustySword()]
     t[3] = "lost and afraid"
     #Fifth Player: The merchant
     players[4].gold = 700
