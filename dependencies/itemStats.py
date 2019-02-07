@@ -17,9 +17,9 @@ class basicItem():
 
 class basicSword(basicItem):
     def __init__(self):
-        self.name = "Sword"
+        self.name = "Basic Sword"
         self.desc = "A weapon, I think."
-        self.damage = 10
+        self.damage = 0
         self.lifesteal = 0
 
     def boostDamage(self, initial):
@@ -27,9 +27,9 @@ class basicSword(basicItem):
 
 class basicDefensiveItem(basicItem):
     def __init__(self):
-        self.name = "Shield"
+        self.name = "Basic Defensive Item"
         self.desc = "Use it"
-        self.block = 10
+        self.block = 0
         self.returnDmg = 0
         self.dodge = 0
        
@@ -55,13 +55,13 @@ class basicMagicItem(basicItem):
         self.magic = donothing()
 
 class basicPotion(basicItem):
-    def drinkPotion():
+    def drinkPotion(self, player):
         pass
     
     def __init__(self):
         self.name = "Basic Potion"
         self.desc = "Drink for special effects"
-        self.effect = 
+        self.effect = self.drinkPotion()
         
 #Testing stuff: remove later
 class testerSword(basicSword):
@@ -91,6 +91,12 @@ class corruptBlood(basicItem):
         player.health += 10
 
 #Swords
+class sword(basicSword):
+    def __init__(self):
+        self.name = "Sword"
+        self.desc = "It deals damage. Use it!"
+        self.damage = 10
+    
 class swordOfStupidity(basicSword):
     def __init__(self):
         self.name = "Sword of Stupidity"
@@ -147,6 +153,12 @@ class herosBlade(basicSword):
         self.damage = 30
         
 #Armor/Shields
+class shield(basicDefensiveItem):
+    def __init__(self):
+        self.name = "Shield"
+        self.desc = "You should probably use this."
+        self.block = 10
+
 class loincloth(basicDefensiveItem):
     def __init__(self):
         self.name = "Loincloth"
@@ -173,3 +185,13 @@ class cloak(basicDefensiveItem):
         self.dodge = 5
         
 #Magic
+
+#Potions
+class healthPotion(basicPotion):
+    def drinkPotion(self, player):
+        player.health += 10
+        
+    def __init__(self):
+        self.name = "Health Potion"
+        self.desc = "It heals you.. supposedly"
+        self.effect = self.drinkPotion()
