@@ -155,6 +155,13 @@ def runBasicFight(player, enemies, pBlock = 0):
         checkCommands(choice, player)
         return player
 
+def strToClsNm(string):
+    sl = string.split(" ")
+    cn = sl[0].lower()
+    for i in sl:
+        cn += i.title()
+    return cn
+    
 def constructPlayer(data):
     #Constructs a player class based on data given in the following format.
     # health / gold / item1,item2,item3
@@ -162,10 +169,11 @@ def constructPlayer(data):
     datal = data.split(' / ')
     p.health = int(datal[0])
     p.gold = int(datal[1])
-    p.items = datal[2].split(",")
-    for i in p.items:
-        if i == '':
-            p.items.remove(i)
+    p.items = []
+    itms = datal[2].split(",")
+    for i in itms:
+        if i != '':
+            p.items.append(eval(strToClsNm(i)))
     return p
     
 def packagePlayer(player):
