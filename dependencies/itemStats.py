@@ -34,7 +34,14 @@ class basicMagicItem(basicItem):
         self.desc = "Abracadabra! Use this item in combat for special abilities"
         self.magic = donothing()
 
-#Items
+#Testing stuff: remove later
+class testerSword(basicSword):
+    def __init__(self):
+        self.name = "Tester Sword"
+        self.desc = "Testing testing.."
+        self.damage = 1000
+        
+#Regular Items
 class firstLetter(basicItem):
     def __init__(self):
         self.name = "Letter From the Deceased"
@@ -54,6 +61,7 @@ class corruptBlood(basicItem):
     def onFloorClimb(self, player):
         player.health += 10
 
+#Swords
 class rustySword(basicSword):
     def __init__(self):
         self.name = "Rusty Sword"
@@ -71,10 +79,19 @@ class ghoulClaw(basicSword):
         self.name = "Ghoul Claw"
         self.desc = "It seems ethereal.."
         self.damage = 4
-        self.lifesteal = 4
+        self.lifesteal = 4 #Not implemented yet!
+        
+class heavySword(basicSword):
+    def __init__(self):
+        self.name = "Heavy Sword"
+        self.desc = "The heavy, steel sword of an old warrior..."
+        self.damage = 35
 
+#Armor/Shields
 class frayedCloth(basicDefensiveItem):
     def __init__(self):
         self.name = "Frayed Cloth Armor"
         self.desc = "A frayed, deteriorating cloth..."
         self.block = 4
+
+#Magic
