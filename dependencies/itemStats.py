@@ -47,12 +47,22 @@ class basicDefensiveItem(basicItem):
 class basicMagicItem(basicItem):
     # Magic Items should have a function to replace donothing in self.magic. This function will run whenever a player chooses the magic option in a fight
     def donothing():
-        print("")
+        pass
+    
     def __init__(self):
         self.name = "Magic Item"
         self.desc = "Abracadabra! Use this item in combat for special abilities"
         self.magic = donothing()
 
+class basicPotion(basicItem):
+    def drinkPotion():
+        pass
+    
+    def __init__(self):
+        self.name = "Basic Potion"
+        self.desc = "Drink for special effects"
+        self.effect = 
+        
 #Testing stuff: remove later
 class testerSword(basicSword):
     def __init__(self):
