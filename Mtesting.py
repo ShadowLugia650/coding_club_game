@@ -2,7 +2,7 @@ def specials(Input, player):
     if "addItem " in Input:
         itm = Input.split("addItem ")[1]
         try:
-            player.items.append(eval(itm))
+            player.items.append(eval(itm)())
         except NameError:
             pass
     elif "setHealth " in Input:
