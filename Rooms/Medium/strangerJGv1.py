@@ -1,4 +1,4 @@
-import sys, random, baseM
+import sys, random
 
 sys.path.insert(0, 'dependencies')
 import baseM, pScript, console
@@ -25,16 +25,6 @@ def run(player):
 def goodEnd(player):
     print("Upon finishing his story, the mysterious traveller gives you a parting gift before disappearing back into the shadows.")
     pScript.addItem(player, VBlade())
-
-class VBlade(baseM.basicSword):
-    def __init__(self):
-        self.name = "Vorpal Blade"
-        self.desc = "A razor-sharp sword, Outlines of strange and terrifying beasts are engraved on the blade."
-        self.damage = 15
-
-    def __str__(self):
-        return self.name
-
 
 def badEnd():
     print("the man looks at you disappointedly, then retreats back to the shadows.")
