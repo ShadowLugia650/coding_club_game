@@ -2,7 +2,7 @@ import sys
 import random, console, pScript, Mtesting
 from pScript import PChar
 import itemStats
-from itemStats import firstLetter, rustySword, frayedCloth, basicMagicItem, ghoulClaw, shiv
+from itemStats import basicSword, basicDefensiveItem, basicMagicItem, firstLetter, rustySword, frayedCloth, ghoulClaw, shiv
 
 #Functions
 def checkPlayer(player):
@@ -64,22 +64,15 @@ def modifyPlayerEffects(Type, player):
     #You should not need to use this function if you're making a basic fighting room.
     if Type == "atk":
         dmg = 1
-        if "Tester Sword" in player.items:
-            dmg += 1000
-        if "Heavy Sword" in player.items:
-            dmg += 35
-        if "Rusty Knife" in player.items:
-            dmg += 1
         for i in player.items:
-            try:
+            if issubclass(i, basicSword):
                 dmg = i.boostDamage(dmg)
-            except AttributeError:
-                dmg = dmg
         return dmg
     elif Type == "def":
         dfns = 1
-        if "Shield" in player.items:
-            dfns += 10
+        for i in player.items:
+            if issubclass(i, basicDefensiveItem):
+                dfns = i.boostDefense(dfns)
         return dfns
 
 def playerInputFight(player, enemies, defense = 0):
