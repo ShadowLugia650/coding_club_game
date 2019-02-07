@@ -22,7 +22,7 @@ levels = [strangerJGv1, battleGhoulM, mirrorsM, owM, shopM, battleZombomanM, lav
 consol = ""
 rounds = 0
 
-#baseM.initIntro(Player)
+baseM.initIntro(Player)
 
 while Player.alive:
     room = levels[random.randint(0, (len(levels)-1))]
