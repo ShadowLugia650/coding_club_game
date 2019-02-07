@@ -12,16 +12,11 @@ import strangerJGv1, battleGhoulM, mirrorsM, owM, shopM, battleZombomanM, lavaro
 Player = pScript.PChar()
 levels = [strangerJGv1, battleGhoulM, mirrorsM, owM, shopM, battleZombomanM, lavaroomRCv1, skeletonCalvin, Collector, demonicWarrior]
 
-
-#levels = [strangerJGv1, battleGhoulM]
-#Why did you switch it to this?
-
 #{strangerJGv1 : 2, battleGhoulM : 5, mirrorsM : 1, owM : 2, shopM : 5} 
 consol = ""
 rounds = 0
 
 baseM.initIntro(Player)
-
 while Player.alive:
     room = levels[random.randint(0, (len(levels)-1))]
     consol = console.getInput(Player, ["yes", "no"], "next room? ")
