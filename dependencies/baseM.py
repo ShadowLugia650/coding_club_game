@@ -2,7 +2,7 @@ import sys
 import random, console, pScript, Mtesting
 from pScript import PChar
 import itemStats
-from itemStats import basicSword, basicDefensiveItem, basicMagicItem, letterFromTheDeceased, rustySword, frayedClothArmor, ghoulClaw, shiv
+from itemStats import *
 
 #Functions
 def checkPlayer(player):
