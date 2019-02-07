@@ -7,10 +7,10 @@ sys.path.insert(0, 'Rooms/Easy')
 sys.path.insert(0, 'Rooms/Medium')
 sys.path.insert(0, 'Rooms/Hard')
 sys.path.insert(0, 'Rooms/Impossible')
-import strangerJGv1, battleGhoulM, mirrorsM, owM, shopM, battleZombomanM, lavaroomRCv1, skeletonCalvin
+import strangerJGv1, battleGhoulM, mirrorsM, owM, shopM, battleZombomanM, lavaroomRCv1, skeletonCalvin, Collector
 
 Player = pScript.PChar()
-levels = [strangerJGv1, battleGhoulM, mirrorsM, owM, shopM, battleZombomanM, lavaroomRCv1, skeletonCalvin]
+levels = [strangerJGv1, battleGhoulM, mirrorsM, owM, shopM, battleZombomanM, lavaroomRCv1, skeletonCalvin, Collector]
 
 
 #levels = [strangerJGv1, battleGhoulM]
