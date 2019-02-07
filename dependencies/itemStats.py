@@ -1,3 +1,5 @@
+import random
+
 #Basic Item Classes, extend these.
 class basicItem():
     def __init__(self):
@@ -15,6 +17,7 @@ class basicSword(basicItem):
         self.name = "Sword"
         self.desc = "A weapon, I think."
         self.damage = 10
+        self.lifesteal = 0
 
     def boostDamage(self, initial):
         return initial+self.damage
@@ -24,9 +27,19 @@ class basicDefensiveItem(basicItem):
         self.name = "Shield"
         self.desc = "Use it"
         self.block = 10
+        self.returnDmg = 0
+        self.dodge = 0
        
     def boostDefense(self, defense):
         return defense+self.block
+    
+    def whenAttacked(self, dmg, attacker):
+        r = random.randint(1,100)
+        if r <= dodge:
+            return 0
+        else:
+            attacker.health -= this.returnDamage
+            return dmg-self.block
 
 class basicMagicItem(basicItem):
     # Magic Items should have a function to replace donothing in self.magic. This function will run whenever a player chooses the magic option in a fight
@@ -103,6 +116,12 @@ class heavySword(basicSword):
         self.damage = 35
 
 #Armor/Shields
+class loincloth(basicDefensiveItem):
+    def __init__(self):
+        self.name = "Loincloth"
+        self.desc = "It's for public decency"
+        self.block = 0
+
 class frayedCloth(basicDefensiveItem):
     def __init__(self):
         self.name = "Frayed Cloth Armor"
@@ -114,5 +133,12 @@ class steelPlateArmor(basicDefensiveItem):
         self.name = "Steel Plate Armor"
         self.desc = "Strong armor worn by an old warrior"
         self.block = 25
+        
+class cloak(basicDefensiveItem):
+    def __init__(self):
+        self.name = "Cloak"
+        self.desc = "The cloak of an assassin"
+        self.block = 6
+        self.dodge = 5
         
 #Magic
