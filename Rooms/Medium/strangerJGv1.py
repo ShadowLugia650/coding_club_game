@@ -2,6 +2,7 @@ import sys, random
 
 sys.path.insert(0, 'dependencies')
 import baseM, pScript, console
+from itemStats import vorpalBlade
 
 def run(player):
     response = ""
@@ -24,7 +25,7 @@ def run(player):
 
 def goodEnd(player):
     print("Upon finishing his story, the mysterious traveller gives you a parting gift before disappearing back into the shadows.")
-    pScript.addItem(player, VBlade())
+    pScript.addItem(player, vorpalBlade())
 
 def badEnd():
     print("the man looks at you disappointedly, then retreats back to the shadows.")
