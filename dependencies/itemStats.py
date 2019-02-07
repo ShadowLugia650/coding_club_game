@@ -118,6 +118,24 @@ class heavySword(basicSword):
         self.desc = "The heavy, steel sword of an old warrior..."
         self.damage = 35
 
+class peasantsBlade(basicSword):
+    def __init__(self):
+        self.name = "Peasant Blade"
+        self.desc = "Not the most effective weapon, but at least you didn't die"
+        self.damage = 2
+        
+class kingsBlade(basicSword):
+    def __init__(self):
+        self.name = "King's Blade"
+        self.desc = "A valuable sword inlaid with gold and jewels"
+        self.damage = 8
+        
+class herosBlade(basicSword):
+    def __init__(self):
+        self.name = "Hero's Blade"
+        self.desc = "The weapon of a true hero"
+        self.damage = 30
+        
 #Armor/Shields
 class loincloth(basicDefensiveItem):
     def __init__(self):
