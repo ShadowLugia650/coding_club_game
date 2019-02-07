@@ -30,7 +30,7 @@ while Player.alive:
         rounds += 1
         for i in Player.items:
             try:
-                if issubclass(i, itemStats.basicItem):
+                if issubclass(i, itemStats.basicItem()):
                     i.onFloorClimb(Player)
             except TypeError:
                 pass
