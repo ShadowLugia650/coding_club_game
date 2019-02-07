@@ -1,13 +1,10 @@
 import sys
 import random, console, pScript, Mtesting
 from pScript import PChar
+import itemStats
+from itemStats import firstLetter, rustySword, frayedCloth, basicMagicItem, ghoulClaw, shiv
 
 #Functions
-def ClimbFloorEffects(player):
-    #Effects on floor climb
-    if "Corrupt Blood" in player.items:
-        player.health += 10
-
 def checkPlayer(player):
     #Checks if the player is dead.
     if player.health <= 0:
@@ -39,8 +36,11 @@ def initIntro(player):
         if choice.title() in ["Return", "R", "Return To Note", "Note"]:
             input("You walk back to the note, taking it along with the armor and the sword.. [Continue]")
             player.items.append(firstLetter())
+            print("The First Letter was added to your inventory! Use [Inventory] to read it")
             player.items.append(rustySword())
+            print("Rusty Sword was added to your inventory! You're going to need it...")
             player.items.append(frayedCloth())
+            print("Frayed Cloth was added to your inventory!")
             break
         elif choice.title() in ["Continue", "C", "Continue Into Dungeon", "Dungeon"]:
             input("You continue walking into the dungeon and begin to feel very cold...[Continue]")
@@ -85,7 +85,7 @@ def modifyPlayerEffects(Type, player):
 def playerInputFight(player, enemies, defense = 0):
     #Asks for player input during fights (whether they should attack or defend). Returns the amount of block they gain from that turn.
     #You should not need to use this function if you're making a basic fighting room.
-    turn = input("What do you do? [Attack, Defend]\n")
+    turn = input("What do you do? [Attack, Defend, Magic]\n")
     if turn.title() in ["Attack", "A", "Atk"]:
         en, j = getFirstAliveEnemy(enemies)
         dmg = modifyPlayerEffects('atk', player)
@@ -99,6 +99,23 @@ def playerInputFight(player, enemies, defense = 0):
         defense += modifyPlayerEffects('def', player)
         print("You defend yourself, blocking against {} damage".format(defense))
         return defense
+    elif turn.title() in ["Magic", "M", "Mgc", "Alakazam"]:
+        magiclist=[]
+        truemagiclist=[]
+        for n in player.items:
+            if issubclass(n,basicMagicItem):
+                magiclist.append(n.name)
+                truemagiclist.append(n)
+        print (*magiclist, sep=" ")
+        if magiclist is not None:
+            magicchoice = input("Which magic item would you like to use? \n")
+            if magicchoice in magiclist:
+                try:
+                    magicidentifier = magiclist.index(magicchoice)
+                    truemagiclist[magicidentifier].magic()
+                except AttributeError:
+                    print("Oops! That is not a magic item")
+        return defense
     else:
         checkCommands(turn, player)
         return playerInputFight(player, enemies, defense)
@@ -107,7 +124,7 @@ def runBasicFight(player, enemies, pBlock = 0):
     #Runs a basic fight with a given player and list of enemies. Enemies should be a class which extends basicEnemy
     #DO NOT INCLUDE A VALUE FOR pBlock! THIS IS SET WHEN THE CODE IS RUNNING.
     for i in range(len(enemies)):
-        if i is not None:
+        if enemies[i] is not None:
             atk, dmg = enemies[i].move()
             print("{} {} uses {}, dealing {} damage.".format(enemies[i].type, i+1, atk, dmg))
             if pBlock > 0:
@@ -201,7 +218,7 @@ class basicEnemy():
     def death(self, player):
         player.gold += random.randint(20, 40)
         for i in self.loot:
-            if i[0] == "Gold":
+            if type(i) == tuple and i[0] == "Gold":
                 player.gold += i[1]
             else:
                 player.items.append(i)
@@ -227,7 +244,7 @@ class Ghoul(basicEnemy):
         self.baseDamage = 7
         self.health = 40
         self.maxHp = 40
-        self.loot = [("Gold",random.randint(10,20)),random.choice(["Ghoul Claw"])]
+        self.loot = [("Gold",random.randint(10,20)),random.choice([ghoulClaw()])]
         self.options = {"Swipe":0,"Rob":-2,"Siphon":-3} #These numbers determine how much damage the attack deals based on baseDamage. ex. Siphon deals 7-3=4 damage.
     
 class ShivMan(basicEnemy):
@@ -236,69 +253,5 @@ class ShivMan(basicEnemy):
         self.baseDamage = 10
         self.health = 70
         self.maxHp = 70
-        self.loot = [("Gold",random.randint(70,130), "Shiv")]
+        self.loot = [("Gold",random.randint(70,130), shiv())]
         self.options = {"Stab":0,"Rob":-2,"Slash":+2}
-
-#Items
-class basicItem():
-    def __init__(self):
-        self.name = None
-        self.desc = ""
-
-    def __str__(self):
-        return self.name
-
-    def readDesc(self):
-        print(self.desc)
-
-class firstLetter(basicItem):
-    def __init__(self):
-        self.name = "Letter From the Deceased"
-        self.desc = """The letter is tattered and some words are missing.
-The faded words read:
-Deare
-If th   lett r  as rea hed you  I  m pr bably de d.
-[]
- ov
-"""
-
-class corruptBlood(basicItem):
-    def __init__(self):
-        self.name = "Corrupt Blood"
-        self.desc = "A strange bluish-purple liquid..."
-
-    def onFloorClimb(self, player):
-        player.health += 10
-
-class basicSword(basicItem):
-    def __init__(self):
-        self.name = "Sword"
-        self.desc = "A weapon, I think."
-        self.damage = 10
-
-    def boostDamage(self, initial):
-        return initial+self.damage
-
-class rustySword(basicSword):
-    def __init__(self):
-        self.name = "Rusty Sword"
-        self.desc = "A rusted, britle sword from a traveler long forgotten..."
-        self.damage = 4
-
-class shiv(basicSword):
-    def __init__(self):
-        self.name = "Shiv"
-        self.desc = "Stabby stabby!"
-        self.damage = 7
-
-class basicDefensiveItem(basicItem):
-    def __init__(self):
-        self.name = "Shield"
-        self.desc = "Use it"
-        self.block = 10
-
-class frayedCloth(basicDefensiveItem):
-    def __init__(self):
-        self.name = "Frayed Cloth Armor"
-        self.desc = "A frayed, deteriorating cloth..."
-        self.block = 4
