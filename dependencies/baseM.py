@@ -65,13 +65,13 @@ def modifyPlayerEffects(Type, player):
     if Type == "atk":
         dmg = 1
         for i in player.items:
-            if issubclass(i, basicSword):
+            if issubclass(i, basicSword()):
                 dmg = i.boostDamage(dmg)
         return dmg
     elif Type == "def":
         dfns = 1
         for i in player.items:
-            if issubclass(i, basicDefensiveItem):
+            if issubclass(i, basicDefensiveItem()):
                 dfns = i.boostDefense(dfns)
         return dfns
 
@@ -96,7 +96,7 @@ def playerInputFight(player, enemies, defense = 0):
         magiclist=[]
         truemagiclist=[]
         for n in player.items:
-            if issubclass(n,basicMagicItem):
+            if issubclass(n,basicMagicItem()):
                 magiclist.append(n.name)
                 truemagiclist.append(n)
         print (*magiclist, sep=" ")
