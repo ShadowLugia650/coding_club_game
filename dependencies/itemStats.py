@@ -11,6 +11,9 @@ class basicItem():
 
     def readDesc(self):
         print(self.desc)
+        
+    def onFloorClimb(self, player):
+        pass
 
 class basicSword(basicItem):
     def __init__(self):
