@@ -24,6 +24,9 @@ class basicDefensiveItem(basicItem):
         self.name = "Shield"
         self.desc = "Use it"
         self.block = 10
+       
+    def boostDefense(self, defense):
+        return defense+self.block
 
 class basicMagicItem(basicItem):
     # Magic Items should have a function to replace donothing in self.magic. This function will run whenever a player chooses the magic option in a fight
