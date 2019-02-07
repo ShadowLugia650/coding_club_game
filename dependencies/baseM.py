@@ -2,7 +2,7 @@ import sys
 import random, console, pScript, Mtesting
 from pScript import PChar
 import itemStats
-from itemStats import basicSword, basicDefensiveItem, basicMagicItem, firstLetter, rustySword, frayedCloth, ghoulClaw, shiv
+from itemStats import basicSword, basicDefensiveItem, basicMagicItem, letterFromTheDeceased, rustySword, frayedClothArmor, ghoulClaw, shiv
 
 #Functions
 def checkPlayer(player):
@@ -35,11 +35,11 @@ def initIntro(player):
     while True:
         if choice.title() in ["Return", "R", "Return To Note", "Note"]:
             input("You walk back to the note, taking it along with the armor and the sword.. [Continue]")
-            player.items.append(firstLetter())
+            player.items.append(letterFromTheDeceased())
             print("The First Letter was added to your inventory! Use [Inventory] to read it")
             player.items.append(rustySword())
             print("Rusty Sword was added to your inventory! You're going to need it...")
-            player.items.append(frayedCloth())
+            player.items.append(frayedClothArmor())
             print("Frayed Cloth was added to your inventory!")
             break
         elif choice.title() in ["Continue", "C", "Continue Into Dungeon", "Dungeon"]:
