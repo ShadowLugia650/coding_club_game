@@ -90,7 +90,7 @@ def playerInputFight(player, enemies, defense = 0):
         return defense
     elif turn.title() in ["Defend", "D", "Def", "Dfnd"]:
         defense += modifyPlayerEffects('def', player)
-        print("You defend yourself, blocking against {} damage".format(defense))
+        print("You brace yourself, defending against {} damage.".format(defense))
         return defense
     elif turn.title() in ["Magic", "M", "Mgc", "Alakazam"]:
         magiclist=[]
@@ -120,16 +120,10 @@ def runBasicFight(player, enemies, pBlock = 0):
         if enemies[i] is not None:
             atk, dmg = enemies[i].move()
             print("{} {} uses {}, dealing {} damage.".format(enemies[i].type, i+1, atk, dmg))
-            if pBlock > 0:
-                pBlock -= dmg
-                if pBlock < 0:
-                    player.health += pBlock
-                    pBlock = 0
-                    print("You blocked {} damage.".format(pBlock))
-                elif pBlock >= 0:
-                    print("You blocked {} damage.".format(dmg))
-            else:
-                player.health -= dmg
+            for j in player.items:
+                if issubclass(j, basicDefensiveItem()):
+                    dmg = j.whenAttacked(dmg, enemies[i])
+            player.health -= dmg
             if atk == "Rob":
                 robbed = random.randint(3,6)
                 print("The {} stole {} of your gold!".format(enemies[i].type, robbed))
