@@ -78,7 +78,7 @@ class corruptBlood(basicItem):
         player.health += 10
 
 #Swords
-class swordOfStupidity(baseM.basicSword):
+class swordOfStupidity(basicSword):
     def __init__(self):
         self.name = "Sword of Stupidity"
         self.desc = "A sword whose power inversely correlates with the intelligence of its wielder"
