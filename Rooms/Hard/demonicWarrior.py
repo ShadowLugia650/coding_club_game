@@ -2,6 +2,7 @@ import sys, random
 
 sys.path.insert(0, 'dependencies')
 import baseM
+from itemStats import demonicSword
 
 class DemonicWarrior(baseM.basicEnemy):
     def __init__(self):
@@ -10,7 +11,7 @@ class DemonicWarrior(baseM.basicEnemy):
         self.baseDef = 20
         self.health = 110
         self.maxHp = 110
-        self.loot = [("Gold", random.randint(100,150))]
+        self.loot = [("Gold", random.randint(100,150)), demonicSword()]
         self.options = {"Slash":0, "Strike":5, "Double Strike":-10}
 
     def move(self):
