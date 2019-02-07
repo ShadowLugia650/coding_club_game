@@ -1,3 +1,7 @@
+import sys
+sys.path.insert(0, "dependencies")
+from itemStats import *
+
 def specials(Input, player):
     if "addItem " in Input:
         itm = Input.split("addItem ")[1]
