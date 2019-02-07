@@ -109,4 +109,10 @@ class frayedCloth(basicDefensiveItem):
         self.desc = "A frayed, deteriorating cloth..."
         self.block = 4
         
+class steelPlateArmor(basicDefensiveItem):
+    def __init__(self):
+        self.name = "Steel Plate Armor"
+        self.desc = "Strong armor worn by an old warrior"
+        self.block = 25
+        
 #Magic
