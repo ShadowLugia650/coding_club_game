@@ -12,13 +12,25 @@ class DemonicWarrior(baseM.basicEnemy):
         self.health = 110
         self.maxHp = 110
         self.loot = [("Gold", random.randint(100,150)), demonicSword()]
-        self.options = {"Slash":0, "Strike":5, "Double Strike":-10}
+        self.options = {"Slash":0, "Strike":5, "Double Strike":-10, "Amplify":0}
+        self.optionsP2 = {"Strike":5, "Double Strike":-6, "Combo Slash":-10}
+        self.phase = 1
 
     def move(self):
+        if self.health <= 55 and self.phase == 1:
+            print("\"You will never defeat me!\"")
+            self.baseDamage += 10
+            self.phase = 2
+            self.health += 10
+        if self.baseDamage >= 24 and self.baseDamage <= 26:
+            print("\"HAHAHAHAHAHAHAHA\"")
         self.baseDamage += 3
         atk = random.choice(list(self.options.keys()))
         if atk == "Double Strike":
             return atk, ((self.baseDamage+self.options[atk])*2)
+        elif atk == "Amplify":
+            self.baseDamage *= 2
+            return atk, 0
         return atk, (self.baseDamage + self.options[atk])
 
 def run(player):
