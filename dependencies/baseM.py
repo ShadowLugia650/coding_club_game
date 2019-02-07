@@ -116,6 +116,9 @@ def playerInputFight(player, enemies, defense = 0):
 def runBasicFight(player, enemies, pBlock = 0):
     #Runs a basic fight with a given player and list of enemies. Enemies should be a class which extends basicEnemy
     #DO NOT INCLUDE A VALUE FOR pBlock! THIS IS SET WHEN THE CODE IS RUNNING.
+    for i in player.items:
+        if i.name == "Demonic Sword":
+            i.damage = 10
     for i in range(len(enemies)):
         if enemies[i] is not None:
             atk, dmg = enemies[i].move()
