@@ -1,29 +1,7 @@
-import random
-import console
-import pScript
-import baseM
-class peasantsBlade(baseM.basicSword):
-    def __init__(self):
-        self.name = "Peasant Blade"
-        self.desc = "Not the most effective weapon, but at least you didn't die"
-        self.damage = 2
-class kingsBlade(baseM.basicSword):
-    def __init__(self):
-        self.name = "King's Blade"
-        self.desc = "A valuable sword inlaid with gold and jewels"
-        self.damage = 8
-class herosBlade(baseM.basicSword):
-    def __init__(self):
-        self.name = "Hero's Blade"
-        self.desc = "The weapon of a true hero"
-        self.damage = 30
-class player():
-    def __init__(self):
-        self.health = 100
-        self.gold = 99
-        self.items = ["loincloth"]
-        self.alive = True
-        self.dex = 5
+import random, sys
+sys.path.insert(0, 'dependencies')
+import console, pScript, baseM
+from itemStats import peasantsBlade,kingsBlade,herosBlade
 class Collector(baseM.basicEnemy):
     def __init__(self):
         self.type = "Collector"
