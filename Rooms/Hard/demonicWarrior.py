@@ -17,7 +17,7 @@ class DemonicWarrior(baseM.basicEnemy):
         self.phase = 1
 
     def move(self):
-        if self.health <= 55 and self.phase == 1:
+        if self.health <= 100 and self.phase == 1:
             print("\"You will never defeat me!\"")
             self.baseDamage += 10
             self.phase = 2
