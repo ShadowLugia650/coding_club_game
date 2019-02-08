@@ -199,7 +199,7 @@ class cloak(basicDefensiveItem):
         
 #Magic
 class wandOfConfusion(basicMagicItem):
-    def __init__ (self)
+    def __init__ (self):
         self.name="Wand of Confusion"
         self.desc="Bamboozles, hoodwinks, leads astray, runs amok, and flat out decieves your enemies"
     def magic(self, player, enemy)
@@ -226,16 +226,16 @@ class staffOfLuck(basicMagicItem):
         self.desc="Test your luck"
         self.count=4
     def magic(self,player,enemy):
-        if self.count=0:
+        if self.count==0:
             self.count=4
             print("Sorry! The lucky number was "+str(luckynumber))
             return
-        if self.count==4:
+        elif self.count==4:
             luckynumber=random.randint(1,20)
         print("As you hold up the worn staff, you realize that a bit of luck may be required to make it work")
         print("guess a number from 1 to 20")
         guess=input()
-        if luckynumber=int(guess):
+        if luckynumber==int(guess):
             print("Fueled by your luck, a bolt of lightning strikes the "+enemy.name)
             if count==4:
                 enemy.health=0
