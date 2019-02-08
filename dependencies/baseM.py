@@ -20,9 +20,11 @@ def checkCommands(Input, player):
         console.status(player)
     elif Input.title() in ["Inventory", "Inv", "Items", "Bag"]:
         console.inventory(player)
-    elif Input.title() in ["Continue", "C", "Cont"]:
-        x = 1
-        #add continue to next room
+    elif Input.title().split(" ")[0] in ["Inspect", "View", "Description", "Desc"]:
+        s = ""
+        for i in (Input.title().split(" ")[1:]):
+            s += i
+        eval(strToClsNm(s))().readDesc()
     else:
         print("This is not one of your options...")
 
