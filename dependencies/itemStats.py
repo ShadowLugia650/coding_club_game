@@ -65,7 +65,6 @@ class basicPotion(basicItem):
     def __init__(self):
         self.name = "Basic Potion"
         self.desc = "Drink for special effects"
-        self.effect = self.drinkPotion()
         
 #Testing stuff: remove later
 class testerSword(basicSword):
