@@ -1,4 +1,4 @@
-import random
+import random, baseM
 
 #Basic Item Classes, extend these.
 class basicItem():
@@ -157,7 +157,7 @@ class herosBlade(basicSword):
         
 class demonicSword(basicSword):
     def __init__(self):
-        self.name = "Demonic Sword"
+        self.name = "Demonic Blade"
         self.desc = "A sword infused with demonic energy"
         self.damage = 10
         
@@ -198,7 +198,7 @@ class cloak(basicDefensiveItem):
         self.dodge = 5
         
 #Magic
-class wandOfConfusion(magicItem)
+class wandOfConfusion(basicMagicItem):
     def __init__ (self)
         self.name="Wand of Confusion"
         self.desc="Bamboozles, hoodwinks, leads astray, runs amok, and flat out decieves your enemies"
@@ -207,7 +207,7 @@ class wandOfConfusion(magicItem)
         
         
         
-class staffOfGold(itemStats.magicItem):
+class staffOfGold(basicMagicItem):
     def magic(self,player,enemy):
         if self.charge==0:
             player.gold+=10
@@ -220,7 +220,7 @@ class staffOfGold(itemStats.magicItem):
         
         
         
-class staffOfLuck(itemStats.magicItem):
+class staffOfLuck(basicMagicItem):
     def __init__ (self):
         self.name="Staff of Luck"
         self.desc="Test your luck"
@@ -247,13 +247,21 @@ class staffOfLuck(itemStats.magicItem):
             print ("You have "+str(count)+"guesses left!")
             self.magic(self,player,enemy)
         elif int(guess)>luckynumber:
-            print("Oops! You guessed too low!")
+            print("Oops! You guessed too high!")
             self.count-=1
             print ("You have "+str(count)+"guesses left!")
             self.magic(self,player,enemy)
-      
+            
+class amplifyingOrb(basicMagicItem):
+    def __init__(self):
+        self.name = "Amplifying Orb"
+        self.desc = "Amplifies your attacks with the Demonic Blade"
     
-    
+    def magic(self,player,enemy):
+        db = baseM.getItem("Demonic Blade", player)
+        db.damage *= 2
+        print("The demonic energies swirl around your Demonic Blade! It doubles in strength! ({})".format(db.damage))
+            
 #Potions
 class healthPotion(basicPotion):
     def drinkPotion(self, player):
