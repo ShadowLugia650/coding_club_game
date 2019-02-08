@@ -38,7 +38,7 @@ class basicDefensiveItem(basicItem):
     
     def whenAttacked(self, dmg, attacker):
         r = random.randint(1,100)
-        if r <= dodge:
+        if r <= self.dodge:
             return 0
         else:
             attacker.health -= this.returnDamage
