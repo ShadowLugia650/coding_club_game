@@ -65,13 +65,13 @@ def modifyPlayerEffects(Type, player):
     if Type == "atk":
         dmg = 1
         for i in player.items:
-            if issubclass(i, basicSword):
+            if issubclass(type(i), basicSword):
                 dmg = i.boostDamage(dmg)
         return dmg
     elif Type == "def":
         dfns = 1
         for i in player.items:
-            if issubclass(i, basicDefensiveItem):
+            if issubclass(type(i), basicDefensiveItem):
                 dfns = i.boostDefense(dfns)
         return dfns
 
@@ -96,7 +96,7 @@ def playerInputFight(player, enemies, defense = 0):
         magiclist=[]
         truemagiclist=[]
         for n in player.items:
-            if issubclass(n,basicMagicItem):
+            if issubclass(type(n),basicMagicItem):
                 magiclist.append(n.name)
                 truemagiclist.append(n)
         print (*magiclist, sep=" ")
@@ -124,7 +124,7 @@ def runBasicFight(player, enemies, pBlock = 0):
             atk, dmg = enemies[i].move()
             print("{} {} uses {}, dealing {} damage.".format(enemies[i].type, i+1, atk, dmg))
             for j in player.items:
-                if issubclass(j, basicDefensiveItem):
+                if issubclass(type(j), basicDefensiveItem):
                     dmg = j.whenAttacked(dmg, enemies[i])
             player.health -= dmg
             if atk == "Rob":
