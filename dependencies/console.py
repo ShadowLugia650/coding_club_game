@@ -4,7 +4,7 @@ def playerhelp():
     print("    \"help\"        opens the commands guide")
     print("    \"status\"      prints your health and gold")
     print("    \"inventory\"   prints your item list")
-    print("     \"options\"     prints the listed inputs you can make")
+    print("    \"options\"     prints the listed inputs you can make")
     print("    \"testgold\"    lets you input a new gold amount. Big errors if you don't enter an int")
     print("    \"testhp\"      lets you input a new health amount. Big errors if you don't enter an int")
 
