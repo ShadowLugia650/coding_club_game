@@ -157,6 +157,11 @@ def runBasicFight(player, enemies, pBlock = 0):
         checkCommands(choice, player)
         return player
 
+def getItem(name, player):
+    for i in player.items:
+        if i.name == name:
+            return i
+    
 def strToClsNm(string):
     sl = string.split(" ")
     cn = sl[0].lower()
