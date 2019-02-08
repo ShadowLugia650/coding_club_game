@@ -13,7 +13,7 @@ class DemonicWarrior(baseM.basicEnemy):
         self.maxHp = 110
         self.loot = [("Gold", random.randint(100,150)), demonicSword()]
         self.options = {"Slash":0, "Strike":5, "Double Strike":-10, "Amplify":0}
-        self.optionsP2 = {"Strike":5, "Double Strike":-6, "Combo Slash":-10}
+        self.optionsP2 = {"Strike":5, "Double Strike":-6, "Combo Slash":0}
         self.phase = 1
 
     def move(self):
@@ -33,9 +33,9 @@ class DemonicWarrior(baseM.basicEnemy):
         elif self.phase == 2:
             atk = random.choice(list(self.optionsP2.keys()))
             if atk == "Combo Slash":
-                return atk, ((self.baseDamage+self.options[atk])*3)
+                return "{} ({},{},{})".format(atk,(self.baseDamage),(self.baseDamage-5),(self.baseDamage+8)), ((self.baseDamage)+(self.baseDamage-5)+(self.baseDamage+8))
         if atk == "Double Strike":
-            return atk, ((self.baseDamage+self.options[atk])*2)
+            return "{} ({}x2)".format(atk,(self.baseDamage+self.options[atk])), ((self.baseDamage+self.options[atk])*2)
         return atk, (self.baseDamage + self.options[atk])
 
 def run(player):
