@@ -20,7 +20,7 @@ baseM.initIntro(Player)
 while Player.alive:
     room = levels[random.randint(0, (len(levels)-1))]
     consol = console.getInput(Player, ["yes", "no"], "next room? ")
-    if consol == "yes":
+    if consol.lower() in ["yes", "y", "ok", "sure", "yeah", "yay"]:
         room.run(Player)
         rounds += 1
         for i in Player.items:
