@@ -198,6 +198,15 @@ class cloak(basicDefensiveItem):
         self.dodge = 5
         
 #Magic
+class wandOfConfusion(magicItem)
+    def __init__ (self)
+        self.name="Wand of Confusion"
+        self.desc="Bamboozles, hoodwinks, leads astray, runs amok, and flat out decieves your enemies"
+    def magic(self, player, enemy)
+        enemy.baseDamage=random.randint(0,enemy.baseDamage)
+        
+        
+        
 class staffOfGold(itemStats.magicItem):
     def magic(self,player,enemy):
         if self.charge==0:
@@ -208,6 +217,9 @@ class staffOfGold(itemStats.magicItem):
         self.name="Staff of Gold"
         self.desc=""
         self.charge=150
+        
+        
+        
 class staffOfLuck(itemStats.magicItem):
     def __init__ (self):
         self.name="Staff of Luck"
@@ -239,7 +251,9 @@ class staffOfLuck(itemStats.magicItem):
             self.count-=1
             print ("You have "+str(count)+"guesses left!")
             self.magic(self,player,enemy)
-            
+      
+    
+    
 #Potions
 class healthPotion(basicPotion):
     def drinkPotion(self, player):
