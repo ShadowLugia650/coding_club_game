@@ -41,7 +41,7 @@ class basicDefensiveItem(basicItem):
         if r <= self.dodge:
             return 0
         else:
-            attacker.health -= this.returnDamage
+            attacker.health -= self.returnDamage
             return dmg-self.block
 
 class basicMagicItem(basicItem):
