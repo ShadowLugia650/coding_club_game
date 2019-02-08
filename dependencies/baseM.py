@@ -86,6 +86,10 @@ def playerInputFight(player, enemies, defense = 0):
         dmg = modifyPlayerEffects('atk', player)
         print("You attack {} {}, dealing {} damage".format(en.type, j+1, dmg))
         en.health -= dmg
+        try:
+            player.health += dmg
+        except AttributeError:
+            pass
         if en.health <= 0:
             en.death(player)
             enemies[j] = None
