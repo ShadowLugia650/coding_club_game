@@ -25,12 +25,17 @@ class DemonicWarrior(baseM.basicEnemy):
         if self.baseDamage >= 24 and self.baseDamage <= 26:
             print("\"HAHAHAHAHAHAHAHA\"")
         self.baseDamage += 3
-        atk = random.choice(list(self.options.keys()))
+        if self.phase == 1:
+            atk = random.choice(list(self.options.keys()))
+            elif atk == "Amplify":
+                self.baseDamage *= 2
+                return atk, 0
+        elif self.phase == 2:
+            atk = random.choice(list(self.optionsP2.keys()))
+            if atk == "Combo Slash":
+                return atk, ((self.baseDamage+self.options[atk])*3)
         if atk == "Double Strike":
             return atk, ((self.baseDamage+self.options[atk])*2)
-        elif atk == "Amplify":
-            self.baseDamage *= 2
-            return atk, 0
         return atk, (self.baseDamage + self.options[atk])
 
 def run(player):
