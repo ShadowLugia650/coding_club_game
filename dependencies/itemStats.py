@@ -37,12 +37,16 @@ class basicDefensiveItem(basicItem):
         return defense+self.block
     
     def whenAttacked(self, dmg, attacker):
-        r = random.randint(1,100)
-        if r <= self.dodge:
-            return 0
-        else:
+        try:
+            if random.randint(1,100) <= self.dodge:
+                return 0
+        except AttributeError:
+            pass
+        try:
             attacker.health -= self.returnDamage
-            return dmg-self.block
+        except AttributeError:
+            pass
+        return dmg-self.block
 
 class basicMagicItem(basicItem):
     # Magic Items should have a function to replace donothing in self.magic. This function will run whenever a player chooses the magic option in a fight
