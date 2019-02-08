@@ -126,7 +126,8 @@ def runBasicFight(player, enemies, pBlock = 0):
             for j in player.items:
                 if issubclass(type(j), basicDefensiveItem):
                     dmg = j.whenAttacked(dmg, enemies[i])
-            player.health -= dmg
+            if dmg > 0:
+                player.health -= dmg
             if atk == "Rob":
                 robbed = random.randint(3,6)
                 print("The {} stole {} of your gold!".format(enemies[i].type, robbed))
