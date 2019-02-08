@@ -2,7 +2,7 @@ import sys, random
 
 sys.path.insert(0, 'dependencies')
 import baseM
-from itemStats import sword, shield
+from itemStats import sword, shield, healthPotion
 
 def listItems(items):
     print("This shop has:")
@@ -11,7 +11,7 @@ def listItems(items):
 
 def run(player):
     items = {}
-    allItems = {"Sword":(sword(),50), "Shield":(shield(),50), "Health Potion":(None,10)}
+    allItems = {sword():50, shield():50, healthPotion():10}
     for i in range(10):
         itm = random.choice(list(allItems.keys()))
         items[itm] = allItems[itm]
@@ -27,12 +27,12 @@ def run(player):
                 break
             elif im not in list(items.keys()):
                 print("This shop doesn't have that...")
-            elif items[im][1] > player.gold:
+            elif items[im] > player.gold:
                 print(random.choice(["You don't have enough money for that..", "Don't be a thief!"]))
             else:
                 print("You bought a {}".format(im))
-                player.gold -= items[im][1]
-                player.items.append(items[im][0])
+                player.gold -= items[im]
+                player.items.append(im)
                 items.pop(im)
     elif choice.title() in ["Leave", "L"]:
         print("You walk past this 'shop' and continue your journey...")
