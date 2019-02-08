@@ -9,8 +9,8 @@ class DemonicWarrior(baseM.basicEnemy):
         self.type = "Demonic Warrior"
         self.baseDamage = 7
         self.baseDef = 20
-        self.health = 110
-        self.maxHp = 110
+        self.health = 200
+        self.maxHp = 200
         self.loot = [("Gold", random.randint(100,150)), demonicSword()]
         self.options = {"Slash":0, "Strike":5, "Double Strike":-10, "Amplify":0}
         self.optionsP2 = {"Strike":5, "Double Strike":-6, "Combo Slash":0}
