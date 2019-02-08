@@ -27,7 +27,7 @@ class DemonicWarrior(baseM.basicEnemy):
         self.baseDamage += 3
         if self.phase == 1:
             atk = random.choice(list(self.options.keys()))
-            elif atk == "Amplify":
+            if atk == "Amplify":
                 self.baseDamage *= 2
                 return atk, 0
         elif self.phase == 2:
