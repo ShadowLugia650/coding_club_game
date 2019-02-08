@@ -10,7 +10,7 @@ sys.path.insert(0, 'Rooms/Impossible')
 import strangerJGv1, battleGhoulM, mirrorsM, owM, shopM, battleZombomanM, lavaroomRCv1, skeletonCalvin, Collector, demonicWarrior
 
 Player = pScript.PChar()
-levels = [strangerJGv1, battleGhoulM, mirrorsM, owM, shopM, battleZombomanM, lavaroomRCv1, skeletonCalvin, Collector, demonicWarrior]
+levels = [strangerJGv1, battleGhoulM, mirrorsM, owM, shopM, battleZombomanM, lavaroomRCv1, skeletonCalvin]
 
 #{strangerJGv1 : 2, battleGhoulM : 5, mirrorsM : 1, owM : 2, shopM : 5} 
 consol = ""
@@ -33,7 +33,8 @@ while Player.alive:
         break
     if Player.alive == False:
         print("You have died.")
-    
+    if rounds == 20:
+        levels.append(Collector, demonicWarrior)
 print("Game over.")
 print("rooms cleared:  " + str(rounds))
 print("Ending gold:    " + str(Player.gold))
