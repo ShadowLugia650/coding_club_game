@@ -14,7 +14,7 @@ Choose your path [Fountain, Gold]""")
             print("You were healed to full health!")
             player.health = player.maxHp
             return player
-        elif choice in ["no", "n"]
+        elif choice in ["no", "n"]:
             print("You continue on your way, wondering what could have been")
             return player
         else:
