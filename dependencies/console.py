@@ -34,10 +34,6 @@ def getInput(Player, outputs, prompt = ""): # a better Input function. Has built
             inventory(Player)
         elif console in ["options", "opt", "options?", "opt?"]:
             print(outputs)
-        elif console == "testgold":
-            testGold(Player, input())
-        elif console == "testhp":
-            testHP(Player, input())
         elif console in outputs:
             output = True
         else:
