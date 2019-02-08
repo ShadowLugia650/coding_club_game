@@ -36,7 +36,7 @@ Press 1 to choose the peasant's blade
 Press 2 to choose the king's blade
 Press 3 to choose the hero's blade (don't do it)
 """)
-    for objects in player.items
+    for objects in player.items:
         x.baseDamage+=2
         x.health+=30
         x.maxHp+=30
