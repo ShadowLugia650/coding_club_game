@@ -198,7 +198,48 @@ class cloak(basicDefensiveItem):
         self.dodge = 5
         
 #Magic
-
+class staffOfGold(itemStats.magicItem):
+    def magic(self,player,enemy):
+        if self.charge==0:
+            player.gold+=10
+        player.gold+=self.charge
+        self.charge-=10
+    def __init__ (self):
+        self.name="Staff of Gold"
+        self.desc=""
+        self.charge=150
+class staffOfLuck(itemStats.magicItem):
+    def __init__ (self):
+        self.name="Staff of Luck"
+        self.desc="Test your luck"
+        self.count=4
+    def magic(self,player,enemy):
+        if self.count=0:
+            self.count=4
+            print("Sorry! The lucky number was "+str(luckynumber))
+            return
+        if self.count==4:
+            luckynumber=random.randint(1,20)
+        print("As you hold up the worn staff, you realize that a bit of luck may be required to make it work")
+        print("guess a number from 1 to 20")
+        guess=input()
+        if luckynumber=int(guess):
+            print("Fueled by your luck, a bolt of lightning strikes the "+enemy.name)
+            if count==4:
+                enemy.health=0
+            enemy.health-=(0.5*enemy.health)
+            self.count=4
+        elif int(guess)<luckynumber:
+            print("Oops! You guessed too low!")
+            self.count-=1
+            print ("You have "+str(count)+"guesses left!")
+            self.magic(self,player,enemy)
+        elif int(guess)>luckynumber:
+            print("Oops! You guessed too low!")
+            self.count-=1
+            print ("You have "+str(count)+"guesses left!")
+            self.magic(self,player,enemy)
+            
 #Potions
 class healthPotion(basicPotion):
     def drinkPotion(self, player):
