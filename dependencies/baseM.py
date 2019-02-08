@@ -115,19 +115,22 @@ def playerInputFight(player, enemies, defense = 0):
         checkCommands(turn, player)
         return playerInputFight(player, enemies, defense)
 
-def runBasicFight(player, enemies, pBlock = 0):
+def runBasicFight(player, enemies, pBlock = 0, playerFirst = False):
     #Runs a basic fight with a given player and list of enemies. Enemies should be a class which extends basicEnemy
     #DO NOT INCLUDE A VALUE FOR pBlock! THIS IS SET WHEN THE CODE IS RUNNING.
     for i in player.items:
         if i.name == "Demonic Sword":
             i.damage = 10
+    if playerFirst:
+        pBlock = playerInputFight(player, enemies, pBlock)
     for i in range(len(enemies)):
         if enemies[i] is not None:
             atk, dmg = enemies[i].move()
             print("{} {} uses {}, dealing {} damage.".format(enemies[i].type, i+1, atk, dmg))
-            for j in player.items:
-                if issubclass(type(j), basicDefensiveItem):
-                    dmg = j.whenAttacked(dmg, enemies[i])
+            if pBlock > 0:
+                for j in player.items:
+                    if issubclass(type(j), basicDefensiveItem):
+                        dmg = j.whenAttacked(dmg, enemies[i])
             if dmg > 0:
                 player.health -= dmg
             if atk == "Rob":
