@@ -25,20 +25,20 @@ def testHP(Player, y):
 def getInput(Player, outputs, prompt = ""): # a better Input function. Has built-in UI commands.
     output = False
     while output == False:
-        console = input(prompt).lower()
-        if console in ["help", "?"]:
+        console = input(prompt)
+        if console.lower() in ["help", "?"]:
             playerhelp()
-        elif console in ["status", "stat", "me", "stats"]:
+        elif console.lower() in ["status", "stat", "me", "stats"]:
             status(Player)
-        elif console in ["inventory", "inv", "items", "bag"]:
+        elif console.lower() in ["inventory", "inv", "items", "bag"]:
             inventory(Player)
-        elif console in ["options", "opt", "options?", "opt?"]:
+        elif console.lower() in ["options", "opt", "options?", "opt?"]:
             print(outputs)
-        elif console in outputs:
+        elif console.lower() in outputs:
             output = True
         else:
             baseM.checkCommands(console, Player)
-    return console
+    return console.lower()
 
 def delayPrint(Player, text = ""):
     print(text)
