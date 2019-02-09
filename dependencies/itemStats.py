@@ -85,6 +85,11 @@ If th   lett r  as rea hed you  I  m pr bably de d.
  ov
 """
 
+class jabberwockyHead(baseM.basicItem):
+    def __init__(self):
+        self.name = "Jabberwocky Head"
+        self.desc = "The severed head of the Jabberwocky. Despite being dead, its eyes seem to follow you with malicious hunger."
+        
 class corruptBlood(basicItem):
     def __init__(self):
         self.name = "Corrupt Blood"
@@ -109,7 +114,7 @@ class swordOfStupidity(basicSword):
 class vorpalBlade(basicSword):
     def __init__(self):
         self.name = "Vorpal Blade"
-        self.desc = "A razor-sharp sword, Outlines of strange and terrifying beasts are engraved on the blade."
+        self.desc = "A razor-sharp sword. Outlines of strange and terrifying beasts are engraved on the blade."
         self.damage = 15
         
 class rustySword(basicSword):
