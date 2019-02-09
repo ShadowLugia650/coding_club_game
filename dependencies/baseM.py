@@ -168,6 +168,7 @@ def getItem(name, player):
     for i in player.items:
         if i.name == name:
             return i
+    return None
     
 def strToClsNm(string):
     sl = string.split(" ")
