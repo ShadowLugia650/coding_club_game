@@ -153,7 +153,9 @@ def runBasicFight(player, enemies, pBlock = 0, playerFirst = False):
         checkPlayer(player)
         if not player.alive:
             return player
-    pBlock = playerInputFight(player, enemies, pBlock)
+    for i in enemies:
+        if i is not None:
+            pBlock = playerInputFight(player, enemies, pBlock)
     if getFirstAliveEnemy(enemies) is not None and player.alive:
         print("Your HP: {}\t\tEnemy's HP: {}".format(player.health, getFirstAliveEnemy(enemies)[0].health))
         runBasicFight(player, enemies, pBlock)
