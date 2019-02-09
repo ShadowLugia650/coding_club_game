@@ -170,6 +170,24 @@ def getItem(name, player):
             return i
     return None
     
+def hasWeapon(player):
+    for i in player.items:
+        if issubclass(type(i), basicSword):
+            return True
+    return False
+    
+def hasBlock(player):
+    for i in player.items:
+        if issubclass(type(i), basicDefensiveItem):
+            return True
+    return False
+
+def hasMagic(player):
+    for i in player.items:
+        if issubclass(type(i), basicMagicItem):
+            return True
+    return False
+    
 def strToClsNm(string):
     sl = string.split(" ")
     cn = sl[0].lower()
