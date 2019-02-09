@@ -125,37 +125,34 @@ def runBasicFight(player, enemies, pBlock = 0, playerFirst = False):
     for i in player.items:
         if i.name == "Demonic Sword":
             i.damage = 10
-    if playerFirst:
-        pBlock = playerInputFight(player, enemies, pBlock)
-    for i in range(len(enemies)):
-        if enemies[i] is not None:
-            atk, dmg = enemies[i].move()
-            print("{} {} uses {}, dealing {} damage.".format(enemies[i].type, i+1, atk, dmg))
-            if pBlock > 0:
-                for j in player.items:
-                    if issubclass(type(j), basicDefensiveItem):
-                        dmg = j.whenAttacked(dmg, enemies[i])
-            if dmg > 0:
-                player.health -= dmg
-            if atk == "Rob":
-                robbed = random.randint(3,6)
-                print("The {} stole {} of your gold!".format(enemies[i].type, robbed))
-                player.gold -= robbed
-                enemies[i].loot.append(("Gold",robbed))
-            elif atk == "Siphon":
-                print("The {} siphons {} of your hp!".format(enemies[i].type, dmg))
-                enemies[i].health += dmg
-                if enemies[i].health > enemies[i].maxHp:
-                    enemies[i].health = enemies[i].maxHp
-            elif atk == "Block":
-                defense = enemies[i].baseDef
-                print("The {} blocks for {} damage".format(enemies[i].type, defense))
-        checkPlayer(player)
-        if not player.alive:
-            return player
-    for i in enemies:
-        if i is not None:
-            pBlock = playerInputFight(player, enemies, pBlock)
+    if not playerFirst:
+        for i in range(len(enemies)):
+            if enemies[i] is not None:
+                atk, dmg = enemies[i].move()
+                print("{} {} uses {}, dealing {} damage.".format(enemies[i].type, i+1, atk, dmg))
+                if pBlock > 0:
+                    for j in player.items:
+                        if issubclass(type(j), basicDefensiveItem):
+                            dmg = j.whenAttacked(dmg, enemies[i])
+                if dmg > 0:
+                    player.health -= dmg
+                if atk == "Rob":
+                    robbed = random.randint(3,6)
+                    print("The {} stole {} of your gold!".format(enemies[i].type, robbed))
+                    player.gold -= robbed
+                    enemies[i].loot.append(("Gold",robbed))
+                elif atk == "Siphon":
+                    print("The {} siphons {} of your hp!".format(enemies[i].type, dmg))
+                    enemies[i].health += dmg
+                    if enemies[i].health > enemies[i].maxHp:
+                        enemies[i].health = enemies[i].maxHp
+                elif atk == "Block":
+                    defense = enemies[i].baseDef
+                    print("The {} blocks for {} damage".format(enemies[i].type, defense))
+            checkPlayer(player)
+            if not player.alive:
+                return player
+    pBlock = playerInputFight(player, enemies, pBlock)
     if getFirstAliveEnemy(enemies) is not None and player.alive:
         print("Your HP: {}\t\tEnemy's HP: {}".format(player.health, getFirstAliveEnemy(enemies)[0].health))
         runBasicFight(player, enemies, pBlock)
