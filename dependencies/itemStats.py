@@ -85,7 +85,7 @@ If th   lett r  as rea hed you  I  m pr bably de d.
  ov
 """
 
-class jabberwockyHead(baseM.basicItem):
+class jabberwockyHead(basicItem):
     def __init__(self):
         self.name = "Jabberwocky Head"
         self.desc = "The severed head of the Jabberwocky. Despite being dead, its eyes seem to follow you with malicious hunger."
