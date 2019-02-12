@@ -207,7 +207,7 @@ class wandOfConfusion(basicMagicItem):
     def __init__ (self):
         self.name="Wand of Confusion"
         self.desc="Bamboozles, hoodwinks, leads astray, runs amok, and flat out decieves your enemies"
-    def magic(self, player, enemy)
+    def magic(self, player, enemy):
         enemy.baseDamage=random.randint(0,enemy.baseDamage)
         
         
