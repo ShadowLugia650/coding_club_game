@@ -106,6 +106,7 @@ def playerInputFight(player, enemies, defense = 0):
         print("You brace yourself, defending against {} damage.".format(defense))
         return defense
     elif turn.title() in ["Magic", "M", "Mgc", "Alakazam"]:
+        en, j = getFirstAliveEnemy(enemies)
         magiclist=[]
         truemagiclist=[]
         for n in player.items:
@@ -118,7 +119,7 @@ def playerInputFight(player, enemies, defense = 0):
             if magicchoice in magiclist:
                 try:
                     magicidentifier = magiclist.index(magicchoice)
-                    truemagiclist[magicidentifier].magic(player)
+                    truemagiclist[magicidentifier].magic(player, en)
                 except AttributeError:
                     print("Oops! That is not a magic item")
         return defense
