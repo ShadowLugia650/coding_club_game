@@ -38,7 +38,7 @@ while Player.alive:
     if Player.alive == False:
         print("You have died.")
     if rounds == 3:
-        levels += medium
+        levels += med
     elif rounds == 20:
         levels += hard
 print("Game over.")
