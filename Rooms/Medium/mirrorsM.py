@@ -21,16 +21,16 @@ def initPlayers():
     players[1].items = [itemStats.shiv(), itemStats.shiv(), itemStats.cloak()]
     t[1] = "agile and deadly"
     #Third Player: The Defect?
-    players[2].items = [""]
-    t[2] = "robotic"
+    players[2].items = [itemStats.orbOfThunder(), itemStats.orbOfVampirism()]
+    t[2] = "robotic, but magical"
     #Fourth Player: The lost traveler
     players[3].health = 40
     players[3].gold = 12
-    players[3].items = ["Worn Journal", itemStats.loincloth(), itemStats.rustySword()]
+    players[3].items = [itemStats.wornJournal(), itemStats.loincloth(), itemStats.rustySword()]
     t[3] = "lost and afraid"
     #Fifth Player: The merchant
     players[4].gold = 700
-    players[4].items = [""]
+    players[4].items = []
     t[4] = "wealthy"
     #Sixth Player: and more..
     players2 = baseM.readStoredPlayers("data/mirrorsM.txt")
