@@ -8,6 +8,7 @@ class PChar(): #intializes the class. The Main handles this, so you don't need i
         self.alive = True
         self.damage = 3
         self.block = 3
+        self.maxHp = 100
 
 def checkDeath(Player): #checks if the player is dead. Handled automatically in the damage() function.
     if Player.health <= 0:
