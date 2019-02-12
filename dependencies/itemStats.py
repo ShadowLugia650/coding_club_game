@@ -98,6 +98,15 @@ class corruptBlood(basicItem):
     def onFloorClimb(self, player):
         player.health += 10
 
+class wornJournal(basicItem):
+    def __init__(self):
+        self.name = "Worn Journal"
+        self.desc = "An old, worn out journal. The pages are dusty and faded.."
+        
+    def read(self):
+        #implement this
+        pass
+        
 #Swords
 class sword(basicSword):
     def __init__(self):
