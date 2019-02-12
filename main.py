@@ -36,6 +36,10 @@ async def view(ctx, *, item):
         await client.say("Description:\n{}".format(itm.desc))
         #await client.send_file(ctx.message.channel, "resources/{}.png".format(itm.name)) #sends picture
 
+@client.command(pass_context=True)
+async def start(ctx):
+    """Start your adventure"""
+        
 baseM.initIntro(Player)
 while Player.alive:
     room = levels[random.randint(0, (len(levels)-1))]
