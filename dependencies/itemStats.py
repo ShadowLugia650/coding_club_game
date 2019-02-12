@@ -232,7 +232,22 @@ class staffOfGold(basicMagicItem):
         self.desc=""
         self.charge=150
         
+class orbOfThunder(basicMagicItem):
+    def magic(self, player, enemy):
+        enemy.health -= 8
         
+    def __init__(self):
+        self.name = "Orb of Thunder"
+        self.desc = "It's an orb. And it zaps people with lightning. But thunder sounded better for the name, so that's what we went with."
+
+class orbOfVampirism(basicMagicItem):
+    def magic(self, player, enemy):
+        enemy.health -= 6
+        player.health += 6
+
+    def __init__(self):
+        self.name = "Orb of Vampirism"
+        self.desc = "A curious, swirling, dark-purple orb. It seems to radiate dark energy."
         
 class staffOfLuck(basicMagicItem):
     def __init__ (self):
