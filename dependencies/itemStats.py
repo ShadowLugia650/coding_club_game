@@ -275,4 +275,3 @@ class healthPotion(basicPotion):
     def __init__(self):
         self.name = "Health Potion"
         self.desc = "It heals you.. supposedly"
-        self.effect = self.drinkPotion()
