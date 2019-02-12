@@ -12,14 +12,15 @@ def initPlayers():
         t.append('')
     #First Player: The Ironclad
     players[0].health = 120
+    players[0].maxHp = 120
     players[0].items = [itemStats.heavySword(), itemStats.basicDefensiveItem(), itemStats.steelPlateArmor()]
     t[0] = "heavy, yet strong"
     #Second Player: The Silent
     players[1].health = 90
+    players[1].maxHp = 90
     players[1].items = [itemStats.shiv(), itemStats.shiv(), itemStats.cloak()]
     t[1] = "agile and deadly"
     #Third Player: The Defect?
-    players[2].health = 100
     players[2].items = [""]
     t[2] = "robotic"
     #Fourth Player: The lost traveler
