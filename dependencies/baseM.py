@@ -24,7 +24,14 @@ def checkCommands(Input, player):
         s = ""
         for i in (Input.title().split(" ")[1:]):
             s += i
-        eval(strToClsNm(s))().readDesc()
+        try:
+            itm = eval(strToClsNm(s))()
+            if itm in player.items:
+                itm.readDesc()
+            else:
+                print("You don't have this item..")
+        except AttributeError:
+            print("This item doesn't seem to exist...")
     else:
         print("This is not one of your options...")
 
