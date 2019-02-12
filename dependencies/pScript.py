@@ -31,6 +31,8 @@ def death(Player): # sets Player.alive to False. Handled automatically by the ch
 
 def heal(Player, HP): # a heal function. HP should be an integer.
     Player.health += HP
+    if Player.health > Player.maxHp:
+        Player.health = Player.maxHp
     print("you healed " + str(HP) + " health")
     if Player.alive == True:
         print("Current health: " + str(Player.health))
