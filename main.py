@@ -24,9 +24,10 @@ levels = easy
 consol = ""
 rounds = 0
 
-@client.command(pass_context=True)
+@client.command(pass_context=True, aliases=["Continue"])
 async def cont(ctx):
     """Continue the story"""
+    room = levels[random.randint(0, (len(levels)-1))]
     
 @client.command(pass_context=True)
 async def view(ctx, *, item):
