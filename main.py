@@ -4,8 +4,8 @@ sys.path.insert(0, 'dependencies')
 import console, pScript, baseM, itemStats
 
 sys.path.insert(0, 'Rooms/Easy')
-import shopM, battleZombomanM, bestRoomRC
-easy= [shopM, battleZombomanM, bestRoomRC]
+import shopM, battleZombomanM, bestRoomRC, GobolinRC, goldenTreeM
+easy= [shopM, battleZombomanM, bestRoomRC, GobolinRC, goldenTreeM]
 sys.path.insert(0, 'Rooms/Medium')
 import strangerJGv1, battleGhoulM, mirrorsM, lavaroomRCv1, skeletonCalvin
 med = [strangerJGv1, battleGhoulM, mirrorsM, lavaroomRCv1, skeletonCalvin]
