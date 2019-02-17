@@ -6,8 +6,8 @@ class timeEater(baseM.basicEnemy):
     def __init__(self):
         self.type = "Time Eater"
         self.baseDamage = 10
-        self.health = 250
-        self.maxHp = 250
+        self.health = 450
+        self.maxHp = 450
         self.loot = [("Gold", random.randint(100,150))]#, HungryClock()]
         self.options = {"Consume":0, ""}
         
