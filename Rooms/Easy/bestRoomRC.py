@@ -1,5 +1,5 @@
 
-    
+#Needs to be updated to have a loop in the first prompt for user input
 def run(player):
     print("""The hallway opens up into a fork.
 Down one path you see a fountain bubbling with clear, pure, water, and down
