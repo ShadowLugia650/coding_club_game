@@ -1,3 +1,7 @@
+import sys
+sys.path.insert(0, 'dependencies')
+import baseM
+
 class Junior(baseM.basicEnemy):
     def __init__ (self):
         self.name="Treasure goblin"
