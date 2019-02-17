@@ -256,6 +256,9 @@ class basicEnemy():
         self.loot = []
         self.options = {}
 
+    def takeDamage(self, damage, player):
+        self.health -= damage
+        
     def death(self, player):
         player.gold += random.randint(20, 40)
         for i in self.loot:
