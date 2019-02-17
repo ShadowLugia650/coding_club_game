@@ -4,7 +4,7 @@ import baseM
 
 class Junior(baseM.basicEnemy):
     def __init__ (self):
-        self.name="Treasure goblin"
+        self.type="Treasure goblin"
         self.maxHp=1
         self.health=1
         self.baseDamage=20
