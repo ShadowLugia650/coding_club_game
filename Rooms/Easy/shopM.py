@@ -26,7 +26,7 @@ def run(player):
             if im in ["Leave", "L"]:
                 break
             itm = eval(im)()
-            elif itm not in list(items.keys()):
+            if itm not in list(items.keys()):
                 print("This shop doesn't have that...")
             elif itm > player.gold:
                 print(random.choice(["You don't have enough money for that..", "Don't be a thief!"]))
