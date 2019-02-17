@@ -5,7 +5,7 @@ def run(player):
 Down one path you see a fountain bubbling with clear, pure, water, and down
 the other you see a golden door. 
 Choose your path [Fountain, Gold]""")
-    choice=input()
+    choice=input().title()
     if choice in ["Fountain","F"]:
         print("Do you wish to drink from the fountain? [yes, no]")
         choice=input()
@@ -27,7 +27,7 @@ Press 3 to cut off pieces of gold and steal them
 Press 4 to search the room for a key
 Press 5 to leave""")
         while True:
-            choice=input()
+            choice=input().title()
             if choice in ["1", "one", "knock"]:
                 print ("""The door opens into a room full of treasure. Gold coins are scattered throughout the chamber, but two incongruencies catch your eye.
 A pair of large dice lie near the right wall of the room, while a staff made of pure gold leans against the left wall.
