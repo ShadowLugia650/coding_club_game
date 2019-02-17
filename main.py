@@ -27,6 +27,7 @@ while Player.alive:
     if consol.lower() in ["yes", "y", "ok", "sure", "yeah", "yay"]:
         room.run(Player)
         rounds += 1
+        Player.timeClimbing += 2
         for i in Player.items:
             try:
                 if issubclass(i, itemStats.basicItem()):
