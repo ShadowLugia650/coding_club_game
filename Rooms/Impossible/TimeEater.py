@@ -1,4 +1,4 @@
-import sys
+import sys, random
 sys.path.insert(0, 'dependencies')
 import baseM
 
@@ -12,7 +12,8 @@ class timeEater(baseM.basicEnemy):
         self.options = {"Consume":0, ""}
         
     def move(self):
-        
+        atk = random.choice(list(self.options.keys()))
+        return atk
 
 def run(player):
     enemies = [timeEater()]
