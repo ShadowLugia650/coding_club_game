@@ -211,6 +211,12 @@ class cloak(basicDefensiveItem):
         self.block = 6
         self.dodge = 5
         
+class glowingEyes(basicDefensiveItem):
+    def __init__(self):
+        self.name = "Glowing Eyes"
+        self.desc = "A large stone statue with red glowing eyes."
+        self.block = 12
+        
 #Magic
 class wandOfConfusion(basicMagicItem):
     def __init__ (self):
