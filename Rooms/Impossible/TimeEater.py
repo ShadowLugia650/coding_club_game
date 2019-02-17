@@ -16,8 +16,11 @@ class timeEater(baseM.basicEnemy):
         return atk, self.options[atk]+self.baseDamage
 
 def run(player):
-    enemies = [timeEater()]
-    timeEater.baseDamage *= player.timeClimbing
+    t = timeEater()
+    enemies = [t]
+    if len(player.items) > 50:
+        t.baseDamage = 15
+    t.baseDamage *= player.timeClimbing
     print("You walk into a large spacious room. There are clocks all over the walls, each with a different name on it.")
     print("As you continue walking you see your name. Suddenly, the clock starts to grow, and the hands reach out toward you.")
     
