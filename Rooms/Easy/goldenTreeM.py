@@ -80,7 +80,9 @@ def waitp2(player):
             for j in range(3):
                 time.sleep(2)
                 print('.',end='')
+                player.timeClimbing+=2
         print("You fall asleep.")
+        player.timeClimbing+= 100
         print("You wake up, hearing the murmers of numerous hooded figures standing around you.")
         waitp3(player)
     elif ch2.title() in ["Stand", "Stay", "Stay Standing"]:
@@ -89,6 +91,7 @@ def waitp2(player):
             for i in range(3):
                 time.sleep(2)
                 print('.',end='')
+                player.timeClimbing+=2
         print("Nothing happens. After waiting for hours, you grow bored and leave.")
     else:
         baseM.checkCommands(ch2, player)
@@ -103,12 +106,14 @@ def wait(player, repeat = False):
         for i in range(3):
             time.sleep(2)
             print(".",end="")
+            player.timeClimbing+=2
         ch1 = input("Nothing seems to be happening...[Keep Waiting, Leave]")
     if ch1.title() in ["Stay", "Keep", "Wait", "Waiting", "Keep Waiting"]:
         for i in range(3):
             for j in range(3):
                 time.sleep(2)
                 print(".",end="")
+                player.timeClimbing+=2
             print()
         waitp2(player)
     elif ch1.title() in ["Leave","L"]:
