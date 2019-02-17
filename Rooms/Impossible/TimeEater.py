@@ -13,7 +13,7 @@ class timeEater(baseM.basicEnemy):
         
     def move(self):
         atk = random.choice(list(self.options.keys()))
-        return atk
+        return atk, self.options[atk]+self.baseDamage
 
 def run(player):
     enemies = [timeEater()]
