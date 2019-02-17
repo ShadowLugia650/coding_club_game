@@ -25,7 +25,7 @@ def run(player):
             im = im.title()
             if im in ["Leave", "L"]:
                 break
-            itm = eval(im)()
+            itm = eval(im)() #has a bug
             if itm not in list(items.keys()):
                 print("This shop doesn't have that...")
             elif itm > player.gold:
