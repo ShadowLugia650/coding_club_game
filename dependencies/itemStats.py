@@ -129,7 +129,7 @@ class vorpalBlade(basicSword):
 class rustySword(basicSword):
     def __init__(self):
         self.name = "Rusty Sword"
-        self.desc = "A rusted, britle sword from a traveler long forgotten..."
+        self.desc = "A rusted, brittle sword from a traveler long forgotten..."
         self.damage = 4
 
 class shiv(basicSword):
