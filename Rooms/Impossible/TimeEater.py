@@ -10,7 +10,7 @@ class timeEater(baseM.basicEnemy):
         self.maxHp = 450
         self.loot = [("Gold", random.randint(100,150))]#, HungryClock()]
         self.options = {"Consume":0, "Strike":0, "Future Doom":30, "Stall":0}
-        self.optionsP2 = {"Minute Spear":"self.baseDamage+5", "Hour Skewer":"self.baseDamage*2"}
+        self.optionsP2 = {"Minute Spear":"self.baseDamage+5", "Hour Skewer":"self.baseDamage*2", "Future Doom":"self.baseDamage*5", "Hasten":"0"}
         self.phase = 1
         self.turnCounter = 0
         self.timedTurn = (0, 0)
@@ -20,7 +20,7 @@ class timeEater(baseM.basicEnemy):
         print("Take your time...")
         if self.phase == 1:
             if self.timedTurn[0] == (self.turnCounter - 3):
-                return "Future Doom", self.timedTurn[1]
+                return "Future Doom Damage", self.timedTurn[1]
             atk = random.choice(list(self.options.keys()))
             if atk == "Consume":
                 self.health += self.baseDamage
@@ -47,6 +47,7 @@ class timeEater(baseM.basicEnemy):
                 dmg = eval(self.optionsP2[atk])
             else:
                 dmg = 0
+                print("")
         return atk, dmg
 
 def run(player):
