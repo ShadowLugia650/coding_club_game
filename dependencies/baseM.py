@@ -137,6 +137,11 @@ def runBasicFight(player, enemies, pBlock = 0, playerFirst = False):
         for i in range(len(enemies)):
             if enemies[i] is not None:
                 atk, dmg = enemies[i].move()
+                #TimeEater stuff lol
+                if atk == "Future Doom Damage":
+                    print("{} {}'s Future Doom comes true! You take {} damage.".format(enemies[i].type, i+1, dmg))
+                    atk, dmg = enemies[i].move()
+                #Ok end of Time Eater stuff now
                 print("{} {} uses {}, dealing {} damage.".format(enemies[i].type, i+1, atk, dmg))
                 if pBlock > 0:
                     for j in player.items:
