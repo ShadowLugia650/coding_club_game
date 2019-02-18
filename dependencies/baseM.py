@@ -132,7 +132,7 @@ def runBasicFight(player, enemies, pBlock = 0, playerFirst = False):
     #DO NOT INCLUDE A VALUE FOR pBlock! THIS IS SET WHEN THE CODE IS RUNNING.
     for i in player.items:
         if i.name == "Demonic Sword":
-            i.damage = 10
+            i.damage = 10 #this will reset it every turn.. Needs fixing
     if not playerFirst:
         for i in range(len(enemies)):
             if enemies[i] is not None:
