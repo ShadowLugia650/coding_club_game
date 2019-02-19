@@ -38,6 +38,8 @@ class timeEater(baseM.basicEnemy):
                 dmg = 0
             else:
                 dmg = self.options[atk]+self.baseDamage
+            if self.health <= self.maxHp/2:
+                self.phase = 2
         elif self.phase == 2:
             atk = random.choice(list(self.optionsP2.keys()))
             hit = True
