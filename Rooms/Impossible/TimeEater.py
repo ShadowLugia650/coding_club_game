@@ -10,7 +10,7 @@ class timeEater(baseM.basicEnemy):
         self.maxHp = 450
         self.loot = [("Gold", random.randint(100,150))]#, HungryClock()]
         self.options = {"Consume":0, "Strike":0, "Future Doom":30, "Stall":0}
-        self.optionsP2 = {"Minute Spear":"self.baseDamage+5", "Hour Skewer":"self.baseDamage*2", "Future Doom":"self.baseDamage*5", "Hasten":"0"}
+        self.optionsP2 = {"Minute Spear":"self.baseDamage+5", "Hour Skewer":"self.baseDamage*2", "Future Doom":"self.baseDamage*5"}
         self.phase = 1
         self.turnCounter = 0
         self.timedTurn = (0, 0)
@@ -43,13 +43,18 @@ class timeEater(baseM.basicEnemy):
         elif self.phase == 2:
             atk = random.choice(list(self.optionsP2.keys()))
             hit = True
+            if self.timedTurn[0] == (self.turnCounter - 2):
+                return "Future Doom Damage", self.timedTurn[1]
             if atk == "Hour Skewer":
                 hit = random.randint(1,100)<75
+            elif atk == "Future Doom":
+                self.timedTurn = (self.turnCounter, eval(self.optionsP2[atk]))
+                dmg = 0
             if hit:
                 dmg = eval(self.optionsP2[atk])
             else:
                 dmg = 0
-                print("")
+                print()
         return atk, dmg
 
 def run(player):
@@ -60,5 +65,5 @@ def run(player):
     t.baseDamage *= player.timeClimbing
     print("You walk into a large spacious room. There are clocks all over the walls, each with a different name on it.")
     print("As you continue walking you see your name. Suddenly, the clock starts to grow, and the hands reach out toward you.")
-    
+    baseM.runBasicFight(player, enemies)
     return player
