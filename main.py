@@ -7,13 +7,14 @@ sys.path.insert(0, 'Rooms/Easy')
 import shopM, battleZombomanM, bestRoomRC, GobolinRC, goldenTreeM
 easy= [shopM, battleZombomanM, bestRoomRC, GobolinRC, goldenTreeM]
 sys.path.insert(0, 'Rooms/Medium')
-import strangerJGv1, battleGhoulM, mirrorsM, lavaroomRCv1, skeletonCalvin
-med = [strangerJGv1, battleGhoulM, mirrorsM, lavaroomRCv1, skeletonCalvin]
+import strangerJGv1, battleGhoulM, mirrorsM, lavaroomRCv1, skeletonCalvin, reverseRoomAT
+med = [strangerJGv1, battleGhoulM, mirrorsM, lavaroomRCv1, skeletonCalvin, reverseRoomAT]
 sys.path.insert(0, 'Rooms/Hard')
 import owM, Collector, demonicWarrior
 hard= [owM, Collector, demonicWarrior]
 sys.path.insert(0, 'Rooms/Impossible')
-impossible = []
+import TimeEater
+impossible = [TimeEater]
 
 Player = pScript.PChar()
 levels = easy
