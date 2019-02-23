@@ -43,6 +43,8 @@ while Player.alive:
         levels += med
     elif rounds == 20:
         levels += hard
+    if Player.impossible:
+        levels += impossible
 print("Game over.")
 print("rooms cleared:  " + str(rounds))
 print("Ending gold:    " + str(Player.gold))
