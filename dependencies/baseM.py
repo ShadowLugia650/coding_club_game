@@ -3,6 +3,7 @@ import random, console, pScript, Mtesting
 from pScript import PChar
 import itemStats
 from itemStats import *
+from curseScript import *
 
 #Functions
 def checkPlayer(player):
@@ -91,10 +92,17 @@ def modifyPlayerEffects(Type, player):
 def playerInputFight(player, enemies, defense = 0):
     #Asks for player input during fights (whether they should attack or defend). Returns the amount of block they gain from that turn.
     #You should not need to use this function if you're making a basic fighting room.
+    curseEfx = {}
+    for curse in player.curses:
+        if curse.type == exhaustion:
+            efx = curse.onCombatTurn(player)
+            curseEfx["Exhaustion"] = efx
     turn = input("What do you do? [Attack, Defend, Magic]\n")
     if turn.title() in ["Attack", "A", "Atk"]:
         en, j = getFirstAliveEnemy(enemies)
         dmg = modifyPlayerEffects('atk', player)
+        if "Exhaustion" in curseEfx.keys() and curseEfx["Exhaustion"][1] == "Damage":
+            dmg -= curseEfx["Exhaustion"][0]
         print("You attack {} {}, dealing {} damage".format(en.type, j+1, dmg))
         en.health -= dmg
         try:
@@ -107,6 +115,8 @@ def playerInputFight(player, enemies, defense = 0):
         return defense
     elif turn.title() in ["Defend", "D", "Def", "Dfnd"]:
         defense += modifyPlayerEffects('def', player)
+        if "Exhaustion" in curseEfx.keys() and curseEfx["Exhaustion"][1] == "Block":
+            defense -= curseEfx["Exhaustion"][0]
         print("You brace yourself, defending against {} damage.".format(defense))
         return defense
     elif turn.title() in ["Magic", "M", "Mgc", "Alakazam"]:
