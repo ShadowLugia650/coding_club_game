@@ -131,7 +131,7 @@ def playerInputFight(player, enemies, defense = 0):
         checkCommands(turn, player)
         return playerInputFight(player, enemies, defense)
 
-def runBasicFight(player, enemies, pBlock = 0, playerFirst = False):
+def runBasicFight(player, enemies, pBlock = 0, playerFirst = False, turn = 0):
     #Runs a basic fight with a given player and list of enemies. Enemies should be a class which extends basicEnemy
     #DO NOT INCLUDE A VALUE FOR pBlock! THIS IS SET WHEN THE CODE IS RUNNING.
     for i in player.items:
@@ -172,7 +172,7 @@ def runBasicFight(player, enemies, pBlock = 0, playerFirst = False):
     pBlock = playerInputFight(player, enemies, pBlock)
     if getFirstAliveEnemy(enemies) is not None and player.alive:
         print("Your HP: {}\t\tEnemy's HP: {}".format(player.health, getFirstAliveEnemy(enemies)[0].health))
-        runBasicFight(player, enemies, pBlock)
+        runBasicFight(player, enemies, pBlock, False, turn+1)
     elif not player.alive:
         return player
     else:
