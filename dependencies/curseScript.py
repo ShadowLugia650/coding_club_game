@@ -40,6 +40,7 @@ class exhaustion(basicCurse):
                 player.block = 1
             self.effectText = "Exhaustion lowers your dexterity!"
         self.printEffect()
+        return player.damage, player.block
 
     def onFloorClimb(self, player):
         self.severity += 1
