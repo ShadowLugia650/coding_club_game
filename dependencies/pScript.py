@@ -9,6 +9,7 @@ class PChar(): #intializes the class. The Main handles this, so you don't need i
         self.damage = 3
         self.block = 3
         self.maxHp = 100
+        self.curses = []
         #These are non-main attributes of the player.
         self.timeClimbing = 0
         self.impossible = False
