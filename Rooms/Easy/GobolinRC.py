@@ -8,7 +8,7 @@ class Junior(baseM.basicEnemy):
         self.maxHp=1
         self.health=1
         self.baseDamage=20
-        self.loot=[["Gold",200]]
+        self.loot=[("Gold",200)]
         
         
 def run (player):
