@@ -9,8 +9,11 @@ class PChar(): #intializes the class. The Main handles this, so you don't need i
         self.damage = 3
         self.block = 3
         self.maxHp = 100
+        #These are non-main attributes of the player.
         self.timeClimbing = 0
+        self.impossible = False
 
+#I'd recommend having these as methods inside the player class so they're easier to use.
 def checkDeath(Player): #checks if the player is dead. Handled automatically in the damage() function.
     if Player.health <= 0:
         death(Player)
