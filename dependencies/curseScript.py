@@ -27,20 +27,15 @@ class exhaustion(basicCurse):
     def onCombatTurn(self, player):
         choice = random.randint(1, 2)
         fatigue = random.randint(1, self.severity)
+        Type = ""
         if choice == 1:
-            if player.damage > fatigue:
-                player.damage -= fatigue
-            else:
-                player.damage = 1
             self.effectText = "Exhaustion saps your strength!"
+            Type = "Damage"
         else:
-            if player.block > fatigue:
-                player.block -= fatigue
-            else:
-                player.block = 1
             self.effectText = "Exhaustion lowers your dexterity!"
+            Type = "Block"
         self.printEffect()
-        return player.damage, player.block
+        return fatigue, Type
 
     def onFloorClimb(self, player):
         self.severity += 1
