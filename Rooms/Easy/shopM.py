@@ -20,15 +20,15 @@ def run(player):
     if choice.title() in ["Buy", "B"]:
         listItems(items)
         im = None
-        while im not in ["Leave", "L"]:
+        while im not in ["leave", "l"]:
             im = input("What would you like to buy? (type 'Leave' to leave).\n")
-            im = im.title()
-            if im in ["Leave", "L"]:
+            im = baseM.strToClsNm(im)
+            if im in ["leave", "l"]:
                 break
-            itm = eval(baseM.strToClsNm(im))() #has a bug
+            itm = eval(im)()
             if itm not in list(items.keys()):
                 print("This shop doesn't have that...")
-            elif itm > player.gold:
+            elif items[itm] > player.gold:
                 print(random.choice(["You don't have enough money for that..", "Don't be a thief!"]))
             else:
                 print("You bought a {}".format(itm))
