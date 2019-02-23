@@ -36,6 +36,14 @@ def checkCommands(Input, player):
         print("This is not one of your options...")
 
 def initIntro(player):
+    print("""Welcome to the Coding Club dungeon crawler game!
+************************************************
+             Press any key to begin""")
+    choice=None
+    while True:
+        choice=input()
+        if choice != None:
+            break
     input("You see a large grey structure looming in the distance.. [Approach]") #This is the intro.. Needs work...
     input("As you approach, a giant stone door slowly rises, revealing a dark room, faintly lit by the setting Sun outside... [Continue]")
     input("You see a note laying atop a pile of frayed cloth armor and a rusty sword.. [Read note]")
