@@ -1,22 +1,13 @@
 #this script is for curses, which are player debuffs that last until dispelled by special effects.
 
-import random, itemStats
+import random, itemStats, baseM
 
-class basicCurse():
+class basicCurse(baseM.basicItem):
     def __init__(self):
         self.name = None
         self.desc = ""
         self.effectText = ""
         self.target = None
-
-    def __str__(self):
-        return self.name
-    
-    def readDesc(self):
-        print(self.desc)
-
-    def onFloorClimb(self, player):
-        pass
 
     def onCombatTurn(self, player):
         pass
