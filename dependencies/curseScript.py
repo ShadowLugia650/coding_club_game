@@ -2,7 +2,7 @@
 
 import random, itemStats, baseM
 
-class basicCurse(baseM.basicItem):
+class basicCurse(baseM.basicItem): #although the curse is not necessarily an item, using extension makes it have all these attributes without requiring copy paste
     def __init__(self):
         self.name = None
         self.desc = ""
