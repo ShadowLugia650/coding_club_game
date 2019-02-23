@@ -15,7 +15,10 @@ def status(Player):
 def inventory(Player):
     for item in Player.items:
         print(item)
-
+def curses(Player):
+    for curse in Player.curses:
+        print(curse)
+        
 def testGold(Player, x):
     Player.gold = int(x)
 
@@ -32,6 +35,8 @@ def getInput(Player, outputs, prompt = ""): # a better Input function. Has built
             status(Player)
         elif console.lower() in ["inventory", "inv", "items", "bag"]:
             inventory(Player)
+        elif console.lower() in ["curses", "curse", "crs"]:
+            curses(Player)
         elif console.lower() in ["options", "opt", "options?", "opt?"]:
             print(outputs)
         elif console.lower() in outputs:
