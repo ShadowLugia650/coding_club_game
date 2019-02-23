@@ -94,7 +94,7 @@ def playerInputFight(player, enemies, defense = 0):
     #You should not need to use this function if you're making a basic fighting room.
     curseEfx = {}
     for curse in player.curses:
-        if curse.type == exhaustion:
+        if type(curse) == exhaustion:
             efx = curse.onCombatTurn(player)
             curseEfx["Exhaustion"] = efx
     turn = input("What do you do? [Attack, Defend, Magic]\n")
