@@ -296,7 +296,17 @@ class amplifyingOrb(basicMagicItem):
         db = baseM.getItem("Demonic Blade", player)
         db.damage *= 2
         print("The demonic energies swirl around your Demonic Blade! It doubles in strength! ({})".format(db.damage))
-            
+        
+class epiTome(basicMagicItem):
+    def __init__(self):
+        self.name = "Epi Tome"
+        self.desc = "The Epitome of Magical Abilities in a Tome."
+        self.damage = 35
+    
+    def magic(self,player,enemy):
+        enemy.health -= self.damage
+        player.health += self.damage
+        
 #Potions
 class healthPotion(basicPotion):
     def drinkPotion(self, player):
