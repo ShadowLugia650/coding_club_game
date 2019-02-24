@@ -1,4 +1,4 @@
-import random, baseM, curseScript
+import random, baseM
 
 #Basic Item Classes, extend these.
 class basicItem():
@@ -317,6 +317,7 @@ class healthPotion(basicPotion):
 
 class antidote(basicPotion):
     #should the antidote cure all poisoning or just one instance?
+    import curseScript
     def drinkPotion(self, player):
         for i in player.curses:
             if type(i) == curseScript.toxins:
