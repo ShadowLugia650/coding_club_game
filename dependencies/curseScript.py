@@ -57,7 +57,6 @@ class toxins(basicCurse):
         dmg = round(self.toxinDamage(player)*0.75)
         player.health -= dmg
         
-        
     def onFloorClimb(self, player):
         dmg = self.toxinDamage(player)
         player.health -= dmg
