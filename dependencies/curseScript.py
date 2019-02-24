@@ -17,7 +17,11 @@ class basicCurse(baseM.basicItem): #although the curse is not necessarily an ite
     
     def curseItem(self, item):
         self.target = item
+        
+    def remove(self, player):
+        player.curses.remove(self)
 
+#Player curses
 class exhaustion(basicCurse):
     def __init__(self):
         self.severity = 1
@@ -63,6 +67,20 @@ class toxins(basicCurse):
         dmg = self.toxinDamage(player)
         player.health -= dmg
         
+class impossible(basicCurse):
+    def __init(self):
+        self.name = ""
+        self.desc = ""
+    
+    def onFloorClimb(self, player):
+        if not player.impossible:
+            player.impossible = True
+    
+    def remove(self, player):
+        player.impossible = False
+        player.curses.remove(self)
+
+#Item curses
 class ephemeral(basicCurse):
     def __init__(self):
         self.floorsLeft = 10
