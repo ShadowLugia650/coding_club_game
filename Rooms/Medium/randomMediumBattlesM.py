@@ -40,7 +40,7 @@ def run(player):
     elif choice.title() in ["Flee", "Run", "R"]:
         print("You run away from the {} and it deals {} to you.".format(enemies[0].type, enemies[0].baseDamage))
         if type(enemies[0]) == Snak:
-            print("The Snak poisoned you with its bite!")
+            print("The Snak envenomated you with its attack!")
             player.curses.append(toxins())
         player.health -= enemies[0].baseDamage
     else:
