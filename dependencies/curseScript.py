@@ -36,7 +36,7 @@ class exhaustion(basicCurse):
             self.effectText = "Exhaustion saps your strength!" #instead of using self.effectText and self.printEffect(), you could just put these as prints...
             Type = "Damage"
         else:
-            self.effectText = "Exhaustion lowers your dexterity!"
+            self.effectText = "Exhaustion drains your dexterity!"
             Type = "Block"
         self.printEffect()
         return fatigue, Type
