@@ -1,6 +1,7 @@
 import sys
 sys.path.insert(0, "dependencies")
 from itemStats import *
+from curseScript import *
 
 def specials(Input, player):
     if "addItem " in Input:
@@ -15,3 +16,9 @@ def specials(Input, player):
     elif "setGold " in Input:
         gold = Input.split("setGold ")[1]
         player.gold = int(gold)
+    elif "addCurse " in Input:
+        curse = Input.split("addCurse ")[1]
+        try:
+            player.curses.append(eval(curse)())
+        except NameError:
+            pass
