@@ -35,8 +35,17 @@ class Snak(baseM.basicEnemy):
         self.lastHit = atk
         return atk, self.options[atk]+self.baseDamage
         
+class Sorcerer(baseM.basicEnemy):
+    def __init__(self):
+        self.type = "Sorserr"
+        self.baseDamage = 15
+        self.health = 25
+        self.maxHp = 25
+        self.loot = [("Gold", random.randint(30,50)), itemStats.orbOfThunder()]
+        self.options = {"Thunder Strike":3, "Siphon":-3}
+        
 def run(player):
-    enemies = [random.choice([Grenlim(), Snak()])]
+    enemies = [random.choice([Grenlim(), Snak(), Sorcerer])]
     print("You encountered a {}!".format(enemies[0].type))
     choice = input("What do you do? [Fight, Run]\n")
     if choice.title() in ["Fight", "F", "Attack"]:
