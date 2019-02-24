@@ -13,7 +13,7 @@ class basicCurse(baseM.basicItem): #although the curse is not necessarily an ite
         pass
 
     def printEffect(self):
-        return self.effectText
+        print(self.effectText)
     
     def curseItem(self, item):
         self.target = item
@@ -29,7 +29,7 @@ class exhaustion(basicCurse):
         fatigue = random.randint(1, self.severity)
         Type = ""
         if choice == 1:
-            self.effectText = "Exhaustion saps your strength!"
+            self.effectText = "Exhaustion saps your strength!" #instead of using self.effectText and self.printEffect(), you could just put these as prints...
             Type = "Damage"
         else:
             self.effectText = "Exhaustion lowers your dexterity!"
@@ -44,13 +44,15 @@ class toxins(basicCurse):
     def __init__(self):
         self.severity = 5
         self.name = "Toxins: {}".format(self.severity)
-        self.desc = "Toxic compounds deal damage over time if not treated and deal more damage if you are exhausted.."
+        self.desc = "Toxic compounds deal damage over time if not treated and deal more damage if you are exhausted.."\
         
     def toxinDamage(self, player):
         dmg = self.severity
+        print("The toxins damage you for {} hp!".format(dmg))
         for i in player.curses:
             if type(i) == exhaustion:
                 dmg += i.severity
+                print("Your exhaustion increases the toxins' damage!")
         return dmg
         
     def onCombatTurn(self, player):
