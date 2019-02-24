@@ -1,4 +1,4 @@
-import sys, random, time
+import sys, random, time, math
 sys.path.insert(0, 'dependencies')
 import baseM
 
@@ -60,7 +60,7 @@ class timeEater(baseM.basicEnemy):
 def run(player):
     t = timeEater()
     if len(player.items) > 50:
-        t.baseDamage = 15
+        t.baseDamage = math.ceil(len(player.items)/3)
     t.baseDamage *= player.timeClimbing
     print("You walk into a large spacious room. There are clocks all over the walls, each with a different name on it.")
     print("As you continue walking you see your name. Suddenly, the clock starts to grow, and the hands reach out toward you.")
