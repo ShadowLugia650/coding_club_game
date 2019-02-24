@@ -316,10 +316,11 @@ class healthPotion(basicPotion):
         self.desc = "It heals you.. supposedly"
 
 class antidote(basicPotion):
+    #should the antidote cure all poisoning or just one instance?
     def drinkPotion(self, player):
         for i in player.curses:
             if type(i) == curseScript.toxins:
-                player.curses.remove(i)
+                i.remove(player)
                 print("The antidote cured some of your poisoning!")
                 return
         print("The antidote had no effect.")
