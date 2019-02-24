@@ -70,7 +70,7 @@ class toxins(basicCurse):
 class impossible(basicCurse):
     def __init(self):
         self.name = ""
-        self.desc = ""
+        self.desc = "Allows impossible rooms to naturally occur"
     
     def onFloorClimb(self, player):
         if not player.impossible:
