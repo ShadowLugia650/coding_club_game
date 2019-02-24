@@ -52,7 +52,7 @@ class toxins(basicCurse):
         for i in player.curses:
             if type(i) == exhaustion:
                 dmg += i.severity
-                print("Your exhaustion increases the toxins' damage!")
+                print("Your exhaustion increases the effectiveness of the toxins!")
         return dmg
         
     def onCombatTurn(self, player):
