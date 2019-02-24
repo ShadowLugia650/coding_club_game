@@ -67,9 +67,9 @@ class toxins(basicCurse):
         dmg = self.toxinDamage(player)
         player.health -= dmg
         
-class impossible(basicCurse):
+class hubris(basicCurse):
     def __init(self):
-        self.name = ""
+        self.name = "Hubris"
         self.desc = "Allows impossible rooms to naturally occur"
     
     def onFloorClimb(self, player):
