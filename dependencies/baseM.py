@@ -145,9 +145,10 @@ def playerInputFight(player, enemies, defense = 0):
 def runBasicFight(player, enemies, pBlock = 0, playerFirst = False, turn = 0):
     #Runs a basic fight with a given player and list of enemies. Enemies should be a class which extends basicEnemy
     #DO NOT INCLUDE A VALUE FOR pBlock! THIS IS SET WHEN THE CODE IS RUNNING.
-    for i in player.items:
-        if i.name == "Demonic Sword":
-            i.damage = 10 #this will reset it every turn.. Needs fixing
+    if turn == 0:
+        for i in player.items:
+            if i.name == "Demonic Sword":
+                i.damage = 10
     if not playerFirst:
         for i in range(len(enemies)):
             if enemies[i] is not None:
