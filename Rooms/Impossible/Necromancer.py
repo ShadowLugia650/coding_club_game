@@ -1,3 +1,11 @@
-import sys, 
+import sys, random
 
-class Necromancer(baseM.basicEnemy)
+sys.path.insert(0, 'dependencies')
+import baseM
+
+class Necromancer(baseM.basicEnemy):
+    def __init__(self):
+        self.type = "Necromancer"
+        self.health = 200
+        self.maxHealth = 300
+        
