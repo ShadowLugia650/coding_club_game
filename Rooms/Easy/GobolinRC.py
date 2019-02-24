@@ -7,7 +7,8 @@ class Junior(baseM.basicEnemy):
         self.type="Treasure goblin"
         self.maxHp=1
         self.health=1
-        self.baseDamage=20
+        self.baseDamage=25
+        self.options = {"Stab":0}
         self.loot=[("Gold",200)]
         
         
