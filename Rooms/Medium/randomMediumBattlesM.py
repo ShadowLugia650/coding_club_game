@@ -21,13 +21,18 @@ class Snak(baseM.basicEnemy):
         self.maxHp = 20
         self.loot = [("Gold", random.randint(30,50))]
         self.options = {"Dry Strike":2, "Venomous Bite":-3}
+        self.lastHit = "Dry Strike"
         
     def move(self, player):
-        atk = random.choice(self.options.keys())
+        if self.lastHit == "Dry Strike":
+            atk = random.choice(self.options.keys())
+        else:
+            atk = "Dry Strike"
         if atk == "Venomous Bite":
             v = toxins()
             v.severity = 3
             player.curses.append(v)
+        self.lastHit = atk
         return atk, self.options[atk]+self.baseDamage
         
 def run(player):
