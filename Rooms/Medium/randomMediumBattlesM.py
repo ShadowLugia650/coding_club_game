@@ -37,7 +37,7 @@ class Snak(baseM.basicEnemy):
         
 class Sorcerer(baseM.basicEnemy):
     def __init__(self):
-        self.type = "Sorserr"
+        self.type = "Sorserer"
         self.baseDamage = 15
         self.health = 25
         self.maxHp = 25
