@@ -40,6 +40,7 @@ def initIntro(player):
     print("""Welcome to the Coding Club dungeon crawler game!
 ************************************************
              Press any key to begin""")
+    console.playerhelp()
     input()
     input("You see a large grey structure looming in the distance.. [Approach]") #This is the intro.. Needs work...
     input("As you approach, a giant stone door slowly rises, revealing a dark room, faintly lit by the setting Sun outside... [Continue]")
