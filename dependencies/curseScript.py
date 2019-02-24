@@ -44,7 +44,7 @@ class toxins(basicCurse):
     def __init__(self):
         self.severity = 5
         self.name = "Toxins: {}".format(self.severity)
-        self.desc = "Toxic compounds deal damage over time if not treated and deal more damage if you are exhausted.."\
+        self.desc = "Toxic compounds deal damage over time if not treated and deal more damage if you are exhausted.."
         
     def toxinDamage(self, player):
         dmg = self.severity
