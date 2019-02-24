@@ -40,6 +40,28 @@ class exhaustion(basicCurse):
     def onFloorClimb(self, player):
         self.severity += 1
 
+class toxins(basicCurse):
+    def __init__(self):
+        self.severity = 5
+        self.name = "Toxins: {}".format(self.severity)
+        self.desc = "Toxic compounds deal damage over time if not treated and deal more damage if you are exhausted.."
+        
+    def toxinDamage(self, player):
+        dmg = self.severity
+        for i in player.curses:
+            if type(i) == exhaustion:
+                dmg += i.severity
+        return dmg
+        
+    def onCombatTurn(self, player):
+        dmg = round(self.toxinDamage(player)*0.75)
+        player.health -= dmg
+        
+        
+    def onFloorClimb(self, player):
+        dmg = self.toxinDamage(player)
+        player.health -= dmg
+        
 class ephemeral(basicCurse):
     def __init__(self):
         self.floorsLeft = 10
