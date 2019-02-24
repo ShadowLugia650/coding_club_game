@@ -35,6 +35,12 @@ while Player.alive:
                     i.onFloorClimb(Player)
             except TypeError:
                 pass
+        for i in Player.curses:
+            try:
+                if issubclass(i, curseScript.basicCurse()):
+                    i.onFloorClimb(Player)
+            except TypeError:
+                pass
     else:
         break
     if Player.alive == False:
