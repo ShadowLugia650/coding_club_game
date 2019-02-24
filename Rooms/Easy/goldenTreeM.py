@@ -79,7 +79,7 @@ def waitp3(player):
             for curse in player.curses:
                 rm.append(curse)
             for curse in rm:
-                player.curses.remove(curse)
+                curse.remove(player)
             print("You feel light and healthy.")
         print("\"The exit is to your right. Good luck on your adventure.\"")
         input("The hooded figures leave. [Continue]")
