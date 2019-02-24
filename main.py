@@ -23,7 +23,10 @@ rounds = 0
 
 baseM.initIntro(Player)
 while Player.alive:
-    room = levels[random.randint(0, (len(levels)-1))]
+    possibleLevels = levels
+    if Player.impossible:
+        possibleLevels += impossible
+    room = random.choice(possibleLevels)
     consol = console.getInput(Player, ["yes", "no"], "next room? ")
     if consol.lower() in ["yes", "y", "ok", "sure", "yeah", "yay"]:
         room.run(Player)
@@ -49,8 +52,6 @@ while Player.alive:
         levels += med
     elif rounds == 20:
         levels += hard
-    if Player.impossible:
-        levels += impossible
 print("Game over.")
 print("rooms cleared:  " + str(rounds))
 print("Ending gold:    " + str(Player.gold))
