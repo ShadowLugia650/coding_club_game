@@ -55,7 +55,7 @@ def destree(player, timesHit = 0):
     return player
 
 def waitp3(player):
-    ch3 = input('"Hello, traveller. What brings you here today?"["I\'m lost.", "I seek riches."]')
+    ch3 = input('"Hello, traveller. What brings you here today?"["I\'m lost.", "I seek riches.", "I need healing."]')
     if ch3.title() in ["I'm Lost", "Im Lost", "Lost", "I Am Lost"]:
         print("\"Lost, are you? Here..\"")
         pScript.heal(player, 14)
@@ -69,8 +69,20 @@ def waitp3(player):
         print("He handles it with expertise and carefully places it in your bag.")
         pScript.earnGold(player, 450)
         print("\"You have proven yourself. Continue your adventure.\"")
-        input("As the hooded figures leave, you notice something glimmering in your bag..[Continue]")
+        #input("As the hooded figures leave, you notice something glimmering in your bag..[Continue]")
         #add some item here.
+    elif ch3.title() in ["I Need Healing", "Heal", "Health", "Recover"]:
+        print("\"You have taken much damage over your journey so far. Here\"")
+        pScript.heal(player, 27)
+        if len(player.curses) > 0:
+            rm = []
+            for curse in player.curses:
+                rm.append(curse)
+            for curse in rm:
+                player.curses.remove(curse)
+            print("You feel light and healthy.")
+        print("\"The exit is to your right. Good luck on your adventure.\"")
+        input("The hooded figures leave. [Continue]")
 
 def waitp2(player):
     ch2 = input("Your legs start to grow tired, and you feel as though you've been standing for hours..[Sit Down, Stay Standing]")
