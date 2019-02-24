@@ -11,7 +11,7 @@ def listItems(items):
 
 def run(player):
     items = {}
-    allItems = {sword():50, shield():50, healthPotion():10}
+    allItems = {sword():50, shield():50, healthPotion():10, antidote():40}
     for i in range(10):
         itm = random.choice(list(allItems.keys()))
         items[itm] = allItems[itm]
