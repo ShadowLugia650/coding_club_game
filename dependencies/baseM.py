@@ -106,10 +106,11 @@ def playerInputFight(player, enemies, defense = 0):
             dmg -= curseEfx["Exhaustion"][0]
         print("You attack {} {}, dealing {} damage".format(en.type, j+1, dmg))
         en.health -= dmg
-        try:
-            player.health += dmg
-        except AttributeError:
-            pass
+        for item in player.items:
+            try:
+                player.health += item.lifesteal
+            except AttributeError:
+                pass
         if en.health <= 0:
             en.death(player)
             enemies[j] = None
