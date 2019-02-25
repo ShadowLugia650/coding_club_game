@@ -14,15 +14,27 @@ class Heart(baseM.basicEnemy):
         self.options = {"Siphon":18, "Pummel":0, "Reap":0}
         self.lastAttack = None
         self.turnNum = 0
+        self.pummelHits = 0
         
     def move(self):
-        if self.lastAttack is None:
-            atk = random.choice(self.options.keys())
+        self.turnNum += 1
+        if self.turnNum % 3 = 0:
+            atk = "Reap"
+            self.lastAttack = atk
+            return atk, 0
         else:
-            if self.lastAttack == "Siphon":
-                atk = "Pummel"
-            elif self.lastAttack == "Pummel":
-                atk = "Siphon"
+            if self.lastAttack is None:
+                atk = random.choice(self.options.keys())
+            else:
+                if self.lastAttack == "Siphon":
+                    atk = "Pummel"
+                    self.pummelHits += 5
+                    self.lastAttack = atk
+                    return "{} ({}x{})".format(atk, (self.options[atk]+self.baseDamage), self.pummelHits), ((self.options[atk]+self.baseDamage)*self.pummelHits)
+                elif self.lastAttack == "Pummel":
+                    atk = "Siphon"
+                    self.lastAttack = atk
+                    return atk, self.options[atk]+self.baseDamage
             
 
 def ignore(player):
