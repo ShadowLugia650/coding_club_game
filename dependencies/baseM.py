@@ -31,7 +31,7 @@ def checkCommands(Input, player):
                 itm.readDesc()
             else:
                 print("You don't have this item..")
-        except AttributeError:
+        except NameError:
             print("This item doesn't seem to exist...")
     else:
         print("This is not one of your options...")
