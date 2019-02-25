@@ -5,7 +5,8 @@ def run(player):
         a = random.randrange(1,3)
         if a == 1:
           print("As you grope through the darkness, your foot slips, and you fall to your death.")
-          gameover()
+          player.health = 0
+          player.alive = False
         elif a == 2:
           print("You make it to the doorway and escape the room")
         else:
@@ -54,6 +55,3 @@ def run(player):
 
       elif decision2 == "stand":
         stand()
-
-def gameover():
-  print("GAME OVER")
