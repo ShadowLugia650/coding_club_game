@@ -317,7 +317,7 @@ class epiTome(basicMagicItem):
     def __init__(self):
         self.name = "Epi Tome"
         self.desc = "The Epitome of Magical Abilities in a Tome."
-        self.damage = 35
+        self.damage = 314
     
     def magic(self,player,enemy):
         enemy.health -= self.damage
