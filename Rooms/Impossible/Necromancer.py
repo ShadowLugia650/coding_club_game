@@ -9,3 +9,5 @@ class Necromancer(baseM.basicEnemy):
         self.health = 200
         self.maxHealth = 300
         
+def run(player):
+    return player
