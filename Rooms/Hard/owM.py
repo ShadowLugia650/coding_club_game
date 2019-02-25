@@ -1,7 +1,29 @@
-import sys
+import sys, random
 
 sys.path.insert(0, 'dependencies')
 import baseM, itemStats
+
+class Heart(baseM.basicEnemy):
+    def __init__(self):
+        self.type = "Heart"
+        self.health = 550
+        self.maxHp = 550
+        self.baseDamage = 2
+        self.damageDealt = 0
+        self.loot = [("Gold", random.randint(100,150)),itemStats.corruptBlood()]
+        self.options = {"Siphon":18, "Pummel":0, "Reap":0}
+        self.lastAttack = None
+        self.turnNum = 0
+        
+    def move(self):
+        if self.lastAttack is None:
+            atk = random.choice(self.options.keys())
+        else:
+            if self.lastAttack == "Siphon":
+                atk = "Pummel"
+            elif self.lastAttack == "Pummel":
+                atk = "Siphon"
+            
 
 def ignore(player):
     print("You walk past the heart to the door at the end of the room.")
@@ -17,7 +39,7 @@ def ignore(player):
         print("The heart moves toward you and you feel the life start to slowly drain from your body.")
         for i in player.items:
             try:
-                if issubclass(i, itemStats.basicSword):
+                if issubclass(type(i), itemStats.basicSword):
                     print("You attack the door with your weapons, ultimately destroying it.")
                     player.health -= 30
                     input("You take 30 damage.")
@@ -39,18 +61,16 @@ def run(player):
     if choice.title() in ["Attack", "A", "Atk"]:
         print("You prepare to attack the heart. It bleeds but is ultimately unharmed.")
         print("The heart suddenly attacks you back! You try to defend but your best efforts seem in vain...")
-        dmg = player.health -1
-        player.health = 1
-        player.items.append(baseM.corruptBlood())
-        sel = input("You take {} damage... As you escape you find a bottle of bluish-purple liquid in your bag... [Continue]".format(dmg))
+        baseM.runBasicFight(player, [Heart()])
     elif choice.title() in ["Ignore", "I"]:
         ignore(player)
     elif choice.title() in ["Run", "R"]:
         print("You flee the room as fast as your legs can take you. Looking back, you see the heart slowly moving toward you...")
-        print("As you succumb to exhaustion, the heart hovers above you. Your consciousness fades as the heart drains the life from your veins...")
-        print("You take {} damage.".format(player.health))
-        player.health = 0
-        player.alive = False
+        input("The heart starts to drain your health and your consciousness starts to fade....[Continue]")
+        print("Suddenly, you see an open doorway above you! You grab the ledge and pull yourself out of the room gravely injured, but ultimately alive.")
+        dmg = player.health -1
+        player.health = 1
+        sel = input("You take {} damage as you escape...[Continue]".format(dmg))
     else:
         baseM.checkCommands(choice, player)
         run(player)
