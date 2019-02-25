@@ -166,7 +166,7 @@ class herosBlade(basicSword):
     def __init__(self):
         self.name = "Hero's Blade"
         self.desc = "The weapon of a true hero"
-        self.damage = 30
+        self.damage = 40
         
 class demonicSword(basicSword):
     def __init__(self):
@@ -178,7 +178,11 @@ class demonicSword(basicSword):
     def boostDamage(self, initial):
         self.damage += 3
         return initial+self.damage
-        
+class vileBlade(basicSword):
+    def __init__(self):
+        self.name = "Vile Blade"
+        self.desc = "An ancient weapon with a dark past"
+        self.damage = 20
 class hungryClock(basicItem):
     def __init__(self):
         self.name = "Hungry Clock"
