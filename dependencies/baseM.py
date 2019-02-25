@@ -22,9 +22,7 @@ def checkCommands(Input, player):
     elif Input.title() in ["Inventory", "Inv", "Items", "Bag"]:
         console.inventory(player)
     elif Input.title().split(" ")[0] in ["Inspect", "View", "Description", "Desc"]:
-        s = ""
-        for i in (Input.title().split(" ")[1:]):
-            s += i
+        s = Input.title.split("Inspect ")[1]
         try:
             itm = eval(strToClsNm(s))()
             if itm in player.items:
