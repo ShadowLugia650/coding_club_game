@@ -68,7 +68,7 @@ class toxins(basicCurse):
         player.health -= dmg
         
 class hubris(basicCurse):
-    def __init(self):
+    def __init__(self):
         self.name = "Hubris"
         self.desc = "Allows impossible rooms to naturally occur"
     
@@ -80,6 +80,26 @@ class hubris(basicCurse):
         player.impossible = False
         player.curses.remove(self)
 
+class stupidity(basicCurse):
+    def __init__(self):
+        self.name = "Stupidity"
+        self.desc = "Me stupid. Stupid Sword Strong"
+        self.justAdded = True
+        self.affectedSwords = []
+        
+    def onFloorClimb(self, player):
+        if self.justAdded:
+            self.justAdded = False
+            for i in player.items:
+                if i.name == "Sword of Stupidity":
+                    i.damage *= 3
+                    self.affectedSwords.append(i)
+                    
+    def remove(self, player):
+        for i in self.affectedSwords:
+            i.damage /= 3
+        player.curses.remove(self)
+        
 #Item curses
 class ephemeral(basicCurse):
     def __init__(self):
