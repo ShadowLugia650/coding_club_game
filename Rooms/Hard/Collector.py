@@ -54,7 +54,7 @@ Press 3 to choose the hero's blade (don't do it)
             baseM.runBasicFight(player, enemylist)
             return player
         if response.lower() =="3":
-            x.baseDamage+=30
+            x.baseDamage+=40
             x.loot=[("Gold",random.randint(120,150)),herosBlade()]
             baseM.runBasicFight(player, enemylist)
             return player
