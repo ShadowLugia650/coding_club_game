@@ -5,8 +5,8 @@ def playerhelp():
     print("    \"status\"      prints your health and gold")
     print("    \"inventory\"   prints your item list")
     print("    \"options\"     prints the listed inputs you can make")
-    print("    \"testgold\"    lets you input a new gold amount. Big errors if you don't enter an int")
-    print("    \"testhp\"      lets you input a new health amount. Big errors if you don't enter an int")
+#    print("    \"testgold\"    lets you input a new gold amount. Big errors if you don't enter an int")
+#    print("    \"testhp\"      lets you input a new health amount. Big errors if you don't enter an int")
 
 def status(Player):
     print("Health: " + str(Player.health))
