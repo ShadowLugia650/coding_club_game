@@ -172,11 +172,24 @@ class demonicSword(basicSword):
     def __init__(self):
         self.name = "Demonic Blade"
         self.desc = "A sword infused with demonic energy"
+        self.trueDesc = "Damage increases by 3 each turn starting at 10."
         self.damage = 10
         
     def boostDamage(self, initial):
         self.damage += 3
         return initial+self.damage
+        
+class hungryClock(basicItem):
+    def __init__(self):
+        self.name = "Hungry Clock"
+        self.desc = "A rare relic from the Time Eater. You feel powerful just holding it, but it seems to gnaw at your arm..."
+        self.trueDesc = "Attacks deal 33% more damage. Take 4 damage each time you climb a floor."
+        
+    def onFloorClimb(self, player):
+        player.health -= 4
+        
+    def boostDamage(self, initial):
+        return round(initial*1.33)
         
 #Armor/Shields
 class shield(basicDefensiveItem):
