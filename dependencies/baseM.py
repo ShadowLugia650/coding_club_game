@@ -107,6 +107,8 @@ def playerInputFight(player, enemies, defense = 0):
         for item in player.items:
             try:
                 player.health += item.lifesteal
+                if player.health > player.maxHp:
+                    player.health = player.maxHp
             except AttributeError:
                 pass
         if en.health <= 0:
