@@ -23,15 +23,11 @@ class Snak(baseM.basicEnemy):
         self.options = {"Dry Strike":2, "Venomous Bite":-3}
         self.lastHit = "Dry Strike"
         
-    def move(self, player):
+    def move(self):
         if self.lastHit == "Dry Strike":
             atk = random.choice(self.options.keys())
         else:
             atk = "Dry Strike"
-        if atk == "Venomous Bite":
-            v = toxins()
-            v.severity = 3
-            player.curses.append(v)
         self.lastHit = atk
         return atk, self.options[atk]+self.baseDamage
         
