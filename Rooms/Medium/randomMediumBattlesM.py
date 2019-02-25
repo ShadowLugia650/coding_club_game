@@ -41,7 +41,7 @@ class Sorcerer(baseM.basicEnemy):
         self.options = {"Thunder Strike":3, "Siphon":-3}
         
 def run(player):
-    enemies = [random.choice([Grenlim(), Snak(), Sorcerer])]
+    enemies = [random.choice([Grenlim(), Snak(), Sorcerer()])]
     print("You encountered a {}!".format(enemies[0].type))
     choice = input("What do you do? [Fight, Run]\n")
     if choice.title() in ["Fight", "F", "Attack"]:
