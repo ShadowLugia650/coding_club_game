@@ -142,7 +142,7 @@ class ghoulClaw(basicSword):
         self.name = "Ghoul Claw"
         self.desc = "It seems ethereal.."
         self.damage = 4
-        self.lifesteal = 4 #Not implemented yet!
+        self.lifesteal = 2 #Not implemented yet!
         
 class heavySword(basicSword):
     def __init__(self):
