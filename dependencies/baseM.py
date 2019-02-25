@@ -178,6 +178,10 @@ def runBasicFight(player, enemies, pBlock = 0, playerFirst = False, turn = 0):
                 elif atk == "Block":
                     defense = enemies[i].baseDef
                     print("The {} blocks for {} damage".format(enemies[i].type, defense))
+                elif "Venom" in atk:
+                    v = toxins()
+                    v.severity = round(enemies[i].baseDamage/6)
+                    player.curses.append(v)
             checkPlayer(player)
             if not player.alive:
                 return player
