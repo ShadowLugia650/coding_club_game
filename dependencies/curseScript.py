@@ -94,6 +94,11 @@ class stupidity(basicCurse):
                 if i.name == "Sword of Stupidity":
                     i.damage *= 3
                     self.affectedSwords.append(i)
+        else:
+            for i in player.items:
+                if i.name == "Sword of Stupidity" and i not in self.affectedSwords:
+                    i.damage *= 3
+                    self.affectedSwords.append(i)
                     
     def remove(self, player):
         for i in self.affectedSwords:
