@@ -20,7 +20,7 @@ class Heart(baseM.basicEnemy):
         self.turnNum += 1
         if self.turnNum % 3 == 0:
             atk = "Reap"
-            self.baseDamage += 5*turnNum/3
+            self.baseDamage += 5*self.turnNum/3
             self.lastAttack = None
             return atk, 0
         else:
@@ -76,6 +76,8 @@ def run(player):
         print("You prepare to attack the heart. It bleeds but is ultimately unharmed.")
         print("The heart suddenly attacks you back! You try to defend but your best efforts seem in vain...")
         baseM.runBasicFight(player, [Heart()])
+        if player.alive:
+            input("As the heart falls, you notice a bluish-purple liquid in your bag. [Continue]")
     elif choice.title() in ["Ignore", "I"]:
         ignore(player)
     elif choice.title() in ["Run", "R"]:
