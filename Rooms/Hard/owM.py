@@ -18,24 +18,26 @@ class Heart(baseM.basicEnemy):
         
     def move(self):
         self.turnNum += 1
-        if self.turnNum % 3 = 0:
+        if self.turnNum % 3 == 0:
             atk = "Reap"
-            self.lastAttack = atk
+            self.baseDamage += 5*turnNum/3
+            self.lastAttack = None
             return atk, 0
         else:
             if self.lastAttack is None:
-                atk = random.choice(self.options.keys())
+                atk = random.choice(["Pummel", "Siphon"])
             else:
                 if self.lastAttack == "Siphon":
                     atk = "Pummel"
-                    self.pummelHits += 5
-                    self.lastAttack = atk
-                    return "{} ({}x{})".format(atk, (self.options[atk]+self.baseDamage), self.pummelHits), ((self.options[atk]+self.baseDamage)*self.pummelHits)
                 elif self.lastAttack == "Pummel":
                     atk = "Siphon"
-                    self.lastAttack = atk
-                    return atk, self.options[atk]+self.baseDamage
-            
+            if atk == "Pummel":
+                self.pummelHits += 5
+                self.lastAttack = atk
+                return "{} ({}x{})".format(atk, (self.options[atk]+self.baseDamage), self.pummelHits), ((self.options[atk]+self.baseDamage)*self.pummelHits)
+            elif atk == "Siphon":
+                self.lastAttack = atk
+                return atk, self.options[atk]+self.baseDamage
 
 def ignore(player):
     print("You walk past the heart to the door at the end of the room.")
