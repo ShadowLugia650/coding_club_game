@@ -118,14 +118,15 @@ class ephemeral(basicCurse):
         if self.floorsLeft == 0:
             player.items.remove(self.target)
    
-#class steelblight(basicCurse):
-#    def __init__(self):
-#        self.name = "Steelblight"
-#        self.desc = "The ultimate scourge of shopkeepers and collectors, this curse enbrittles even the hardest steel, and spreads from item to item."
-#        self.target = []
-#    def curseItem(self, player):
-#        if player.items != null:
-#            random.choice(player.items)
+class steelblight(basicCurse):
+    def __init__(self):
+        self.name = "Steelblight"
+        self.desc = "The ultimate scourge of shopkeepers and collectors, this curse enbrittles even the hardest steel, and spreads from item to item."
+        self.target = []
+        
+    def curseItem(self, player): #this shouldbe curseItem(self, item)... we can handle the random choice when the curse is applied.
+        if player.items != null:
+            random.choice(player.items)
 
 
 
