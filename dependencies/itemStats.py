@@ -327,6 +327,9 @@ class epiTome(basicMagicItem):
 class healthPotion(basicPotion):
     def drinkPotion(self, player):
         player.health += 10
+        if player.health > player.maxHp:
+            player.health = player.maxHp
+        print("You restored 10 health!")
         
     def __init__(self):
         self.name = "Health Potion"
