@@ -22,11 +22,26 @@ def checkCommands(Input, player):
     elif Input.title() in ["Inventory", "Inv", "Items", "Bag"]:
         console.inventory(player)
     elif Input.title().split(" ")[0] in ["Inspect", "View", "Description", "Desc"]:
-        s = Input.title.split("Inspect ")[1]
+        keyword = Input.title().split(" ")[0]
+        s = Input.title().split(keyword+" ")[1]
         try:
             itm = eval(strToClsNm(s))()
             if itm in player.items:
                 itm.readDesc()
+            else:
+                print("You don't have this item..")
+        except NameError:
+            print("This item doesn't seem to exist...")
+    elif Input.title().split(" ")[0] in ["Drink", "Potion"]:
+        keyword = Input.title().split(" ")[0]
+        s = Input.title().split(keyword+" ")[1]
+        try:
+            itm = eval(strToClsNm(s))()
+            if itm in player.items:
+                if issubclass(type(itm), basicPotion):
+                    itm.drinkPotion(player)
+                else:
+                    print("This is not a potion...")
             else:
                 print("You don't have this item..")
         except NameError:
