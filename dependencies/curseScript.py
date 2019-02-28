@@ -104,6 +104,14 @@ class stupidity(basicCurse):
         for i in self.affectedSwords:
             i.damage /= 3
         player.curses.remove(self)
+
+class giveMeABetterNamePlease(basicCurse):
+    def __init__(self):
+        self.name = "" #Merciric absorption thing//alcoholism
+        self.desc = "The enemy of the wealthy and the poor alike."
+        
+    def onFloorClimb(self, player):
+        player.gold -= round(player.gold*0.1)
         
 #Item curses
 class ephemeral(basicCurse):
@@ -127,6 +135,4 @@ class steelblight(basicCurse):
     def curseItem(self, player): #this shouldbe curseItem(self, item)... we can handle the random choice when the curse is applied.
         if player.items != null:
             random.choice(player.items)
-
-
 
