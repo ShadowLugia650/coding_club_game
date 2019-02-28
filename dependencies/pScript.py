@@ -1,9 +1,10 @@
+import random
 from itemStats import loincloth
 
 class PChar(): #intializes the class. The Main handles this, so you don't need it in your room.
     def __init__(self):
         self.health = 100
-        self.gold = 99
+        self.gold = random.randint(101,149)
         self.items = [loincloth()]
         self.alive = True
         self.damage = 3
