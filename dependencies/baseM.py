@@ -311,7 +311,29 @@ class basicEnemy():
     def move(self):
         atk = random.choice(list(self.options.keys()))
         return atk, (self.baseDamage + self.options[atk])
-
+    
+class twoPhaseEnemy(basicEnemy):
+    def __init__(self):
+        self.type = None
+        self.baseDamage = 0
+        self.health = 100
+        self.maxHp = 100
+        self.loot = []
+        self.options = {}
+        self.optionsP2 = {}
+        self.phase = 1
+        self.condition = (health == round(maxHp/2))
+        
+    def move(self):
+        if self.phase == 1:
+            if self.condition:
+                self.phase = 2
+            atk = random.choice(list(self.options.keys()))
+            return atk, (self.baseDamage + self.options[atk])
+        elif self.phase == 2:
+            atk = random.choice(list(self.optionsP2.keys()))
+            return atk, (self.baseDamage + self.optionsP2[atk])
+    
 class Zomboman(basicEnemy):
     def __init__(self):
         self.type = "Zombo-man"
