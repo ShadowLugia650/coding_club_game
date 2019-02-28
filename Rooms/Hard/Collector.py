@@ -8,7 +8,7 @@ class Collector(baseM.basicEnemy):
         self.baseDamage = 1
         self.health = 100
         self.maxHp = 100
-        self.loot = [("Gold",random.randint(80,120))]
+        self.loot = [("Gold",random.randint(90,110))]
         self.options = {"Stab":0,"Siphon":-3,"Slash":+1}
 def run(player):
     x=Collector()
