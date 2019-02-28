@@ -10,7 +10,7 @@ class Grenlim(baseM.basicEnemy):
         self.baseDef = 1
         self.health = 35
         self.maxHp = 35
-        self.loot = [("Gold", random.randint(30,50))]
+        self.loot = [("Gold", random.randint(10,20))]
         self.options = {"Slash":2, "Strike":0}
         
 class Snak(baseM.basicEnemy):
@@ -19,7 +19,7 @@ class Snak(baseM.basicEnemy):
         self.baseDamage = 18
         self.health = 20
         self.maxHp = 20
-        self.loot = [("Gold", random.randint(30,50))]
+        self.loot = [("Gold", random.randint(10,20))]
         self.options = {"Dry Strike":2, "Venomous Bite":-3}
         self.lastHit = "Dry Strike"
         
@@ -37,7 +37,7 @@ class Sorcerer(baseM.basicEnemy):
         self.baseDamage = 15
         self.health = 25
         self.maxHp = 25
-        self.loot = [("Gold", random.randint(30,50)), itemStats.orbOfThunder()]
+        self.loot = [("Gold", random.randint(10,20)), itemStats.orbOfThunder()]
         self.options = {"Thunder Strike":3, "Siphon":-3}
         
 def run(player):
