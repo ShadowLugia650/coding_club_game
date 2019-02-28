@@ -4,14 +4,14 @@ import baseM, pScript, itemStats
 
 def stealLeaves(player):
     print("You pick some leaves and place them into your bag..")
-    pScript.earnGold(player, 19)
+    pScript.earnGold(player, 13)
     chc = input("You feel great, but the other leaves look even more appealing...[Climb, Leave]")
     if chc.title() in ["Climb","C","More","M"]:
         print("You start to climb up the tree, collecting leaves as you go..")
         print("You continue climbing the tree.. As you reach the top, the tree starts to tip.")
-        pScript.earnGold(player, 83)
-        player.health -= 12
-        print("You fall off the tree, taking 12 damage.")
+        pScript.earnGold(player, 62)
+        player.health -= 14
+        print("You fall off the tree, taking 14 damage.")
     elif chc.title() in ["Leave", "L"]:
         print("You leave the room with the leaves in your bag.")
         return player
@@ -41,7 +41,7 @@ def destree(player, timesHit = 0):
             destree(player, timesHit)
         elif choice.title() in ["Collect", "Leaves", "C", "Collect Leaves"]:
             input("You quickly gather up all the leaves on the ground and leave the room. [Continue]")
-            pScript.earnGold(player, 22*timesHit)
+            pScript.earnGold(player, 17*(timesHit+1))
         elif choice.title() in ["Leave", "L"]:
             input("You leave the room wondering how much the golden leaves were really worth. [Continue]")
         else:
@@ -67,7 +67,7 @@ def waitp3(player):
         print("\"Ah.. Riches, yes? Then you've come to the right place..\"")
         print("The hooded figure reaches up and breaks a large branch from the tree.")
         print("He handles it with expertise and carefully places it in your bag.")
-        pScript.earnGold(player, 450)
+        pScript.earnGold(player, 320)
         print("\"You have proven yourself. Continue your adventure.\"")
         #input("As the hooded figures leave, you notice something glimmering in your bag..[Continue]")
         #add some item here.
@@ -143,7 +143,7 @@ def run(player):
         stealLeaves(player)
     elif choice.title() in ["Break", "Branches", "Branch", "Brk", "B", "Break Branches"]:
         print("You break off a branch of the tree. It's a lot heavier than you expected, and its irregular, sharp edges cut you.")
-        pScript.earnGold(player, 264)
+        pScript.earnGold(player, 163)
         pScript.damage(player, 30)
     elif choice.title() in ["Destroy", "Tree", "D", "Destroy Tree"]:
         destree(player)
