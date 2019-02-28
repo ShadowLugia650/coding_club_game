@@ -319,7 +319,7 @@ class Zomboman(basicEnemy):
         self.baseDef = 1
         self.health = 10
         self.maxHp = 10
-        self.loot = [("Gold",random.randint(5,10))]
+        self.loot = [("Gold",random.randint(1,7))]
         self.options = {"Punch":0, "Block":-1}
         
 class Ghoul(basicEnemy):
