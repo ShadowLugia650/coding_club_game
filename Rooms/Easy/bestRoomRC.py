@@ -43,8 +43,8 @@ Press 3 to take the staff""")
                         choice=input()
                         if choice in ["1", "one", "gather"]:
                             print ("Good thing you didn't try to desecrate the door. Cheaters never prosper")
-                            print ("You gained 200 gold!")
-                            player.gold+=200
+                            print ("You gained 150 gold!")
+                            player.gold+=150
                             return player
                         elif choice in ["2", "two", "investigate"]:
                             print ("You roll the dice and get a 6!")
@@ -61,7 +61,7 @@ Press 3 to take the staff""")
                     break
                 elif choice in ["2", "two", "break"]:
                     print ("You chip off some gold but ultimately accomplish nothing. You leave, disappointed.")
-                    player.gold+=25
+                    player.gold+=15
                     return player
                 elif choice in ["3", "three", "steal"]:
                     print ("You gain 50 gold but ruin the door in the process")
