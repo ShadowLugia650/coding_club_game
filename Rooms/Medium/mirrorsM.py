@@ -52,7 +52,9 @@ def run(player):
         print("You look back at the mirror from which you came and see yourself there.")
         input("As you leave the room, you feel... {}..[Continue]".format(txt))
         player.gold = p.gold
-        player.items = p.items
+        for i in range(3):
+            player.items.remove(random.choice(player.items))
+        player.items += p.items
         player.health = p.health
         return player
     elif choice.title() in ["Leave", "L"]:
