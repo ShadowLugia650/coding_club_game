@@ -32,6 +32,7 @@ def game():
         room = random.choice(possibleLevels)
         while room == lastRoom:
             room = random.choice(possibleLevels)
+        lastRoom = room
         consol = console.getInput(Player, ["yes", "no"], "next room? ")
         if consol.lower() in ["yes", "y", "ok", "sure", "yeah", "yay"]:
             room.run(Player)
