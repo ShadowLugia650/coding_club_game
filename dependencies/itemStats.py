@@ -226,7 +226,11 @@ class cloak(basicDefensiveItem):
         self.desc = "The cloak of an assassin"
         self.block = 6
         self.dodge = 5
-        
+class armoredShirt(basicDefensiveItem):
+    def __init__(self):
+        self.name = "Armored Shirt"
+        self.desc = "shirt with armor"
+        self.block = 10
 class glowingEyes(basicDefensiveItem):
     def __init__(self):
         self.name = "Glowing Eyes"
