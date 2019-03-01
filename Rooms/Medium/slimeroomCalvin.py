@@ -10,6 +10,7 @@ def run(player):
   def deathcheck():
     if player.health <= 0:
       print("GAME OVER")
+      player.alive = False
       return False
     return True
   if "sword" in player.items or "axe" in player.items or "bow" in player.items:
