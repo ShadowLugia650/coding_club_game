@@ -22,6 +22,7 @@ def game():
     levels = easy
     consol = ""
     rounds = 0
+    lastRoom = None
 
     baseM.initIntro(Player)
     while Player.alive:
@@ -29,6 +30,8 @@ def game():
         if Player.impossible:
             possibleLevels += impossible
         room = random.choice(possibleLevels)
+        while room == lastRoom:
+            room = random.choice(possibleLevels)
         consol = console.getInput(Player, ["yes", "no"], "next room? ")
         if consol.lower() in ["yes", "y", "ok", "sure", "yeah", "yay"]:
             room.run(Player)
