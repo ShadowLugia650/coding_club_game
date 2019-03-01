@@ -21,7 +21,7 @@ def run(player):
         print("Filled with greed, you collect up all the gold")
         pScript.earnGold(player, 250)
     elif choice.title() in ["Right", "R"]:
-        print("")
+        print("Opening the door, you find")
     else:
         baseM.checkCommands(choice, player)
         run(player)
