@@ -9,7 +9,6 @@ import random
 def run(player):
   def deathcheck():
     if player.health <= 0:
-      print("GAME OVER")
       player.alive = False
       return False
     return True
