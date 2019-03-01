@@ -105,7 +105,7 @@ class stupidity(basicCurse):
             i.damage /= 3
         player.curses.remove(self)
 
-class giveMeABetterNamePlease(basicCurse):
+class nameMe(basicCurse):
     def __init__(self):
         self.name = "" #Merciric absorption thing//alcoholism
         self.desc = "The enemy of the wealthy and the poor alike."
