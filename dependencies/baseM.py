@@ -244,6 +244,7 @@ def strToClsNm(string):
     cn = sl[0].lower()
     for i in range(len(sl)-1):
         cn += sl[i+1].title()
+        cn = cn.replace("'","")
     return cn
     
 def constructPlayer(data):
