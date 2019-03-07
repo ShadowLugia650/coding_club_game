@@ -1,7 +1,7 @@
 import sys, random
 
 sys.path.insert(0, 'dependencies')
-import console, pScript, baseM, itemStats
+import console, pScript, baseM, itemStats, curseScript
 
 sys.path.insert(0, 'Rooms/Easy')
 import shopM, battleZombomanM, bestRoomRC, GobolinRC, goldenTreeM
