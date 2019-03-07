@@ -43,6 +43,7 @@ def run(player):
                             itm = None
             if not found:
                 print("This shop doesn't have that.")
+            baseM.checkCommands(im, player)
     elif choice.title() in ["Leave", "L"]:
         print("You walk past this 'shop' and continue your journey...")
     else:
