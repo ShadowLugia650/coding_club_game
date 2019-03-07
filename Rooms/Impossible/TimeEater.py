@@ -15,7 +15,7 @@ class timeEater(baseM.basicEnemy):
         self.turnCounter = 0
         self.timedTurn = (0, 0)
         
-    def move(self):
+    def move(self, player):
         self.turnCounter += 1
         print("Take your time...")
         if self.phase == 1:
