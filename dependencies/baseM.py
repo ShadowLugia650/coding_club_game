@@ -192,7 +192,7 @@ def runBasicFight(player, enemies, pBlock = 0, playerFirst = False, turn = 0):
                     robbed = random.randint(3,6)
                     print("The {} stole {} of your gold!".format(enemies[i].type, robbed))
                     player.gold -= robbed
-                    enemies[i].loot.append(("Gold",robbed))
+                    #enemies[i].loot.append(("Gold",robbed))
                 elif atk == "Siphon":
                     print("The {} siphons {} of your hp!".format(enemies[i].type, dmg))
                     enemies[i].health += dmg
