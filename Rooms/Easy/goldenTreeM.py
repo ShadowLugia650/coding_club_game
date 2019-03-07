@@ -83,6 +83,10 @@ def waitp3(player):
             print("You feel light and healthy.")
         print("\"The exit is to your right. Good luck on your adventure.\"")
         input("The hooded figures leave. [Continue]")
+    else:
+        baseM.checkCommands(ch3, player)
+        waitp3(player)
+    return player
 
 def waitp2(player):
     ch2 = input("Your legs start to grow tired, and you feel as though you've been standing for hours..[Sit Down, Stay Standing]")
