@@ -152,7 +152,7 @@ class heavySword(basicSword):
 
 class peasantsBlade(basicSword):
     def __init__(self):
-        self.name = "Peasant Blade"
+        self.name = "Peasant's Blade"
         self.desc = "Not the most effective weapon, but at least you didn't die"
         self.damage = 2
         
