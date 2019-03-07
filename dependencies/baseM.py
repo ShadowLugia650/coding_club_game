@@ -177,6 +177,9 @@ def runBasicFight(player, enemies, pBlock = 0, playerFirst = False, turn = 0):
                     atk, dmg = enemies[i].move()
                 elif "Summon: " in atk:
                     enemies.append(dmg)
+                elif atk == "Flee":
+                    print("The {} fled the combat!".format(enemies[i].type))
+                    return player
                 #Ok end of Special Enemy stuff now
                 print("{} {} uses {}, dealing {} damage.".format(enemies[i].type, i+1, atk, dmg))
                 if pBlock > 0:
@@ -208,7 +211,7 @@ def runBasicFight(player, enemies, pBlock = 0, playerFirst = False, turn = 0):
     pBlock = playerInputFight(player, enemies, pBlock)
     if getFirstAliveEnemy(enemies) is not None and player.alive:
         print("Your HP: {}\t\tEnemy's HP: {}".format(player.health, getFirstAliveEnemy(enemies)[0].health))
-        runBasicFight(player, enemies, pBlock, False, turn+1)
+        return runBasicFight(player, enemies, pBlock, False, turn+1)
     elif not player.alive:
         return player
     else:
