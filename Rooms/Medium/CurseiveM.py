@@ -18,8 +18,9 @@ def run(player):
         player.curses.append(eph)
     elif choice.title() in ["Middle", "M"]:
         print("Behind the door lies a tall mound of gold with the same purple glow.")
-        print("Filled with greed, you collect up all the gold.")
-        pScript.earnGold(player, 250)
+        print("Filled with greed, you collect up all the gold. However, you begin to feel weak and frail..")
+        pScript.earnGold(player, 150)
+        player.curses.append(curseScript.exhaustion())
     elif choice.title() in ["Right", "R"]:
         print("As you open the door, the purple gas seeps out and surrounds you. The roomlies empty in front of you..")
         print("You feel confident, as though nothing can stand in your way.")
