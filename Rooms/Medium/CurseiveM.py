@@ -18,10 +18,12 @@ def run(player):
         player.curses.append(eph)
     elif choice.title() in ["Middle", "M"]:
         print("Behind the door lies a tall mound of gold with the same purple glow.")
-        print("Filled with greed, you collect up all the gold")
+        print("Filled with greed, you collect up all the gold.")
         pScript.earnGold(player, 250)
     elif choice.title() in ["Right", "R"]:
-        print("Opening the door, you find")
+        print("As you open the door, the purple gas seeps out and surrounds you. The roomlies empty in front of you..")
+        print("You feel confident, as though nothing can stand in your way.")
+        player.curses.append(curseScript.hubris())
     else:
         baseM.checkCommands(choice, player)
         run(player)
