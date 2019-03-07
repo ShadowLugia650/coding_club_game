@@ -16,7 +16,7 @@ class DemonicWarrior(baseM.basicEnemy):
         self.optionsP2 = {"Strike":5, "Double Strike":-6, "Combo Slash":0}
         self.phase = 1
 
-    def move(self):
+    def move(self, player):
         if self.health <= (self.maxHp/2) and self.phase == 1:
             print("\"You will never defeat me!\"")
             self.baseDamage += 10
