@@ -170,7 +170,7 @@ def runBasicFight(player, enemies, pBlock = 0, playerFirst = False, turn = 0):
     if not playerFirst:
         for i in range(len(enemies)):
             if enemies[i] is not None:
-                atk, dmg = enemies[i].move()
+                atk, dmg = enemies[i].move(player)
                 #Special Enemy Stuff lol
                 if atk == "Future Doom Damage":
                     print("{} {}'s Future Doom comes true! You take {} damage.".format(enemies[i].type, i+1, dmg))
@@ -315,7 +315,7 @@ class basicEnemy():
             else:
                 player.items.append(i)
 
-    def move(self):
+    def move(self, player = None):
         atk = random.choice(list(self.options.keys()))
         return atk, (self.baseDamage + self.options[atk])
     
