@@ -25,7 +25,7 @@ class Snak(baseM.basicEnemy):
         
     def move(self):
         if self.lastHit == "Dry Strike":
-            atk = random.choice(self.options.keys())
+            atk = random.choice(list(self.options.keys()))
         else:
             atk = "Dry Strike"
         self.lastHit = atk
