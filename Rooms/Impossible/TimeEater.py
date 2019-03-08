@@ -33,8 +33,8 @@ class timeEater(baseM.basicEnemy):
             elif atk == "Stall":
                 for i in range(5):
                     time.sleep(2)
-                    self.baseDamage += 2
                     print('.',end='')
+                self.baseDamage *= 10
                 dmg = 0
             else:
                 dmg = self.options[atk]+self.baseDamage
