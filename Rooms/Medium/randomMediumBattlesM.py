@@ -30,7 +30,7 @@ class Snak(baseM.basicEnemy):
             atk = "Dry Strike"
         if atk == "Venomous Bite":
             v = toxins()
-            v.severity = 3
+            v.severity = 6
             player.curses.append(v)
         self.lastHit = atk
         return atk, self.options[atk]+self.baseDamage
