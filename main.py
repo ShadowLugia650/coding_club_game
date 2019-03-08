@@ -7,8 +7,8 @@ sys.path.insert(0, 'Rooms/Easy')
 import shopM, battleZombomanM, bestRoomRC, GobolinRC, goldenTreeM
 easy= [shopM, battleZombomanM, bestRoomRC, GobolinRC, goldenTreeM]
 sys.path.insert(0, 'Rooms/Medium')
-import strangerJGv1, battleGhoulM, mirrorsM, lavaroomRCv1, skeletonCalvin, reverseRoomAT, jabberwockyJG, randomMediumBattlesM, slimeroomCalvin, CurseiveM, bogGiantRC
-med = [strangerJGv1, battleGhoulM, mirrorsM, lavaroomRCv1, skeletonCalvin, reverseRoomAT, jabberwockyJG, CurseiveM, bogGiantRC]
+import strangerJGv1, battleGhoulM, mirrorsM, lavaroomRCv1, skeletonCalvin, reverseRoomAT, jabberwockyJG, randomMediumBattlesM, slimeroomCalvin, CurseiveM, bogGiantRC, ExpensiveRC
+med = [strangerJGv1, battleGhoulM, mirrorsM, lavaroomRCv1, skeletonCalvin, reverseRoomAT, jabberwockyJG, CurseiveM, bogGiantRC, ExpensiveRC]
 for i in range(3): #increase for each enemy added to randombattles
     med.append(randomMediumBattlesM)
 sys.path.insert(0, 'Rooms/Hard')
