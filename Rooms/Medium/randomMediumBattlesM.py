@@ -52,7 +52,7 @@ def run(player):
         print("You engage the {} in combat!".format(enemies[0].type))
         baseM.runBasicFight(player, enemies)
     elif choice.title() in ["Flee", "Run", "R"]:
-        print("You run away from the {} and it deals {} to you.".format(enemies[0].type, enemies[0].baseDamage))
+        print("You run away from the {} and it deals {} damage to you.".format(enemies[0].type, enemies[0].baseDamage))
         if type(enemies[0]) == Snak:
             print("The Snak envenomated you with its attack!")
             player.curses.append(toxins())
