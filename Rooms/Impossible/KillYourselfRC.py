@@ -1,3 +1,5 @@
+import sys
+sys.path.insert(0, 'dependencies')
 import baseM
 import itemStats
 class Yourself(baseM.basicEnemy):
