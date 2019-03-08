@@ -14,8 +14,12 @@ class MossyGoober(baseM.basicEnemy):
     def move(self, player):
         self.turn += 1
         if self.turn == 1:
-            atk = 
-        atk = random.choice(list(self.options.keys()))
+            atk = "Colossal Punch"
+        elif self.turn % 2 == 0:
+            atk = "Sluggish Daze"
+        else:
+            atk = random.choice(list(self.options.keys()))
+        return atk, self.options[atk] + self.baseDamage
 
 def run(player):
     print("You encounter a thicket of vines preventing you from proceeding. What do you do?")
