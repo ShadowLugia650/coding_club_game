@@ -8,7 +8,7 @@ class timeEater(baseM.basicEnemy):
         self.baseDamage = 10
         self.health = 450
         self.maxHp = 450
-        self.loot = [("Gold", random.randint(130,170))], itemStats.hungryClock()]
+        self.loot = [("Gold", random.randint(130,170)), itemStats.hungryClock()]
         self.options = {"Consume":0, "Strike":0, "Future Doom":30, "Stall":0}
         self.optionsP2 = {"Minute Spear":"self.baseDamage+5", "Hour Skewer":"self.baseDamage*2", "Future Doom":"self.baseDamage*5"}
         self.phase = 1
