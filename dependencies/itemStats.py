@@ -291,7 +291,7 @@ class staffOfLuck(basicMagicItem):
         print("guess a number from 1 to 20")
         guess=input()
         if luckynumber==int(guess):
-            print("Fueled by your luck, a bolt of lightning strikes the "+enemy.name)
+            print("Fueled by your luck, a bolt of lightning strikes the "+enemy.type)
             if count==4:
                 enemy.health=0
             else:
