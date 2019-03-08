@@ -46,7 +46,7 @@ class exhaustion(basicCurse):
 
 class toxins(basicCurse):
     def __init__(self):
-        self.severity = 5
+        self.severity = 8
         self.name = "Toxins: {}".format(self.severity)
         self.desc = "Toxic compounds deal damage over time if not treated and deal more damage if you are exhausted.."
         
@@ -66,6 +66,9 @@ class toxins(basicCurse):
     def onFloorClimb(self, player):
         dmg = self.toxinDamage(player)
         player.health -= dmg
+        self.severity -= 1
+        if self.severity == 0:
+            player.curses.remove(self)
         
 class hubris(basicCurse):
     def __init__(self):
