@@ -246,6 +246,17 @@ def strToClsNm(string):
         cn = cn.replace("'","")
     return cn
     
+def calculateFinalScore(player, floorsClimbed):
+    score = 0
+    score += player.gold
+    for i in player.items:
+        try:
+            score += i.value
+        except AttributeError:
+            pass
+    score += 100*floorsClimbed #modify to change based on type of floors
+    return score
+    
 def constructPlayer(data):
     #Constructs a player class based on data given in the following format.
     # health / gold / item1,item2,item3
