@@ -1,6 +1,6 @@
 import sys
 sys.path.insert(0, 'dependencies')
-import baseM
+import baseM, itemStats
 
 class Junior(baseM.basicEnemy):
     def __init__ (self):
@@ -10,7 +10,7 @@ class Junior(baseM.basicEnemy):
         self.maxHp=45
         self.health=45
         self.options = {"Kick":7, "Slash":10}
-        self.loot=[("Nails",random.randint(10,20))]
+        self.loot=[(itemStats.guts, 2)]
         
         
 def run (player):
