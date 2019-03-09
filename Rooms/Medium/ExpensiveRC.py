@@ -27,8 +27,8 @@ def owMoney(player):
 def dropGold(player):
     print("""The gold in your sack seems to be getting warmer as you proceed through the hall. Uncomfortably warm, in fact.
 Would you like to drop any?""")
-    choice=input("[Yes, Y, Yay, No, N, Nay]")
-    if choice.lower() in ["yes","y","yay"]:
+    choice=input("[Yes, No]")
+    if choice.lower() in ["yes","y"]:
         print("How much?")
         while True:
             choice=(int)input()
