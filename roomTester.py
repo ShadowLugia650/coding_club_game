@@ -15,15 +15,15 @@ sys.path.insert(0, 'Rooms/Medium')
 
 sys.path.insert(0, 'Rooms/Hard')
 #import owM, Collector, demonicWarrior
-import moneyGremlim
+import moneyGremlim #make sure to import the room you want to test!
 
 sys.path.insert(0, 'Rooms/Impossible')
 #import TimeEater
 
 
-
+test = moneyGremlim # Change this to be whatever room you want to test
 Player = pScript.PChar()
-moneyGremlim.run(Player)
+test.run(Player)
 
 if Player.alive == False:
     print("You have died.")
