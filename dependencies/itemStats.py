@@ -364,7 +364,7 @@ class antidote(basicPotion):
         self.name = "Antidote"
         self.desc = "You're told it can cure poisoning..."
 
-class guts(basicPotion):
+class ohgurGuts(basicPotion):
     def drinkPotion(self, player):
         player.health += 15
         if player.health > player.maxHp:
