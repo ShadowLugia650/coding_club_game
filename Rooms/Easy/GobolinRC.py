@@ -14,5 +14,5 @@ class Junior(baseM.basicEnemy):
         
 def run (player):
     print("A snarling, scrawny goblin leaps out of the darkness!")
-    baseM.runBasicFight(player, [Junior()],0,True)
+    baseM.runBasicFight(player, [Junior()], playerFirst=True)
     return player
