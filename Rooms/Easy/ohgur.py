@@ -7,8 +7,8 @@ class Junior(baseM.basicEnemy):
         self.type="Ohgur"
         self.baseDamage=2
         self.baseDef=2
-        self.maxHp=45
-        self.health=45
+        self.maxHp=2
+        self.health=2
         self.options = {"Kick":5, "Slash":8}
         self.loot=[itemStats.ohgurGuts(), itemStats.ohgurGuts()]
         
