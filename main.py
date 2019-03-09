@@ -64,6 +64,7 @@ def game():
     print("Ending items:")
     for i in Player.items:
         print("- {}".format(i))
+    print(baseM.calculateFinalScore(player,rounds))
     input()
     game()
 game()
