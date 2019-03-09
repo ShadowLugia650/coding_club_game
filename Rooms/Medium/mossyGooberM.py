@@ -1,4 +1,4 @@
-import sys
+import sys, random
 sys.path.insert(0, 'dependencies')
 import baseM, curseScript, itemStats
 
