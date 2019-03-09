@@ -5,14 +5,17 @@ def run(player):
     if choice.lower() in ["yes", "y"]:
         print("How much?")
         while True:
-            choice=(int)input()
-            if choice<0:
-                print("choose a positive number")
-            elif choice>10000:
-                print("choose a smaller number")
-            else:
-                player.gold+=choice
-                break
+            try:
+                choice=int(input())
+                if choice<0:
+                    print("choose a positive number")
+                elif choice>10000:
+                    print("choose a smaller number")
+                else:
+                    player.gold+=choice
+                    break
+            except ValueError:
+                print("That's not a number")
     for j in range(3):
         dropGold(player)
         owMoney(player)
@@ -31,11 +34,14 @@ Would you like to drop any?""")
     if choice.lower() in ["yes","y"]:
         print("How much?")
         while True:
-            choice=(int)input()
-            if choice<0:
-                print("choose a positive number")
-            elif choice>player.gold:
-                print("you don't have enough gold")
-            else:
-                player.gold-=choice
-                break
+            try:
+                choice=int(input())
+                if choice<0:
+                    print("choose a positive number")
+                elif choice>player.gold:
+                    print("you don't have enough gold")
+                else:
+                    player.gold-=choice
+                    break
+            except ValueError:
+                print("That's not a number")
