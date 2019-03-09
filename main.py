@@ -40,13 +40,13 @@ def game():
             Player.timeClimbing += 2
             for i in Player.items:
                 try:
-                    if issubclass(i, itemStats.basicItem()):
+                    if issubclass(type(i), itemStats.basicItem):
                         i.onFloorClimb(Player)
                 except TypeError:
                     pass
             for i in Player.curses:
                 try:
-                    if issubclass(i, curseScript.basicCurse()):
+                    if issubclass(type(i), curseScript.basicCurse):
                         i.onFloorClimb(Player)
                 except TypeError:
                     pass
