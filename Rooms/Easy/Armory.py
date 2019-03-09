@@ -2,8 +2,12 @@ import sys
 sys.path.insert(0, 'dependencies')
 import baseM, itemStats
 
-class customItem(itemStats.basicItem):
-    def 
+class customItem(itemStats.basicSword):
+    def __init__(self):
+        self.name = ""
+        self.desc = "A weapon created in the giant forge.. It seems indestructible."
+        self.damage = 0
+        self.value = 177
 
 def bigManChoice1(player):
     choice = input("[\"I'm just looking around.\", \"How do you deal with this temperature?\", \"I would like your assistance.\"]")
