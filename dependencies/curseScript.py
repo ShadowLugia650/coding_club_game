@@ -116,6 +116,23 @@ class nameMe(basicCurse):
     def onFloorClimb(self, player):
         player.gold -= round(player.gold*0.1)
         
+class madness(basicCurse):
+    def __init__(self):
+        self.name = "Madness"
+        self.desc = "Yes yes yes yes yes yes yes."
+        
+    def onFloorClimb(self, player):
+        c = random.randint(1,2) # add 3 later
+        if c == 1:
+            dmg = random.randint(3,6)
+            player.health -= dmg
+            print("You took {} damage".format(dmg))
+        elif c == 2:
+            itm = random.choice(player.items)
+            print("You lost your {}".format(itm.name))
+        elif c == 3:
+            pass #randomly generate an item to add to inventory
+        
 #Item curses
 class ephemeral(basicCurse):
     def __init__(self):
