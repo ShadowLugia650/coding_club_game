@@ -10,7 +10,7 @@ class Junior(baseM.basicEnemy):
         self.maxHp=45
         self.health=45
         self.options = {"Kick":7, "Slash":10}
-        self.loot=[(itemStats.guts(), 2)]
+        self.loot=[itemStats.ohgurGuts(), itemStats.ohgurGuts()]
         
         
 def run (player):
