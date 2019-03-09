@@ -97,6 +97,7 @@ def waitp2(player):
                 time.sleep(2)
                 print('.',end='')
                 player.timeClimbing+=2
+            print()
         print("You fall asleep.")
         player.timeClimbing+= 100
         print("You wake up, hearing the murmers of numerous hooded figures standing around you.")
