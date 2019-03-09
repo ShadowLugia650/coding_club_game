@@ -27,7 +27,7 @@ def run(player):
             if im in ["leave", "l"]:
                 break
             for i in list(items.keys()):
-                if i.name.lower() == im:
+                if baseM.strToClsNm(i.name) == im:
                     found = True
                     if items[i] > player.gold:
                         print(random.choice(["You don't have enough money for that..", "Don't be a thief!"]))
