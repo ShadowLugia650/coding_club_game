@@ -5,11 +5,11 @@ import baseM, itemStats
 class Junior(baseM.basicEnemy):
     def __init__ (self):
         self.type="Ohgur"
-        self.baseDamage=2
+        self.baseDamage=17
         self.baseDef=2
-        self.maxHp=2
-        self.health=2
-        self.options = {"Kick":5, "Slash":8}
+        self.maxHp=70
+        self.health=70
+        self.options = {"Kick":7, "Slash":10}
         self.loot=[itemStats.ohgurGuts(), itemStats.ohgurGuts()]
         
         
