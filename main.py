@@ -33,7 +33,7 @@ def game():
         while room == lastRoom:
             room = random.choice(possibleLevels)
         lastRoom = room
-        consol = console.getInput(Player, ["yes", "no"], "next room? ")
+        consol = console.getInput(Player, ["yes", "y", "ok", "sure", "yeah", "yay", "no", "nay", "n", "nok"], "next room? ")
         if consol.lower() in ["yes", "y", "ok", "sure", "yeah", "yay"]:
             room.run(Player)
             rounds += 1
