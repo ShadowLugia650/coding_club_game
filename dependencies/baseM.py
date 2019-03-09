@@ -26,7 +26,7 @@ def checkCommands(Input, player):
         s = Input.title().split(keyword+" ")[1]
         try:
             itm = eval(strToClsNm(s))()
-            if itm in player.items:
+            if hasItem(itm, player):
                 itm.readDesc()
             else:
                 print("You don't have this item..")
@@ -37,11 +37,13 @@ def checkCommands(Input, player):
         s = Input.title().split(keyword+" ")[1]
         try:
             itm = eval(strToClsNm(s))()
-            if itm in player.items:
+            if hasItem(itm, player):
                 if issubclass(type(itm), basicPotion):
-                    itm.drinkPotion(player)
+                    im = getItem(itm.name, player)
+                    im.drinkPotion(player)
+                    player.items.remove(im)
                 else:
-                    print("This is not a potion...")
+                    print("That item doesn't seem too drinkable to me...")
             else:
                 print("You don't have this item..")
         except NameError:
@@ -219,6 +221,12 @@ def getItem(name, player):
         if i.name == name:
             return i
     return None
+    
+def hasItem(itemClass, player):
+    for i in player.items:
+        if i.name == itemClass.name:
+            return True
+    return False
     
 def hasWeapon(player):
     for i in player.items:
