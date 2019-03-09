@@ -4,11 +4,11 @@ sys.path.insert(0, 'dependencies')
 import console, pScript, baseM, itemStats, curseScript
 
 sys.path.insert(0, 'Rooms/Easy')
-import shopM, battleZombomanM, bestRoomRC, GobolinRC, goldenTreeM, ohgur
-easy= [shopM, battleZombomanM, bestRoomRC, GobolinRC, goldenTreeM, ohgur]
+import shopM, battleZombomanM, bestRoomRC, GobolinRC, goldenTreeM
+easy= [shopM, battleZombomanM, bestRoomRC, GobolinRC, goldenTreeM]
 sys.path.insert(0, 'Rooms/Medium')
-import strangerJGv1, battleGhoulM, mirrorsM, lavaroomRCv1, skeletonCalvin, reverseRoomAT, jabberwockyJG, randomMediumBattlesM, slimeroomCalvin, CurseiveM, bogGiantRC, ExpensiveRC, mossyGooberM
-med = [strangerJGv1, battleGhoulM, mirrorsM, lavaroomRCv1, skeletonCalvin, reverseRoomAT, jabberwockyJG, CurseiveM, bogGiantRC, ExpensiveRC, mossyGooberM]
+import strangerJGv1, battleGhoulM, mirrorsM, lavaroomRCv1, skeletonCalvin, reverseRoomAT, jabberwockyJG, randomMediumBattlesM, slimeroomCalvin, CurseiveM, bogGiantRC, ExpensiveRC, mossyGooberM, ohgur
+med = [strangerJGv1, battleGhoulM, mirrorsM, lavaroomRCv1, skeletonCalvin, reverseRoomAT, jabberwockyJG, CurseiveM, bogGiantRC, ExpensiveRC, mossyGooberM, ohgur]
 for i in range(3): #increase for each enemy added to randombattles
     med.append(randomMediumBattlesM)
 sys.path.insert(0, 'Rooms/Hard')
