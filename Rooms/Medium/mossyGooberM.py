@@ -50,6 +50,7 @@ def run(player):
         print("You turn away from the vines only to find more vines blocking the entrance from which you came..")
         print("Or was it? As you look around, vines cover every wall and stretch in front of the many doorways into and out of this room.")
         print("Confused and dizzy, you sit down on the ground to reconsider your options.")
+        player.curses.append(curseScript.madness())
     else:
         baseM.checkCommands(choice,player)
         run(player)
