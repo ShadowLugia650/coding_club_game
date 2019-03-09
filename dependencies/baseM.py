@@ -64,7 +64,7 @@ def initIntro(player):
         if choice.title() in ["Return", "R", "Return To Note", "Note"]:
             input("You walk back to the note, taking it along with the armor and the sword.. [Continue]")
             player.items.append(letterFromTheDeceased())
-            print("The First Letter was added to your inventory! Use [Inventory] to read it")
+            print("Letter From the Deceased was added to your inventory! Use [Inventory] to read it")
             player.items.append(rustySword())
             print("Rusty Sword was added to your inventory! You're going to need it...")
             player.items.append(frayedClothArmor())
@@ -154,8 +154,7 @@ def playerInputFight(player, enemies, defense = 0):
                         truemagiclist[magicidentifier].magic(player, en)
                     except AttributeError:
                         print("Oops! That is not a magic item")
-            
-            return defense
+        return defense
     else:
         checkCommands(turn, player)
         return playerInputFight(player, enemies, defense)
