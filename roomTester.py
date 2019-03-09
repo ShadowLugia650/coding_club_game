@@ -28,4 +28,4 @@ moneyGremlim.run(Player)
 if Player.alive == False:
     print("You have died.")
 else:
-    print("This simulation has been TERMINATED."
+    print("This simulation has been TERMINATED.")
