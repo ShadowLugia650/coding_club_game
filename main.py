@@ -20,6 +20,7 @@ impossible = [TimeEater]
 def game():
     Player = pScript.PChar()
     levels = easy
+    possibleLevels=levels
     consol = ""
     rounds = 0
     lastRoom = None
