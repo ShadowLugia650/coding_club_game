@@ -8,12 +8,22 @@ class customItem(itemStats.basicSword):
         self.desc = "A weapon created in the giant forge.. It seems indestructible."
         self.damage = 0
         self.value = 177
-
-def bigManChoice1(player):
-    choice = input("[\"I'm just looking around.\", \"How do you deal with this temperature?\", \"I would like your assistance.\"]")
     
 def pickWeapon(player):
     choice = input("[]")
+        
+def bigManChoice1(player):
+    choice = input("[\"I'm just looking around.\", \"How do you deal with this temperature?\", \"I would like your assistance.\"]")
+    if choice.title() in ["I'm Just Looking Around", "Im Just Looking Around", "Looking", "Around", "Just Looking Around", "Looking Around"]:
+        print("\"LOOKING AROUND, HM? FEEL FREE TO TAKE ANYTHING YOU LIKE.\"")
+        print("You walk around the hallway and notice a few glowing weapons resting against the wall.")
+        pickWeapon(player)
+    elif choice.title() in ["How Do You Deal With This Temperature", "Temp", "Temperature", "Heat", "Hot", "Warm"]:
+        print("The voice laughs. \"TOO WARM FOR YOU? THE HEAT IS NECESSARY TO FORGE WEAPONRY WITH SUCH DURABILITY.\"")
+        print("You look around and realize that many of the weapons on the walls have existed for centuries. Despite this, they all still seem sturdy and powerful.")
+        print()
+    elif choice.title() in ["I Would Like Your Assistance", "Assistance", "Help"]:
+        print()
     
 def run(player):
     print("You enter a large hallway with countless weapons of every kind covering the walls.")
