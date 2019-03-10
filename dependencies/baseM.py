@@ -154,8 +154,11 @@ def playerInputFight(player, enemies, defense = 0):
                     try:
                         magicidentifier = magiclist.index(magicchoice)
                         truemagiclist[magicidentifier].magic(player, en)
+                        break
                     except AttributeError:
                         print("Oops! That is not a magic item")
+        else:
+            print("Sorry! You do not have any magic items")
         return defense
     else:
         checkCommands(turn, player)
