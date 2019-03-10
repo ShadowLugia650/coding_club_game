@@ -51,6 +51,18 @@ def checkCommands(Input, player):
     else:
         print("This is not one of your options...")
 
+def initIntro(player):
+    print("""Welcome to the Coding Club dungeon crawler game!
+************************************************
+             Press any key to begin""")
+    console.playerhelp()
+    input()
+    sys.path.insert(0, 'Rooms/Intros')
+    import originalIntroM
+    intros = [originalIntroM]
+    intro = random.choice(intros)
+    intro.run(player)
+        
 def getFirstAliveEnemy(enemies):
     #Finds the first enemy in the given list that is not None. If all are None, returns None
     #You should not need to use this function if you're making a basic fighting room.
