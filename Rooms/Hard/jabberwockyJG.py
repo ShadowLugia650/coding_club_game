@@ -11,7 +11,7 @@ class jabberwocky(baseM.basicEnemy):
         self.block = 0
         self.health = 1000
         self.maxHp = 1000
-        self.loot = [("Gold", random.randint(40,90)),jabberwockyHead()]
+        self.loot = [("Gold", 42), jabberwockyHead()]
         self.options = {"Eviscerate":0}
     
 def fight(player, tf, first):
