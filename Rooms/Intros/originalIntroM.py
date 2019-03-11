@@ -7,11 +7,11 @@ def run(player):
     while True:
         if choice.title() in ["Return", "R", "Return To Note", "Note"]:
             input("You walk back to the note, taking it along with the armor and the sword.. [Continue]")
-            player.items.append(letterFromTheDeceased())
+            player.items.append(itemStats.letterFromTheDeceased())
             print("Letter From the Deceased was added to your inventory! Use [Inventory] to read it")
-            player.items.append(rustySword())
+            player.items.append(itemStats.rustySword())
             print("Rusty Sword was added to your inventory! You're going to need it...")
-            player.items.append(frayedClothArmor())
+            player.items.append(itemStats.frayedClothArmor())
             print("Frayed Cloth was added to your inventory!")
             break
         elif choice.title() in ["Continue", "C", "Continue Into Dungeon", "Dungeon"]:
