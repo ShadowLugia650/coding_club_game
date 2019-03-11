@@ -30,6 +30,9 @@ def game():
         possibleLevels = copy.copy(levels) #add zombomen to possibleLevels
         if Player.impossible:
             possibleLevels += impossible
+        for itm in Player.items:
+            if itm.name == "Zomboman Guts":
+                possibleLevels += battleZombomanM
         if rounds == 4:
             room = shopM
         else:
@@ -49,11 +52,8 @@ def game():
                 except TypeError:
                     pass
             for i in Player.curses:
-                try:
-                    if issubclass(type(i), curseScript.basicCurse):
-                        i.onFloorClimb(Player)
-                except TypeError:
-                    pass
+                if issubclass(type(i), curseScript.basicCurse):
+                    i.onFloorClimb(Player)
         else:
             break
         if Player.alive == False:
