@@ -1,4 +1,4 @@
-import sys, random
+import sys, random, copy
 
 sys.path.insert(0, 'dependencies')
 import console, pScript, baseM, itemStats, curseScript
@@ -27,7 +27,7 @@ def game():
 
     baseM.initIntro(Player)
     while Player.alive:
-        possibleLevels = levels
+        possibleLevels = copy.copy(levels)
         if Player.impossible:
             possibleLevels += impossible
         if rounds == 4:
