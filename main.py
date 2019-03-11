@@ -32,7 +32,7 @@ def game():
             possibleLevels += impossible
         for itm in Player.items:
             if itm.name == "Zomboman Guts":
-                possibleLevels += battleZombomanM
+                possibleLevels.append(battleZombomanM)
         if rounds == 3:
             room = shopM
         else:
