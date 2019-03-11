@@ -30,9 +30,12 @@ def game():
         possibleLevels = levels
         if Player.impossible:
             possibleLevels += impossible
-        room = random.choice(possibleLevels)
-        while room == lastRoom:
+        if rounds == 4:
+            room = shopM
+        else:
             room = random.choice(possibleLevels)
+            while room == lastRoom:
+                room = random.choice(possibleLevels)
         lastRoom = room
         consol = console.getInput(Player, ["yes", "y", "ok", "sure", "yeah", "yay", "no", "nay", "n", "nok"], "next room? ")
         if consol.lower() in ["yes", "y", "ok", "sure", "yeah", "yay"]:
@@ -55,7 +58,7 @@ def game():
             break
         if Player.alive == False:
             print("You have died.")
-        if rounds == 3:
+        if rounds == 5:
             levels += med
         elif rounds == 20:
             levels += hard
