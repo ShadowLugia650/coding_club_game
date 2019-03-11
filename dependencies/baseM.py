@@ -320,6 +320,7 @@ class basicEnemy():
                 player.items.append(i)
 
     def move(self, player = None):
+        self.block = 0
         atk = random.choice(list(self.options.keys()))
         return atk, (self.baseDamage + self.options[atk])
     
@@ -338,6 +339,7 @@ class twoPhaseEnemy(basicEnemy):
         self.condition = (health <= round(maxHp/2))
         
     def move(self):
+        self.block = 0
         if self.phase == 1:
             if self.condition:
                 self.phase = 2
