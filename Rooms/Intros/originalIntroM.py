@@ -1,3 +1,4 @@
+import itemStats
 def run(player):
     input("You see a large grey structure looming in the distance.. [Approach]") #This is the intro.. Needs work...
     input("As you approach, a giant stone door slowly rises, revealing a dark room, faintly lit by the setting Sun outside... [Continue]")
