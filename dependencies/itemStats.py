@@ -366,11 +366,14 @@ class staffOfLuck(basicMagicItem):
             print ("You have "+str(count)+"guesses left!")
             self.magic(self,player,enemy)
             
-class glowingStaff(basicMagicItem):
+class glowingOrb(basicMagicItem):
+    def magic(self, player, enemy):
+        enemy.takeDamage(self.damage)
+    
     def __init__(self):
-        self.name = "Glowing Staff"
+        self.name = "Glowing Orb"
         self.desc = "The staff glows and seems indestructible"
-        self.damage = 13
+        self.damage = 30
         self.value = 177
             
 class amplifyingOrb(basicMagicItem):
