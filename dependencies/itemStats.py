@@ -116,6 +116,12 @@ class wornJournal(basicItem):
         #implement this
         pass
         
+class zombomanGuts(basicItem):
+    def __init__(self):
+        self.name = "Zomboman Guts"
+        self.desc = "They have a very strong, horrible smell.."
+        self.value = -10
+        
 #Swords
 class sword(basicSword):
     def __init__(self):
@@ -167,6 +173,13 @@ class heavySword(basicSword):
         self.damage = 35
         self.value = 173
 
+class glowingSword(basicSword):
+    def __init__(self):
+        self.name = "Glowing Sword"
+        self.desc = "The blade glows and seems indestructible"
+        self.damage = 13
+        self.value = 177
+        
 class peasantsBlade(basicSword):
     def __init__(self):
         self.name = "Peasant's Blade"
@@ -271,6 +284,13 @@ class glowingEyes(basicDefensiveItem):
         self.block = 12
         self.value = 241
         
+class glowingShield(basicDefensiveItem):
+    def __init__(self):
+        self.name = "Glowing Shield"
+        self.desc = "The shield glows and seems indestructible"
+        self.block = 13
+        self.value = 177
+        
 #Magic
 class wandOfConfusion(basicMagicItem):
     def __init__ (self):
@@ -345,6 +365,13 @@ class staffOfLuck(basicMagicItem):
             self.count-=1
             print ("You have "+str(count)+"guesses left!")
             self.magic(self,player,enemy)
+            
+class glowingStaff(basicMagicItem):
+    def __init__(self):
+        self.name = "Glowing Staff"
+        self.desc = "The staff glows and seems indestructible"
+        self.damage = 13
+        self.value = 177
             
 class amplifyingOrb(basicMagicItem):
     def __init__(self):
