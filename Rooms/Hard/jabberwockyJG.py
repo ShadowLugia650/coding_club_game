@@ -7,6 +7,8 @@ class jabberwocky(baseM.basicEnemy):
     def __init__(self):
         self.type = "Jabberwocky"
         self.baseDamage = 89
+        self.baseDef = 0
+        self.block = 0
         self.health = 1000
         self.maxHp = 1000
         self.loot = [("Gold", random.randint(40,90)),jabberwockyHead()]
