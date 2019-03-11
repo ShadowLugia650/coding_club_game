@@ -3,7 +3,9 @@ sys.path.insert(0, 'dependencies')
 import baseM, itemStats
     
 def pickWeapon(player):
-    choice = input("[]")
+    choice = input("[Glowing Sword, Glowing Shield, Glowing Orb]")
+    if choice.title() in ["Glowing Sword", "Sword", "Attack", "Offense", "Damage"]:
+        print("You pick up the glowing sword and leave the room.")
         
 def bigManChoice2(player):
     choice = input("[Sword, Shield, Magic]")
@@ -45,7 +47,7 @@ def bigManChoice1(player):
         bigManChoice1(player)
     
 def run(player):
-    print("You enter a large hallway with countless weapons of every kind covering the walls.")
+    print("You enter a large hallway with countless armaments of every kind covering the walls.")
     print("Near the center of the hall you notice an enormous anvil with an equally enormous hammer resting on it.")
     print("As you approach the anvil, the air around you seems to grow warmer and warmer. The blistering heat seems to lightly singe your skin..")
     choice = input("[Continue to Anvil, Inspect Walls, Leave]")
@@ -57,7 +59,7 @@ def run(player):
         bigManChoice1(player)
     elif choice.title() in ["Inspect Walls", "Inspect", "Walls", "I"]:
         print("Moving away from the scorching heat of the anvil, you admire the masterful craftmanship of the weapons on the walls.")
-        print("While many of the weapons stand over three times your height, a few smaller, glowing weapons catch your eye.")
+        print("While many of the armaments stand over three times your height, a few smaller, glowing weapons catch your eye.")
         pickWeapon(player)
     elif choice.title() in ["Leave", "L"]:
         print("Afraid to continue into the heat, you hurry to the door and leave.")
