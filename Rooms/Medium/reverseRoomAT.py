@@ -7,6 +7,8 @@ class Gargoyle(baseM.basicEnemy):
     def __init__(self):
         self.type = "Gargoyle"
         self.baseDamage = 10
+        self.baseDef = 0
+        self.block = 0
         self.health = 200
         self.maxHp = 200
         self.loot = [glowingEyes(), ("Gold", 45)]
