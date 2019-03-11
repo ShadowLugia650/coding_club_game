@@ -27,7 +27,7 @@ def game():
 
     baseM.initIntro(Player)
     while Player.alive:
-        possibleLevels = copy.copy(levels)
+        possibleLevels = copy.copy(levels) #add zombomen to possibleLevels
         if Player.impossible:
             possibleLevels += impossible
         if rounds == 4:
