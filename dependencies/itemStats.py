@@ -49,7 +49,7 @@ class basicDefensiveItem(basicItem):
             attacker.health -= self.returnDamage
         except AttributeError:
             pass
-        return dmg-self.block
+        return dmg
 
 class basicMagicItem(basicItem):
     # Magic Items should have a function called magic(). This function will run whenever a player chooses the magic option in a fight
