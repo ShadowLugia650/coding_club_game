@@ -166,9 +166,11 @@ def runBasicFight(player, enemies, pBlock = 0, playerFirst = False, turn = 0):
                 #Ok end of Special Enemy stuff now
                 print("{} {} uses {}, dealing {} damage.".format(enemies[i].type, i+1, atk, dmg))
                 if pBlock > 0:
+                    dmgBefore = dmg
                     for j in player.items:
                         if issubclass(type(j), basicDefensiveItem):
                             dmg = j.whenAttacked(dmg, enemies[i])
+                    pBlock -= dmgBefore-dmg #update to work with dodges
                 if dmg > 0:
                     player.health -= dmg
                 if atk == "Rob":
