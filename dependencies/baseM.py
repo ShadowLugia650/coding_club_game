@@ -102,7 +102,7 @@ def playerInputFight(player, enemies, defense = 0):
         if "Exhaustion" in curseEfx.keys() and curseEfx["Exhaustion"][1] == "Damage":
             dmg -= curseEfx["Exhaustion"][0]
         print("You attack {} {}, dealing {} damage".format(en.type, j+1, dmg))
-        en.health -= dmg
+        en.takeDamage(dmg, player)
         for item in player.items:
             try:
                 player.health += item.lifesteal
@@ -180,13 +180,14 @@ def runBasicFight(player, enemies, pBlock = 0, playerFirst = False, turn = 0):
                     player.gold -= robbed
                     #enemies[i].loot.append(("Gold",robbed))
                 elif atk == "Siphon":
-                    print("The {} siphons {} of your hp!".format(enemies[i].type, dmg))
-                    enemies[i].health += dmg
-                    if enemies[i].health > enemies[i].maxHp:
-                        enemies[i].health = enemies[i].maxHp
+                    if dmg > 0:
+                        print("The {} siphons {} of your hp!".format(enemies[i].type, dmg))
+                        enemies[i].health += dmg
+                        if enemies[i].health > enemies[i].maxHp:
+                            enemies[i].health = enemies[i].maxHp
                 elif atk == "Block":
-                    defense = enemies[i].baseDef
-                    print("The {} blocks for {} damage".format(enemies[i].type, defense))
+                    enemies[i].block += enemies[i].baseDef
+                    print("The {} blocks for {} damage".format(enemies[i].type, enemies[i].block))
             checkPlayer(player)
             if not player.alive:
                 return player
@@ -299,16 +300,19 @@ class basicEnemy():
     def __init__(self):
         self.type = None #This should be a string which represents your enemy.
         self.baseDamage = 0
+        self.baseDef = 0
+        self.block = 0
         self.health = 10
         self.maxHp = 10
         self.loot = []
         self.options = {}
 
     def takeDamage(self, damage, player):
-        self.health -= damage
+        dmg = damage - self.block
+        if dmg > 0:
+            self.health -= damage
         
     def death(self, player):
-        player.gold += random.randint(20, 40)
         for i in self.loot:
             if type(i) == tuple and i[0] == "Gold":
                 player.gold += i[1]
@@ -323,6 +327,8 @@ class twoPhaseEnemy(basicEnemy):
     def __init__(self):
         self.type = None
         self.baseDamage = 0
+        self.baseDef = 0
+        self.block = 0
         self.health = 100
         self.maxHp = 100
         self.loot = []
@@ -346,6 +352,7 @@ class Zomboman(basicEnemy):
         self.type = "Zombo-man"
         self.baseDamage = 1
         self.baseDef = 1
+        self.block = 0
         self.health = 10
         self.maxHp = 10
         self.loot = [("Gold",random.randint(1,7))]
@@ -356,6 +363,8 @@ class Ghoul(basicEnemy):
     def __init__(self):
         self.type = "Ghoul"
         self.baseDamage = 7
+        self.baseDef = 0
+        self.block = 0
         self.health = 40
         self.maxHp = 40
         self.loot = [("Gold",random.randint(10,20)),random.choice([ghoulClaw()])]
@@ -365,6 +374,8 @@ class ShivMan(basicEnemy):
     def __init__(self):
         self.type = "Assassin"
         self.baseDamage = 10
+        self.baseDef = 0
+        self.block = 0
         self.health = 70
         self.maxHp = 70
         self.loot = [("Gold",random.randint(70,130), shiv())]
