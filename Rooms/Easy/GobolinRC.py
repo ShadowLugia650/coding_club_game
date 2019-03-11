@@ -8,6 +8,8 @@ class Junior(baseM.basicEnemy):
         self.maxHp=1
         self.health=1
         self.baseDamage=25
+        self.baseDef = 0
+        self.block = 0
         self.options = {"Stab":0}
         self.loot=[("Gold",80)]
         
