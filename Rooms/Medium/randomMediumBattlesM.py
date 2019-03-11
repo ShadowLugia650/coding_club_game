@@ -7,7 +7,8 @@ class Grenlim(baseM.basicEnemy):
     def __init__(self):
         self.type = "Grenlim"
         self.baseDamage = 13
-        self.baseDef = 1
+        self.baseDef = 0
+        self.block = 0
         self.health = 35
         self.maxHp = 35
         self.loot = [("Gold", random.randint(10,20))]
@@ -17,6 +18,8 @@ class Snak(baseM.basicEnemy):
     def __init__(self):
         self.type = "Snak"
         self.baseDamage = 18
+        self.baseDef = 0
+        self.block = 0
         self.health = 20
         self.maxHp = 20
         self.loot = [("Gold", random.randint(10,20))]
@@ -39,6 +42,8 @@ class Sorcerer(baseM.basicEnemy):
     def __init__(self):
         self.type = "Sorserer"
         self.baseDamage = 15
+        self.baseDef = 0
+        self.block = 0
         self.health = 25
         self.maxHp = 25
         self.loot = [("Gold", random.randint(10,20)), itemStats.orbOfThunder()]
