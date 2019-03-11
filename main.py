@@ -33,7 +33,7 @@ def game():
         for itm in Player.items:
             if itm.name == "Zomboman Guts":
                 possibleLevels += battleZombomanM
-        if rounds == 4:
+        if rounds == 3:
             room = shopM
         else:
             room = random.choice(possibleLevels)
