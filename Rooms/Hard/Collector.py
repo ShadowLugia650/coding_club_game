@@ -6,6 +6,8 @@ class Collector(baseM.basicEnemy):
     def __init__(self):
         self.type = "Collector"
         self.baseDamage = 1
+        self.baseDef = 0
+        self.block = 0
         self.health = 100
         self.maxHp = 100
         self.loot = [("Gold",random.randint(90,110))]
