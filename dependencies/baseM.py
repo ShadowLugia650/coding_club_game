@@ -357,7 +357,7 @@ class Zomboman(basicEnemy):
         self.block = 0
         self.health = 10
         self.maxHp = 10
-        self.loot = [("Gold",random.randint(1,7))]
+        self.loot = [("Gold", 6)]
         self.options = {"Punch":0, "Block":-1}
         
 class Ghoul(basicEnemy):
@@ -369,7 +369,7 @@ class Ghoul(basicEnemy):
         self.block = 0
         self.health = 40
         self.maxHp = 40
-        self.loot = [("Gold",random.randint(10,20)),random.choice([ghoulClaw()])]
+        self.loot = [("Gold", 14),random.choice([ghoulClaw()])]
         self.options = {"Swipe":0,"Rob":-2,"Siphon":-3} #These numbers determine how much damage the attack deals based on baseDamage. ex. Siphon deals 7-3=4 damage.
     
 class ShivMan(basicEnemy):
@@ -380,5 +380,5 @@ class ShivMan(basicEnemy):
         self.block = 0
         self.health = 70
         self.maxHp = 70
-        self.loot = [("Gold",random.randint(70,130), shiv())]
+        self.loot = [("Gold", 42, shiv())]
         self.options = {"Stab":0,"Rob":-2,"Slash":+2}
