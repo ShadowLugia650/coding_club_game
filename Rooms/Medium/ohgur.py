@@ -7,6 +7,7 @@ class Junior(baseM.basicEnemy):
         self.type="Ohgur"
         self.baseDamage=3
         self.baseDef=2
+        self.block = 0
         self.maxHp=70
         self.health=70
         self.options = {"Kick":7, "Slash":12}
