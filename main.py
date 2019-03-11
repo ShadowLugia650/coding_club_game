@@ -7,13 +7,13 @@ sys.path.insert(0, 'Rooms/Easy')
 import shopM, battleZombomanM, bestRoomRC, GobolinRC, goldenTreeM, Armory
 easy= [shopM, battleZombomanM, bestRoomRC, GobolinRC, goldenTreeM]
 sys.path.insert(0, 'Rooms/Medium')
-import strangerJGv1, battleGhoulM, mirrorsM, lavaroomRCv1, skeletonCalvin, reverseRoomAT, jabberwockyJG, randomMediumBattlesM, slimeroomCalvin, CurseiveM, bogGiantRC, ExpensiveRC, mossyGooberM, ohgur
-med = [strangerJGv1, battleGhoulM, mirrorsM, lavaroomRCv1, skeletonCalvin, reverseRoomAT, jabberwockyJG, CurseiveM, bogGiantRC, ExpensiveRC, mossyGooberM, ohgur]
+import strangerJGv1, battleGhoulM, mirrorsM, lavaroomRCv1, skeletonCalvin, reverseRoomAT,  randomMediumBattlesM, slimeroomCalvin, CurseiveM, bogGiantRC, ExpensiveRC, mossyGooberM, ohgur
+med = [strangerJGv1, battleGhoulM, mirrorsM, lavaroomRCv1, skeletonCalvin, reverseRoomAT, CurseiveM, bogGiantRC, ExpensiveRC, mossyGooberM, ohgur]
 for i in range(3): #increase for each enemy added to randombattles
     med.append(randomMediumBattlesM)
 sys.path.insert(0, 'Rooms/Hard')
-import owM, Collector, demonicWarrior
-hard= [owM, Collector, demonicWarrior]
+import owM, Collector, demonicWarrior, jabberwockyJG
+hard= [owM, Collector, demonicWarrior, jabberwockyJG]
 sys.path.insert(0, 'Rooms/Impossible')
 import TimeEater
 impossible = [TimeEater]
