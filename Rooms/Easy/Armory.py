@@ -14,6 +14,23 @@ def pickWeapon(player):
         
 def bigManChoice2(player):
     choice = input("[Sword, Shield, Magic]")
+    base = None
+    spec = ""
+    if choice.title() in ["Sword", "Attack", "Offense", "Damage"]:
+        base = itemStats.basicSword
+        spec = "self.damage = 15"
+    elif choice.title() in ["Shield", "Defense", "Block", "Armor"]:
+        base = itemStats.basicDefensiveItem
+        spec = "self.block = 15"
+    elif choice.title() in ["Magic", "Abracadabra"]:
+        base = itemStats.basicMagicItem
+        spec = "self.damage = 0"
+    else:
+        baseM.checkCommands(choice, player)
+        bigManChoice2(player)
+    class customItem(base):
+        def __init__(self):
+            exec(spec)
         
 def bigManChoice1(player):
     choice = input("[\"I'm just looking around.\", \"How do you deal with this temperature?\", \"I would like your assistance.\"]")
