@@ -7,6 +7,9 @@ from baseM import Zomboman
 def run(player):
     print("You encountered a Zombo-man!")
     enemies = [Zomboman()]
+    for itm in player.items:
+        if itm.name == "Zomboman Guts":
+            enemies.append(Zomboman())
     choice = input("What do you do? [Fight, Run]\n")
     if choice.title() in ["Fight", "F"]:
         print("You engage the Zombo-man in combat!")
