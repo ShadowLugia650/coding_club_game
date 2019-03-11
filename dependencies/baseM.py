@@ -126,19 +126,16 @@ def playerInputFight(player, enemies, defense = 0):
         truemagiclist=[]
         for n in player.items:
             if issubclass(type(n),basicMagicItem):
-                magiclist.append(n.name)
+                magiclist.append(n.name.lower())
                 truemagiclist.append(n)
         print (*magiclist, sep=" \n")
         if magiclist != []:
             magicchoice = input("Which magic item would you like to use? \n")
             while True:
-                if magicchoice in magiclist:
-                    try:
+                if magicchoice.lower() in magiclist:
                         magicidentifier = magiclist.index(magicchoice)
                         truemagiclist[magicidentifier].magic(player, en)
-                        break
-                    except AttributeError:
-                        print("Oops! That is not a magic item")
+                        return defense
         else:
             print("Sorry! You do not have any magic items")
         return defense
