@@ -358,7 +358,7 @@ class Zomboman(basicEnemy):
         self.block = 0
         self.health = 10
         self.maxHp = 10
-        self.loot = [("Gold", 6)]
+        self.loot = [("Gold", 6), zombomanGuts()]
         self.options = {"Punch":0, "Block":-1}
         
 class Ghoul(basicEnemy):
