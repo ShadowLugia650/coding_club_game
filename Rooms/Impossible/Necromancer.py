@@ -8,6 +8,8 @@ import baseM
 class Necromancer(baseM.basicEnemy):
     def __init__(self):
         self.type = "Necromancer"
+        self.baseDef = 0
+        self.block = 0
         self.health = 200
         self.maxHp = 200
         self.overhealCapacity = 300
