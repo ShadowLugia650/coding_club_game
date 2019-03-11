@@ -2,7 +2,7 @@ import sys
 sys.path.insert(0, 'dependencies')
 import baseM, itemStats
 
-class Junior(baseM.basicEnemy):
+class Senior(baseM.basicEnemy):
     def __init__ (self):
         self.type="Ohgur"
         self.baseDamage=3
