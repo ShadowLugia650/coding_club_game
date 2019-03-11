@@ -9,6 +9,7 @@ class DemonicWarrior(baseM.basicEnemy):
         self.type = "Demonic Warrior"
         self.baseDamage = 7
         self.baseDef = 20
+        self.block = 0
         self.health = 300
         self.maxHp = 300
         self.loot = [("Gold", random.randint(90,110)), demonicSword()]
