@@ -1,13 +1,6 @@
 import sys
 sys.path.insert(0, 'dependencies')
 import baseM, itemStats
-
-class customItem(itemStats.basicSword):
-    def __init__(self):
-        self.name = ""
-        self.desc = "A weapon created in the giant forge.. It seems indestructible."
-        self.damage = 0
-        self.value = 177
     
 def pickWeapon(player):
     choice = input("[]")
@@ -18,19 +11,21 @@ def bigManChoice2(player):
     spec = ""
     if choice.title() in ["Sword", "Attack", "Offense", "Damage"]:
         base = itemStats.basicSword
-        spec = "self.damage = 15"
+        spec = "self.name = 'Indestructible Sword'\nself.desc = 'A weapon created in the giant forge. It seems indestructible'\nself.damage = 15"
     elif choice.title() in ["Shield", "Defense", "Block", "Armor"]:
         base = itemStats.basicDefensiveItem
-        spec = "self.block = 15"
+        spec = "self.name = 'Indestructible Shield'\nself.desc = 'A shield created in the giant forge. It seems indestructible'\nself.block = 15"
     elif choice.title() in ["Magic", "Abracadabra"]:
         base = itemStats.basicMagicItem
-        spec = "self.damage = 0"
+        spec = "self.name = 'Indestructible Staff'\nself.desc = 'A magical staff created in the giant forge. It seems indestructible'"
     else:
         baseM.checkCommands(choice, player)
         bigManChoice2(player)
     class customItem(base):
         def __init__(self):
             exec(spec)
+            self.value = 177
+    player.items.append(customItem())
         
 def bigManChoice1(player):
     choice = input("[\"I'm just looking around.\", \"How do you deal with this temperature?\", \"I would like your assistance.\"]")
