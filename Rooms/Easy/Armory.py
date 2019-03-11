@@ -12,6 +12,9 @@ class customItem(itemStats.basicSword):
 def pickWeapon(player):
     choice = input("[]")
         
+def bigManChoice2(player):
+    choice = input("[Sword, Shield, Magic]")
+        
 def bigManChoice1(player):
     choice = input("[\"I'm just looking around.\", \"How do you deal with this temperature?\", \"I would like your assistance.\"]")
     if choice.title() in ["I'm Just Looking Around", "Im Just Looking Around", "Looking", "Around", "Just Looking Around", "Looking Around"]:
@@ -23,8 +26,11 @@ def bigManChoice1(player):
         print("You look around and realize that many of the weapons on the walls have existed for centuries. Despite this, they all still seem sturdy and powerful.")
         print("")
     elif choice.title() in ["I Would Like Your Assistance", "Assistance", "Help"]:
-        print("\"WHAT KIND OF WEAPON CAN I MAKE FOR YOU?\"")
-        print("")
+        print("\"WHAT CAN I MAKE FOR YOU?\"")
+        bigManChoice2(player)
+    else:
+        baseM.checkCommands(choice, player)
+        bigManChoice1(player)
     
 def run(player):
     print("You enter a large hallway with countless weapons of every kind covering the walls.")
