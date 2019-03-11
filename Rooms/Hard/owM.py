@@ -12,7 +12,7 @@ class Heart(baseM.basicEnemy):
         self.baseDef = 0
         self.block = 0
         self.damageDealt = 0
-        self.loot = [("Gold", random.randint(120,140)),itemStats.corruptBlood()]
+        self.loot = [("Gold", 172),itemStats.corruptBlood()]
         self.options = {"Siphon":18, "Pummel":0, "Reap":0}
         self.lastAttack = None
         self.turnNum = 0
