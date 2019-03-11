@@ -6,7 +6,10 @@ class MossyGoober(baseM.basicEnemy):
     def __init__(self):
         self.type = "Mosstrosity"
         self.health = 85
+        self.maxHp = 85
         self.baseDamage = 10
+        self.baseDef = 0
+        self.block = 0
         self.options = {"Smack":10, "Colossal Punch":40}
         self.loot = [("Gold", random.randint(10,20))]
         self.turn = 0
