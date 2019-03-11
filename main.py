@@ -27,7 +27,7 @@ def game():
 
     baseM.initIntro(Player)
     while Player.alive:
-        possibleLevels = copy.copy(levels) #add zombomen to possibleLevels
+        possibleLevels = copy.copy(levels)
         if Player.impossible:
             possibleLevels += impossible
         for itm in Player.items:
