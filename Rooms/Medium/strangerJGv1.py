@@ -6,7 +6,7 @@ from itemStats import vorpalBlade
 
 def run(player):
     response = ""
-    cost = random.randint(1,10)
+    cost = random.randint(8,15)
     print("Out from the darkness, a man in a hood approaches you.")
     while True:
         response = console.getInput(player, ["yes", "no"], "Pay " + str(cost) + " to listen to his story? ")
