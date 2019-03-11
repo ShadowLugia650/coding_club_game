@@ -21,9 +21,10 @@ def bigManChoice1(player):
     elif choice.title() in ["How Do You Deal With This Temperature", "Temp", "Temperature", "Heat", "Hot", "Warm"]:
         print("The voice laughs. \"TOO WARM FOR YOU? THE HEAT IS NECESSARY TO FORGE WEAPONRY WITH SUCH DURABILITY.\"")
         print("You look around and realize that many of the weapons on the walls have existed for centuries. Despite this, they all still seem sturdy and powerful.")
-        print()
+        print("")
     elif choice.title() in ["I Would Like Your Assistance", "Assistance", "Help"]:
-        print()
+        print("\"WHAT KIND OF WEAPON CAN I MAKE FOR YOU?\"")
+        print("")
     
 def run(player):
     print("You enter a large hallway with countless weapons of every kind covering the walls.")
