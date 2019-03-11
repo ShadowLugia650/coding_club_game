@@ -6,6 +6,8 @@ class BogGiant(baseM.basicEnemy):
     def __init__(self):
         self.type = "Bog Giant"
         self.baseDamage = 20
+        self.baseDef = 0
+        self.block = 0
         self.health = 200
         self.maxHp = 200
         self.loot=[itemStats.vileBlade()]
