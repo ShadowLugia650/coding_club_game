@@ -375,6 +375,7 @@ class staffOfGold(basicMagicItem):
         if self.charge==0:
             player.gold+=10
         player.gold+=self.charge
+        print("You got "+str(self.charge)+" gold!")
         self.charge-=10
     def __init__ (self):
         self.name="Staff of Gold"
