@@ -29,6 +29,10 @@ def run(player):
                     print(addedItem.name+" was added to your inventory! /n")
                     player.items.append(addedItem)
                     return player
+                else:
+                    print("Sorry! That is not one of your choices")
         elif choice in ["no", "n","never"]:
             print("You exit the room.")
             return player
+        else:
+            print("Sorry! That is not one of your choices")
