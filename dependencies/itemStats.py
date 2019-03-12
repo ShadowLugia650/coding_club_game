@@ -95,7 +95,7 @@ class jabberwockyHead(basicItem):
     def __init__(self):
         self.name = "Jabberwocky Head"
         self.desc = "The severed head of the Jabberwocky. Despite being dead, its eyes seem to follow you with malicious hunger."
-        self.value = 796
+        self.value = 2500
         
 class corruptBlood(basicItem):
     def __init__(self):
