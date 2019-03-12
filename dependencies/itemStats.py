@@ -297,6 +297,20 @@ class shield(basicDefensiveItem):
         self.block = 10
         self.value = 100
 
+class cardboardShield(basicDefensiveItem):
+    def __init__(self):
+        self.name = "Cardboard Shield"
+        self.desc = "Not exactly the sturdiest of shields"
+        self.block = 3
+        self.value = 25
+
+class tinyShield(basicDefensiveItem):
+    def __init__(self):
+        self.name = "Tiny Shield"
+        self.desc = "Some people like dinner plate-sized shields, apparently"
+        self.block = 4
+        self.value = 30
+        
 class loincloth(basicDefensiveItem):
     def __init__(self):
         self.name = "Loincloth"
