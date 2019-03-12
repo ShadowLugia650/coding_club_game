@@ -1,4 +1,6 @@
-import itemStats
+import sys
+sys.path.insert(0, 'dependencies')
+import itemStats, baseM
 def run(player):
     input("You see a large grey structure looming in the distance.. [Approach]") #This is the intro.. Needs work...
     input("As you approach, a giant stone door slowly rises, revealing a dark room, faintly lit by the setting Sun outside... [Continue]")
@@ -20,6 +22,6 @@ def run(player):
             player.health -= 3
             print("You regret not taking the cloth and sword.")
             break
-        checkCommands(choice, player)
+        baseM.checkCommands(choice, player)
         choice = input("Continue into the dungeon or return to read the note?")
     return player
