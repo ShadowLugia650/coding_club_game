@@ -6,6 +6,16 @@ def pickWeapon(player):
     choice = input("[Glowing Sword, Glowing Shield, Glowing Orb]")
     if choice.title() in ["Glowing Sword", "Sword", "Attack", "Offense", "Damage"]:
         print("You pick up the glowing sword and leave the room.")
+        player.items.append(itemStats.glowingSword())
+    elif choice.title() in ["Glowing Shield", "Shield", "Defense", "Block", "Armor"]:
+        print("You pick up the glowing shield and leave the room.")
+        player.items.append(itemStats.glowingShield())
+    elif choice.title() in ["Glowing Orb", "Orb", "Abracadabra", "Magic"]:
+        print("You pick up the glowing orb and leave the room.")
+        player.items.append(itemStats.glowingOrb())
+    else:
+        baseM.checkCommands(choice, player)
+        pickWeapon(player)
         
 def bigManChoice2(player):
     choice = input("[Sword, Shield, Magic]")
@@ -28,6 +38,7 @@ def bigManChoice2(player):
             exec(spec)
             self.value = 177
     player.items.append(customItem())
+    print("You obtained the {}!".format(customItem().name))
         
 def bigManChoice1(player):
     choice = input("[\"I'm just looking around.\", \"How do you deal with this temperature?\", \"I would like your assistance.\"]")
@@ -38,7 +49,7 @@ def bigManChoice1(player):
     elif choice.title() in ["How Do You Deal With This Temperature", "Temp", "Temperature", "Heat", "Hot", "Warm"]:
         print("The voice laughs. \"TOO WARM FOR YOU? THE HEAT IS NECESSARY TO FORGE WEAPONRY WITH SUCH DURABILITY.\"")
         print("You look around and realize that many of the weapons on the walls have existed for centuries. Despite this, they all still seem sturdy and powerful.")
-        print("")
+        print("Suddenly, ")
     elif choice.title() in ["I Would Like Your Assistance", "Assistance", "Help"]:
         print("\"WHAT CAN I MAKE FOR YOU?\"")
         bigManChoice2(player)
