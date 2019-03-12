@@ -70,6 +70,7 @@ def game():
         print("- {}".format(i))
     print("Your final score is: {}".format(baseM.calculateFinalScore(Player,rounds)))
     input()
+    levels=easy
     game()
 game()
 
