@@ -5,7 +5,7 @@ import console, pScript, baseM, itemStats, curseScript
 
 sys.path.insert(0, 'Rooms/Easy')
 import shopM, battleZombomanM, bestRoomRC, GobolinRC, goldenTreeM, Armory
-easy= [shopM, battleZombomanM, bestRoomRC, GobolinRC, goldenTreeM]
+easy= [shopM, battleZombomanM, bestRoomRC, GobolinRC, goldenTreeM, Armory]
 sys.path.insert(0, 'Rooms/Medium')
 import strangerJGv1, battleGhoulM, mirrorsM, lavaroomRCv1, skeletonCalvin, reverseRoomAT,  randomMediumBattlesM, slimeroomCalvin, CurseiveM, bogGiantRC, ExpensiveRC, mossyGooberM, ohgur
 med = [strangerJGv1, battleGhoulM, mirrorsM, lavaroomRCv1, skeletonCalvin, reverseRoomAT, CurseiveM, bogGiantRC, ExpensiveRC, mossyGooberM, ohgur]
