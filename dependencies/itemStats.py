@@ -150,7 +150,63 @@ class rustySword(basicSword):
         self.desc = "A rusted, brittle sword from a traveler long forgotten..."
         self.damage = 4
         self.value = 0
+        
+class brokenSword(basicSword):
+    def __init__(self):
+        self.name = "Broken Sword"
+        self.desc = "A broken sword abandoned in an old storage shed"
+        self.damage = 2
+        self.value = 8
+        
+class dullKnife(basicSword):
+    def __init__(self):
+        self.name = "Dull Knife"
+        self.desc = "A dull knife abandoned in an old storage shed"
+        self.damage = 1
+        self.value = 5
+        
+class rustyPitchfork(basicSword):
+    def __init__(self):
+        self.name = "Rusty Pitchfork"
+        self.desc = "A rusty pitchfork abandoned in an old storage shed"
+        self.damage = 3
+        self.value = 10
+        
+class baseballBat(basicSword):
+    def __init__(self):
+        self.name = "Baseball Bat"
+        self.desc = "Maybe you can club some poor Zombo-man with it"
+        self.damage = 2
+        self.value = 25
+        
+class shovel(basicSword):
+    def __init__(self):
+        self.name = "Shovel"
+        self.desc = "Shovel Knight is a 2D side-scrolling platform game developed and published by Yacht Club Games."
+        self.damage = 2
+        self.value = 15
+        
+class abandonedAxe(basicSword):
+    def __init__(self):
+        self.name = "Abandoned Axe"
+        self.desc = "Some adventurer left this behind, but it's still sharp."
+        self.damage = 15
+        self.value = 40
 
+class diamondSword(basicSword):
+    def __init__(self):
+        self.name = "Diamond Sword"
+        self.desc = "Who makes a sword out of diamonds?"
+        self.damage = 2
+        self.value = 1000
+        
+class warhammer(basicSword):
+    def __init__(self):
+        self.name = "Warhammer"
+        self.desc = "ow"
+        self.damage = 10
+        self.value = 40
+        
 class shiv(basicSword):
     def __init__(self):
         self.name = "Shiv"
