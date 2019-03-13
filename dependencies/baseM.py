@@ -132,9 +132,11 @@ def playerInputFight(player, enemies, defense = 0):
         if magiclist != []:
             while True:
                 magicchoice = input("Which magic item would you like to use? \n")
-                if magicchoice.lower() in magiclist:
-                        magicidentifier = magiclist.index(magicchoice)
-                        truemagiclist[magicidentifier].magic(player, en)
+                if magicchoice not in magiclist:
+                    print("Please choose a magic item")
+                for i in magiclist:
+                    if magicchoice.lower == i:
+                        truemagiclist[i.index].magic(player, en)
                         return defense
         else:
             print("Sorry! You do not have any magic items")
