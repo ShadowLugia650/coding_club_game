@@ -136,7 +136,7 @@ def playerInputFight(player, enemies, defense = 0):
                     print("Please choose a magic item")
                 for i in magiclist:
                     if magicchoice.lower() == i:
-                        truemagiclist[i.index].magic(player, en)
+                        truemagiclist[magiclist.index(i)].magic(player, en)
                 return defense
         else:
             print("Sorry! You do not have any magic items")
