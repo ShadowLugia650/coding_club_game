@@ -120,7 +120,7 @@ class zombomanGuts(basicItem):
     def __init__(self):
         self.name = "Zomboman Guts"
         self.desc = "They have a very strong, horrible smell.."
-        self.value = -10
+        self.value = 5
         
 #Swords
 class sword(basicSword):
