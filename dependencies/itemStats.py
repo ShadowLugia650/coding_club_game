@@ -429,12 +429,12 @@ class staffOfLuck(basicMagicItem):
         elif int(guess)<luckynumber:
             print("Oops! You guessed too low!")
             self.count-=1
-            print ("You have "+str(count)+"guesses left!")
+            print ("You have "+str(self.count)+"guesses left!")
             self.magic(self,player,enemy)
         elif int(guess)>luckynumber:
             print("Oops! You guessed too high!")
             self.count-=1
-            print ("You have "+str(count)+"guesses left!")
+            print ("You have "+str(self.count)+"guesses left!")
             self.magic(self,player,enemy)
             
 class glowingOrb(basicMagicItem):
