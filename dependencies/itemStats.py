@@ -439,7 +439,7 @@ class staffOfLuck(basicMagicItem):
             
 class glowingOrb(basicMagicItem):
     def magic(self, player, enemy):
-        enemy.takeDamage(self.damage)
+        enemy.takeDamage(self.damage, player)
     
     def __init__(self):
         self.name = "Glowing Orb"
