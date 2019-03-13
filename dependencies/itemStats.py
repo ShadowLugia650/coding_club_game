@@ -435,7 +435,7 @@ class staffOfLuck(basicMagicItem):
             print("Oops! You guessed too high!")
             self.count-=1
             print ("You have "+str(self.count)+"guesses left!")
-            self.magic(self,player,enemy)
+            self.magic(player,enemy)
             
 class glowingOrb(basicMagicItem):
     def magic(self, player, enemy):
