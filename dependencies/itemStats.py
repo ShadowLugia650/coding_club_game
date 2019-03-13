@@ -410,32 +410,32 @@ class staffOfLuck(basicMagicItem):
         self.value = 72
         
     def magic(self,player,enemy):
-        if self.count==0:
-            self.count=4
-            print("Sorry! The lucky number was "+str(luckynumber))
-            return
-        elif self.count==4:
-            luckynumber=random.randint(1,20)
-        print("As you hold up the worn staff, you realize that a bit of luck may be required to make it work")
-        print("guess a number from 1 to 20")
-        guess=input()
-        if luckynumber==int(guess):
-            print("Fueled by your luck, a bolt of lightning strikes the "+enemy.type)
-            if self.count==4:
-                enemy.health=0
-            else:
-                enemy.health-=(0.5*enemy.health)
-            self.count=4
-        elif int(guess)<luckynumber:
-            print("Oops! You guessed too low!")
-            self.count-=1
-            print ("You have "+str(self.count)+"guesses left!")
-            self.magic(self,player,enemy)
-        elif int(guess)>luckynumber:
-            print("Oops! You guessed too high!")
-            self.count-=1
-            print ("You have "+str(self.count)+"guesses left!")
-            self.magic(player,enemy)
+        while True:
+            if self.count==0:
+                self.count=4
+                print("Sorry! The lucky number was "+str(luckynumber))
+                return
+            elif self.count==4:
+                luckynumber=random.randint(1,20)
+            print("As you hold up the worn staff, you realize that a bit of luck may be required to make it work")
+            print("guess a number from 1 to 20")
+            guess=input()
+            if luckynumber==int(guess):
+                print("Fueled by your luck, a bolt of lightning strikes the "+enemy.type)
+                if self.count==4:
+                    enemy.health=0
+                else:
+                    enemy.health-=(0.5*enemy.health)
+                self.count=4
+                return
+            elif int(guess)<luckynumber:
+                print("Oops! You guessed too low!")
+                self.count-=1
+                print ("You have "+str(self.count)+"guesses left!")
+            elif int(guess)>luckynumber:
+                print("Oops! You guessed too high!")
+                self.count-=1
+                print ("You have "+str(self.count)+"guesses left!")
             
 class glowingOrb(basicMagicItem):
     def magic(self, player, enemy):
