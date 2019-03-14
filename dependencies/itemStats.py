@@ -307,7 +307,7 @@ class shield(basicDefensiveItem):
     def __init__(self):
         self.name = "Shield"
         self.desc = "You should probably use this."
-        self.block = 10
+        self.block = 15
         self.value = 100
 
 class cardboardShield(basicDefensiveItem):
@@ -342,28 +342,28 @@ class frayedClothArmor(basicDefensiveItem):
     def __init__(self):
         self.name = "Frayed Cloth Armor"
         self.desc = "A frayed, deteriorating cloth..."
-        self.block = 4
+        self.block = 6
         self.value = 1
 
 class idolShield(basicDefensiveItem):
     def __init__(self):
         self.name = "Idol Shield"
         self.desc = "A pagan shield"
-        self.block = 100
+        self.block = 40
         self.value = 1000
         
 class steelPlateArmor(basicDefensiveItem):
     def __init__(self):
         self.name = "Steel Plate Armor"
         self.desc = "Strong armor worn by an old warrior"
-        self.block = 25
+        self.block = 35
         self.value = 160
         
 class cloak(basicDefensiveItem):
     def __init__(self):
         self.name = "Cloak"
         self.desc = "The cloak of an assassin"
-        self.block = 6
+        self.block = 7
         self.dodge = 5
         self.value = 82
         
@@ -371,21 +371,21 @@ class armoredShirt(basicDefensiveItem):
     def __init__(self):
         self.name = "Armored Shirt"
         self.desc = "shirt with armor"
-        self.block = 10
+        self.block = 20
         self.value = 73
         
 class glowingEyes(basicDefensiveItem):
     def __init__(self):
         self.name = "Glowing Eyes"
         self.desc = "A large stone statue with red glowing eyes."
-        self.block = 12
+        self.block = 19
         self.value = 241
         
 class glowingShield(basicDefensiveItem):
     def __init__(self):
         self.name = "Glowing Shield"
         self.desc = "The shield glows and seems indestructible"
-        self.block = 13
+        self.block = 18
         self.value = 177
         
 #Magic
