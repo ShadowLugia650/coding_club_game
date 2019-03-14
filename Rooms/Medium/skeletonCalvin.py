@@ -1,4 +1,6 @@
-import random
+import random, sys
+sys.path.insert(0, 'dependencies')
+import baseM, itemStats
 
 def run(player):
   def grope():
@@ -26,9 +28,9 @@ def run(player):
             grope()
           elif decision3 == "stand":
             stand()
-  if "sword" in player.items or "axe" in player.items or "bow" in player.items:
+  if baseM.hasWeapon(player) or "bow" in player.items:
       weapons = True
-  if "torch" in player.items:
+  if itemStats.torch() in player.items:
       print("The passageway collapses behind you, but you pull out your torch, and see something metal glinting in the darkness. Do you go towards it, or another direction?")
       decision2 = input("metal or another:")
       if decision2 == "metal":
