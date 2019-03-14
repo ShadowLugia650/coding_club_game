@@ -194,8 +194,8 @@ def runBasicFight(player, enemies, pBlock = 0, playerFirst = False, turn = 0):
             checkPlayer(player)
             if not player.alive:
                 return player
-    pBlock -=round(0.3*pBlock)
-    print(str(round(0.3*pBlock))+" of your block expired!")
+    pBlock -=round(0.2*pBlock)
+    print(str(round(0.2*pBlock))+" of your block expired!")
     pBlock = playerInputFight(player, enemies, pBlock)
     if getFirstAliveEnemy(enemies) is not None and player.alive:
         print("Your HP: {}\t\tEnemy's HP: {}".format(player.health, getFirstAliveEnemy(enemies)[0].health))
