@@ -1,4 +1,6 @@
-import random
+import random, sys
+sys.path.insert(0, 'dependencies')
+import baseM, itemStats
 
 #class player:
  # def __init__(self):
@@ -12,13 +14,13 @@ def run(player):
       player.alive = False
       return False
     return True
-  if "sword" in player.items or "axe" in player.items or "bow" in player.items:
+  if baseM.hasWeapon(player) or "bow" in player.items:
     weapons = True
   def start():
     def left():
         print("A door shuts behind you, and you find yourself in the next room.")
     def slimefight():
-              if "axe" or "sword" in player.items:
+              if baseM.hasWeapon(player): #only checks for sword-like weapons anyway
                 print("You slash the slime to pieces")
                 slimedestroyed = True
               elif "bow" in player.items:
@@ -37,8 +39,8 @@ def run(player):
               if slimedestroyed:
                 print("Having destroyed the slime, you open up the chest and find a sword, a shield, and 50 gold pieces.")
                 player.gold += 50
-                player.items.append("sword")
-                player.items.append("shield")
+                player.items.append(itemStats.sword())
+                player.items.append(itemStats.shield())
                 print("You see a door leading out of the room. Go through it, or go back up the staircase?")
                 decision5 = input("door or staircase:")
                 if decision5 == "door":
@@ -62,7 +64,7 @@ def run(player):
       if decision2 == "left":
         left()
       elif decision2 == "right":
-        if "torch" in player.items:
+        if itemStats.torch() in player.items:
           slimedestroyed = False
           print("You walk down the staircase, to see a room covered with slimy goo dimly illuminated by your burning torch. In the middle of the room there is a single wooden chest. Go towards the chest, or poke the goo?:")
           decision3 = input("go or poke:")
