@@ -314,15 +314,22 @@ class cardboardShield(basicDefensiveItem):
     def __init__(self):
         self.name = "Cardboard Shield"
         self.desc = "Not exactly the sturdiest of shields"
-        self.block = 3
+        self.block = 7
         self.value = 25
 
 class tinyShield(basicDefensiveItem):
     def __init__(self):
         self.name = "Tiny Shield"
         self.desc = "Some people like dinner plate-sized shields, apparently"
-        self.block = 4
+        self.block = 8
         self.value = 30
+
+class hugeShield(basicDefensiveItem):
+    def __init__(self):
+        self.name = "Huge Shield"
+        self.desc = "Some people like door-sized shields, apparently"
+        self.block = 20
+        self.value = 100
         
 class loincloth(basicDefensiveItem):
     def __init__(self):
@@ -337,6 +344,13 @@ class frayedClothArmor(basicDefensiveItem):
         self.desc = "A frayed, deteriorating cloth..."
         self.block = 4
         self.value = 1
+
+class idolShield(basicDefensiveItem):
+    def __init__(self):
+        self.name = "Idol Shield"
+        self.desc = "A pagan shield"
+        self.block = 100
+        self.value = 1000
         
 class steelPlateArmor(basicDefensiveItem):
     def __init__(self):
