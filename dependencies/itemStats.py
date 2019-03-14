@@ -122,6 +122,12 @@ class zombomanGuts(basicItem):
         self.desc = "They have a very strong, horrible smell.."
         self.value = 5
         
+class torch(basicItem):
+    def __init__(self):
+        self.name = "Torch"
+        self.desc = "Now you can see"
+        self.value = 10
+        
 #Swords
 class sword(basicSword):
     def __init__(self):
@@ -129,6 +135,13 @@ class sword(basicSword):
         self.desc = "It deals damage. Use it!"
         self.damage = 10
         self.value = 100
+    
+class axe(basicSword):
+    def __init__(self):
+        self.name = "Axe"
+        self.desc = "Choppy choppy?"
+        self.damage = 12
+        self.value = 92
     
 class swordOfStupidity(basicSword):
     def __init__(self):
