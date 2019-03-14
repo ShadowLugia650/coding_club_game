@@ -8,7 +8,7 @@ import shopM, battleZombomanM, bestRoomRC, GobolinRC, goldenTreeM, Armory, troph
 easy= [shopM, battleZombomanM, bestRoomRC, GobolinRC, goldenTreeM, Armory, trophyRoom]
 sys.path.insert(0, 'Rooms/Medium')
 import strangerJGv1, battleGhoulM, mirrorsM, lavaroomRCv1, skeletonCalvin, reverseRoomAT,  randomMediumBattlesM, slimeroomCalvin, CurseiveM, bogGiantRC, ExpensiveRC, mossyGooberM, ohgur
-med = [strangerJGv1, battleGhoulM, mirrorsM, lavaroomRCv1, skeletonCalvin, reverseRoomAT, CurseiveM, bogGiantRC, ExpensiveRC, mossyGooberM, ohgur]
+med = [strangerJGv1, battleGhoulM, mirrorsM, lavaroomRCv1, skeletonCalvin, reverseRoomAT, slimeroomCalvin, CurseiveM, bogGiantRC, ExpensiveRC, mossyGooberM, ohgur]
 for i in range(3): #increase for each enemy added to randombattles
     med.append(randomMediumBattlesM)
 sys.path.insert(0, 'Rooms/Hard')
