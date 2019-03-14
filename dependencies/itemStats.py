@@ -456,7 +456,7 @@ class glowingOrb(basicMagicItem):
     
     def __init__(self):
         self.name = "Glowing Orb"
-        self.desc = "The staff glows and seems indestructible"
+        self.desc = "How did an orb get created with a hammer and an anvil?"
         self.damage = 30
         self.value = 177
             
