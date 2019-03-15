@@ -53,7 +53,7 @@ def run(player):
       decision2 = input("secret or another?:")
       if decision2 == "secret":
         print("You find a magical breastplate that dimly glows purple in a stone relief on the wall. Putting it on increases your health by 10. You re-enter the main room.")
-        player.items.append("magic-breastplate")
+        player.items.append(itemStats.magicalBreastplate())
         player.health += 10
         leave()
       elif decision2 == "another":
