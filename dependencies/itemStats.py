@@ -417,7 +417,7 @@ class staffOfGold(basicMagicItem):
         
 class orbOfThunder(basicMagicItem):
     def magic(self, player, enemy):
-        enemy.takeDamage(8, player)
+        enemy.takeDamage(12, player)
         
     def __init__(self):
         self.name = "Orb of Thunder"
