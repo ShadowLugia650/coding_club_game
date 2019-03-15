@@ -490,6 +490,22 @@ class amplifyingOrb(basicMagicItem):
         db.damage *= 2
         print("The demonic energies swirl around your Demonic Blade! It doubles in strength! ({})".format(db.damage))
         
+class idol(basicMagicItem):
+    def __init__(self):
+        self.name = "Idol"
+        self.desc = "A single-use, destructive item"
+        self.value = 200
+    def magic(self, player, enemy):
+        enemy.health = 0
+        player.items.remove(idol)
+        player.items.append(expendedIdol)
+        
+class expendedIdol(basicItem):
+    def __init__(self):
+        self.name = "Expended Idol"
+        self.desc = "a used, no longer destructive item"
+        self.value = 200
+        
 class epiTome(basicMagicItem):
     def __init__(self):
         self.name = "Epi Tome"
