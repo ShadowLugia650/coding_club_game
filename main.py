@@ -35,7 +35,7 @@ def game():
         if not itemStats.torch() in Player.items:
             if random.randint(0,10)>6:
                 print("You tripped in the dark and took 5 damage")
-                player.health-=5
+                Player.health-=5
         if rounds == 3:
             room = shopM
         else:
