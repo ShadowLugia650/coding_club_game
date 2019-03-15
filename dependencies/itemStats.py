@@ -309,7 +309,12 @@ class shield(basicDefensiveItem):
         self.desc = "You should probably use this."
         self.block = 15
         self.value = 100
-
+class magicalBreastplate(basicDefensiveItem):
+    def __init__(self):
+        self.name = "Magical Breastplate"
+        self.desc = "A breastplate with magic"
+        self.block = 20
+        self.value = 250
 class cardboardShield(basicDefensiveItem):
     def __init__(self):
         self.name = "Cardboard Shield"
@@ -434,7 +439,7 @@ class staffOfLuck(basicMagicItem):
         self.name="Staff of Luck"
         self.desc="Test your luck"
         self.count=4
-        self.value = 72
+        self.value = 400
         
     def magic(self,player,enemy):
         while True:
