@@ -32,7 +32,7 @@ def game():
         for itm in Player.items:
             if itm.name == "Zomboman Guts":
                 possibleLevels.append(battleZombomanM)
-        if not baseM.hasItem(itemStats.torch, player):
+        if not itemStats.torch() in Player.items:
             if random.randint(0,10)>6:
                 print("You tripped in the dark and took 5 damage")
                 player.health-=5
