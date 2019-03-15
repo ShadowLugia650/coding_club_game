@@ -26,13 +26,16 @@ def game():
 
     baseM.initIntro(Player)
     while Player.alive:
+        torchExists = False
         possibleLevels = copy.copy(levels)
         if Player.impossible:
             possibleLevels += impossible
         for itm in Player.items:
             if itm.name == "Zomboman Guts":
                 possibleLevels.append(battleZombomanM)
-        if not itemStats.torch() in Player.items:
+            if itm.name =="Torch":
+                torchExists = True
+        if not torchExists:
             if random.randint(0,10)>6:
                 print("You tripped in the dark and took 5 damage")
                 Player.health-=5
