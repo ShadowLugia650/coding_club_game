@@ -16,12 +16,12 @@ def run(player, screen):
         itm = random.choice(list(allItems.keys()))
         items[itm] = allItems[itm]
     baseM.showText("Welcome, Traveller! Buy something at my shop!")
-    choice = input("What do you do? [Buy, Leave]\n")
+    choice = baseM.showText("What do you do? [Buy, Leave]\n")
     if choice.title() in ["Buy", "B"]:
         listItems(items)
         im = None
         while im not in ["leave", "l"]:
-            im = input("What would you like to buy? (type 'Leave' to leave).\n")
+            im = baseM.showText("What would you like to buy? (type 'Leave' to leave).\n")
             im = baseM.strToClsNm(im)
             found = False
             if im in ["leave", "l"]:
@@ -50,5 +50,6 @@ def run(player, screen):
         baseM.checkCommands(choice, player)
         run(player, screen)
     return player
+
 
 

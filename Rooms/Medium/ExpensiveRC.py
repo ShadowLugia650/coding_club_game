@@ -1,12 +1,12 @@
 def run(player, screen):
     baseM.showText("The hallway opens into a wide chamber lined with gold. You estimate that it will take three minutes to cross the long chamber")
     baseM.showText("Do you wish to pick up any of the gold lining the hallway?")
-    choice=input("[Yes, No]")
+    choice=baseM.showText("[Yes, No]")
     if choice.lower() in ["yes", "y"]:
         baseM.showText("How much?")
         while True:
             try:
-                choice=int(input())
+                choice=int(baseM.showText())
                 if choice<0:
                     baseM.showText("choose a positive number")
                 elif choice>10000:
@@ -30,12 +30,12 @@ def owMoney(player, screen):
 def dropGold(player, screen):
     baseM.showText("""The gold in your sack seems to be getting warmer as you proceed through the hall. Uncomfortably warm, in fact.
 Would you like to drop any?""")
-    choice=input("[Yes, No]")
+    choice=baseM.showText("[Yes, No]")
     if choice.lower() in ["yes","y"]:
         baseM.showText("How much?")
         while True:
             try:
-                choice=int(input())
+                choice=int(baseM.showText())
                 if choice<0:
                     baseM.showText("choose a positive number")
                 elif choice>player.gold:
@@ -45,5 +45,6 @@ Would you like to drop any?""")
                     break
             except ValueError:
                 baseM.showText("That's not a number")
+
 
 

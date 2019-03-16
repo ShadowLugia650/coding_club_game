@@ -23,7 +23,7 @@ def run(player, screen):
             gameover()
         elif a == 2:
           baseM.showText("Nothing happens")
-          decision3 = input("grope or stand:")
+          decision3 = baseM.showText("grope or stand:")
           if decision3 == "grope":
             grope()
           elif decision3 == "stand":
@@ -32,7 +32,7 @@ def run(player, screen):
       weapons = True
   if itemStats.torch() in player.items:
       baseM.showText("The passageway collapses behind you, but you pull out your torch, and see something metal glinting in the darkness. Do you go towards it, or another direction?")
-      decision2 = input("metal or another:")
+      decision2 = baseM.showText("metal or another:")
       if decision2 == "metal":
         if "shield" in player.items:
           baseM.showText("You find a skeleton holding a shield who tries to punch you, but who you blocks with your shield")
@@ -50,12 +50,13 @@ def run(player, screen):
 
   else: 
       baseM.showText("The doorway closes behind you, leaving you in complete darkness. Do you want to grope your way through the darkness, or stand still?")
-      decision2 = input("grope or stand:")
+      decision2 = baseM.showText("grope or stand:")
 
       if decision2 == "grope":
         grope()
 
       elif decision2 == "stand":
         stand()
+
 
 

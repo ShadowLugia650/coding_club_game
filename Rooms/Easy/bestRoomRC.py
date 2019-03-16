@@ -7,11 +7,11 @@ Down one path you see a fountain bubbling with clear, pure, water, and down
 the other you see a golden door.""")
     while True:
         baseM.showText("Choose your path [Fountain, Gold]")
-        choice=input().title()
+        choice=baseM.showText().title()
         if choice in ["Fountain","F"]:
             while True:
                 baseM.showText("Do you wish to drink from the fountain? [yes, no]")
-                choice=input()
+                choice=baseM.showText()
                 if choice in ["yes", "y","okay","ok"]:
                     baseM.showText("You feel the water purify and heal your body")
                     baseM.showText("You were healed to full health!")
@@ -31,7 +31,7 @@ Press 3 to cut off pieces of gold and steal them
 Press 4 to search the room for a key
 Press 5 to leave""")
             while True:
-                choice=input().title()
+                choice=baseM.showText().title()
                 if choice in ["1", "one", "knock"]:
                     print ("""The door opens into a room full of treasure. Gold coins are scattered throughout the chamber, but two incongruencies catch your eye.
 A pair of large dice lie near the right wall of the room, while a staff made of pure gold leans against the left wall.
@@ -40,7 +40,7 @@ Press 1 to gather gold coins, then leave
 Press 2 to investigate the dice
 Press 3 to take the staff""")
                     while True:
-                        choice=input()
+                        choice=baseM.showText()
                         if choice in ["1", "one", "gather"]:
                             print ("Good thing you didn't try to desecrate the door. Cheaters never prosper")
                             print ("You gained 150 gold!")
@@ -80,5 +80,6 @@ Press 3 to take the staff""")
         else:
             baseM.showText("Sorry, that is not one of your choices")
         
+
 
 

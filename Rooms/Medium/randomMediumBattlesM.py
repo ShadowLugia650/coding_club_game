@@ -52,7 +52,7 @@ class Sorcerer(baseM.basicEnemy):
 def run(player, screen):
     enemies = [random.choice([Grenlim(), Snak(), Sorcerer()])]
     baseM.showText("You encountered a {}!".format(enemies[0].type))
-    choice = input("What do you do? [Fight, Run]\n")
+    choice = baseM.showText("What do you do? [Fight, Run]\n")
     if choice.title() in ["Fight", "F", "Attack"]:
         baseM.showText("You engage the {} in combat!".format(enemies[0].type))
         baseM.runBasicFight(player, enemies)
@@ -66,5 +66,6 @@ def run(player, screen):
         baseM.checkCommands(choice, player)
         run(player, screen)
     return player
+
 
 

@@ -451,7 +451,7 @@ class staffOfLuck(basicMagicItem):
                 luckynumber=random.randint(1,20)
             baseM.showText("As you hold up the worn staff, you realize that a bit of luck may be required to make it work")
             baseM.showText("guess a number from 1 to 20")
-            guess=input()
+            guess=baseM.showText()
             if luckynumber==int(guess):
                 baseM.showText("Fueled by your luck, a bolt of lightning strikes the "+enemy.type)
                 if self.count==4:
@@ -566,5 +566,6 @@ class ohgurGuts(basicPotion):
         self.name = "Ohgur Guts"
         self.desc = "Ew! Slimy ohgur guts. Maybe they can heal you..."
         self.value = 53
+
 
 

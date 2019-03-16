@@ -4,7 +4,7 @@ import baseM, curseScript, itemStats, pScript
 
 def run(player, screen):
     baseM.showText("You walk into a large room with three doors glowing an ominous dark purple.")
-    choice = input("Which door do you choose? [Left, Middle, Right]")
+    choice = baseM.showText("Which door do you choose? [Left, Middle, Right]")
     if choice.title() in ["Left", "L"]:
         baseM.showText("You open the left door and feel the dark energy surround you.")
         itm = random.choice(player.items)
@@ -29,5 +29,6 @@ def run(player, screen):
         baseM.checkCommands(choice, player)
         run(player, screen)
     return player
+
 
 

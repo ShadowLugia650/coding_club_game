@@ -33,7 +33,7 @@ class MossyGoober(baseM.basicEnemy):
 
 def run(player, screen):
     baseM.showText("You encounter a thicket of vines preventing you from proceeding. What do you do?")
-    choice = input("[Push Through, Cut Vines, Go Back]")
+    choice = baseM.showText("[Push Through, Cut Vines, Go Back]")
     if choice.title() in ["Push", "Push Through", "Through", "P"]:
         baseM.showText("You push through the vines to the other side. Unfortunately, you realize that the vines were actually poisonous.")
         tx = curseScript.toxins()
@@ -58,5 +58,6 @@ def run(player, screen):
         baseM.checkCommands(choice,player)
         run(player, screen)
     return player
+
 
 

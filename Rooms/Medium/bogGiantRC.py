@@ -19,7 +19,7 @@ How would you wish to proceed?
 Press 1 to take the sword
 Press 2 to leave""")
     while True:
-        choice=input()
+        choice=baseM.showText()
         if choice=="1":
             baseM.showText("""You yank hard on the sword, trying to dislodge it.
 To your surprise, the floor begins to rumble and the tree trunk begins to rise.
@@ -32,5 +32,6 @@ You realize that the tree trunk is actually the head of a massive bog giant!""")
         else:
             baseM.showText("Sorry, that is not one of your options")
         
+
 
 

@@ -8,11 +8,11 @@ def run(player, screen):
     trueItems = []
     while True:
         baseM.showText("The passageway opens up into a small, cramped, room lined with rusty weapons and tools.")
-        choice=input("Do you want to look around for something useful?")
+        choice=baseM.showText("Do you want to look around for something useful?")
         if choice in ["yes", "y", "si", "of course"]:
             while True:
                 baseM.showText("Grab many random items, or search carefully for specific useful items?")
-                choice = input("[Grab random, search for useful]")
+                choice = baseM.showText("[Grab random, search for useful]")
                 if choice.lower() in ["grab random", "grab", "random"]:
                     for i in range(4):
                         trueItems+=commonItems
@@ -37,5 +37,6 @@ def run(player, screen):
             return player
         else:
             baseM.showText("Sorry! That is not one of your choices")
+
 
 

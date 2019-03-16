@@ -5,7 +5,7 @@ import baseM, random, itemStats
 def run(player, screen):
     baseM.showText("A golden idol stands in the middle of the hallway")
     baseM.showText("Hack pieces off or touch the idol?")
-    choice = input("[hack pieces, touch idol]")
+    choice = baseM.showText("[hack pieces, touch idol]")
     thisIdol = Idol()
     while True:
         if choice.lower() in ["hack pieces","hack", "h"]:
@@ -31,5 +31,6 @@ class Idol(baseM.basicEnemy):
         self.options = {"Glow":0}
         self.loot=[itemStats.idolShield()]
         
+
 
 

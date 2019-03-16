@@ -10,7 +10,7 @@ def run(player, screen):
     for itm in player.items:
         if itm.name == "Zomboman Guts":
             enemies.append(Zomboman())
-    choice = input("What do you do? [Fight, Run]\n")
+    choice = baseM.showText("What do you do? [Fight, Run]\n")
     if choice.title() in ["Fight", "F"]:
         baseM.showText("You engage the Zombo-man in combat!")
         baseM.runBasicFight(player, enemies)
@@ -21,5 +21,6 @@ def run(player, screen):
         baseM.checkCommands(choice, player)
         run(player, screen)
     return player
+
 
 

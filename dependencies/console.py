@@ -30,7 +30,7 @@ def testHP(Player, y):
 def getInput(Player, outputs, prompt = ""): # a better Input function. Has built-in UI commands.
     output = False
     while output == False:
-        console = input(prompt)
+        console = baseM.showText(prompt)
         if console.lower() in ["help", "?"]:
             playerhelp()
         elif console.lower() in ["status", "stat", "me", "stats"]:
@@ -49,6 +49,7 @@ def getInput(Player, outputs, prompt = ""): # a better Input function. Has built
 
 def delayPrint(Player, text = ""):
     baseM.showText(text)
-    input()
+    baseM.showText()
+
 
 

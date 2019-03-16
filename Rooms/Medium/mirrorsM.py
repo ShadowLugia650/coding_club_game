@@ -42,7 +42,7 @@ def initPlayers():
 def run(player, screen):
     baseM.showText("You enter a room full of mirrors. Everywhere you look you see yourself, yet they all seem.. distorted...")
     baseM.showText("You walk up to a mirror and place your hand on it. You feel your hand start to phase through...")
-    choice = input("What do you do? [Continue, Leave]\n")
+    choice = baseM.showText("What do you do? [Continue, Leave]\n")
     if choice.title() in ["Continue", "C"]:
         baseM.showText("You continue, pushing through the mirror and reach the other side.")
         ps, texts = initPlayers()
@@ -50,7 +50,7 @@ def run(player, screen):
         p = random.choice(ps)
         txt = texts[ps.index(p)]
         baseM.showText("You look back at the mirror from which you came and see yourself there.")
-        input("As you leave the room, you feel... {}..[Continue]".format(txt))
+        baseM.showText("As you leave the room, you feel... {}..[Continue]".format(txt))
         player.gold = p.gold
         for i in range(3):
             player.items.remove(random.choice(player.items))
@@ -62,12 +62,13 @@ def run(player, screen):
         player.health -= 12
         baseM.checkPlayer(player, screen)
         if player.alive:
-            input("You leave the room as if nothing has happened..[Continue]")
+            baseM.showText("You leave the room as if nothing has happened..[Continue]")
         else:
             return player
     else:
         baseM.checkCommands(choice, player)
         run(player, screen)
     return player
+
 
 

@@ -20,7 +20,7 @@ def run(player, setEnemies = None):
         else:
             wording = ["ghoul", "ghoul", "it hits"]
     baseM.showText("You encountered a {}!".format(wording[0]))
-    choice = input("What do you do? [Fight, Run]\n")
+    choice = baseM.showText("What do you do? [Fight, Run]\n")
     if choice.title() in ["Fight", "F"]:
         baseM.showText("You engage the {} in combat!".format(wording[1]))
         baseM.runBasicFight(player, enemies)
@@ -35,5 +35,6 @@ def run(player, setEnemies = None):
 def test():
     thePlayer = PChar()
     run(thePlayer)
+
 
 

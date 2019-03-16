@@ -77,11 +77,12 @@ def game(mode = "Text"):
     baseM.showText("Ending items:", screen)
     for i in Player.items:
         baseM.showText("- {}".format(i), screen)
-    baseM.showText("Your final score is: {}".format(baseM.calculateFinalScore(Player,rounds)))
-    input()
+    baseM.showText("Your final score is: {}".format(baseM.calculateFinalScore(Player,rounds)), screen)
+    baseM.showText()
     levels=easy
     game(mode)
 game()
+
 
 
 
