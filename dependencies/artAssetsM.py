@@ -61,7 +61,7 @@ def dispText(text, screen):
                                 baseM.showText("Index out of bounds")
                     else:
                         return None
-    except ValueError:#pygame.error: 
+    except pygame.error: 
         baseM.showText("error with displaying text.")
 
 
