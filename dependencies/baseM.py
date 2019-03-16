@@ -63,12 +63,12 @@ def initIntro(player, screen):
     intro = random.choice(intros)
     intro.run(player, screen)
 
-def showText(text, screen = None):
+def showText(text = '', screen = None):
     if screen is None:
         if [i in text for i in ['[',']']] == [True, True]:
-            return showText(text)
+            return input(text)
         else:
-            showText(text)
+            print(text)
     else:
         import artAssetsM
         return artAssetsM.dispText(text, screen)

@@ -24,7 +24,7 @@ def game(mode = "Text"):
     rounds = 0
     lastRoom = None
     screen = None
-    if mode = "Pygame":
+    if mode == "Pygame":
         screen = ArtAssetsM.initScreen()
 
     baseM.initIntro(Player, screen)
