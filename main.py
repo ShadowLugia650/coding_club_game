@@ -1,23 +1,23 @@
-import sys, random, copy
-
-sys.path.insert(0, 'dependencies')
-import console, pScript, baseM, itemStats, curseScript, artAssetsM
-
-sys.path.insert(0, 'Rooms/Easy')
-import shopM, battleZombomanM, bestRoomRC, GobolinRC, goldenTreeM, Armory, trophyRoom
-easy= [shopM, battleZombomanM, bestRoomRC, GobolinRC, goldenTreeM, Armory, trophyRoom]
-sys.path.insert(0, 'Rooms/Medium')
-import strangerJGv1, battleGhoulM, mirrorsM, lavaroomRCv1, skeletonCalvin, reverseRoomAT,  randomMediumBattlesM, slimeroomCalvin, CurseiveM, bogGiantRC, ExpensiveRC, mossyGooberM, ohgur
-med = [strangerJGv1, battleGhoulM, mirrorsM, lavaroomRCv1, skeletonCalvin, reverseRoomAT, slimeroomCalvin, CurseiveM, bogGiantRC, ExpensiveRC, mossyGooberM, ohgur]
-for i in range(3): #increase for each enemy added to randombattles
-    med.append(randomMediumBattlesM)
-sys.path.insert(0, 'Rooms/Hard')
-import owM, Collector, demonicWarrior, jabberwockyJG
-hard= [owM, Collector, demonicWarrior, jabberwockyJG]
-sys.path.insert(0, 'Rooms/Impossible')
-import TimeEater
-impossible = [TimeEater]
 def game(mode = "Text"):
+    import sys, random, copy
+
+    sys.path.insert(0, 'dependencies')
+    import console, pScript, baseM, itemStats, curseScript, artAssetsM
+
+    sys.path.insert(0, 'Rooms/Easy')
+    import shopM, battleZombomanM, bestRoomRC, GobolinRC, goldenTreeM, Armory, trophyRoom
+    easy= [shopM, battleZombomanM, bestRoomRC, GobolinRC, goldenTreeM, Armory, trophyRoom]
+    sys.path.insert(0, 'Rooms/Medium')
+    import strangerJGv1, battleGhoulM, mirrorsM, lavaroomRCv1, skeletonCalvin, reverseRoomAT,  randomMediumBattlesM, slimeroomCalvin, CurseiveM, bogGiantRC, ExpensiveRC, mossyGooberM, ohgur
+    med = [strangerJGv1, battleGhoulM, mirrorsM, lavaroomRCv1, skeletonCalvin, reverseRoomAT, slimeroomCalvin, CurseiveM, bogGiantRC, ExpensiveRC, mossyGooberM, ohgur]
+    for i in range(3): #increase for each enemy added to randombattles
+        med.append(randomMediumBattlesM)
+    sys.path.insert(0, 'Rooms/Hard')
+    import owM, Collector, demonicWarrior, jabberwockyJG
+    hard= [owM, Collector, demonicWarrior, jabberwockyJG]
+    sys.path.insert(0, 'Rooms/Impossible')
+    import TimeEater
+    impossible = [TimeEater]
     Player = pScript.PChar()
     levels = easy
     consol = ""
@@ -25,7 +25,7 @@ def game(mode = "Text"):
     lastRoom = None
     screen = None
     if mode == "Pygame":
-        screen = ArtAssetsM.initScreen()
+        screen = artAssetsM.initScreen()
 
     baseM.initIntro(Player, screen)
     while Player.alive:
@@ -81,8 +81,8 @@ def game(mode = "Text"):
     input()
     levels=easy
     game(mode)
-game()
-
+if __name__ == "__main__":
+    game()
 
 
 

@@ -54,7 +54,7 @@ def checkCommands(Input, player, screen):
 def initIntro(player, screen):
     showText("""Welcome to the Coding Club dungeon crawler game!
 ************************************************
-             Press any key to begin""")
+             Press any key to begin""", screen)
     console.playerhelp(screen)
     sys.path.insert(0, 'Rooms/Intros')
     import originalIntroM

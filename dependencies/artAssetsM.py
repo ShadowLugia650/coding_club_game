@@ -31,7 +31,12 @@ def dispText(text, screen):
         box = pygame.image.load('resources/textBox.png')
         box_size = box.get_size()
         screen.blit(box, (0, 420)) # modify to make it scalable with screen size
-        if len(text) <= 92:
+        if '\n' in text:
+            txt = text.split('\n')
+            txs = [pygame.font.Font(None, 22).render(i, True, (255,255,255)) for i in txt]
+            for i in range(len(txs)):
+                screen.blit(txs[i], (box_size[0]/2-txs[i].get_size()[0]/2, 440+20*i))
+        elif len(text) <= 92:
             tx = pygame.font.Font(None, 22).render(text, True, (255,255,255))
             screen.blit(tx, (box_size[0]/2-tx.get_size()[0]/2, 440))
         else:
