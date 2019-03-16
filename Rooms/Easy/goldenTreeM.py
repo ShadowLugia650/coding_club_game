@@ -16,10 +16,10 @@ def stealLeaves(player, screen):
         baseM.showText("You leave the room with the leaves in your bag.",screen)
         return player
     else:
-        baseM.checkCommands(chc, player)
+        baseM.checkCommands(chc, player,screen)
         stealLeaves(player, screen)
 
-def destree(player, timesHit = 0):
+def destree(player, screen, timesHit = 0):
     if baseM.hasWeapon(player, screen):
         baseM.showText("You ready your weapons...",screen)
         if timesHit == 0:
@@ -45,7 +45,7 @@ def destree(player, timesHit = 0):
         elif choice.title() in ["Leave", "L"]:
             baseM.showText("You leave the room wondering how much the golden leaves were really worth. [Continue]",screen)
         else:
-            baseM.checkCommands(choice, player)
+            baseM.checkCommands(choice, player,screen)
             destree(player, timesHit)
     else:
         baseM.showText("You punch the tree as hard as you can. A lone leaf falls down, and your hand hurts.",screen)
@@ -84,7 +84,7 @@ def waitp3(player, screen):
         baseM.showText("\"The exit is to your right. Good luck on your adventure.\"",screen)
         baseM.showText("The hooded figures leave. [Continue]",screen)
     else:
-        baseM.checkCommands(ch3, player)
+        baseM.checkCommands(ch3, player,screen)
         waitp3(player, screen)
     return player
 
@@ -93,11 +93,9 @@ def waitp2(player, screen):
     if ch2.title() in ["Sit", "Sit Down", "Down"]:
         baseM.showText("You sit down by the tree.",screen)
         for i in range(5):
-            for j in range(3):
-                time.sleep(2)
-                baseM.showText('.',end='',screen)
-                player.timeClimbing+=2
-            baseM.showText(,screen)
+            time.sleep(6)
+            baseM.showText('...',screen)
+            player.timeClimbing+=6
         baseM.showText("You fall asleep.",screen)
         player.timeClimbing+= 100
         baseM.showText("You wake up, hearing the murmers of numerous hooded figures standing around you.",screen)
@@ -105,38 +103,34 @@ def waitp2(player, screen):
     elif ch2.title() in ["Stand", "Stay", "Stay Standing"]:
         baseM.showText("You stay standing.",screen)
         for i in range(2):
-            for i in range(3):
-                time.sleep(2)
-                baseM.showText('.',end='',screen)
-                player.timeClimbing+=2
+            time.sleep(6)
+            baseM.showText('...',screen)
+            player.timeClimbing+=6
         baseM.showText("Nothing happens. After waiting for hours, you grow bored and leave.",screen)
     else:
-        baseM.checkCommands(ch2, player)
+        baseM.checkCommands(ch2, player,screen)
         waitp2(player, screen)
     return player
 
-def wait(player, repeat = False):
+def wait(player, screen, repeat = False):
     if repeat:
         ch1 = baseM.showText("Nothing seems to be happening...[Keep Waiting, Leave]",screen)
     else:
         baseM.showText("You wait. You feel like someone's watching you..",screen)
-        for i in range(3):
-            time.sleep(2)
-            baseM.showText(".",end="",screen)
-            player.timeClimbing+=2
+        time.sleep(6)
+        baseM.showText("...", screen)
+        player.timeClimbing+=6
         ch1 = baseM.showText("Nothing seems to be happening...[Keep Waiting, Leave]",screen)
     if ch1.title() in ["Stay", "Keep", "Wait", "Waiting", "Keep Waiting"]:
         for i in range(3):
-            for j in range(3):
-                time.sleep(2)
-                baseM.showText(".",end="",screen)
-                player.timeClimbing+=2
-            baseM.showText(,screen)
+            time.sleep(6)
+            baseM.showText("...",screen)
+            player.timeClimbing+=6
         waitp2(player, screen)
     elif ch1.title() in ["Leave","L"]:
         baseM.showText("You exit the room without a sound.",screen)
     else:
-        baseM.checkCommands(ch1, player)
+        baseM.checkCommands(ch1, player,screen)
         wait(player, True)
     return player
 
@@ -157,9 +151,10 @@ def run(player, screen):
     elif choice.title() in ["Leave", "L"]:
         baseM.showText("You leave the room, not wanting to be greedy. [Continue]",screen)
     else:
-        baseM.checkCommands(choice, player)
+        baseM.checkCommands(choice, player,screen)
         run(player, screen)
     return player
+
 
 
 

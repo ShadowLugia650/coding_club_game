@@ -50,7 +50,7 @@ def run(player, screen):
         p = random.choice(ps)
         txt = texts[ps.index(p)]
         baseM.showText("You look back at the mirror from which you came and see yourself there.",screen)
-        baseM.showText("As you leave the room, you feel... {}..[Continue]".format(txt,screen),screen),screen)
+        baseM.showText("As you leave the room, you feel... {}..[Continue]".format(txt),screen)
         player.gold = p.gold
         for i in range(3):
             player.items.remove(random.choice(player.items))
@@ -66,9 +66,10 @@ def run(player, screen):
         else:
             return player
     else:
-        baseM.checkCommands(choice, player)
+        baseM.checkCommands(choice, player,screen)
         run(player, screen)
     return player
+
 
 
 

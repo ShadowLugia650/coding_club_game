@@ -72,16 +72,17 @@ def game(mode = "Text"):
         elif rounds == 20:
             levels += hard
     baseM.showText("Game over.",screen)
-    baseM.showText("rooms cleared:  " + str(rounds,screen),screen)
-    baseM.showText("Ending gold:    " + str(Player.gold,screen),screen)
+    baseM.showText("rooms cleared:  " + str(rounds),screen)
+    baseM.showText("Ending gold:    " + str(Player.gold),screen)
     baseM.showText("Ending items:",screen)
     for i in Player.items:
-        baseM.showText("- {}".format(i,screen),screen)
-    baseM.showText("Your final score is: {}".format(baseM.calculateFinalScore(Player,rounds,screen),screen),screen),screen)
-    baseM.showText(,screen)
+        baseM.showText("- {}".format(i),screen)
+    baseM.showText("Your final score is: {}".format(baseM.calculateFinalScore(Player,rounds)),screen)
+    input()
     levels=easy
     game(mode)
 game()
+
 
 
 

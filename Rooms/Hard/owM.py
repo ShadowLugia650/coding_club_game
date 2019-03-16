@@ -67,7 +67,7 @@ def ignore(player, screen):
         player.health = 0
         player.alive = False
     else:
-        baseM.checkCommands(choice, player)
+        baseM.checkCommands(choice, player,screen)
         ignore(player, screen)
 
 def run(player, screen):
@@ -88,11 +88,12 @@ def run(player, screen):
         baseM.showText("Suddenly, you see an open doorway above you! You grab the ledge and pull yourself out of the room gravely injured, but ultimately alive.",screen)
         dmg = player.health -1
         player.health = 1
-        sel = baseM.showText("You take {} damage as you escape...[Continue]".format(dmg,screen),screen),screen)
+        sel = baseM.showText("You take {} damage as you escape...[Continue]".format(dmg),screen)
     else:
-        baseM.checkCommands(choice, player)
+        baseM.checkCommands(choice, player,screen)
         run(player, screen)
     return player
+
 
 
 

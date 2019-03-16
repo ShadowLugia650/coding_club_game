@@ -39,16 +39,16 @@ def heal(Player, HP): # a heal function. HP should be an integer.
     Player.health += HP
     if Player.health > Player.maxHp:
         Player.health = Player.maxHp
-    baseM.showText("you healed " + str(HP,screen) + " health",screen)
+    baseM.showText("you healed " + str(HP) + " health",screen)
     if Player.alive == True:
-        baseM.showText("Current health: " + str(Player.health,screen),screen),screen)
+        baseM.showText("Current health: " + str(Player.health),screen)
 
 def damage(Player, HP): # a damage function. HP should be an integer.
     Player.health -= HP
-    baseM.showText("you took " + str(HP,screen) + " damage",screen)
+    baseM.showText("you took " + str(HP) + " damage",screen)
     checkDeath(Player)
     if Player.alive == True:
-        baseM.showText("Current health: " + str(Player.health,screen),screen),screen)
+        baseM.showText("Current health: " + str(Player.health),screen)
     
 
 def spendGold(Player, cost): # A function for the player losing money. Returns False if the player doesn't have enough money to spend. ("cost" should be an integer.)
@@ -57,14 +57,14 @@ def spendGold(Player, cost): # A function for the player losing money. Returns F
         return False
     else:
         Player.gold -= cost
-        baseM.showText("you lose " + str(cost,screen) + " gold",screen)
-        baseM.showText("Current gold: " + str(Player.gold,screen),screen),screen)
+        baseM.showText("you lose " + str(cost) + " gold",screen)
+        baseM.showText("Current gold: " + str(Player.gold),screen)
         return True
 
 def earnGold(Player, gold): # A function for the player gaining money. ("gold" should be an integer.)
     Player.gold += gold
-    baseM.showText("you gain " + str(gold,screen) + " gold",screen)
-    baseM.showText("Current gold: " + str(Player.gold,screen),screen),screen)
+    baseM.showText("you gain " + str(gold) + " gold",screen)
+    baseM.showText("Current gold: " + str(Player.gold),screen)
 
 
 def addItem(Player, item): #adds an item to the list of items
@@ -89,6 +89,7 @@ def removeItem(Player, item): #adds an item to the list of items. Returns False 
 #def update(Player):  **OBSOLETE FUNCTION**
     #checkDeath(Player)
     #checkDebt(Player)
+
 
 
 

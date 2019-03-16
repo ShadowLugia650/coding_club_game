@@ -18,9 +18,10 @@ def run(player, screen):
         baseM.showText("As you fearfully flee the angry Zombo-man, it punches you, dealing 1 damage.",screen)
         player.health -= 1
     else:
-        baseM.checkCommands(choice, player)
+        baseM.checkCommands(choice, player,screen)
         run(player, screen)
     return player
+
 
 
 

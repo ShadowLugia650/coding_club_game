@@ -7,7 +7,7 @@ from itemStats import *
 def listItems(items):
     baseM.showText("This shop has:",screen)
     for i in items:
-        baseM.showText('{}: {}'.format(i, items[i],screen),screen),screen)
+        baseM.showText('{}: {}'.format(i, items[i]),screen)
 
 def run(player, screen):
     items = {}
@@ -30,11 +30,11 @@ def run(player, screen):
                 if baseM.strToClsNm(i.name) == im:
                     found = True
                     if items[i] > player.gold:
-                        baseM.showText(random.choice(["You don't have enough money for that..", "Don't be a thief!"],screen),screen),screen)
+                        baseM.showText(random.choice(["You don't have enough money for that..", "Don't be a thief!"]),screen)
                     else:
                         try:
                             itm = eval(im)()
-                            baseM.showText("You bought a {}".format(itm,screen),screen),screen)
+                            baseM.showText("You bought a {}".format(itm),screen)
                             player.gold -= items[i]
                             player.items.append(itm)
                             items.pop(i)
@@ -43,13 +43,14 @@ def run(player, screen):
                             itm = None
             if not found:
                 baseM.showText("This shop doesn't have that.",screen)
-            baseM.checkCommands(im, player)
+            baseM.checkCommands(im, player,screen)
     elif choice.title() in ["Leave", "L"]:
         baseM.showText("You walk past this 'shop' and continue your journey...",screen)
     else:
-        baseM.checkCommands(choice, player)
+        baseM.checkCommands(choice, player,screen)
         run(player, screen)
     return player
+
 
 
 

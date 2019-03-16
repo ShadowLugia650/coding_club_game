@@ -7,6 +7,7 @@ def run(player, screen):
     baseM.showText("You see a note laying atop a pile of frayed cloth armor and a rusty sword.. [Read note]",screen)
     baseM.showText("The door slams shut behind you! Deep in the dungeon you see a dim light... [Approach]",screen)
     choice = baseM.showText("You take the torch, wondering what lies within the dungeon... [Return to Note, Continue into Dungeon]",screen)
+    player.items.append(itemStats.torch())
     while True:
         if choice.title() in ["Return", "R", "Return To Note", "Note"]:
             baseM.showText("You walk back to the note, taking it along with the armor and the sword.. [Continue]",screen)
@@ -22,9 +23,10 @@ def run(player, screen):
             player.health -= 3
             baseM.showText("You regret not taking the cloth and sword.",screen)
             break
-        baseM.checkCommands(choice, player)
-        choice = baseM.showText("Continue into the dungeon or return to read the note?",screen)
+        baseM.checkCommands(choice, player,screen)
+        choice = baseM.showText("return to read the note or continue into the dungeon? [Return to Note, Continue into Dungeon]",screen)
     return player
+
 
 
 

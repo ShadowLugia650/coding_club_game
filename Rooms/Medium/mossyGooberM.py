@@ -55,9 +55,10 @@ def run(player, screen):
         baseM.showText("Confused and dizzy, you sit down on the ground to reconsider your options.",screen)
         player.curses.append(curseScript.madness())
     else:
-        baseM.checkCommands(choice,player)
+        baseM.checkCommands(choice,player,screen)
         run(player, screen)
     return player
+
 
 
 

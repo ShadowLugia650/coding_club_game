@@ -18,7 +18,7 @@ def run(player, screen):
             player.items.append(itemStats.idol())
             return player
         else:
-            baseM.checkCommands(choice, player)
+            baseM.checkCommands(choice, player,screen)
 
 class Idol(baseM.basicEnemy):
     def __init__ (self):
@@ -31,6 +31,7 @@ class Idol(baseM.basicEnemy):
         self.options = {"Glow":0}
         self.loot=[itemStats.idolShield()]
         
+
 
 
 

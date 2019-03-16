@@ -14,7 +14,7 @@ def pickWeapon(player, screen):
         baseM.showText("You pick up the glowing orb and leave the room.",screen)
         player.items.append(itemStats.glowingOrb())
     else:
-        baseM.checkCommands(choice, player)
+        baseM.checkCommands(choice, player,screen)
         pickWeapon(player, screen)
         
 def bigManChoice2(player, screen):
@@ -31,14 +31,14 @@ def bigManChoice2(player, screen):
         base = itemStats.basicMagicItem
         spec = "self.name = 'Indestructible Staff'\nself.desc = 'A magical staff created in the giant forge. It seems indestructible'"
     else:
-        baseM.checkCommands(choice, player)
+        baseM.checkCommands(choice, player,screen)
         bigManChoice2(player, screen)
     class customItem(base):
         def __init__(self):
             exec(spec)
             self.value = 177
     player.items.append(customItem())
-    baseM.showText("You obtained the {}!".format(customItem(,screen).name,screen),screen)
+    baseM.showText("You obtained the {}!".format(customItem().name),screen)
         
 def bigManChoice1(player, screen):
     choice = baseM.showText("[\"I'm just looking around.\", \"How do you deal with this temperature?\", \"I would like your assistance.\"]",screen)
@@ -54,7 +54,7 @@ def bigManChoice1(player, screen):
         baseM.showText("\"WHAT CAN I MAKE FOR YOU?\"",screen)
         bigManChoice2(player, screen)
     else:
-        baseM.checkCommands(choice, player)
+        baseM.checkCommands(choice, player,screen)
         bigManChoice1(player, screen)
     
 def run(player, screen):
@@ -75,9 +75,10 @@ def run(player, screen):
     elif choice.title() in ["Leave", "L"]:
         baseM.showText("Afraid to continue into the heat, you hurry to the door and leave.",screen)
     else:
-        baseM.checkCommands(choice, player)
+        baseM.checkCommands(choice, player,screen)
         run(player, screen)
     return player
+
 
 
 

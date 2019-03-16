@@ -52,7 +52,7 @@ class toxins(basicCurse):
         
     def toxinDamage(self, player):
         dmg = self.severity
-        baseM.showText("The toxins damage you for {} hp!".format(dmg,screen),screen),screen)
+        baseM.showText("The toxins damage you for {} hp!".format(dmg),screen)
         for i in player.curses:
             if type(i) == exhaustion:
                 dmg += i.severity
@@ -126,10 +126,10 @@ class madness(basicCurse):
         if c == 1:
             dmg = random.randint(3,6)
             player.health -= dmg
-            baseM.showText("You took {} damage".format(dmg,screen),screen),screen)
+            baseM.showText("You took {} damage".format(dmg),screen)
         elif c == 2:
             itm = random.choice(player.items)
-            baseM.showText("You lost your {}".format(itm.name,screen),screen),screen)
+            baseM.showText("You lost your {}".format(itm.name),screen)
         elif c == 3:
             pass #randomly generate an item to add to inventory
         
@@ -155,6 +155,7 @@ class steelblight(basicCurse):
     def curseItem(self, player): #this shouldbe curseItem(self, item)... we can handle the random choice when the curse is applied.
         if player.items != null:
             random.choice(player.items)
+
 
 
 

@@ -11,7 +11,7 @@ def checkPlayer(player, screen):
     if player.health <= 0:
         player.alive = False
 
-def checkCommands(Input, player):
+def checkCommands(Input, player, screen):
     #Checks for game-wide commands, such as help, status, inventory, and tester commands.
     if Input != '' and Input[0] == '`':
         Mtesting.specials(Input, player)
@@ -29,9 +29,9 @@ def checkCommands(Input, player):
             if hasItem(itm, player):
                 itm.readDesc()
             else:
-                showText("You don't have this item..")
+                showText("You don't have this item..",screen)
         except NameError:
-            showText("This item doesn't seem to exist...")
+            showText("This item doesn't seem to exist...",screen)
     elif Input.title().split(" ")[0] in ["Drink", "Potion"]:
         keyword = Input.title().split(" ")[0]
         s = Input.title().split(keyword+" ")[1]
@@ -43,20 +43,19 @@ def checkCommands(Input, player):
                     im.drinkPotion(player, screen)
                     player.items.remove(im)
                 else:
-                    showText("That item doesn't seem too drinkable to me...")
+                    showText("That item doesn't seem too drinkable to me...",screen)
             else:
-                showText("You don't have this item..")
+                showText("You don't have this item..",screen)
         except NameError:
-            showText("This item doesn't seem to exist...")
+            showText("This item doesn't seem to exist...",screen)
     else:
-        showText("This is not one of your options...")
+        showText("This is not one of your options...",screen)
 
 def initIntro(player, screen):
     showText("""Welcome to the Coding Club dungeon crawler game!
 ************************************************
              Press any key to begin""")
-    console.playerhelp()
-    showText()
+    console.playerhelp(screen)
     sys.path.insert(0, 'Rooms/Intros')
     import originalIntroM
     intros = [originalIntroM]
@@ -105,13 +104,13 @@ def playerInputFight(player, enemies, defense = 0):
         if type(curse) == exhaustion:
             efx = curse.onCombatTurn(player, screen)
             curseEfx["Exhaustion"] = efx
-    turn = showText("What do you do? [Attack, Defend, Magic]\n")
+    turn = showText("What do you do? [Attack, Defend, Magic]\n",screen)
     if turn.title() in ["Attack", "A", "Atk"]:
         en, j = getFirstAliveEnemy(enemies)
         dmg = modifyPlayerEffects('atk', player)
         if "Exhaustion" in curseEfx.keys() and curseEfx["Exhaustion"][1] == "Damage":
             dmg -= curseEfx["Exhaustion"][0]
-        showText("You attack {} {}, dealing {} damage".format(en.type, j+1, dmg))
+        showText("You attack {} {}, dealing {} damage".format(en.type, j+1, dmg),screen)
         en.takeDamage(dmg, player)
         for item in player.items:
             try:
@@ -128,7 +127,7 @@ def playerInputFight(player, enemies, defense = 0):
         defense += modifyPlayerEffects('def', player)
         if "Exhaustion" in curseEfx.keys() and curseEfx["Exhaustion"][1] == "Block":
             defense -= curseEfx["Exhaustion"][0]
-        showText("You brace yourself, defending against {} damage.".format(defense))
+        showText("You brace yourself, defending against {} damage.".format(defense),screen)
         return defense
     elif turn.title() in ["Magic", "M", "Mgc", "Alakazam"]:
         en, j = getFirstAliveEnemy(enemies)
@@ -141,15 +140,15 @@ def playerInputFight(player, enemies, defense = 0):
         print (*magiclist, sep=" \n")
         if magiclist != []:
             while True:
-                magicchoice = showText("Which magic item would you like to use? \n")
+                magicchoice = showText("Which magic item would you like to use? \n",screen)
                 if magicchoice not in magiclist:
-                    showText("Please choose a magic item")
+                    showText("Please choose a magic item",screen)
                 for i in magiclist:
                     if magicchoice.lower() == i:
                         truemagiclist[magiclist.index(i)].magic(player, en)
                 return defense
         else:
-            showText("Sorry! You do not have any magic items")
+            showText("Sorry! You do not have any magic items",screen)
         return defense
     else:
         checkCommands(turn, player)
@@ -168,15 +167,15 @@ def runBasicFight(player, enemies, pBlock = 0, playerFirst = False, turn = 0, li
                 atk, dmg = enemies[i].move(player, screen)
                 #Special Enemy Stuff lol
                 if atk == "Future Doom Damage":
-                    showText("{} {}'s Future Doom comes true! You take {} damage.".format(enemies[i].type, i+1, dmg))
+                    showText("{} {}'s Future Doom comes true! You take {} damage.".format(enemies[i].type, i+1, dmg),screen)
                     atk, dmg = enemies[i].move()
                 elif "Summon: " in atk:
                     enemies.append(dmg)
                 elif atk == "Flee":
-                    showText("The {} fled the combat!".format(enemies[i].type))
+                    showText("The {} fled the combat!".format(enemies[i].type),screen)
                     return player
                 #Ok end of Special Enemy stuff now
-                showText("{} {} uses {}, dealing {} damage.".format(enemies[i].type, i+1, atk, dmg))
+                showText("{} {} uses {}, dealing {} damage.".format(enemies[i].type, i+1, atk, dmg),screen)
                 if pBlock > 0:
                     for j in player.items:
                         if issubclass(type(j), basicDefensiveItem):
@@ -189,34 +188,34 @@ def runBasicFight(player, enemies, pBlock = 0, playerFirst = False, turn = 0, li
                         pBlock -= dmg
                 if atk == "Rob":
                     robbed = random.randint(3,6)
-                    showText("The {} stole {} of your gold!".format(enemies[i].type, robbed))
+                    showText("The {} stole {} of your gold!".format(enemies[i].type, robbed),screen)
                     player.gold -= robbed
                     #enemies[i].loot.append(("Gold",robbed))
                 elif atk == "Siphon":
                     if dmg > 0:
-                        showText("The {} siphons {} of your hp!".format(enemies[i].type, dmg))
+                        showText("The {} siphons {} of your hp!".format(enemies[i].type, dmg),screen)
                         enemies[i].health += dmg
                         if enemies[i].health > enemies[i].maxHp:
                             enemies[i].health = enemies[i].maxHp
                 elif atk == "Block":
                     enemies[i].block += enemies[i].baseDef
-                    showText("The {} blocks for {} damage".format(enemies[i].type, enemies[i].block))
+                    showText("The {} blocks for {} damage".format(enemies[i].type, enemies[i].block),screen)
             checkPlayer(player, screen)
             if not player.alive:
                 return player
     pBlock -=round(0.2*pBlock)
-    showText(str(round(0.2*pBlock))+" of your block expired!")
+    showText(str(round(0.2*pBlock))+" of your block expired!",screen)
     pBlock = playerInputFight(player, enemies, pBlock)
     if turn == limit:
-        showText("Sorry! You ran out of time")
+        showText("Sorry! You ran out of time",screen)
         return player
     if getFirstAliveEnemy(enemies) is not None and player.alive:
-        showText("Your HP: {}\t\tEnemy's HP: {}".format(player.health, getFirstAliveEnemy(enemies)[0].health))
+        showText("Your HP: {}\t\tEnemy's HP: {}".format(player.health, getFirstAliveEnemy(enemies)[0].health),screen)
         return runBasicFight(player, enemies, pBlock, False, turn+1)
     elif not player.alive:
         return player
     else:
-        choice = showText("You defeated the enemies! [Continue]")
+        choice = showText("You defeated the enemies! [Continue]",screen)
         checkCommands(choice, player)
         return player
 
@@ -400,6 +399,9 @@ class ShivMan(basicEnemy):
         self.maxHp = 70
         self.loot = [("Gold", 42, shiv())]
         self.options = {"Stab":0,"Rob":-2,"Slash":+2}
+
+
+
 
 
 

@@ -33,9 +33,8 @@ class timeEater(baseM.basicEnemy):
                 self.timedTurn = (self.turnCounter, self.options[atk]+self.baseDamage)
                 dmg = 0
             elif atk == "Stall":
-                for i in range(5):
-                    time.sleep(2)
-                    baseM.showText('.',end='',screen)
+                time.sleep(10)
+                baseM.showText('.....',screen)
                 self.baseDamage *= 10
                 dmg = 0
             else:
@@ -56,7 +55,7 @@ class timeEater(baseM.basicEnemy):
                 dmg = eval(self.optionsP2[atk])
             else:
                 dmg = 0
-                baseM.showText(,screen)
+                baseM.showText("The Time Eater's Hour Skewer missed!")
         return atk, dmg
 
 def run(player, screen):
@@ -68,6 +67,7 @@ def run(player, screen):
     baseM.showText("As you continue walking you see your name. Suddenly, the clock starts to grow, and the hands reach out toward you.",screen)
     baseM.runBasicFight(player, [t])
     return player
+
 
 
 

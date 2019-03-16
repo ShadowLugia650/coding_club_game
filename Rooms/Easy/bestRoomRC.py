@@ -6,11 +6,10 @@ def run(player, screen):
 Down one path you see a fountain bubbling with clear, pure, water, and down
 the other you see a golden door.""")
     while True:
-        choice = baseM.showText("Choose your path [Fountain, Gold]",screen).title(,screen)
+        choice = baseM.showText("Choose your path [Fountain, Gold]",screen).title()
         if choice in ["Fountain","F"]:
             while True:
-                baseM.showText("Do you wish to drink from the fountain? [yes, no]",screen)
-                choice=baseM.showText(,screen)
+                choice = baseM.showText("Do you wish to drink from the fountain? [yes, no]",screen)
                 if choice in ["yes", "y","okay","ok"]:
                     baseM.showText("You feel the water purify and heal your body",screen)
                     baseM.showText("You were healed to full health!",screen)
@@ -30,7 +29,7 @@ Press 3 to cut off pieces of gold and steal them
 Press 4 to search the room for a key
 Press 5 to leave""")
             while True:
-                choice=baseM.showText("[Knock on the door, Break open the door, Cut off pieces, Search for a key, Leave]",screen).lower(,screen)
+                choice=baseM.showText("[Knock on the door, Break open the door, Cut off pieces, Search for a key, Leave]",screen).lower()
                 if choice in ["1", "one", "knock"]:
                     baseM.showText("""The door opens into a room full of treasure. Gold coins are scattered throughout the chamber, but two incongruencies catch your eye.
 A pair of large dice lie near the right wall of the room, while a staff made of pure gold leans against the left wall.
@@ -39,7 +38,7 @@ Press 1 to gather gold coins, then leave
 Press 2 to investigate the dice
 Press 3 to take the staff""")
                     while True:
-                        choice=baseM.showText("[Gather coins, Investigate dice, Take staff]",screen).lower(,screen)
+                        choice=baseM.showText("[Gather coins, Investigate dice, Take staff]",screen).lower()
                         if choice in ["1", "one", "gather"]:
                             baseM.showText("Good thing you didn't try to desecrate the door. Cheaters never prosper",screen)
                             baseM.showText("You gained 150 gold!",screen)
@@ -79,6 +78,7 @@ Press 3 to take the staff""")
         else:
             baseM.showText("Sorry, that is not one of your choices",screen)
         
+
 
 
 

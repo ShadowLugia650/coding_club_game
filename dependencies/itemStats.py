@@ -407,7 +407,7 @@ class staffOfGold(basicMagicItem):
         if self.charge==0:
             player.gold+=10
         player.gold+=self.charge
-        baseM.showText("You got "+str(self.charge,screen)+" gold!",screen)
+        baseM.showText("You got "+str(self.charge)+" gold!",screen)
         self.charge-=10
     def __init__ (self):
         self.name="Staff of Gold"
@@ -445,13 +445,13 @@ class staffOfLuck(basicMagicItem):
         while True:
             if self.count==0:
                 self.count=4
-                baseM.showText("Sorry! The lucky number was "+str(luckynumber,screen),screen),screen)
+                baseM.showText("Sorry! The lucky number was "+str(luckynumber),screen)
                 return
             elif self.count==4:
                 luckynumber=random.randint(1,20)
             baseM.showText("As you hold up the worn staff, you realize that a bit of luck may be required to make it work",screen)
             baseM.showText("guess a number from 1 to 20",screen)
-            guess=baseM.showText(,screen)
+            guess=baseM.showText('[]') #oh this is broken
             if luckynumber==int(guess):
                 baseM.showText("Fueled by your luck, a bolt of lightning strikes the "+enemy.type,screen)
                 if self.count==4:
@@ -488,7 +488,7 @@ class amplifyingOrb(basicMagicItem):
     def magic(self,player,enemy):
         db = baseM.getItem("Demonic Blade", player)
         db.damage *= 2
-        baseM.showText("The demonic energies swirl around your Demonic Blade! It doubles in strength! ({},screen)".format(db.damage,screen),screen),screen)
+        baseM.showText("The demonic energies swirl around your Demonic Blade! It doubles in strength! ({})".format(db.damage),screen)
         
 class idol(basicMagicItem):
     def __init__(self):
@@ -566,10 +566,4 @@ class ohgurGuts(basicPotion):
         self.name = "Ohgur Guts"
         self.desc = "Ew! Slimy ohgur guts. Maybe they can heal you..."
         self.value = 53
-
-
-
-
-
-
 

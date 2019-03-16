@@ -10,7 +10,7 @@ def run(player, screen):
         itm = random.choice(player.items)
         eph = curseScript.ephemeral()
         eph.target = itm
-        baseM.showText("Your {} looks empowered by the dark energies, but it also seems to start to fade as you hold it.".format(itm,screen),screen),screen)
+        baseM.showText("Your {} looks empowered by the dark energies, but it also seems to start to fade as you hold it.".format(itm),screen)
         if issubclass(type(itm), itemStats.basicSword):
             itm.damage *= 2
         elif issubclass(type(itm), itemStats.basicDefensiveItem):
@@ -26,9 +26,10 @@ def run(player, screen):
         baseM.showText("You feel confident, as though nothing can stand in your way.",screen)
         player.curses.append(curseScript.hubris())
     else:
-        baseM.checkCommands(choice, player)
+        baseM.checkCommands(choice, player,screen)
         run(player, screen)
     return player
+
 
 
 

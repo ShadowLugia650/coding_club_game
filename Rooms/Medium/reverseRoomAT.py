@@ -36,7 +36,7 @@ def run(player, screen):
                     print ("You leave the room dumbfounded but unscathed")
                     break
                 else:
-                    baseM.checkCommands(choice, player)
+                    baseM.checkCommands(choice, player,screen)
             break
         elif choice.lower() in ["right", "right door", "go through right door"]:
             print ("You start towards the right door when suddenly, your body moves toward the left door. [continue]")
@@ -49,9 +49,10 @@ def run(player, screen):
             print ("As you leave the room, your headache disappears. [continue]")
             break
         else:
-            baseM.checkCommands(choice, player)
+            baseM.checkCommands(choice, player,screen)
     return player
     
+
 
 
 
