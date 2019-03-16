@@ -1,6 +1,6 @@
 import sys, random
 sys.path.insert(0, 'dependencies')
-import baseM, curseScript, itemStats
+import baseM, curseScript, itemStats, artAssetsM
 
 class MossyGoober(baseM.basicEnemy):
     def __init__(self):
@@ -32,8 +32,9 @@ class MossyGoober(baseM.basicEnemy):
         return atk, self.options[atk] + self.baseDamage
 
 def run(player):
-    baseM.showText("You encounter a thicket of vines preventing you from proceeding. What do you do?")
-    choice = input("[Push Through, Cut Vines, Go Back]")
+    screen = artAssetsM.initScreen()
+    baseM.showText("You encounter a thicket of vines preventing you from proceeding. What do you do?", screen)
+    #choice = input("[Push Through, Cut Vines, Go Back]")
     if choice.title() in ["Push", "Push Through", "Through", "P"]:
         baseM.showText("You push through the vines to the other side. Unfortunately, you realize that the vines were actually poisonous.")
         tx = curseScript.toxins()
@@ -56,6 +57,6 @@ def run(player):
         player.curses.append(curseScript.madness())
     else:
         baseM.checkCommands(choice,player)
-        run(player)
-    return player
+        #run(player)
+    #return player
 

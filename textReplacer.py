@@ -20,6 +20,8 @@ try:
     file_write = open(file, mode='w+')
     file_write.write(full)
     file_write.close()
+    input()
 except FileNotFoundError:
     print("sorry, the file could not be found. Please check that all folders are included and that the file name is correct.")
+    input()
 

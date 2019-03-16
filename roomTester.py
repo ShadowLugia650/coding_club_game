@@ -12,16 +12,17 @@ sys.path.insert(0, 'Rooms/Easy')
 
 sys.path.insert(0, 'Rooms/Medium')
 #import strangerJGv1, battleGhoulM, mirrorsM, lavaroomRCv1, skeletonCalvin, reverseRoomAT, jabberwockyJG, randomMediumBattlesM, slimeroomCalvin
+import mossyGooberPygameM
 
 sys.path.insert(0, 'Rooms/Hard')
 #import owM, Collector, demonicWarrior
-import moneyGremlim #make sure to import the room you want to test!
+#make sure to import the room you want to test!
 
 sys.path.insert(0, 'Rooms/Impossible')
 #import TimeEater
 
 
-test = moneyGremlim # Change this to be whatever room you want to test
+test = mossyGooberPygameM # Change this to be whatever room you want to test
 Player = pScript.PChar()
 test.run(Player)
 
