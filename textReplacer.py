@@ -11,7 +11,9 @@ try:
             split_line = line.split(replace)
             ln = ''
             for chunk in split_line:
-                ln += chunk + rep_with
+                ln += chunk
+                if split_line.index(chunk) != len(split_line)-1:
+                    ln += rep_with
             new_line = ln
         full += new_line + '\n'
     f.close()
