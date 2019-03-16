@@ -545,7 +545,7 @@ class antidote(basicPotion):
     def drinkPotion(self, player):
         for i in player.curses:
             if type(i) == curseScript.toxins:
-                i.remove(player, screen)
+                i.remove(player)
                 baseM.showText("The antidote cured some of your poisoning!")
                 return
         baseM.showText("The antidote had no effect.")
@@ -566,6 +566,7 @@ class ohgurGuts(basicPotion):
         self.name = "Ohgur Guts"
         self.desc = "Ew! Slimy ohgur guts. Maybe they can heal you..."
         self.value = 53
+
 
 
 
