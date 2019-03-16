@@ -3,22 +3,22 @@ sys.path.insert(0, 'dependencies')
 import baseM, itemStats
     
 def pickWeapon(player, screen):
-    choice = baseM.showText("[Glowing Sword, Glowing Shield, Glowing Orb]", screen,screen)
+    choice = baseM.showText("[Glowing Sword, Glowing Shield, Glowing Orb]",screen)
     if choice.title() in ["Glowing Sword", "Sword", "Attack", "Offense", "Damage"]:
-        baseM.showText("You pick up the glowing sword and leave the room.", screen,screen)
+        baseM.showText("You pick up the glowing sword and leave the room.",screen)
         player.items.append(itemStats.glowingSword())
     elif choice.title() in ["Glowing Shield", "Shield", "Defense", "Block", "Armor"]:
-        baseM.showText("You pick up the glowing shield and leave the room.", screen,screen)
+        baseM.showText("You pick up the glowing shield and leave the room.",screen)
         player.items.append(itemStats.glowingShield())
     elif choice.title() in ["Glowing Orb", "Orb", "Abracadabra", "Magic"]:
-        baseM.showText("You pick up the glowing orb and leave the room.", screen,screen)
+        baseM.showText("You pick up the glowing orb and leave the room.",screen)
         player.items.append(itemStats.glowingOrb())
     else:
         baseM.checkCommands(choice, player)
         pickWeapon(player, screen)
         
 def bigManChoice2(player, screen):
-    choice = baseM.showText("[Sword, Shield, Magic]", screen,screen)
+    choice = baseM.showText("[Sword, Shield, Magic]",screen)
     base = None
     spec = ""
     if choice.title() in ["Sword", "Attack", "Offense", "Damage"]:
@@ -38,46 +38,47 @@ def bigManChoice2(player, screen):
             exec(spec)
             self.value = 177
     player.items.append(customItem())
-    baseM.showText("You obtained the {}!".format(customItem(,screen).name,screen), screen,screen)
+    baseM.showText("You obtained the {}!".format(customItem(,screen).name,screen),screen)
         
 def bigManChoice1(player, screen):
-    choice = baseM.showText("[\"I'm just looking around.\", \"How do you deal with this temperature?\", \"I would like your assistance.\"]", screen,screen)
+    choice = baseM.showText("[\"I'm just looking around.\", \"How do you deal with this temperature?\", \"I would like your assistance.\"]",screen)
     if choice.title() in ["I'm Just Looking Around", "Im Just Looking Around", "Looking", "Around", "Just Looking Around", "Looking Around"]:
-        baseM.showText("\"LOOKING AROUND, HM? FEEL FREE TO TAKE ANYTHING YOU LIKE.\"", screen,screen)
-        baseM.showText("You walk around the hallway and notice a few glowing weapons resting against the wall.", screen,screen)
+        baseM.showText("\"LOOKING AROUND, HM? FEEL FREE TO TAKE ANYTHING YOU LIKE.\"",screen)
+        baseM.showText("You walk around the hallway and notice a few glowing weapons resting against the wall.",screen)
         pickWeapon(player, screen)
     elif choice.title() in ["How Do You Deal With This Temperature", "Temp", "Temperature", "Heat", "Hot", "Warm"]:
-        baseM.showText("The voice laughs. \"TOO WARM FOR YOU? THE HEAT IS NECESSARY TO FORGE WEAPONRY WITH SUCH DURABILITY.\"", screen,screen)
-        baseM.showText("You look around and realize that many of the weapons on the walls have existed for centuries. Despite this, they all still seem sturdy and powerful.", screen,screen)
-        baseM.showText("Suddenly, ", screen,screen)
+        baseM.showText("The voice laughs. \"TOO WARM FOR YOU? THE HEAT IS NECESSARY TO FORGE WEAPONRY WITH SUCH DURABILITY.\"",screen)
+        baseM.showText("You look around and realize that many of the weapons on the walls have existed for centuries. Despite this, they all still seem sturdy and powerful.",screen)
+        baseM.showText("Suddenly, ",screen)
     elif choice.title() in ["I Would Like Your Assistance", "Assistance", "Help"]:
-        baseM.showText("\"WHAT CAN I MAKE FOR YOU?\"", screen,screen)
+        baseM.showText("\"WHAT CAN I MAKE FOR YOU?\"",screen)
         bigManChoice2(player, screen)
     else:
         baseM.checkCommands(choice, player)
         bigManChoice1(player, screen)
     
 def run(player, screen):
-    baseM.showText("You enter a large hallway with countless armaments of every kind covering the walls.", screen,screen)
-    baseM.showText("Near the center of the hall you notice an enormous anvil with an equally enormous hammer resting on it.", screen,screen)
-    baseM.showText("As you approach the anvil, the air around you seems to grow warmer and warmer. The blistering heat seems to lightly singe your skin..", screen,screen)
-    choice = baseM.showText("[Continue to Anvil, Inspect Walls, Leave]", screen,screen)
+    baseM.showText("You enter a large hallway with countless armaments of every kind covering the walls.",screen)
+    baseM.showText("Near the center of the hall you notice an enormous anvil with an equally enormous hammer resting on it.",screen)
+    baseM.showText("As you approach the anvil, the air around you seems to grow warmer and warmer. The blistering heat seems to lightly singe your skin..",screen)
+    choice = baseM.showText("[Continue to Anvil, Inspect Walls, Leave]",screen)
     if choice.title() in ["Continue To Anvil", "Continue", "Anvil", "Hammer", "C"]:
-        baseM.showText("You continue walking toward the anvil and begin to wonder how any creature could survive in these feverish temperatures.", screen,screen)
-        baseM.showText("At last! You reach the anvil! As you gaze in wonder at the sheer magnitude of the anvil and its hammer, a loud, booming voice distracts you from your thoughts.", screen,screen)
-        baseM.showText("\"WELCOME MORTAL! WHAT BRINGS YOU HERE TODAY?\"", screen,screen)
-        baseM.showText("While loud, the voice sounds relatively harmless and inviting.", screen,screen)
+        baseM.showText("You continue walking toward the anvil and begin to wonder how any creature could survive in these feverish temperatures.",screen)
+        baseM.showText("At last! You reach the anvil! As you gaze in wonder at the sheer magnitude of the anvil and its hammer, a loud, booming voice distracts you from your thoughts.",screen)
+        baseM.showText("\"WELCOME MORTAL! WHAT BRINGS YOU HERE TODAY?\"",screen)
+        baseM.showText("While loud, the voice sounds relatively harmless and inviting.",screen)
         bigManChoice1(player, screen)
     elif choice.title() in ["Inspect Walls", "Inspect", "Walls", "I"]:
-        baseM.showText("Moving away from the scorching heat of the anvil, you admire the masterful craftmanship of the weapons on the walls.", screen,screen)
-        baseM.showText("While many of the armaments stand over three times your height, a few smaller, glowing weapons catch your eye.", screen,screen)
+        baseM.showText("Moving away from the scorching heat of the anvil, you admire the masterful craftmanship of the weapons on the walls.",screen)
+        baseM.showText("While many of the armaments stand over three times your height, a few smaller, glowing weapons catch your eye.",screen)
         pickWeapon(player, screen)
     elif choice.title() in ["Leave", "L"]:
-        baseM.showText("Afraid to continue into the heat, you hurry to the door and leave.", screen,screen)
+        baseM.showText("Afraid to continue into the heat, you hurry to the door and leave.",screen)
     else:
         baseM.checkCommands(choice, player)
         run(player, screen)
     return player
+
 
 
 

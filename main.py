@@ -40,7 +40,7 @@ def game(mode = "Text"):
                 torchExists = True
         if not torchExists:
             if random.randint(0,10)>6:
-                baseM.showText("You tripped in the dark and took 5 damage", screen,screen)
+                baseM.showText("You tripped in the dark and took 5 damage",screen)
                 Player.health-=5
         if rounds == 3:
             room = shopM
@@ -49,7 +49,7 @@ def game(mode = "Text"):
             while room == lastRoom:
                 room = random.choice(possibleLevels)
         lastRoom = room
-        consol = baseM.showText("Next Room? [yes, no]", screen,screen)#console.getInput(Player, ["yes", "y", "ok", "sure", "yeah", "yay", "no", "nay", "n", "nok"], "next room? ",screen)
+        consol = baseM.showText("Next Room? [yes, no]",screen)#console.getInput(Player, ["yes", "y", "ok", "sure", "yeah", "yay", "no", "nay", "n", "nok"], "next room? ",screen)
         if consol.lower() in ["yes", "y", "ok", "sure", "yeah", "yay"]:
             room.run(Player, screen)
             rounds += 1
@@ -66,22 +66,23 @@ def game(mode = "Text"):
         else:
             break
         if Player.alive == False:
-            baseM.showText("You have died.", screen,screen)
+            baseM.showText("You have died.",screen)
         if rounds == 5:
             levels += med
         elif rounds == 20:
             levels += hard
-    baseM.showText("Game over.", screen,screen)
-    baseM.showText("rooms cleared:  " + str(rounds,screen), screen,screen)
-    baseM.showText("Ending gold:    " + str(Player.gold,screen), screen,screen)
-    baseM.showText("Ending items:", screen,screen)
+    baseM.showText("Game over.",screen)
+    baseM.showText("rooms cleared:  " + str(rounds,screen),screen)
+    baseM.showText("Ending gold:    " + str(Player.gold,screen),screen)
+    baseM.showText("Ending items:",screen)
     for i in Player.items:
-        baseM.showText("- {}".format(i,screen), screen,screen)
-    baseM.showText("Your final score is: {}".format(baseM.calculateFinalScore(Player,rounds,screen),screen), screen,screen),screen)
+        baseM.showText("- {}".format(i,screen),screen)
+    baseM.showText("Your final score is: {}".format(baseM.calculateFinalScore(Player,rounds,screen),screen),screen),screen)
     baseM.showText(,screen)
     levels=easy
     game(mode)
 game()
+
 
 
 
