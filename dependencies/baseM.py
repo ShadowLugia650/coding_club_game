@@ -62,7 +62,14 @@ def initIntro(player):
     intros = [originalIntroM]
     intro = random.choice(intros)
     intro.run(player)
-        
+
+def showText(text, screen = None):
+    if screen is None:
+        print(text)
+    else:
+        import artAssetsM
+        artAssetsM.dispText(text, screen)
+
 def getFirstAliveEnemy(enemies):
     #Finds the first enemy in the given list that is not None. If all are None, returns None
     #You should not need to use this function if you're making a basic fighting room.
