@@ -68,7 +68,7 @@ def showText(text, screen = None):
         print(text)
     else:
         import artAssetsM
-        artAssetsM.dispText(text, screen)
+        return artAssetsM.dispText(text, screen)
 
 def getFirstAliveEnemy(enemies):
     #Finds the first enemy in the given list that is not None. If all are None, returns None

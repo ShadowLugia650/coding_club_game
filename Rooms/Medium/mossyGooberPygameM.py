@@ -34,29 +34,29 @@ class MossyGoober(baseM.basicEnemy):
 def run(player):
     screen = artAssetsM.initScreen()
     baseM.showText("You encounter a thicket of vines preventing you from proceeding. What do you do?", screen)
-    #choice = input("[Push Through, Cut Vines, Go Back]")
+    choice = baseM.showText("[Push Through, Cut Vines, Go Back]", screen)
     if choice.title() in ["Push", "Push Through", "Through", "P"]:
-        baseM.showText("You push through the vines to the other side. Unfortunately, you realize that the vines were actually poisonous.")
+        baseM.showText("You push through the vines to the other side. Unfortunately, you realize that the vines were actually poisonous.", screen)
         tx = curseScript.toxins()
         tx.severity = 3
         player.curses.append(tx)
     elif choice.title() in ["Cut", "Vines", "Cut Vines", "C"]:
         if baseM.hasWeapon(player):
-            baseM.showText("As you carefully cut the vines you start to feel the ground move beneath you.")
-            baseM.showText("You leap back onto solid ground as the giant green creature rises before you.")
-            baseM.showText("The creature turns to you and massive, moss-covered arms move toward you.")
-            baseM.showText("The enormous creature stands before you, and it looks like it's preparing to attack...")
+            baseM.showText("As you carefully cut the vines you start to feel the ground move beneath you.", screen)
+            baseM.showText("You leap back onto solid ground as the giant green creature rises before you.", screen)
+            baseM.showText("The creature turns to you and massive, moss-covered arms move toward you.", screen)
+            baseM.showText("The enormous creature stands before you, and it looks like it's preparing to attack...", screen)
             baseM.runBasicFight(player, [MossyGoober()], playerFirst = True)
         else:
-            baseM.showText("Without a proper weapon, you are unable to cut the vines.")
+            baseM.showText("Without a proper weapon, you are unable to cut the vines.", screen)
             run(player)
     elif choice.title() in ["Go Back", "Go", "Back", "G"]:
-        baseM.showText("You turn away from the vines only to find more vines blocking the entrance from which you came..")
-        baseM.showText("Or was it? As you look around, vines cover every wall and stretch in front of the many doorways into and out of this room.")
-        baseM.showText("Confused and dizzy, you sit down on the ground to reconsider your options.")
+        baseM.showText("You turn away from the vines only to find more vines blocking the entrance from which you came..", screen)
+        baseM.showText("Or was it? As you look around, vines cover every wall and stretch in front of the many doorways into and out of this room.", screen)
+        baseM.showText("Confused and dizzy, you sit down on the ground to reconsider your options.", screen)
         player.curses.append(curseScript.madness())
     else:
         baseM.checkCommands(choice,player)
-        #run(player)
-    #return player
+        run(player)
+    return player
 
