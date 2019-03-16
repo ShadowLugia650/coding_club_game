@@ -51,21 +51,23 @@ class Sorcerer(baseM.basicEnemy):
         
 def run(player, screen):
     enemies = [random.choice([Grenlim(), Snak(), Sorcerer()])]
-    baseM.showText("You encountered a {}!".format(enemies[0].type))
-    choice = baseM.showText("What do you do? [Fight, Run]\n")
+    baseM.showText("You encountered a {}!".format(enemies[0].type,screen),screen),screen)
+    choice = baseM.showText("What do you do? [Fight, Run]\n",screen)
     if choice.title() in ["Fight", "F", "Attack"]:
-        baseM.showText("You engage the {} in combat!".format(enemies[0].type))
+        baseM.showText("You engage the {} in combat!".format(enemies[0].type,screen),screen),screen)
         baseM.runBasicFight(player, enemies)
     elif choice.title() in ["Flee", "Run", "R"]:
-        baseM.showText("You run away from the {} and it deals {} damage to you.".format(enemies[0].type, enemies[0].baseDamage))
+        baseM.showText("You run away from the {} and it deals {} damage to you.".format(enemies[0].type, enemies[0].baseDamage,screen),screen),screen)
         if type(enemies[0]) == Snak:
-            baseM.showText("The Snak envenomated you with its attack!")
+            baseM.showText("The Snak envenomated you with its attack!",screen)
             player.curses.append(toxins())
         player.health -= enemies[0].baseDamage
     else:
         baseM.checkCommands(choice, player)
         run(player, screen)
     return player
+
+
 
 
 

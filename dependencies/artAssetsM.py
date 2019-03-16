@@ -58,11 +58,13 @@ def dispText(text, screen):
                             try:
                                 return l[event.key-49]
                             except IndexError:
-                                baseM.showText("Index out of bounds")
+                                print("Index out of bounds")
                     else:
                         return None
     except pygame.error: 
-        baseM.showText("error with displaying text.")
+        print("error with displaying text.")
+
+
 
 
 

@@ -7,7 +7,7 @@ from itemStats import vorpalBlade
 def run(player, screen):
     response = ""
     cost = random.randint(8,15)
-    baseM.showText("Out from the darkness, a man in a hood approaches you.")
+    baseM.showText("Out from the darkness, a man in a hood approaches you.",screen)
     while True:
         response = console.getInput(player, ["yes", "no"], "Pay " + str(cost) + " to listen to his story? ")
         if response.lower() == "yes":
@@ -24,11 +24,11 @@ def run(player, screen):
         break
 
 def goodEnd(player, screen):
-    baseM.showText("Upon finishing his story, the mysterious traveller gives you a parting gift before disappearing back into the shadows.")
+    baseM.showText("Upon finishing his story, the mysterious traveller gives you a parting gift before disappearing back into the shadows.",screen)
     pScript.addItem(player, vorpalBlade())
 
 def badEnd():
-    baseM.showText("the man looks at you disappointedly, then retreats back to the shadows.")
+    baseM.showText("the man looks at you disappointedly, then retreats back to the shadows.",screen)
 
 def story(player, cost):
     text = ["I met a traveller from an antique land, \nWho said—“Two vast and trunkless legs of stone \nStand in the desert....",
@@ -47,13 +47,15 @@ def story(player, cost):
                 return False
             if pScript.spendGold(player, cost) == False:
                 return False
-            baseM.showText("\nThe hooded man continues his story:")
+            baseM.showText("\nThe hooded man continues his story:",screen)
         else:
-            baseM.showText("\nThe hooded man begins:")
-        baseM.showText(item)
+            baseM.showText("\nThe hooded man begins:",screen)
+        baseM.showText(item,screen)
     return True
 
         
+
+
 
 
 

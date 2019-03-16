@@ -15,9 +15,11 @@ class Senior(baseM.basicEnemy):
         
         
 def run (player, screen):
-    baseM.showText("A raging, drooling Ohgur charges at you!")
+    baseM.showText("A raging, drooling Ohgur charges at you!",screen)
     baseM.runBasicFight(player, [Senior()],0,True)
     return player
+
+
 
 
 

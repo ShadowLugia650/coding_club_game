@@ -5,14 +5,13 @@
 import sys, random
 
 sys.path.insert(0, 'dependencies')
-import console, pScript, baseM, itemStats
+import console, pScript, baseM, itemStats, artAssetsM
 
 sys.path.insert(0, 'Rooms/Easy')
 #import shopM, battleZombomanM, bestRoomRC, GobolinRC, goldenTreeM
 
 sys.path.insert(0, 'Rooms/Medium')
 #import strangerJGv1, battleGhoulM, mirrorsM, lavaroomRCv1, skeletonCalvin, reverseRoomAT, jabberwockyJG, randomMediumBattlesM, slimeroomCalvin
-import mossyGooberPygameM
 
 sys.path.insert(0, 'Rooms/Hard')
 #import owM, Collector, demonicWarrior
@@ -22,9 +21,10 @@ sys.path.insert(0, 'Rooms/Impossible')
 #import TimeEater
 
 
-test = mossyGooberPygameM # Change this to be whatever room you want to test
+test =  # Change this to be whatever room you want to test
+screen = artAssetsM.initScreen()
 Player = pScript.PChar()
-test.run(Player)
+test.run(Player, screen)
 
 if Player.alive == False:
     print("You have died.")

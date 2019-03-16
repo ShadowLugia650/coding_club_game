@@ -19,12 +19,12 @@ class DemonicWarrior(baseM.basicEnemy):
 
     def move(self, player):
         if self.health <= (self.maxHp/2) and self.phase == 1:
-            baseM.showText("\"You will never defeat me!\"")
+            baseM.showText("\"You will never defeat me!\"",screen)
             self.baseDamage += 10
             self.phase = 2
             self.health += 10
         if self.baseDamage >= 24 and self.baseDamage <= 26:
-            baseM.showText("\"HAHAHAHAHAHAHAHA\"")
+            baseM.showText("\"HAHAHAHAHAHAHAHA\"",screen)
         self.baseDamage += 3
         if self.phase == 1:
             atk = random.choice(list(self.options.keys()))
@@ -40,11 +40,13 @@ class DemonicWarrior(baseM.basicEnemy):
         return atk, (self.baseDamage + self.options[atk])
 
 def run(player, screen):
-    baseM.showText("You encountered the Demonic warrior!")
+    baseM.showText("You encountered the Demonic warrior!",screen)
     enemies = [DemonicWarrior()]
-    baseM.showText("The Demonic Warrior engages you in combat!")
+    baseM.showText("The Demonic Warrior engages you in combat!",screen)
     baseM.runBasicFight(player, enemies)
     return player
+
+
 
 
 

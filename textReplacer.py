@@ -5,17 +5,33 @@ def runReplacement(file, replace, rep_with):
         f = open(file, 'r')
         tx = f.read()
         full = ''
-        for line in tx.split('\n'):
-            new_line = line
-            if replace in line:
-                split_line = line.split(replace)
-                ln = ''
-                for chunk in split_line:
-                    ln += chunk
-                    if split_line.index(chunk) != len(split_line)-1:
-                        ln += rep_with
-                new_line = ln
-            full += new_line + '\n'
+        if ' ; ' in replace and ' ; ' in rep_with:
+            reps = replace.split(' ; ')
+            repws = rep_with.split(' ; ')
+            for line in tx.split('\n'):
+                new_line = line
+                if [phr in line for phr in reps] == [True]*len(reps):
+                    for phr in reps:
+                        split_line = new_line.split(phr)
+                        ln = ''
+                        for chunk in split_line:
+                            ln += chunk
+                            if split_line.index(chunk) != len(split_line)-1:
+                                ln += repws[reps.index(phr)]
+                        new_line = ln
+                full += new_line + '\n'
+        else:
+            for line in tx.split('\n'):
+                new_line = line
+                if replace in line:
+                    split_line = line.split(replace)
+                    ln = ''
+                    for chunk in split_line:
+                        ln += chunk
+                        if split_line.index(chunk) != len(split_line)-1:
+                            ln += rep_with
+                    new_line = ln
+                full += new_line + '\n'
         f.close()
         file_write = open(file, mode='w+')
         file_write.write(full)

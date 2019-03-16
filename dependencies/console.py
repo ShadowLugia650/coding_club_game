@@ -1,25 +1,25 @@
 import baseM
 def playerhelp():
-    baseM.showText("game commands:")
-    baseM.showText("    \"help\"        opens the commands guide")
-    baseM.showText("    \"status\"      prints your health and gold")
-    baseM.showText("    \"inventory\"   prints your item list")
-#    baseM.showText("    \"options\"     prints the listed inputs you can make")
-    baseM.showText("    \"inspect\"     view the description of an item")
-    baseM.showText("    \"drink\"       drink a potion")
-#    baseM.showText("    \"testgold\"    lets you input a new gold amount. Big errors if you don't enter an int")
-#    baseM.showText("    \"testhp\"      lets you input a new health amount. Big errors if you don't enter an int")
+    baseM.showText("game commands:",screen)
+    baseM.showText("    \"help\"        opens the commands guide",screen)
+    baseM.showText("    \"status\"      prints your health and gold",screen)
+    baseM.showText("    \"inventory\"   prints your item list",screen)
+#    baseM.showText("    \"options\"     prints the listed inputs you can make",screen)
+    baseM.showText("    \"inspect\"     view the description of an item",screen)
+    baseM.showText("    \"drink\"       drink a potion",screen)
+#    baseM.showText("    \"testgold\"    lets you input a new gold amount. Big errors if you don't enter an int",screen)
+#    baseM.showText("    \"testhp\"      lets you input a new health amount. Big errors if you don't enter an int",screen)
 
 def status(Player):
-    baseM.showText("Health: " + str(Player.health))
-    baseM.showText("Gold: " + str(Player.gold))
+    baseM.showText("Health: " + str(Player.health,screen),screen),screen)
+    baseM.showText("Gold: " + str(Player.gold,screen),screen),screen)
 
 def inventory(Player):
     for item in Player.items:
-        baseM.showText(item)
+        baseM.showText(item,screen)
 def curses(Player):
     for curse in Player.curses:
-        baseM.showText(curse)
+        baseM.showText(curse,screen)
         
 def testGold(Player, x):
     Player.gold = int(x)
@@ -30,7 +30,7 @@ def testHP(Player, y):
 def getInput(Player, outputs, prompt = ""): # a better Input function. Has built-in UI commands.
     output = False
     while output == False:
-        console = baseM.showText(prompt)
+        console = baseM.showText(prompt,screen)
         if console.lower() in ["help", "?"]:
             playerhelp()
         elif console.lower() in ["status", "stat", "me", "stats"]:
@@ -40,7 +40,7 @@ def getInput(Player, outputs, prompt = ""): # a better Input function. Has built
         elif console.lower() in ["curses", "curse", "crs"]:
             curses(Player)
         elif console.lower() in ["options", "opt", "options?", "opt?"]:
-            baseM.showText(outputs)
+            baseM.showText(outputs,screen)
         elif console.lower() in outputs:
             output = True
         else:
@@ -48,8 +48,10 @@ def getInput(Player, outputs, prompt = ""): # a better Input function. Has built
     return console.lower()
 
 def delayPrint(Player, text = ""):
-    baseM.showText(text)
-    baseM.showText()
+    baseM.showText(text,screen)
+    baseM.showText(,screen)
+
+
 
 
 
