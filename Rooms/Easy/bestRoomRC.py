@@ -32,7 +32,7 @@ Press 5 to leave""")
             while True:
                 choice=baseM.showText("[Knock on the door, Break open the door, Cut off pieces, Search for a key, Leave]").lower()
                 if choice in ["1", "one", "knock"]:
-                    print ("""The door opens into a room full of treasure. Gold coins are scattered throughout the chamber, but two incongruencies catch your eye.
+                    baseM.showText("""The door opens into a room full of treasure. Gold coins are scattered throughout the chamber, but two incongruencies catch your eye.
 A pair of large dice lie near the right wall of the room, while a staff made of pure gold leans against the left wall.
 What would you like to do?
 Press 1 to gather gold coins, then leave
@@ -41,44 +41,45 @@ Press 3 to take the staff""")
                     while True:
                         choice=baseM.showText("[Gather coins, Investigate dice, Take staff]").lower()
                         if choice in ["1", "one", "gather"]:
-                            print ("Good thing you didn't try to desecrate the door. Cheaters never prosper")
-                            print ("You gained 150 gold!")
+                            baseM.showText("Good thing you didn't try to desecrate the door. Cheaters never prosper")
+                            baseM.showText("You gained 150 gold!")
                             player.gold+=150
                             return player
                         elif choice in ["2", "two", "investigate"]:
-                            print ("You roll the dice and get a 6!")
-                            print ("Staff of Luck was added to your inventory")
+                            baseM.showText("You roll the dice and get a 6!")
+                            baseM.showText("Staff of Luck was added to your inventory")
                             player.items.append(itemStats.staffOfLuck())
                             return player
                         elif choice in ["3", "three", "take"]:
-                            print ("You pick up the staff")
-                            print ("Staff of Gold was added to your inventory!")
+                            baseM.showText("You pick up the staff")
+                            baseM.showText("Staff of Gold was added to your inventory!")
                             player.items.append(itemStats.staffOfGold())
                             return player
                         else:
                             baseM.showText("Sorry, That is not one of your choices")
                     break
                 elif choice in ["2", "two", "break"]:
-                    print ("You chip off some gold but ultimately accomplish nothing. You leave, disappointed.")
+                    baseM.showText("You chip off some gold but ultimately accomplish nothing. You leave, disappointed.")
                     player.gold+=15
                     return player
                 elif choice in ["3", "three", "steal"]:
-                    print ("You gain 50 gold but ruin the door in the process")
+                    baseM.showText("You gain 50 gold but ruin the door in the process")
                     player.gold+=50
                     return player
                 elif choice in ["4", "four", "search"]:
-                    print ("Though you don't find a key, you do find a dusty magic wand leaning in the corner.")
-                    print ("Wand of Confusion was added to your inventory!")
+                    baseM.showText("Though you don't find a key, you do find a dusty magic wand leaning in the corner.")
+                    baseM.showText("Wand of Confusion was added to your inventory!")
                     player.items.append(itemStats.wandOfConfusion())
                     return player
                 elif choice in ["5", "five", "leave"]:
-                    print ("You leave the room.")
+                    baseM.showText("You leave the room.")
                     return player
                 else:
-                    print ("Sorry, that is not one of your choices")
+                    baseM.showText("Sorry, that is not one of your choices")
         else:
             baseM.showText("Sorry, that is not one of your choices")
         
+
 
 
 
