@@ -33,5 +33,7 @@ class Necromancer(baseM.basicEnemy):
             return atk, 0
         return atk, self.baseDamage + self.options[atk]
         
-def run(player):
+def run(player, screen):
     return player
+
+

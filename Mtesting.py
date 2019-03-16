@@ -22,3 +22,7 @@ def specials(Input, player):
             player.curses.append(eval(curse)())
         except NameError:
             pass
+
+
+
+

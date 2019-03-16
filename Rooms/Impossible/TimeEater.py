@@ -19,7 +19,7 @@ class timeEater(baseM.basicEnemy):
         
     def move(self, player):
         self.turnCounter += 1
-        print("Take your time...")
+        baseM.showText("Take your time...")
         if self.phase == 1:
             if self.timedTurn[0] == (self.turnCounter - 3):
                 return "Future Doom Damage", self.timedTurn[1]
@@ -35,7 +35,7 @@ class timeEater(baseM.basicEnemy):
             elif atk == "Stall":
                 for i in range(5):
                     time.sleep(2)
-                    print('.',end='')
+                    baseM.showText('.',end='')
                 self.baseDamage *= 10
                 dmg = 0
             else:
@@ -56,15 +56,17 @@ class timeEater(baseM.basicEnemy):
                 dmg = eval(self.optionsP2[atk])
             else:
                 dmg = 0
-                print()
+                baseM.showText()
         return atk, dmg
 
-def run(player):
+def run(player, screen):
     t = timeEater()
     if len(player.items) > 50:
         t.baseDamage = math.ceil(len(player.items)/3)
     t.baseDamage *= player.timeClimbing
-    print("You walk into a large spacious room. There are clocks all over the walls, each with a different name on it.")
-    print("As you continue walking you see your name. Suddenly, the clock starts to grow, and the hands reach out toward you.")
+    baseM.showText("You walk into a large spacious room. There are clocks all over the walls, each with a different name on it.")
+    baseM.showText("As you continue walking you see your name. Suddenly, the clock starts to grow, and the hands reach out toward you.")
     baseM.runBasicFight(player, [t])
     return player
+
+

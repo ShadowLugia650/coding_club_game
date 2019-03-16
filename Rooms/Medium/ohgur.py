@@ -14,7 +14,9 @@ class Senior(baseM.basicEnemy):
         self.loot=[itemStats.ohgurGuts(), itemStats.ohgurGuts()]
         
         
-def run (player):
-    print("A raging, drooling Ohgur charges at you!")
+def run (player, screen):
+    baseM.showText("A raging, drooling Ohgur charges at you!")
     baseM.runBasicFight(player, [Senior()],0,True)
     return player
+
+

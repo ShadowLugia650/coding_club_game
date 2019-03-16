@@ -5,7 +5,7 @@ import console, pScript, baseM, itemStats
 stupidswordvar = 0
 lavadamage = 1
 #main room function
-def run(player):
+def run(player, screen):
     syord = itemStats.swordOfStupidity()
     global stupidswordvar, lavadamage
     print ("""As you enter the room, you feel hot air singe your eyebrows.
@@ -19,7 +19,7 @@ Press 3 to cower away from the heat""")
     while True:
         response = console.getInput(player, ["1", "2","3"], "Make your choice")
         if response.lower() == "1":
-            crossbridge(player)
+            crossbridge(player, screen)
             lavadamage=1   
             return player
         if response.lower() == "2":
@@ -27,13 +27,13 @@ Press 3 to cower away from the heat""")
             lavadamage=1
             return player
         if response.lower() =="3":
-            vegetate(player)
+            vegetate(player, screen)
             
         
 #the idea of this room is that the longer you stay, the more damage you will take from the heat of the lava. But the more damage you take from the lava, the stronger your reward will be
 
 #path 1-BORING
-def crossbridge(player):
+def crossbridge(player, screen):
     global stupidswordvar, lavadamage
     print ("""You carefully make your way across the bridge.
 Despite the spiderweb cracks in its base, the bridge seems to be holding up fine.
@@ -82,18 +82,20 @@ Press 2 to turn back and cross the bridge""")
                     print ("You stagger into the blessedly cool tunnel, and continue on your way without looking back.")
                     return player
         if response1.lower() == "2":
-            crossbridge(player)   
+            crossbridge(player, screen)   
             return player
 
 #path 3-transcendent    
-def vegetate(player):
+def vegetate(player, screen):
     global stupidswordvar, lavadamage
     print ("""The heat of the lava is overpowering, and going closer to the bridge or the shrine would probably roast you alive.
 Unfortunately, it's not much better where you're standing. You take """+str(lavadamage)+" damage from the lava's heat")
     pScript.damage(player,lavadamage)
     lavadamage+=1
-    print("""You reconsider your options. Both the shrine and the bridge still seem extremely unnappealing
+    baseM.showText("""You reconsider your options. Both the shrine and the bridge still seem extremely unnappealing
 How would you wish to proceed?
 Press 1 to cross the bridge
 Press 2 to approach the shrine
 Press 3 to cower away from the heat""")
+
+

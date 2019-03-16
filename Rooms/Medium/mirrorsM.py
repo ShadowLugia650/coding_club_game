@@ -39,17 +39,17 @@ def initPlayers():
     players += players2
     return players, t
 
-def run(player):
-    print("You enter a room full of mirrors. Everywhere you look you see yourself, yet they all seem.. distorted...")
-    print("You walk up to a mirror and place your hand on it. You feel your hand start to phase through...")
+def run(player, screen):
+    baseM.showText("You enter a room full of mirrors. Everywhere you look you see yourself, yet they all seem.. distorted...")
+    baseM.showText("You walk up to a mirror and place your hand on it. You feel your hand start to phase through...")
     choice = input("What do you do? [Continue, Leave]\n")
     if choice.title() in ["Continue", "C"]:
-        print("You continue, pushing through the mirror and reach the other side.")
+        baseM.showText("You continue, pushing through the mirror and reach the other side.")
         ps, texts = initPlayers()
         baseM.writePlayer(player, "data/mirrorsM.txt")
         p = random.choice(ps)
         txt = texts[ps.index(p)]
-        print("You look back at the mirror from which you came and see yourself there.")
+        baseM.showText("You look back at the mirror from which you came and see yourself there.")
         input("As you leave the room, you feel... {}..[Continue]".format(txt))
         player.gold = p.gold
         for i in range(3):
@@ -58,14 +58,16 @@ def run(player):
         player.health = p.health
         return player
     elif choice.title() in ["Leave", "L"]:
-        print("You jump back, startled, feeling a sharp pain in your hand.")
+        baseM.showText("You jump back, startled, feeling a sharp pain in your hand.")
         player.health -= 12
-        baseM.checkPlayer(player)
+        baseM.checkPlayer(player, screen)
         if player.alive:
             input("You leave the room as if nothing has happened..[Continue]")
         else:
             return player
     else:
         baseM.checkCommands(choice, player)
-        run(player)
+        run(player, screen)
     return player
+
+

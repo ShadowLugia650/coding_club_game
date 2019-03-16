@@ -31,7 +31,7 @@ class MossyGoober(baseM.basicEnemy):
                 return "Preparation", 0
         return atk, self.options[atk] + self.baseDamage
 
-def run(player):
+def run(player, screen):
     screen = artAssetsM.initScreen()
     baseM.showText("You encounter a thicket of vines preventing you from proceeding. What do you do?", screen)
     choice = baseM.showText("[Push Through, Cut Vines, Go Back]", screen)
@@ -41,7 +41,7 @@ def run(player):
         tx.severity = 3
         player.curses.append(tx)
     elif choice.title() in ["Cut", "Vines", "Cut Vines", "C"]:
-        if baseM.hasWeapon(player):
+        if baseM.hasWeapon(player, screen):
             baseM.showText("As you carefully cut the vines you start to feel the ground move beneath you.", screen)
             baseM.showText("You leap back onto solid ground as the giant green creature rises before you.", screen)
             baseM.showText("The creature turns to you and massive, moss-covered arms move toward you.", screen)
@@ -49,7 +49,7 @@ def run(player):
             baseM.runBasicFight(player, [MossyGoober()], playerFirst = True)
         else:
             baseM.showText("Without a proper weapon, you are unable to cut the vines.", screen)
-            run(player)
+            run(player, screen)
     elif choice.title() in ["Go Back", "Go", "Back", "G"]:
         baseM.showText("You turn away from the vines only to find more vines blocking the entrance from which you came..", screen)
         baseM.showText("Or was it? As you look around, vines cover every wall and stretch in front of the many doorways into and out of this room.", screen)
@@ -57,6 +57,8 @@ def run(player):
         player.curses.append(curseScript.madness())
     else:
         baseM.checkCommands(choice,player)
-        run(player)
+        run(player, screen)
     return player
+
+
 

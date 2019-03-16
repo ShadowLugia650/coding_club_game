@@ -14,7 +14,7 @@ class Gargoyle(baseM.basicEnemy):
         self.loot = [glowingEyes(), ("Gold", 45)]
         self.options = {"Whack":0, "Thwack":5, "Smack":-5, "Crack":0}
 
-def run(player):
+def run(player, screen):
     print ("You enter a seemingly empty room. [continue]")
     print ("As you walk further in, you begin to feel dizzy.[continue]")
     print ("You see two doors at the end of the room.[continue]")
@@ -52,4 +52,6 @@ def run(player):
             baseM.checkCommands(choice, player)
     return player
     
+
+
 

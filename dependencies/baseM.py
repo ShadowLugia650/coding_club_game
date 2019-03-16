@@ -6,7 +6,7 @@ from itemStats import *
 from curseScript import *
 
 #Functions
-def checkPlayer(player):
+def checkPlayer(player, screen):
     #Checks if the player is dead.
     if player.health <= 0:
         player.alive = False
@@ -18,9 +18,9 @@ def checkCommands(Input, player):
     if Input.title() in ["Help", "?"]:
         console.playerhelp()
     elif Input.title() in ["Status", "Stat", "Me"]:
-        console.status(player)
+        console.status(player, screen)
     elif Input.title() in ["Inventory", "Inv", "Items", "Bag"]:
-        console.inventory(player)
+        console.inventory(player, screen)
     elif Input.title().split(" ")[0] in ["Inspect", "View", "Description", "Desc"]:
         keyword = Input.title().split(" ")[0]
         s = Input.title().split(keyword+" ")[1]
@@ -29,9 +29,9 @@ def checkCommands(Input, player):
             if hasItem(itm, player):
                 itm.readDesc()
             else:
-                print("You don't have this item..")
+                baseM.showText("You don't have this item..")
         except NameError:
-            print("This item doesn't seem to exist...")
+            baseM.showText("This item doesn't seem to exist...")
     elif Input.title().split(" ")[0] in ["Drink", "Potion"]:
         keyword = Input.title().split(" ")[0]
         s = Input.title().split(keyword+" ")[1]
@@ -40,19 +40,19 @@ def checkCommands(Input, player):
             if hasItem(itm, player):
                 if issubclass(type(itm), basicPotion):
                     im = getItem(itm.name, player)
-                    im.drinkPotion(player)
+                    im.drinkPotion(player, screen)
                     player.items.remove(im)
                 else:
-                    print("That item doesn't seem too drinkable to me...")
+                    baseM.showText("That item doesn't seem too drinkable to me...")
             else:
-                print("You don't have this item..")
+                baseM.showText("You don't have this item..")
         except NameError:
-            print("This item doesn't seem to exist...")
+            baseM.showText("This item doesn't seem to exist...")
     else:
-        print("This is not one of your options...")
+        baseM.showText("This is not one of your options...")
 
-def initIntro(player):
-    print("""Welcome to the Coding Club dungeon crawler game!
+def initIntro(player, screen):
+    baseM.showText("""Welcome to the Coding Club dungeon crawler game!
 ************************************************
              Press any key to begin""")
     console.playerhelp()
@@ -61,11 +61,14 @@ def initIntro(player):
     import originalIntroM
     intros = [originalIntroM]
     intro = random.choice(intros)
-    intro.run(player)
+    intro.run(player, screen)
 
 def showText(text, screen = None):
     if screen is None:
-        print(text)
+        if [i in text for i in ['[',']']] == [True, True]:
+            return input(text)
+        else:
+            baseM.showText(text)
     else:
         import artAssetsM
         return artAssetsM.dispText(text, screen)
@@ -100,7 +103,7 @@ def playerInputFight(player, enemies, defense = 0):
     curseEfx = {}
     for curse in player.curses:
         if type(curse) == exhaustion:
-            efx = curse.onCombatTurn(player)
+            efx = curse.onCombatTurn(player, screen)
             curseEfx["Exhaustion"] = efx
     turn = input("What do you do? [Attack, Defend, Magic]\n")
     if turn.title() in ["Attack", "A", "Atk"]:
@@ -108,7 +111,7 @@ def playerInputFight(player, enemies, defense = 0):
         dmg = modifyPlayerEffects('atk', player)
         if "Exhaustion" in curseEfx.keys() and curseEfx["Exhaustion"][1] == "Damage":
             dmg -= curseEfx["Exhaustion"][0]
-        print("You attack {} {}, dealing {} damage".format(en.type, j+1, dmg))
+        baseM.showText("You attack {} {}, dealing {} damage".format(en.type, j+1, dmg))
         en.takeDamage(dmg, player)
         for item in player.items:
             try:
@@ -118,14 +121,14 @@ def playerInputFight(player, enemies, defense = 0):
             except AttributeError:
                 pass
         if en.health <= 0:
-            en.death(player)
+            en.death(player, screen)
             enemies[j] = None
         return defense
     elif turn.title() in ["Defend", "D", "Def", "Dfnd"]:
         defense += modifyPlayerEffects('def', player)
         if "Exhaustion" in curseEfx.keys() and curseEfx["Exhaustion"][1] == "Block":
             defense -= curseEfx["Exhaustion"][0]
-        print("You brace yourself, defending against {} damage.".format(defense))
+        baseM.showText("You brace yourself, defending against {} damage.".format(defense))
         return defense
     elif turn.title() in ["Magic", "M", "Mgc", "Alakazam"]:
         en, j = getFirstAliveEnemy(enemies)
@@ -140,13 +143,13 @@ def playerInputFight(player, enemies, defense = 0):
             while True:
                 magicchoice = input("Which magic item would you like to use? \n")
                 if magicchoice not in magiclist:
-                    print("Please choose a magic item")
+                    baseM.showText("Please choose a magic item")
                 for i in magiclist:
                     if magicchoice.lower() == i:
                         truemagiclist[magiclist.index(i)].magic(player, en)
                 return defense
         else:
-            print("Sorry! You do not have any magic items")
+            baseM.showText("Sorry! You do not have any magic items")
         return defense
     else:
         checkCommands(turn, player)
@@ -162,18 +165,18 @@ def runBasicFight(player, enemies, pBlock = 0, playerFirst = False, turn = 0, li
     if not playerFirst:
         for i in range(len(enemies)):
             if enemies[i] is not None:
-                atk, dmg = enemies[i].move(player)
+                atk, dmg = enemies[i].move(player, screen)
                 #Special Enemy Stuff lol
                 if atk == "Future Doom Damage":
-                    print("{} {}'s Future Doom comes true! You take {} damage.".format(enemies[i].type, i+1, dmg))
+                    baseM.showText("{} {}'s Future Doom comes true! You take {} damage.".format(enemies[i].type, i+1, dmg))
                     atk, dmg = enemies[i].move()
                 elif "Summon: " in atk:
                     enemies.append(dmg)
                 elif atk == "Flee":
-                    print("The {} fled the combat!".format(enemies[i].type))
+                    baseM.showText("The {} fled the combat!".format(enemies[i].type))
                     return player
                 #Ok end of Special Enemy stuff now
-                print("{} {} uses {}, dealing {} damage.".format(enemies[i].type, i+1, atk, dmg))
+                baseM.showText("{} {} uses {}, dealing {} damage.".format(enemies[i].type, i+1, atk, dmg))
                 if pBlock > 0:
                     for j in player.items:
                         if issubclass(type(j), basicDefensiveItem):
@@ -186,29 +189,29 @@ def runBasicFight(player, enemies, pBlock = 0, playerFirst = False, turn = 0, li
                         pBlock -= dmg
                 if atk == "Rob":
                     robbed = random.randint(3,6)
-                    print("The {} stole {} of your gold!".format(enemies[i].type, robbed))
+                    baseM.showText("The {} stole {} of your gold!".format(enemies[i].type, robbed))
                     player.gold -= robbed
                     #enemies[i].loot.append(("Gold",robbed))
                 elif atk == "Siphon":
                     if dmg > 0:
-                        print("The {} siphons {} of your hp!".format(enemies[i].type, dmg))
+                        baseM.showText("The {} siphons {} of your hp!".format(enemies[i].type, dmg))
                         enemies[i].health += dmg
                         if enemies[i].health > enemies[i].maxHp:
                             enemies[i].health = enemies[i].maxHp
                 elif atk == "Block":
                     enemies[i].block += enemies[i].baseDef
-                    print("The {} blocks for {} damage".format(enemies[i].type, enemies[i].block))
-            checkPlayer(player)
+                    baseM.showText("The {} blocks for {} damage".format(enemies[i].type, enemies[i].block))
+            checkPlayer(player, screen)
             if not player.alive:
                 return player
     pBlock -=round(0.2*pBlock)
-    print(str(round(0.2*pBlock))+" of your block expired!")
+    baseM.showText(str(round(0.2*pBlock))+" of your block expired!")
     pBlock = playerInputFight(player, enemies, pBlock)
     if turn == limit:
-        print("Sorry! You ran out of time")
+        baseM.showText("Sorry! You ran out of time")
         return player
     if getFirstAliveEnemy(enemies) is not None and player.alive:
-        print("Your HP: {}\t\tEnemy's HP: {}".format(player.health, getFirstAliveEnemy(enemies)[0].health))
+        baseM.showText("Your HP: {}\t\tEnemy's HP: {}".format(player.health, getFirstAliveEnemy(enemies)[0].health))
         return runBasicFight(player, enemies, pBlock, False, turn+1)
     elif not player.alive:
         return player
@@ -229,19 +232,19 @@ def hasItem(itemClass, player):
             return True
     return False
     
-def hasWeapon(player):
+def hasWeapon(player, screen):
     for i in player.items:
         if issubclass(type(i), basicSword):
             return True
     return False
     
-def hasBlock(player):
+def hasBlock(player, screen):
     for i in player.items:
         if issubclass(type(i), basicDefensiveItem):
             return True
     return False
 
-def hasMagic(player):
+def hasMagic(player, screen):
     for i in player.items:
         if issubclass(type(i), basicMagicItem):
             return True
@@ -280,7 +283,7 @@ def constructPlayer(data):
             p.items.append(eval(strToClsNm(i))())
     return p
     
-def packagePlayer(player):
+def packagePlayer(player, screen):
     #Packages a player class into the format given above.
     d = '{} / {} / '.format(player.health, player.gold)
     for i in player.items:
@@ -303,7 +306,7 @@ def writePlayer(player, file):
     #Automatically accounts for players already in the file.
     players = readStoredPlayers(file)
     txt = open(file,'w+')
-    players.append(player)
+    players.append(player, screen)
     for i in players:
         t = packagePlayer(i)
     txt.write(t)
@@ -397,3 +400,5 @@ class ShivMan(basicEnemy):
         self.maxHp = 70
         self.loot = [("Gold", 42, shiv())]
         self.options = {"Stab":0,"Rob":-2,"Slash":+2}
+
+

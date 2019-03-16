@@ -12,7 +12,7 @@ class Collector(baseM.basicEnemy):
         self.maxHp = 100
         self.loot = [("Gold", 114)]
         self.options = {"Stab":0,"Siphon":-3,"Slash":+1}
-def run(player):
+def run(player, screen):
     x=Collector()
     print ("""Opening the door, you peer cautiously into the room.
 A hooded figure with three swords strapped to his back stands at its center.
@@ -60,6 +60,8 @@ Press 3 to choose the hero's blade (don't do it)
             x.loot=[("Gold",random.randint(120,150)),herosBlade()]
             baseM.runBasicFight(player, enemylist, 0, True)
             return player
+
+
 
 
 

@@ -1,25 +1,25 @@
 import baseM
 def playerhelp():
-    print("game commands:")
-    print("    \"help\"        opens the commands guide")
-    print("    \"status\"      prints your health and gold")
-    print("    \"inventory\"   prints your item list")
-#    print("    \"options\"     prints the listed inputs you can make")
-    print("    \"inspect\"     view the description of an item")
-    print("    \"drink\"       drink a potion")
-#    print("    \"testgold\"    lets you input a new gold amount. Big errors if you don't enter an int")
-#    print("    \"testhp\"      lets you input a new health amount. Big errors if you don't enter an int")
+    baseM.showText("game commands:")
+    baseM.showText("    \"help\"        opens the commands guide")
+    baseM.showText("    \"status\"      prints your health and gold")
+    baseM.showText("    \"inventory\"   prints your item list")
+#    baseM.showText("    \"options\"     prints the listed inputs you can make")
+    baseM.showText("    \"inspect\"     view the description of an item")
+    baseM.showText("    \"drink\"       drink a potion")
+#    baseM.showText("    \"testgold\"    lets you input a new gold amount. Big errors if you don't enter an int")
+#    baseM.showText("    \"testhp\"      lets you input a new health amount. Big errors if you don't enter an int")
 
 def status(Player):
-    print("Health: " + str(Player.health))
-    print("Gold: " + str(Player.gold))
+    baseM.showText("Health: " + str(Player.health))
+    baseM.showText("Gold: " + str(Player.gold))
 
 def inventory(Player):
     for item in Player.items:
-        print(item)
+        baseM.showText(item)
 def curses(Player):
     for curse in Player.curses:
-        print(curse)
+        baseM.showText(curse)
         
 def testGold(Player, x):
     Player.gold = int(x)
@@ -40,7 +40,7 @@ def getInput(Player, outputs, prompt = ""): # a better Input function. Has built
         elif console.lower() in ["curses", "curse", "crs"]:
             curses(Player)
         elif console.lower() in ["options", "opt", "options?", "opt?"]:
-            print(outputs)
+            baseM.showText(outputs)
         elif console.lower() in outputs:
             output = True
         else:
@@ -48,5 +48,7 @@ def getInput(Player, outputs, prompt = ""): # a better Input function. Has built
     return console.lower()
 
 def delayPrint(Player, text = ""):
-    print(text)
+    baseM.showText(text)
     input()
+
+

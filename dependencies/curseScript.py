@@ -13,7 +13,7 @@ class basicCurse(itemStats.basicItem): #although the curse is not necessarily an
         pass
 
     def printEffect(self):
-        print(self.effectText)
+        baseM.showText(self.effectText)
     
     def curseItem(self, item):
         self.target = item
@@ -52,19 +52,19 @@ class toxins(basicCurse):
         
     def toxinDamage(self, player):
         dmg = self.severity
-        print("The toxins damage you for {} hp!".format(dmg))
+        baseM.showText("The toxins damage you for {} hp!".format(dmg))
         for i in player.curses:
             if type(i) == exhaustion:
                 dmg += i.severity
-                print("Your exhaustion increases the effectiveness of the toxins!")
+                baseM.showText("Your exhaustion increases the effectiveness of the toxins!")
         return dmg
         
     def onCombatTurn(self, player):
-        dmg = round(self.toxinDamage(player)*0.75)
+        dmg = round(self.toxinDamage(player, screen)*0.75)
         player.health -= dmg
         
     def onFloorClimb(self, player):
-        dmg = self.toxinDamage(player)
+        dmg = self.toxinDamage(player, screen)
         player.health -= dmg
         self.severity -= 1
         if self.severity == 0:
@@ -126,10 +126,10 @@ class madness(basicCurse):
         if c == 1:
             dmg = random.randint(3,6)
             player.health -= dmg
-            print("You took {} damage".format(dmg))
+            baseM.showText("You took {} damage".format(dmg))
         elif c == 2:
             itm = random.choice(player.items)
-            print("You lost your {}".format(itm.name))
+            baseM.showText("You lost your {}".format(itm.name))
         elif c == 3:
             pass #randomly generate an item to add to inventory
         
@@ -155,4 +155,6 @@ class steelblight(basicCurse):
     def curseItem(self, player): #this shouldbe curseItem(self, item)... we can handle the random choice when the curse is applied.
         if player.items != null:
             random.choice(player.items)
+
+
 

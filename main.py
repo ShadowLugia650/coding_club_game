@@ -1,7 +1,7 @@
 import sys, random, copy
 
 sys.path.insert(0, 'dependencies')
-import console, pScript, baseM, itemStats, curseScript
+import console, pScript, baseM, itemStats, curseScript, artAssetsM
 
 sys.path.insert(0, 'Rooms/Easy')
 import shopM, battleZombomanM, bestRoomRC, GobolinRC, goldenTreeM, Armory, trophyRoom
@@ -17,14 +17,17 @@ hard= [owM, Collector, demonicWarrior, jabberwockyJG]
 sys.path.insert(0, 'Rooms/Impossible')
 import TimeEater
 impossible = [TimeEater]
-def game():
+def game(mode = "Text"):
     Player = pScript.PChar()
     levels = easy
     consol = ""
     rounds = 0
     lastRoom = None
+    screen = None
+    if mode = "Pygame":
+        screen = ArtAssetsM.initScreen()
 
-    baseM.initIntro(Player)
+    baseM.initIntro(Player, screen)
     while Player.alive:
         torchExists = False
         possibleLevels = copy.copy(levels)
@@ -37,7 +40,7 @@ def game():
                 torchExists = True
         if not torchExists:
             if random.randint(0,10)>6:
-                print("You tripped in the dark and took 5 damage")
+                baseM.showText("You tripped in the dark and took 5 damage", screen)
                 Player.health-=5
         if rounds == 3:
             room = shopM
@@ -46,9 +49,9 @@ def game():
             while room == lastRoom:
                 room = random.choice(possibleLevels)
         lastRoom = room
-        consol = console.getInput(Player, ["yes", "y", "ok", "sure", "yeah", "yay", "no", "nay", "n", "nok"], "next room? ")
+        consol = baseM.showText("Next Room? [yes, no]", screen)#console.getInput(Player, ["yes", "y", "ok", "sure", "yeah", "yay", "no", "nay", "n", "nok"], "next room? ")
         if consol.lower() in ["yes", "y", "ok", "sure", "yeah", "yay"]:
-            room.run(Player)
+            room.run(Player, screen)
             rounds += 1
             Player.timeClimbing += 2
             for i in Player.items:
@@ -63,22 +66,28 @@ def game():
         else:
             break
         if Player.alive == False:
-            print("You have died.")
+            baseM.showText("You have died.", screen)
         if rounds == 5:
             levels += med
         elif rounds == 20:
             levels += hard
-    print("Game over.")
-    print("rooms cleared:  " + str(rounds))
-    print("Ending gold:    " + str(Player.gold))
-    print("Ending items:")
+    baseM.showText("Game over.", screen)
+    baseM.showText("rooms cleared:  " + str(rounds), screen)
+    baseM.showText("Ending gold:    " + str(Player.gold), screen)
+    baseM.showText("Ending items:", screen)
     for i in Player.items:
-        print("- {}".format(i))
-    print("Your final score is: {}".format(baseM.calculateFinalScore(Player,rounds)))
+        baseM.showText("- {}".format(i), screen)
+    baseM.showText("Your final score is: {}".format(baseM.calculateFinalScore(Player,rounds)))
     input()
     levels=easy
-    game()
+    game(mode)
 game()
+
+
+
+
+
+
 
 
 

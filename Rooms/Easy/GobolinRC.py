@@ -14,7 +14,9 @@ class Junior(baseM.basicEnemy):
         self.loot=[("Gold",80)]
         
         
-def run (player):
-    print("A snarling, scrawny goblin leaps out of the darkness!")
+def run (player, screen):
+    baseM.showText("A snarling, scrawny goblin leaps out of the darkness!")
     baseM.runBasicFight(player, [Junior()], playerFirst=True)
     return player
+
+

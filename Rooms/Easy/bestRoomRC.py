@@ -1,30 +1,30 @@
 import itemStats
 import baseM
 #Needs to be updated to have a loop in the first prompt for user input
-def run(player):
-    print("""The hallway opens up into a fork.
+def run(player, screen):
+    baseM.showText("""The hallway opens up into a fork.
 Down one path you see a fountain bubbling with clear, pure, water, and down
 the other you see a golden door.""")
     while True:
-        print("Choose your path [Fountain, Gold]")
+        baseM.showText("Choose your path [Fountain, Gold]")
         choice=input().title()
         if choice in ["Fountain","F"]:
             while True:
-                print("Do you wish to drink from the fountain? [yes, no]")
+                baseM.showText("Do you wish to drink from the fountain? [yes, no]")
                 choice=input()
                 if choice in ["yes", "y","okay","ok"]:
-                    print("You feel the water purify and heal your body")
-                    print("You were healed to full health!")
+                    baseM.showText("You feel the water purify and heal your body")
+                    baseM.showText("You were healed to full health!")
                     player.health = player.maxHp
                     return player
                 elif choice in ["no", "n"]:
-                    print("You continue on your way, wondering what could have been")
+                    baseM.showText("You continue on your way, wondering what could have been")
                     return player
                 else:
-                    print("Sorry, that is not one of your choices")
+                    baseM.showText("Sorry, that is not one of your choices")
             break
         elif choice in ["Gold", "G"]:
-            print("""You reach the golden door. What would you like to do?
+            baseM.showText("""You reach the golden door. What would you like to do?
 Press 1 to knock on the door
 Press 2 to try to break open the door
 Press 3 to cut off pieces of gold and steal them
@@ -57,7 +57,7 @@ Press 3 to take the staff""")
                             player.items.append(itemStats.staffOfGold())
                             return player
                         else:
-                            print("Sorry, That is not one of your choices")
+                            baseM.showText("Sorry, That is not one of your choices")
                     break
                 elif choice in ["2", "two", "break"]:
                     print ("You chip off some gold but ultimately accomplish nothing. You leave, disappointed.")
@@ -78,5 +78,7 @@ Press 3 to take the staff""")
                 else:
                     print ("Sorry, that is not one of your choices")
         else:
-            print("Sorry, that is not one of your choices")
+            baseM.showText("Sorry, that is not one of your choices")
         
+
+

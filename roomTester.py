@@ -27,6 +27,8 @@ Player = pScript.PChar()
 test.run(Player)
 
 if Player.alive == False:
-    print("You have died.")
+    baseM.showText("You have died.")
 else:
-    print("This simulation has been TERMINATED.")
+    baseM.showText("This simulation has been TERMINATED.")
+
+

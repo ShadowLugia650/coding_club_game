@@ -5,17 +5,17 @@ import baseM
 from itemStats import *
 
 def listItems(items):
-    print("This shop has:")
+    baseM.showText("This shop has:")
     for i in items:
-        print('{}: {}'.format(i, items[i]))
+        baseM.showText('{}: {}'.format(i, items[i]))
 
-def run(player):
+def run(player, screen):
     items = {}
     allItems = {sword():100, shield():100, healthPotion():20, antidote():80, armoredShirt():150, torch():35, orbOfThunder():50}
     for i in range(10):
         itm = random.choice(list(allItems.keys()))
         items[itm] = allItems[itm]
-    print("Welcome, Traveller! Buy something at my shop!")
+    baseM.showText("Welcome, Traveller! Buy something at my shop!")
     choice = input("What do you do? [Buy, Leave]\n")
     if choice.title() in ["Buy", "B"]:
         listItems(items)
@@ -30,23 +30,25 @@ def run(player):
                 if baseM.strToClsNm(i.name) == im:
                     found = True
                     if items[i] > player.gold:
-                        print(random.choice(["You don't have enough money for that..", "Don't be a thief!"]))
+                        baseM.showText(random.choice(["You don't have enough money for that..", "Don't be a thief!"]))
                     else:
                         try:
                             itm = eval(im)()
-                            print("You bought a {}".format(itm))
+                            baseM.showText("You bought a {}".format(itm))
                             player.gold -= items[i]
                             player.items.append(itm)
                             items.pop(i)
                         except NameError:
-                            print("Are you sure that's an item?")
+                            baseM.showText("Are you sure that's an item?")
                             itm = None
             if not found:
-                print("This shop doesn't have that.")
+                baseM.showText("This shop doesn't have that.")
             baseM.checkCommands(im, player)
     elif choice.title() in ["Leave", "L"]:
-        print("You walk past this 'shop' and continue your journey...")
+        baseM.showText("You walk past this 'shop' and continue your journey...")
     else:
         baseM.checkCommands(choice, player)
-        run(player)
+        run(player, screen)
     return player
+
+

@@ -2,19 +2,19 @@ import sys
 sys.path.insert(0, 'dependencies')
 import baseM, random, itemStats
 
-def run(player):
-    print("A golden idol stands in the middle of the hallway")
-    print("Hack pieces off or touch the idol?")
+def run(player, screen):
+    baseM.showText("A golden idol stands in the middle of the hallway")
+    baseM.showText("Hack pieces off or touch the idol?")
     choice = input("[hack pieces, touch idol]")
     thisIdol = Idol()
     while True:
         if choice.lower() in ["hack pieces","hack", "h"]:
             baseM.runBasicFight(player, [thisIdol], 0, True, 5)
-            print("You broke "+str(round((1000-thisIdol.health())/2))+" worth of gold fragments off the idol!")
+            baseM.showText("You broke "+str(round((1000-thisIdol.health())/2))+" worth of gold fragments off the idol!")
             player.gold+=round((1000-thisIdol.health())/2)
             return player
         elif choice.lower() in ["touch idol","touch", "t"]:
-            print("The idol shrinks in size until it can fit in your backpack")
+            baseM.showText("The idol shrinks in size until it can fit in your backpack")
             player.items.append(itemStats.idol())
             return player
         else:
@@ -31,3 +31,5 @@ class Idol(baseM.basicEnemy):
         self.options = {"Glow":0}
         self.loot=[itemStats.idolShield()]
         
+
+

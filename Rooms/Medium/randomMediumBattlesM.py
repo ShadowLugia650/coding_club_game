@@ -49,20 +49,22 @@ class Sorcerer(baseM.basicEnemy):
         self.loot = [("Gold", 21), itemStats.orbOfThunder()]
         self.options = {"Thunder Strike":3, "Siphon":-3}
         
-def run(player):
+def run(player, screen):
     enemies = [random.choice([Grenlim(), Snak(), Sorcerer()])]
-    print("You encountered a {}!".format(enemies[0].type))
+    baseM.showText("You encountered a {}!".format(enemies[0].type))
     choice = input("What do you do? [Fight, Run]\n")
     if choice.title() in ["Fight", "F", "Attack"]:
-        print("You engage the {} in combat!".format(enemies[0].type))
+        baseM.showText("You engage the {} in combat!".format(enemies[0].type))
         baseM.runBasicFight(player, enemies)
     elif choice.title() in ["Flee", "Run", "R"]:
-        print("You run away from the {} and it deals {} damage to you.".format(enemies[0].type, enemies[0].baseDamage))
+        baseM.showText("You run away from the {} and it deals {} damage to you.".format(enemies[0].type, enemies[0].baseDamage))
         if type(enemies[0]) == Snak:
-            print("The Snak envenomated you with its attack!")
+            baseM.showText("The Snak envenomated you with its attack!")
             player.curses.append(toxins())
         player.health -= enemies[0].baseDamage
     else:
         baseM.checkCommands(choice, player)
-        run(player)
+        run(player, screen)
     return player
+
+
