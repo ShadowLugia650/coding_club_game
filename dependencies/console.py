@@ -1,14 +1,14 @@
 import baseM
 def playerhelp(screen):
-    baseM.showText("game commands:",screen)
-    baseM.showText("    \"help\"        opens the commands guide",screen)
-    baseM.showText("    \"status\"      prints your health and gold",screen)
-    baseM.showText("    \"inventory\"   prints your item list",screen)
-#    baseM.showText("    \"options\"     prints the listed inputs you can make",screen)
-    baseM.showText("    \"inspect\"     view the description of an item",screen)
-    baseM.showText("    \"drink\"       drink a potion",screen)
+    baseM.showText("""game commands:
+    "help"        opens the commands guide
+    "status"      prints your health and gold
+    "inventory"   prints your item list
+    "inspect"     view the description of an item
+    "drink"       drink a potion""",screen) # fix for pygame mode
 #    baseM.showText("    \"testgold\"    lets you input a new gold amount. Big errors if you don't enter an int",screen)
 #    baseM.showText("    \"testhp\"      lets you input a new health amount. Big errors if you don't enter an int",screen)
+#    baseM.showText("    \"options\"     prints the listed inputs you can make",screen)
 
 def status(Player,screen):
     baseM.showText("Health: " + str(Player.health),screen)
