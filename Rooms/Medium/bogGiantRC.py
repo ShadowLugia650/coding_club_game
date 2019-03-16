@@ -19,14 +19,14 @@ How would you wish to proceed?
 Press 1 to take the sword
 Press 2 to leave""")
     while True:
-        choice=baseM.showText()
-        if choice=="1":
+        choice=baseM.showText("[Take the sword, Leave]")
+        if choice.lower() in ["1", "take", "sword", "take the sword"]:
             baseM.showText("""You yank hard on the sword, trying to dislodge it.
 To your surprise, the floor begins to rumble and the tree trunk begins to rise.
 You realize that the tree trunk is actually the head of a massive bog giant!""")
             baseM.runBasicFight(player, [BogGiant()], 0, True)
             return player
-        elif choice=="2":
+        elif choice.lower() in ["2", "leave", "l"]:
             print ("You suspect a trap, so you leave the sword untouched.")
             return player
         else:
