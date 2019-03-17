@@ -1,6 +1,5 @@
 import sys
-import random, console, pScript, Mtesting
-from pScript import PChar
+import random, console, Mtesting
 import itemStats
 from itemStats import *
 from curseScript import *
@@ -274,6 +273,7 @@ def calculateFinalScore(player, floorsClimbed):
 def constructPlayer(data):
     #Constructs a player class based on data given in the following format.
     # health / gold / item1,item2,item3
+    from pScript import PChar
     p = PChar()
     datal = data.split(' / ')
     p.health = int(datal[0])

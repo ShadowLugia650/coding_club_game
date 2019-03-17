@@ -131,7 +131,7 @@ def wait(player, screen, repeat = False):
         baseM.showText(player, "You exit the room without a sound.",screen)
     else:
         baseM.checkCommands(ch1, player,screen)
-        wait(player, True)
+        wait(player, screen, True)
     return player
 
 def run(player, screen):

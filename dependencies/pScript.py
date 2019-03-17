@@ -1,4 +1,4 @@
-import random
+import random, baseM
 from itemStats import loincloth
 
 class PChar(): #intializes the class. The Main handles this, so you don't need it in your room.
