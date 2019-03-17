@@ -15,7 +15,7 @@ class MossyGoober(baseM.basicEnemy):
         self.turn = 0
         self.useNext = "Colossal Punch"
         
-    def move(self, player):
+    def move(self, player, screen):
         self.turn += 1
         if self.useNext is not None:
             atk = self.useNext
@@ -58,6 +58,7 @@ def run(player, screen):
         baseM.checkCommands(choice,player,screen)
         run(player, screen)
     return player
+
 
 
 

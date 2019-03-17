@@ -16,10 +16,10 @@ def status(player,screen):
 
 def inventory(player,screen):
     for item in player.items:
-        baseM.showText(player, item,screen)
+        baseM.showText(player, item.__str__(),screen)
 def curses(player,screen):
     for curse in player.curses:
-        baseM.showText(player, curse,screen)
+        baseM.showText(player, curse.__str__(),screen)
         
 def testGold(player, x):
     player.gold = int(x)
@@ -50,6 +50,7 @@ def getInput(player, outputs, prompt = "", screen = None): # a better Input func
 def delayPrint(player, text = "", screen = None):
     baseM.showText(player, text,screen)
     baseM.showText()
+
 
 
 

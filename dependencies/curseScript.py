@@ -9,7 +9,7 @@ class basicCurse(itemStats.basicItem): #although the curse is not necessarily an
         self.effectText = ""
         self.target = None
 
-    def onCombatTurn(self, player):
+    def onCombatTurn(self, player, screen):
         pass
 
     def printEffect(self):
@@ -18,7 +18,7 @@ class basicCurse(itemStats.basicItem): #although the curse is not necessarily an
     def curseItem(self, item):
         self.target = item
         
-    def remove(self, player):
+    def remove(self, player, screen):
         player.curses.remove(self)
 
 #player curses
@@ -28,7 +28,7 @@ class exhaustion(basicCurse):
         self.name = "Exhaustion level: " + str(self.severity)
         self.desc = "Mental and physical fatigue from lack of sleep."
 
-    def onCombatTurn(self, player):
+    def onCombatTurn(self, player, screen):
         choice = random.randint(1, 2)
         fatigue = random.randint(1, self.severity)
         Type = ""
@@ -41,7 +41,7 @@ class exhaustion(basicCurse):
         self.printEffect()
         return fatigue, Type
 
-    def onFloorClimb(self, player):
+    def onFloorClimb(self, player, screen):
         self.severity += 1
 
 class toxins(basicCurse):
@@ -50,7 +50,7 @@ class toxins(basicCurse):
         self.name = "Toxins: {}".format(self.severity)
         self.desc = "Toxic compounds deal damage over time if not treated and deal more damage if you are exhausted.."
         
-    def toxinDamage(self, player):
+    def toxinDamage(self, player, screen):
         dmg = self.severity
         baseM.showText(player, "The toxins damage you for {} hp!".format(dmg),screen)
         for i in player.curses:
@@ -59,11 +59,11 @@ class toxins(basicCurse):
                 baseM.showText(player, "Your exhaustion increases the effectiveness of the toxins!",screen)
         return dmg
         
-    def onCombatTurn(self, player):
+    def onCombatTurn(self, player, screen):
         dmg = round(self.toxinDamage(player, screen)*0.75)
         player.health -= dmg
         
-    def onFloorClimb(self, player):
+    def onFloorClimb(self, player, screen):
         dmg = self.toxinDamage(player, screen)
         player.health -= dmg
         self.severity -= 1
@@ -75,11 +75,11 @@ class hubris(basicCurse):
         self.name = "Hubris"
         self.desc = "Allows impossible rooms to naturally occur"
     
-    def onFloorClimb(self, player):
+    def onFloorClimb(self, player, screen):
         if not player.impossible:
             player.impossible = True
     
-    def remove(self, player):
+    def remove(self, player, screen):
         player.impossible = False
         player.curses.remove(self)
 
@@ -90,7 +90,7 @@ class stupidity(basicCurse):
         self.justAdded = True
         self.affectedSwords = []
         
-    def onFloorClimb(self, player):
+    def onFloorClimb(self, player, screen):
         if self.justAdded:
             self.justAdded = False
             for i in player.items:
@@ -103,7 +103,7 @@ class stupidity(basicCurse):
                     i.damage *= 3
                     self.affectedSwords.append(i)
                     
-    def remove(self, player):
+    def remove(self, player, screen):
         for i in self.affectedSwords:
             i.damage /= 3
         player.curses.remove(self)
@@ -113,7 +113,7 @@ class nameMe(basicCurse):
         self.name = "" #Merciric absorption thing//alcoholism
         self.desc = "The enemy of the wealthy and the poor alike."
         
-    def onFloorClimb(self, player):
+    def onFloorClimb(self, player, screen):
         player.gold -= round(player.gold*0.1)
         
 class madness(basicCurse):
@@ -121,7 +121,7 @@ class madness(basicCurse):
         self.name = "Madness"
         self.desc = "Yes yes yes yes yes yes yes."
         
-    def onFloorClimb(self, player):
+    def onFloorClimb(self, player, screen):
         c = random.randint(1,2) # add 3 later
         if c == 1:
             dmg = random.randint(3,6)
@@ -141,7 +141,7 @@ class ephemeral(basicCurse):
         self.desc = "The ephemeral and fragile nature of human life is infused into this item."
         self.target = None
         
-    def onFloorClimb(self, player):
+    def onFloorClimb(self, player, screen):
         self.floorsLeft -= 1
         if self.floorsLeft == 0:
             player.items.remove(self.target)
@@ -155,6 +155,7 @@ class steelblight(basicCurse):
     def curseItem(self, player): #this shouldbe curseItem(self, item)... we can handle the random choice when the curse is applied.
         if player.items != null:
             random.choice(player.items)
+
 
 
 

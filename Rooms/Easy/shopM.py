@@ -4,10 +4,10 @@ sys.path.insert(0, 'dependencies')
 import baseM
 from itemStats import *
 
-def listItems(items):
-    baseM.showText(player, "This shop has:",screen)
+def listItems(items, screen):
+    baseM.showText(None, "This shop has:",screen)
     for i in items:
-        baseM.showText(player, '{}: {}'.format(i, items[i]),screen)
+        baseM.showText(None, '{}: {}'.format(i, items[i]),screen)
 
 def run(player, screen):
     items = {}
@@ -18,10 +18,10 @@ def run(player, screen):
     baseM.showText(player, "Welcome, Traveller! Buy something at my shop!",screen)
     choice = baseM.showText(player, "What do you do? [Buy, Leave]\n",screen)
     if choice.title() in ["Buy", "B"]:
-        listItems(items)
+        listItems(items, screen)
         im = None
         while im not in ["leave", "l"]:
-            im = baseM.showText(player, "What would you like to buy? (type 'Leave' to leave,screen).\n",screen)
+            im = baseM.showText(player, "What would you like to buy? (type 'Leave' to leave).\n",screen)
             im = baseM.strToClsNm(im)
             found = False
             if im in ["leave", "l"]:
@@ -50,27 +50,3 @@ def run(player, screen):
         baseM.checkCommands(choice, player,screen)
         run(player, screen)
     return player
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -17,7 +17,7 @@ class DemonicWarrior(baseM.basicEnemy):
         self.optionsP2 = {"Strike":5, "Double Strike":-6, "Combo Slash":0}
         self.phase = 1
 
-    def move(self, player):
+    def move(self, player, screen):
         if self.health <= (self.maxHp/2) and self.phase == 1:
             baseM.showText(player, "\"You will never defeat me!\"",screen)
             self.baseDamage += 10
@@ -45,6 +45,7 @@ def run(player, screen):
     baseM.showText(player, "The Demonic Warrior engages you in combat!",screen)
     baseM.runBasicFight(screen, player, enemies)
     return player
+
 
 
 

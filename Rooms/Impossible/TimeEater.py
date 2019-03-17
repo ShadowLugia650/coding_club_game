@@ -17,7 +17,7 @@ class timeEater(baseM.basicEnemy):
         self.turnCounter = 0
         self.timedTurn = (0, 0)
         
-    def move(self, player):
+    def move(self, player, screen):
         self.turnCounter += 1
         baseM.showText(player, "Take your time...",screen)
         if self.phase == 1:
@@ -67,6 +67,7 @@ def run(player, screen):
     baseM.showText(player, "As you continue walking you see your name. Suddenly, the clock starts to grow, and the hands reach out toward you.",screen)
     baseM.runBasicFight(screen, player, [t])
     return player
+
 
 
 

@@ -26,7 +26,7 @@ class Snak(baseM.basicEnemy):
         self.options = {"Dry Strike":2, "Venomous Bite":-3}
         self.lastHit = "Dry Strike"
         
-    def move(self, player):
+    def move(self, player, screen):
         if self.lastHit == "Dry Strike":
             atk = random.choice(list(self.options.keys()))
         else:
@@ -66,6 +66,7 @@ def run(player, screen):
         baseM.checkCommands(choice, player,screen)
         run(player, screen)
     return player
+
 
 
 

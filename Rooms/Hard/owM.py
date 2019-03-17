@@ -18,7 +18,7 @@ class Heart(baseM.basicEnemy):
         self.turnNum = 0
         self.pummelHits = 0
         
-    def move(self, player):
+    def move(self, player, screen):
         self.turnNum += 1
         if self.turnNum % 3 == 0:
             atk = "Reap"
@@ -93,6 +93,7 @@ def run(player, screen):
         baseM.checkCommands(choice, player,screen)
         run(player, screen)
     return player
+
 
 
 

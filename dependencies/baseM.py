@@ -66,7 +66,7 @@ def initIntro(player, screen):
 
 def showText(player, text = '', screen = None):
     if screen is None:
-        if [i in text for i in ['[',']']] == [True, True]:
+        if [i in text for i in ['[',']']] == [True, True] or '?' in text:
             return input(text)
         else:
             print(text)
@@ -218,7 +218,7 @@ def runBasicFight(screen, player, enemies, pBlock = 0, playerFirst = False, turn
         return player
     else:
         choice = showText(player, "You defeated the enemies! [Continue]",screen)
-        checkCommands(choice, player)
+        checkCommands(choice, player, screen)
         return player
 
 def getItem(name, player):
@@ -332,14 +332,14 @@ class basicEnemy():
         if dmg > 0:
             self.health -= damage
         
-    def death(self, player):
+    def death(self, player, screen):
         for i in self.loot:
             if type(i) == tuple and i[0] == "Gold":
                 player.gold += i[1]
             else:
                 player.items.append(i)
 
-    def move(self, player = None):
+    def move(self, player, screen):
         self.block = 0
         atk = random.choice(list(self.options.keys()))
         return atk, (self.baseDamage + self.options[atk])
@@ -358,7 +358,7 @@ class twoPhaseEnemy(basicEnemy):
         self.phase = 1
         self.condition = (health <= round(maxHp/2))
         
-    def move(self):
+    def move(self, player, screen):
         self.block = 0
         if self.phase == 1:
             if self.condition:
@@ -402,6 +402,8 @@ class ShivMan(basicEnemy):
         self.maxHp = 70
         self.loot = [("Gold", 42, shiv())]
         self.options = {"Stab":0,"Rob":-2,"Slash":+2}
+
+
 
 
 

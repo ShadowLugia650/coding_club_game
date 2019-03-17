@@ -19,7 +19,7 @@ class Necromancer(baseM.basicEnemy):
         self.optionsP2 = dict(self.options, **{"Heal":0})
         self.picklist = self.options
         
-    def move(self, player):
+    def move(self, player, screen):
         if (self.health <= self.maxHp/2):
             self.picklist = self.optionsP2
         else:
@@ -35,6 +35,7 @@ class Necromancer(baseM.basicEnemy):
         
 def run(player, screen):
     return player
+
 
 
 
