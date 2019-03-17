@@ -41,3 +41,10 @@ def specials(Input, player):
 
 
 
+
+
+
+
+
+
+

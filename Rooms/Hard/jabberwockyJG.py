@@ -42,7 +42,7 @@ def runAway(player, tf):
     if len(player.items) > 0:
         lost = random.choice(player.items)
         baseM.showText(player, "In your haste, you forgot to grab your " + lost.name + "!",screen)
-        pScript.removeItem(player, lost)
+        pScript.removeItem(screen, player, lost)
         goBack(player, tf, lost)
 
 def goBack(player, tf, lost):
@@ -55,14 +55,14 @@ def goBack(player, tf, lost):
             baseM.showText(player, "Unfortunately, your " + lost.name + " was lost in the fight.",screen)
         else:
             baseM.showText(player, "You find your " + lost.name + " peacefully resting at the base of the tree, seemingly mocking your cowardice.",screen)
-            pScript.addItem(player, lost)
+            pScript.addItem(screen, player, lost)
     else:
         baseM.showText(player, "You figure it's not worth going back.",screen)
 
 def nap(player, tf):
     if tf == False:
         baseM.showText(player, "You take a nice, relaxing nap. You awaken feeling refreshed.",screen)
-        pScript.heal(player, random.randint(15, 45))
+        pScript.heal(screen, player, random.randint(15, 45))
     else:
         baseM.showText(player, """You fall asleep as the the incessant burbling drones on in the background.
 ...
@@ -101,6 +101,13 @@ You stop in uffish thought under a nearby Jubjub tree.
     elif response == "3":
         nap(player, jabTrue)
     return player
+
+
+
+
+
+
+
 
 
 

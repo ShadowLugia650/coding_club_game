@@ -16,15 +16,15 @@ class PChar(): #intializes the class. The Main handles this, so you don't need i
         self.impossible = False
 
 #I'd recommend having these as methods inside the player class so they're easier to use.
-def checkDeath(player): #checks if the player is dead. Handled automatically in the damage() function.
+def checkDeath(player, screen): #checks if the player is dead. Handled automatically in the damage() function.
     if player.health <= 0:
-        death(player)
+        death(player, screen)
 
-def death(player): # sets player.alive to False. Handled automatically by the checkDeath() function.
+def death(player, screen): # sets player.alive to False. Handled automatically by the checkDeath() function.
 #Note: your level should have a way to end if the player dies (if player.alive == False) whenever the player takes damage.
     player.alive = False
 
-#def checkDebt(player): **OBSOLETE FUNCTION**
+#def checkDebt(player, screen): **OBSOLETE FUNCTION**
  #   if player.gold <= 0:
   #      
    #     baseM.showText(player, "You are in debt! The IRS has come to extort money out of you.",screen) 
@@ -35,7 +35,7 @@ def death(player): # sets player.alive to False. Handled automatically by the ch
         #player.items = []
         #player.gold = 0
 
-def heal(player, HP): # a heal function. HP should be an integer.
+def heal(screen, player, HP): # a heal function. HP should be an integer.
     player.health += HP
     if player.health > player.maxHp:
         player.health = player.maxHp
@@ -43,15 +43,15 @@ def heal(player, HP): # a heal function. HP should be an integer.
     if player.alive == True:
         baseM.showText(player, "Current health: " + str(player.health),screen)
 
-def damage(player, HP): # a damage function. HP should be an integer.
+def damage(screen, player, HP): # a damage function. HP should be an integer.
     player.health -= HP
     baseM.showText(player, "you took " + str(HP) + " damage",screen)
-    checkDeath(player)
+    checkDeath(player, screen)
     if player.alive == True:
         baseM.showText(player, "Current health: " + str(player.health),screen)
     
 
-def spendGold(player, cost): # A function for the player losing money. Returns False if the player doesn't have enough money to spend. ("cost" should be an integer.)
+def spendGold(screen, player, cost): # A function for the player losing money. Returns False if the player doesn't have enough money to spend. ("cost" should be an integer.)
     if player.gold < cost:
         baseM.showText(player, "you don't have enough money",screen)
         return False
@@ -61,18 +61,18 @@ def spendGold(player, cost): # A function for the player losing money. Returns F
         baseM.showText(player, "Current gold: " + str(player.gold),screen)
         return True
 
-def earnGold(player, gold): # A function for the player gaining money. ("gold" should be an integer.)
+def earnGold(screen, player, gold): # A function for the player gaining money. ("gold" should be an integer.)
     player.gold += gold
     baseM.showText(player, "you gain " + str(gold) + " gold",screen)
     baseM.showText(player, "Current gold: " + str(player.gold),screen)
 
 
-def addItem(player, item): #adds an item to the list of items
+def addItem(screen, player, item): #adds an item to the list of items
     player.items.append(item)
     baseM.showText(player, "the " + item.name + " was added to your inventory",screen)
 
 
-def removeItem(player, item): #adds an item to the list of items. Returns False if the item doesn't exist in the inventory.
+def removeItem(screen, player, item): #adds an item to the list of items. Returns False if the item doesn't exist in the inventory.
     if item in player.items:
         player.items.remove(item)
         baseM.showText(player, "you lost the " + item.name,screen)
@@ -86,9 +86,16 @@ def removeItem(player, item): #adds an item to the list of items. Returns False 
 
 
 
-#def update(player):  **OBSOLETE FUNCTION**
-    #checkDeath(player)
-    #checkDebt(player)
+#def update(player, screen):  **OBSOLETE FUNCTION**
+    #checkDeath(player, screen)
+    #checkDebt(player, screen)
+
+
+
+
+
+
+
 
 
 

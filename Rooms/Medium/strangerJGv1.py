@@ -11,7 +11,7 @@ def run(player, screen):
     while True:
         response = console.getInput(player, ["yes", "no"], "Pay " + str(cost) + " to listen to his story? ")
         if response.lower() == "yes":
-            if pScript.spendGold(player, cost) == False:
+            if pScript.spendGold(screen, player, cost) == False:
                 badEnd()
                 return player
             if story(player, cost) == False:
@@ -25,7 +25,7 @@ def run(player, screen):
 
 def goodEnd(player, screen):
     baseM.showText(player, "Upon finishing his story, the mysterious traveller gives you a parting gift before disappearing back into the shadows.",screen)
-    pScript.addItem(player, vorpalBlade())
+    pScript.addItem(screen, player, vorpalBlade())
 
 def badEnd():
     baseM.showText(player, "the man looks at you disappointedly, then retreats back to the shadows.",screen)
@@ -45,7 +45,7 @@ def story(player, cost):
             response = console.getInput(player, ["yes", "no"], text)
             if response == "no":
                 return False
-            if pScript.spendGold(player, cost) == False:
+            if pScript.spendGold(screen, player, cost) == False:
                 return False
             baseM.showText(player, "\nThe hooded man continues his story:",screen)
         else:
@@ -54,6 +54,13 @@ def story(player, cost):
     return True
 
         
+
+
+
+
+
+
+
 
 
 

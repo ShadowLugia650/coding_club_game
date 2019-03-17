@@ -38,7 +38,7 @@ def crossbridge(player, screen):
     print ("""You carefully make your way across the bridge.
 Despite the spiderweb cracks in its base, the bridge seems to be holding up fine.
 Being this close to the lava is taking its toll on you, though. You take """+str(lavadamage)+" damage")
-    pScript.damage(player,lavadamage)
+    pScript.damage(screen, player,lavadamage)
     lavadamage+=1
 
 #path 2-the good one    
@@ -46,7 +46,7 @@ def shrine(player, swordOfStupidity):
     global stupidswordvar, lavadamage
     print ("""The shrine is on the far side of the cavern, and it feels like hours as you slog through the blistering heat.
 You take """+str(lavadamage)+" damage from the heat")
-    pScript.damage(player,lavadamage)
+    pScript.damage(screen, player,lavadamage)
     lavadamage+=1
     print ("""You look back at the bridge. It still seems close enough to cross easily, and it's only getting hotter as you near the shrine.
 Will you turn back?
@@ -59,7 +59,7 @@ Press 2 to turn back and cross the bridge""")
             print ("A huge sword is planted in the otherwise smooth obsidian near the edge of the lava.")
             print ("Since the entire shrine is made out of black rock, it radiates intense heat as you approach.")
             print ("Or maybe it's just because you're so close to the lava. Regardless, you take "+str(lavadamage)+" damage from the heat")
-            pScript.damage(player,lavadamage)
+            pScript.damage(screen, player,lavadamage)
             lavadamage+=1
             print ("As you stumble toward the shrine, you see an opening in the cavern wall behind it. Safety!")
             print ("But then you hesitate, looking back at the unclaimed sword. It would be a shame to just leave it there...")
@@ -71,7 +71,7 @@ Press 2 to turn back and cross the bridge""")
                     print ("Feeling the heat of the lava singeing your hair and eyes, you stagger up to the sword")
                     print ("Etched into the glassy stone reads the inscription: SWORD OF STUPIDITY-A WEAPON TO EMPOWER THE IRRATIONAL AND FOOLHARDY")
                     print ("You yank the sword from its stone sheath and instantly feel the heat drain from your body into the sword.")
-                    pScript.addItem(player,swordOfStupidity)
+                    pScript.addItem(screen, player,swordOfStupidity)
                     stupidswordvar = 3*lavadamage
                     swordOfStupidity.damage = stupidswordvar
                     print ("Your Sword of stupidity has "+str(swordOfStupidity.damage)+" strength")
@@ -90,13 +90,20 @@ def vegetate(player, screen):
     global stupidswordvar, lavadamage
     print ("""The heat of the lava is overpowering, and going closer to the bridge or the shrine would probably roast you alive.
 Unfortunately, it's not much better where you're standing. You take """+str(lavadamage)+" damage from the lava's heat")
-    pScript.damage(player,lavadamage)
+    pScript.damage(screen, player,lavadamage)
     lavadamage+=1
     baseM.showText(player, """You reconsider your options. Both the shrine and the bridge still seem extremely unnappealing
 How would you wish to proceed?
 Press 1 to cross the bridge
 Press 2 to approach the shrine
 Press 3 to cower away from the heat""")
+
+
+
+
+
+
+
 
 
 

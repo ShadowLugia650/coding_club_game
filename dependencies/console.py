@@ -34,11 +34,11 @@ def getInput(player, outputs, prompt = "", screen = None): # a better Input func
         if console.lower() in ["help", "?"]:
             playerhelp()
         elif console.lower() in ["status", "stat", "me", "stats"]:
-            status(player)
+            status(player, screen)
         elif console.lower() in ["inventory", "inv", "items", "bag"]:
-            inventory(player)
+            inventory(player, screen)
         elif console.lower() in ["curses", "curse", "crs"]:
-            curses(player)
+            curses(player, screen)
         elif console.lower() in ["options", "opt", "options?", "opt?"]:
             baseM.showText(player, outputs,screen)
         elif console.lower() in outputs:
@@ -50,6 +50,13 @@ def getInput(player, outputs, prompt = "", screen = None): # a better Input func
 def delayPrint(player, text = "", screen = None):
     baseM.showText(player, text,screen)
     baseM.showText()
+
+
+
+
+
+
+
 
 
 

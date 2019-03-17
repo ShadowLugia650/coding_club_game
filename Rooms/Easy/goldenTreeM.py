@@ -4,12 +4,12 @@ import baseM, pScript, itemStats
 
 def stealLeaves(player, screen):
     baseM.showText(player, "You pick some leaves and place them into your bag..",screen)
-    pScript.earnGold(player, 13)
+    pScript.earnGold(screen, player, 13)
     chc = baseM.showText(player, "You feel great, but the other leaves look even more appealing...[Climb, Leave]",screen)
     if chc.title() in ["Climb","C","More","M"]:
         baseM.showText(player, "You start to climb up the tree, collecting leaves as you go..",screen)
         baseM.showText(player, "You continue climbing the tree.. As you reach the top, the tree starts to tip.",screen)
-        pScript.earnGold(player, 62)
+        pScript.earnGold(screen, player, 62)
         player.health -= 14
         baseM.showText(player, "You fall off the tree, taking 14 damage.",screen)
     elif chc.title() in ["Leave", "L"]:
@@ -41,7 +41,7 @@ def destree(player, screen, timesHit = 0):
             destree(player, timesHit)
         elif choice.title() in ["Collect", "Leaves", "C", "Collect Leaves"]:
             baseM.showText(player, "You quickly gather up all the leaves on the ground and leave the room. [Continue]",screen)
-            pScript.earnGold(player, 17*(timesHit+1))
+            pScript.earnGold(screen, player, 17*(timesHit+1))
         elif choice.title() in ["Leave", "L"]:
             baseM.showText(player, "You leave the room wondering how much the golden leaves were really worth. [Continue]",screen)
         else:
@@ -49,17 +49,17 @@ def destree(player, screen, timesHit = 0):
             destree(player, timesHit)
     else:
         baseM.showText(player, "You punch the tree as hard as you can. A lone leaf falls down, and your hand hurts.",screen)
-        pScript.damage(player, 3)
+        pScript.damage(screen, player, 3)
         baseM.showText(player, "You pick up the leaf and leave the room.",screen)
-        pScript.earnGold(player, 2)
+        pScript.earnGold(screen, player, 2)
     return player
 
 def waitp3(player, screen):
     ch3 = baseM.showText(player, '"Hello, traveller. What brings you here today?"["I\'m lost.", "I seek riches.", "I need healing."]',screen)
     if ch3.title() in ["I'm Lost", "Im Lost", "Lost", "I Am Lost"]:
         baseM.showText(player, "\"Lost, are you? Here..\"",screen)
-        pScript.heal(player, 14)
-        pScript.addItem(player, itemStats.healthPotion())
+        pScript.heal(screen, player, 14)
+        pScript.addItem(screen, player, itemStats.healthPotion())
         baseM.showText(player, "The hooded figure points to a large open doorway.",screen)
         baseM.showText(player, "\"There's the exit. Good luck with your journey.\"",screen)
         baseM.showText(player, "The hooded figures leave. [Continue]",screen)
@@ -67,13 +67,13 @@ def waitp3(player, screen):
         baseM.showText(player, "\"Ah.. Riches, yes? Then you've come to the right place..\"",screen)
         baseM.showText(player, "The hooded figure reaches up and breaks a large branch from the tree.",screen)
         baseM.showText(player, "He handles it with expertise and carefully places it in your bag.",screen)
-        pScript.earnGold(player, 320)
+        pScript.earnGold(screen, player, 320)
         baseM.showText(player, "\"You have proven yourself. Continue your adventure.\"",screen)
         #baseM.showText(player, "As the hooded figures leave, you notice something glimmering in your bag..[Continue]",screen)
         #add some item here.
     elif ch3.title() in ["I Need Healing", "Heal", "Health", "Recover"]:
         baseM.showText(player, "\"You have taken much damage over your journey so far. Here\"",screen)
-        pScript.heal(player, 27)
+        pScript.heal(screen, player, 27)
         if len(player.curses) > 0:
             rm = []
             for curse in player.curses:
@@ -142,8 +142,8 @@ def run(player, screen):
         stealLeaves(player, screen)
     elif choice.title() in ["Break", "Branches", "Branch", "Brk", "B", "Break Branches"]:
         baseM.showText(player, "You break off a branch of the tree. It's a lot heavier than you expected, and its irregular, sharp edges cut you.",screen)
-        pScript.earnGold(player, 163)
-        pScript.damage(player, 30)
+        pScript.earnGold(screen, player, 163)
+        pScript.damage(screen, player, 30)
     elif choice.title() in ["Destroy", "Tree", "D", "Destroy Tree"]:
         destree(player, screen)
     elif choice.title() in ["Wait", "Stay", "Stand", "W"]:
@@ -154,6 +154,13 @@ def run(player, screen):
         baseM.checkCommands(choice, player,screen)
         run(player, screen)
     return player
+
+
+
+
+
+
+
 
 
 

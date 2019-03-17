@@ -19,7 +19,7 @@ def run(player, screen):
     elif choice.title() in ["Middle", "M"]:
         baseM.showText(player, "Behind the door lies a tall mound of gold with the same purple glow.",screen)
         baseM.showText(player, "Filled with greed, you collect up all the gold. However, you begin to feel weak and frail..",screen)
-        pScript.earnGold(player, 150)
+        pScript.earnGold(screen, player, 150)
         player.curses.append(curseScript.exhaustion())
     elif choice.title() in ["Right", "R"]:
         baseM.showText(player, "As you open the door, the purple gas seeps out and surrounds you. The roomlies empty in front of you..",screen)
@@ -29,6 +29,13 @@ def run(player, screen):
         baseM.checkCommands(choice, player,screen)
         run(player, screen)
     return player
+
+
+
+
+
+
+
 
 
 

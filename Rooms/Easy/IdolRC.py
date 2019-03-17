@@ -48,3 +48,10 @@ class Idol(baseM.basicEnemy):
 
 
 
+
+
+
+
+
+
+

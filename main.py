@@ -60,12 +60,12 @@ def game(mode = "Text"):
                 for i in player.items:
                     try:
                         if issubclass(type(i), itemStats.basicItem):
-                            i.onFloorClimb(player)
+                            i.onFloorClimb(player, screen)
                     except TypeError:
                         pass
                 for i in player.curses:
                     if issubclass(type(i), curseScript.basicCurse):
-                        i.onFloorClimb(player)
+                        i.onFloorClimb(player, screen)
                 break
             elif consol.lower() in ["no", "n", "nok", "not sure", "neah", "nay"]:
                 player.alive = False
@@ -88,6 +88,13 @@ def game(mode = "Text"):
     game(mode)
 if __name__ == "__main__":
     game()
+
+
+
+
+
+
+
 
 
 
