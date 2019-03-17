@@ -12,6 +12,8 @@ def checkPlayer(player, screen):
 
 def checkCommands(Input, player, screen):
     #Checks for game-wide commands, such as help, status, inventory, and tester commands.
+    if Input is None:
+        return
     if Input != '' and Input[0] == '`':
         Mtesting.specials(Input, player)
     if Input.title() in ["Help", "?"]:

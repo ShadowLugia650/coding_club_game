@@ -30,7 +30,7 @@ Press 4 to search the room for a key
 Press 5 to leave""", screen)
             while True:
                 choice=baseM.showText(player, "[Knock on the door, Break open the door, Cut off pieces, Search for a key, Leave]",screen).lower()
-                if choice in ["1", "one", "knock"]:
+                if choice in ["1", "one", "knock", 'knock on the door']:
                     baseM.showText(player, """The door opens into a room full of treasure. Gold coins are scattered throughout the chamber, but two incongruencies catch your eye.
 A pair of large dice lie near the right wall of the room, while a staff made of pure gold leans against the left wall.
 What would you like to do?
@@ -39,17 +39,17 @@ Press 2 to investigate the dice
 Press 3 to take the staff""", screen)
                     while True:
                         choice=baseM.showText(player, "[Gather coins, Investigate dice, Take staff]",screen).lower()
-                        if choice in ["1", "one", "gather"]:
+                        if choice in ["1", "one", "gather", 'gather coins', 'coins']:
                             baseM.showText(player, "Good thing you didn't try to desecrate the door. Cheaters never prosper",screen)
                             baseM.showText(player, "You gained 150 gold!",screen)
                             player.gold+=150
                             return player
-                        elif choice in ["2", "two", "investigate"]:
+                        elif choice in ["2", "two", "investigate", 'investigate dice', 'dice']:
                             baseM.showText(player, "You roll the dice and get a 6!",screen)
                             baseM.showText(player, "Staff of Luck was added to your inventory",screen)
                             player.items.append(itemStats.staffOfLuck())
                             return player
-                        elif choice in ["3", "three", "take"]:
+                        elif choice in ["3", "three", "take", 'take staff', 'staff']:
                             baseM.showText(player, "You pick up the staff",screen)
                             baseM.showText(player, "Staff of Gold was added to your inventory!",screen)
                             player.items.append(itemStats.staffOfGold())
@@ -57,15 +57,15 @@ Press 3 to take the staff""", screen)
                         else:
                             baseM.showText(player, "Sorry, That is not one of your choices",screen)
                     break
-                elif choice in ["2", "two", "break"]:
+                elif choice in ["2", "two", "break", 'break open the door']:
                     baseM.showText(player, "You chip off some gold but ultimately accomplish nothing. You leave, disappointed.",screen)
                     player.gold+=15
                     return player
-                elif choice in ["3", "three", "steal"]:
+                elif choice in ["3", "three", "steal", 'cut off pieces']:
                     baseM.showText(player, "You gain 50 gold but ruin the door in the process",screen)
                     player.gold+=50
                     return player
-                elif choice in ["4", "four", "search"]:
+                elif choice in ["4", "four", "search", 'search for a key']:
                     baseM.showText(player, "Though you don't find a key, you do find a dusty magic wand leaning in the corner.",screen)
                     baseM.showText(player, "Wand of Confusion was added to your inventory!",screen)
                     player.items.append(itemStats.wandOfConfusion())

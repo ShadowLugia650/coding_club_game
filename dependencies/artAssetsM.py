@@ -28,6 +28,8 @@ def runBattle(player, enemies, screen):
 def dispText(player, text, screen):
     try:
         pygame.init()
+        if player is not None:
+            refreshScreen(player, screen)
         box = pygame.image.load('resources/textBox.png')
         box_size = box.get_size()
         screen.blit(box, (0, 420)) # modify to make it scalable with screen size
@@ -71,26 +73,15 @@ def dispText(player, text, screen):
     except pygame.error: 
         print("error with displaying text.")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+def refreshScreen(player, screen):
+    #assumes screen is not None.
+    pygame.init()
+    box = pygame.image.load('resources/healthBox.png')
+    bag = pygame.image.load('resources/bag.png')
+    screen.blit(box, (0,0))
+    screen.blit(bag, (0,356))
+    screen.blit(pygame.font.Font(None, 31).render("HP", True, (255,0,0)), (9,23))
+    pygame.draw.rect(screen, (255,0,0), (63,27,(player.health/player.maxHp)*258,12))
+    screen.blit(pygame.font.Font(None, 17).render("{}/{}".format(player.health, player.maxHp), True, (255,0,0)), (159,41))
+    screen.blit(pygame.font.Font(None, 31).render("{}".format(player.gold), True, (255,144,0)), (65, 72))
+    pygame.display.flip()
