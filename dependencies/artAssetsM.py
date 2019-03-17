@@ -25,7 +25,7 @@ def runBattle(player, enemies, screen):
         screen.blit(player, (70, 70))
         pygame.display.flip()
 
-def dispText(text, screen):
+def dispText(player, text, screen):
     try:
         pygame.init()
         box = pygame.image.load('resources/textBox.png')
@@ -57,7 +57,9 @@ def dispText(text, screen):
             for event in pygame.event.get():
                 if event.type == pygame.QUIT: sys.exit()
                 if event.type == pygame.KEYDOWN:
-                    if [i in text for i in ['[',',',']']] == [True, True, True]:
+                    import baseM
+                    baseM.keyPresses(event, player)
+                    if [i in text for i in ['[',',',']']] == [True, True, True] and ',' in text.split('[')[1].split(']')[0]:
                         if event.key in range(49, 57):
                             l = text.split('[')[1].split(']')[0].split(', ') #assumes there's only one '[' in the string..
                             try:
@@ -68,6 +70,13 @@ def dispText(text, screen):
                         return None
     except pygame.error: 
         print("error with displaying text.")
+
+
+
+
+
+
+
 
 
 

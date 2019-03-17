@@ -13,15 +13,15 @@ class BogGiant(baseM.basicEnemy):
         self.loot=[itemStats.vileBlade()]
         self.options = {"Stab":-5,"Slash":+10}
 def run(player, screen):
-    baseM.showText("""A gnarled tree trunk protrudes from the cracked tile of the floor.
+    baseM.showText(player, """A gnarled tree trunk protrudes from the cracked tile of the floor.
 Sticking from the top of the tree trunk is a sword of dark grey steel
 How would you wish to proceed?
 Press 1 to take the sword
 Press 2 to leave""")
     while True:
-        choice=baseM.showText("[Take the sword, Leave]",screen)
+        choice=baseM.showText(player, "[Take the sword, Leave]",screen)
         if choice.lower() in ["1", "take", "sword", "take the sword"]:
-            baseM.showText("""You yank hard on the sword, trying to dislodge it.
+            baseM.showText(player, """You yank hard on the sword, trying to dislodge it.
 To your surprise, the floor begins to rumble and the tree trunk begins to rise.
 You realize that the tree trunk is actually the head of a massive bog giant!""")
             baseM.runBasicFight(player, [BogGiant()], 0, True)
@@ -30,8 +30,16 @@ You realize that the tree trunk is actually the head of a massive bog giant!""")
             print ("You suspect a trap, so you leave the sword untouched.")
             return player
         else:
-            baseM.showText("Sorry, that is not one of your options",screen)
+            baseM.showText(player, "Sorry, that is not one of your options",screen)
         
+
+
+
+
+
+
+
+
 
 
 

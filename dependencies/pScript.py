@@ -16,79 +16,87 @@ class PChar(): #intializes the class. The Main handles this, so you don't need i
         self.impossible = False
 
 #I'd recommend having these as methods inside the player class so they're easier to use.
-def checkDeath(Player): #checks if the player is dead. Handled automatically in the damage() function.
-    if Player.health <= 0:
-        death(Player)
+def checkDeath(player): #checks if the player is dead. Handled automatically in the damage() function.
+    if player.health <= 0:
+        death(player)
 
-def death(Player): # sets Player.alive to False. Handled automatically by the checkDeath() function.
-#Note: your level should have a way to end if the player dies (if Player.alive == False) whenever the player takes damage.
-    Player.alive = False
+def death(player): # sets player.alive to False. Handled automatically by the checkDeath() function.
+#Note: your level should have a way to end if the player dies (if player.alive == False) whenever the player takes damage.
+    player.alive = False
 
-#def checkDebt(Player): **OBSOLETE FUNCTION**
- #   if Player.gold <= 0:
+#def checkDebt(player): **OBSOLETE FUNCTION**
+ #   if player.gold <= 0:
   #      
-   #     baseM.showText("You are in debt! The IRS has come to extort money out of you.",screen) 
-    #    baseM.showText("you lose all your items and " + -Player.gold + " health.",screen)
-     #   if "loincloth" in Player.items:
-      #      baseM.showText("they even take your Loincloth! -1 to public decency",screen) 
-       # Player.health -= char.gold
-        #Player.items = []
-        #Player.gold = 0
+   #     baseM.showText(player, "You are in debt! The IRS has come to extort money out of you.",screen) 
+    #    baseM.showText(player, "you lose all your items and " + -player.gold + " health.",screen)
+     #   if "loincloth" in player.items:
+      #      baseM.showText(player, "they even take your Loincloth! -1 to public decency",screen) 
+       # player.health -= char.gold
+        #player.items = []
+        #player.gold = 0
 
-def heal(Player, HP): # a heal function. HP should be an integer.
-    Player.health += HP
-    if Player.health > Player.maxHp:
-        Player.health = Player.maxHp
-    baseM.showText("you healed " + str(HP) + " health",screen)
-    if Player.alive == True:
-        baseM.showText("Current health: " + str(Player.health),screen)
+def heal(player, HP): # a heal function. HP should be an integer.
+    player.health += HP
+    if player.health > player.maxHp:
+        player.health = player.maxHp
+    baseM.showText(player, "you healed " + str(HP) + " health",screen)
+    if player.alive == True:
+        baseM.showText(player, "Current health: " + str(player.health),screen)
 
-def damage(Player, HP): # a damage function. HP should be an integer.
-    Player.health -= HP
-    baseM.showText("you took " + str(HP) + " damage",screen)
-    checkDeath(Player)
-    if Player.alive == True:
-        baseM.showText("Current health: " + str(Player.health),screen)
+def damage(player, HP): # a damage function. HP should be an integer.
+    player.health -= HP
+    baseM.showText(player, "you took " + str(HP) + " damage",screen)
+    checkDeath(player)
+    if player.alive == True:
+        baseM.showText(player, "Current health: " + str(player.health),screen)
     
 
-def spendGold(Player, cost): # A function for the player losing money. Returns False if the player doesn't have enough money to spend. ("cost" should be an integer.)
-    if Player.gold < cost:
-        baseM.showText("you don't have enough money",screen)
+def spendGold(player, cost): # A function for the player losing money. Returns False if the player doesn't have enough money to spend. ("cost" should be an integer.)
+    if player.gold < cost:
+        baseM.showText(player, "you don't have enough money",screen)
         return False
     else:
-        Player.gold -= cost
-        baseM.showText("you lose " + str(cost) + " gold",screen)
-        baseM.showText("Current gold: " + str(Player.gold),screen)
+        player.gold -= cost
+        baseM.showText(player, "you lose " + str(cost) + " gold",screen)
+        baseM.showText(player, "Current gold: " + str(player.gold),screen)
         return True
 
-def earnGold(Player, gold): # A function for the player gaining money. ("gold" should be an integer.)
-    Player.gold += gold
-    baseM.showText("you gain " + str(gold) + " gold",screen)
-    baseM.showText("Current gold: " + str(Player.gold),screen)
+def earnGold(player, gold): # A function for the player gaining money. ("gold" should be an integer.)
+    player.gold += gold
+    baseM.showText(player, "you gain " + str(gold) + " gold",screen)
+    baseM.showText(player, "Current gold: " + str(player.gold),screen)
 
 
-def addItem(Player, item): #adds an item to the list of items
-    Player.items.append(item)
-    baseM.showText("the " + item.name + " was added to your inventory",screen)
+def addItem(player, item): #adds an item to the list of items
+    player.items.append(item)
+    baseM.showText(player, "the " + item.name + " was added to your inventory",screen)
 
 
-def removeItem(Player, item): #adds an item to the list of items. Returns False if the item doesn't exist in the inventory.
-    if item in Player.items:
-        Player.items.remove(item)
-        baseM.showText("you lost the " + item.name,screen)
+def removeItem(player, item): #adds an item to the list of items. Returns False if the item doesn't exist in the inventory.
+    if item in player.items:
+        player.items.remove(item)
+        baseM.showText(player, "you lost the " + item.name,screen)
         if item == "loincloth":
-            baseM.showText("you lost your loincloth! -1 to public decency!",screen)
+            baseM.showText(player, "you lost your loincloth! -1 to public decency!",screen)
         return True
     else:
-        baseM.showText("You don't have the " + item.name,screen)
+        baseM.showText(player, "You don't have the " + item.name,screen)
         return False
         
 
 
 
-#def update(Player):  **OBSOLETE FUNCTION**
-    #checkDeath(Player)
-    #checkDebt(Player)
+#def update(player):  **OBSOLETE FUNCTION**
+    #checkDeath(player)
+    #checkDebt(player)
+
+
+
+
+
+
+
+
 
 
 

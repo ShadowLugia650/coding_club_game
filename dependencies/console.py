@@ -1,55 +1,63 @@
 import baseM
 def playerhelp(screen):
-    baseM.showText("""game commands:
+    baseM.showText(None, """game commands:
     "help"        opens the commands guide
     "status"      prints your health and gold
     "inventory"   prints your item list
     "inspect"     view the description of an item
     "drink"       drink a potion""",screen) # fix for pygame mode
-#    baseM.showText("    \"testgold\"    lets you input a new gold amount. Big errors if you don't enter an int",screen)
-#    baseM.showText("    \"testhp\"      lets you input a new health amount. Big errors if you don't enter an int",screen)
-#    baseM.showText("    \"options\"     prints the listed inputs you can make",screen)
+#    baseM.showText(player, "    \"testgold\"    lets you input a new gold amount. Big errors if you don't enter an int",screen)
+#    baseM.showText(player, "    \"testhp\"      lets you input a new health amount. Big errors if you don't enter an int",screen)
+#    baseM.showText(player, "    \"options\"     prints the listed inputs you can make",screen)
 
-def status(Player,screen):
-    baseM.showText("Health: " + str(Player.health),screen)
-    baseM.showText("Gold: " + str(Player.gold),screen)
+def status(player,screen):
+    baseM.showText(player, "Health: " + str(player.health),screen)
+    baseM.showText(player, "Gold: " + str(player.gold),screen)
 
-def inventory(Player,screen):
-    for item in Player.items:
-        baseM.showText(item,screen)
-def curses(Player,screen):
-    for curse in Player.curses:
-        baseM.showText(curse,screen)
+def inventory(player,screen):
+    for item in player.items:
+        baseM.showText(player, item,screen)
+def curses(player,screen):
+    for curse in player.curses:
+        baseM.showText(player, curse,screen)
         
-def testGold(Player, x):
-    Player.gold = int(x)
+def testGold(player, x):
+    player.gold = int(x)
 
-def testHP(Player, y):
-    Player.health = int(y)
+def testHP(player, y):
+    player.health = int(y)
     
-def getInput(Player, outputs, prompt = "", screen = None): # a better Input function. Has built-in UI commands.
+def getInput(player, outputs, prompt = "", screen = None): # a better Input function. Has built-in UI commands.
     output = False
     while output == False:
-        console = baseM.showText(prompt,screen)
+        console = baseM.showText(player, prompt,screen)
         if console.lower() in ["help", "?"]:
             playerhelp()
         elif console.lower() in ["status", "stat", "me", "stats"]:
-            status(Player)
+            status(player)
         elif console.lower() in ["inventory", "inv", "items", "bag"]:
-            inventory(Player)
+            inventory(player)
         elif console.lower() in ["curses", "curse", "crs"]:
-            curses(Player)
+            curses(player)
         elif console.lower() in ["options", "opt", "options?", "opt?"]:
-            baseM.showText(outputs,screen)
+            baseM.showText(player, outputs,screen)
         elif console.lower() in outputs:
             output = True
         else:
-            baseM.checkCommands(console, Player,screen)
+            baseM.checkCommands(console, player,screen)
     return console.lower()
 
-def delayPrint(Player, text = "", screen = None):
-    baseM.showText(text,screen)
+def delayPrint(player, text = "", screen = None):
+    baseM.showText(player, text,screen)
     baseM.showText()
+
+
+
+
+
+
+
+
 
 
 

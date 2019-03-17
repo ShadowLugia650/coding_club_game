@@ -92,11 +92,19 @@ def vegetate(player, screen):
 Unfortunately, it's not much better where you're standing. You take """+str(lavadamage)+" damage from the lava's heat")
     pScript.damage(player,lavadamage)
     lavadamage+=1
-    baseM.showText("""You reconsider your options. Both the shrine and the bridge still seem extremely unnappealing
+    baseM.showText(player, """You reconsider your options. Both the shrine and the bridge still seem extremely unnappealing
 How would you wish to proceed?
 Press 1 to cross the bridge
 Press 2 to approach the shrine
 Press 3 to cower away from the heat""")
+
+
+
+
+
+
+
+
 
 
 

@@ -19,13 +19,13 @@ def run(player, setEnemies = None):
             wording = ["horde of ghouls", "ghouls", "they hit"]
         else:
             wording = ["ghoul", "ghoul", "it hits"]
-    baseM.showText("You encountered a {}!".format(wording[0]),screen)
-    choice = baseM.showText("What do you do? [Fight, Run]\n",screen)
+    baseM.showText(player, "You encountered a {}!".format(wording[0]),screen)
+    choice = baseM.showText(player, "What do you do? [Fight, Run]\n",screen)
     if choice.title() in ["Fight", "F"]:
-        baseM.showText("You engage the {} in combat!".format(wording[1]),screen)
+        baseM.showText(player, "You engage the {} in combat!".format(wording[1]),screen)
         baseM.runBasicFight(player, enemies)
     elif choice.title() in ["Run", "Flee", "R"]:
-        baseM.showText("As you fearfully flee the angry {}, {} you, dealing {} damage.".format(wording[1],wording[2],7*len(enemies)),screen)
+        baseM.showText(player, "As you fearfully flee the angry {}, {} you, dealing {} damage.".format(wording[1],wording[2],7*len(enemies)),screen)
         player.health -= 7*len(enemies)
     else:
         baseM.checkCommands(choice, player,screen)
@@ -33,8 +33,16 @@ def run(player, setEnemies = None):
     return player
 
 def test():
-    thePlayer = PChar()
-    run(thePlayer)
+    theplayer = PChar()
+    run(theplayer)
+
+
+
+
+
+
+
+
 
 
 

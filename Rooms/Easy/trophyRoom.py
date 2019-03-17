@@ -7,19 +7,19 @@ def run(player, screen):
     legendaryItems = [itemStats.epiTome()]
     trueItems = []
     while True:
-        baseM.showText("The passageway opens up into a small, cramped, room lined with rusty weapons and tools.",screen)
-        choice=baseM.showText("Do you want to look around for something useful?",screen)
+        baseM.showText(player, "The passageway opens up into a small, cramped, room lined with rusty weapons and tools.",screen)
+        choice=baseM.showText(player, "Do you want to look around for something useful?",screen)
         if choice in ["yes", "y", "si", "of course"]:
             while True:
-                baseM.showText("Grab many random items, or search carefully for specific useful items?",screen)
-                choice = baseM.showText("[Grab random, search for useful]",screen)
+                baseM.showText(player, "Grab many random items, or search carefully for specific useful items?",screen)
+                choice = baseM.showText(player, "[Grab random, search for useful]",screen)
                 if choice.lower() in ["grab random", "grab", "random"]:
                     for i in range(4):
                         trueItems+=commonItems
                     trueItems+=rareItems
                     for i in range(4):
                         addedItem = random.choice(trueItems)
-                        baseM.showText(addedItem.name+" was added to your inventory! /n",screen)
+                        baseM.showText(player, addedItem.name+" was added to your inventory! /n",screen)
                         player.items.append(addedItem)
                     return player
                 elif choice.lower() in ["search for useful","search", "useful"]:
@@ -27,16 +27,24 @@ def run(player, screen):
                         trueItems+=rareItems
                     trueItems+=legendaryItems
                     addedItem = random.choice(trueItems)
-                    baseM.showText(addedItem.name+" was added to your inventory! /n",screen)
+                    baseM.showText(player, addedItem.name+" was added to your inventory! /n",screen)
                     player.items.append(addedItem)
                     return player
                 else:
-                    baseM.showText("Sorry! That is not one of your choices",screen)
+                    baseM.showText(player, "Sorry! That is not one of your choices",screen)
         elif choice in ["no", "n","never"]:
-            baseM.showText("You exit the room.",screen)
+            baseM.showText(player, "You exit the room.",screen)
             return player
         else:
-            baseM.showText("Sorry! That is not one of your choices",screen)
+            baseM.showText(player, "Sorry! That is not one of your choices",screen)
+
+
+
+
+
+
+
+
 
 
 

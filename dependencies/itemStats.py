@@ -11,7 +11,7 @@ class basicItem():
         return self.name
 
     def readDesc(self):
-        baseM.showText(self.desc,screen)
+        baseM.showText(None, self.desc,screen)
         
     def onFloorClimb(self, player):
         pass
@@ -407,7 +407,7 @@ class staffOfGold(basicMagicItem):
         if self.charge==0:
             player.gold+=10
         player.gold+=self.charge
-        baseM.showText("You got "+str(self.charge)+" gold!",screen)
+        baseM.showText(player, "You got "+str(self.charge)+" gold!",screen)
         self.charge-=10
     def __init__ (self):
         self.name="Staff of Gold"
@@ -445,15 +445,15 @@ class staffOfLuck(basicMagicItem):
         while True:
             if self.count==0:
                 self.count=4
-                baseM.showText("Sorry! The lucky number was "+str(luckynumber),screen)
+                baseM.showText(player, "Sorry! The lucky number was "+str(luckynumber),screen)
                 return
             elif self.count==4:
                 luckynumber=random.randint(1,20)
-            baseM.showText("As you hold up the worn staff, you realize that a bit of luck may be required to make it work",screen)
-            baseM.showText("guess a number from 1 to 20",screen)
-            guess=baseM.showText('[]') #oh this is broken
+            baseM.showText(player, "As you hold up the worn staff, you realize that a bit of luck may be required to make it work",screen)
+            baseM.showText(player, "guess a number from 1 to 20",screen)
+            guess=baseM.showText(player, '[]') #oh this is broken
             if luckynumber==int(guess):
-                baseM.showText("Fueled by your luck, a bolt of lightning strikes the "+enemy.type,screen)
+                baseM.showText(player, "Fueled by your luck, a bolt of lightning strikes the "+enemy.type,screen)
                 if self.count==4:
                     enemy.health=0
                 else:
@@ -461,11 +461,11 @@ class staffOfLuck(basicMagicItem):
                 self.count=4
                 return
             elif int(guess)<luckynumber:
-                baseM.showText("Oops! You guessed too low!",screen)
+                baseM.showText(player, "Oops! You guessed too low!",screen)
                 self.count-=1
                 print ("You have "+str(self.count)+"guesses left!")
             elif int(guess)>luckynumber:
-                baseM.showText("Oops! You guessed too high!",screen)
+                baseM.showText(player, "Oops! You guessed too high!",screen)
                 self.count-=1
                 print ("You have "+str(self.count)+"guesses left!")
             
@@ -488,7 +488,7 @@ class amplifyingOrb(basicMagicItem):
     def magic(self,player,enemy):
         db = baseM.getItem("Demonic Blade", player)
         db.damage *= 2
-        baseM.showText("The demonic energies swirl around your Demonic Blade! It doubles in strength! ({})".format(db.damage),screen)
+        baseM.showText(player, "The demonic energies swirl around your Demonic Blade! It doubles in strength! ({})".format(db.damage),screen)
         
 class idol(basicMagicItem):
     def __init__(self):
@@ -532,7 +532,7 @@ class healthPotion(basicPotion):
         player.health += 10
         if player.health > player.maxHp:
             player.health = player.maxHp
-        baseM.showText("You restored 10 health!",screen)
+        baseM.showText(player, "You restored 10 health!",screen)
         
     def __init__(self):
         self.name = "Health Potion"
@@ -546,9 +546,9 @@ class antidote(basicPotion):
         for i in player.curses:
             if type(i) == curseScript.toxins:
                 i.remove(player)
-                baseM.showText("The antidote cured some of your poisoning!",screen)
+                baseM.showText(player, "The antidote cured some of your poisoning!",screen)
                 return
-        baseM.showText("The antidote had no effect.",screen)
+        baseM.showText(player, "The antidote had no effect.",screen)
         
     def __init__(self):
         self.name = "Antidote"
@@ -560,10 +560,18 @@ class ohgurGuts(basicPotion):
         player.health += 15
         if player.health > player.maxHp:
             player.health = player.maxHp
-        baseM.showText("You restored 15 health!",screen)
+        baseM.showText(player, "You restored 15 health!",screen)
         
     def __init__(self):
         self.name = "Ohgur Guts"
         self.desc = "Ew! Slimy ohgur guts. Maybe they can heal you..."
         self.value = 53
+
+
+
+
+
+
+
+
 

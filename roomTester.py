@@ -23,13 +23,21 @@ sys.path.insert(0, 'Rooms/Impossible')
 
 test =  # Change this to be whatever room you want to test
 screen = artAssetsM.initScreen()
-Player = pScript.PChar()
-test.run(Player, screen)
+player = pScript.PChar()
+test.run(player, screen)
 
-if Player.alive == False:
+if player.alive == False:
     print("You have died.")
 else:
     print("This simulation has been TERMINATED.")
+
+
+
+
+
+
+
+
 
 
 

@@ -20,7 +20,7 @@ def run(player, screen):
     print ("You see two doors at the end of the room.[continue]")
     print ("What do you do?")
     while True:
-        choice = baseM.showText("[Go through left door, Go through right door, Leave]",screen)
+        choice = baseM.showText(player, "[Go through left door, Go through right door, Leave]",screen)
         if choice.lower() in ["left", "left door", "go through left door"]:
             print ("You start towards the left door when suddenly, your body moves toward the right door. [continue]")
             print ("You struggle to take control but it is too late. [continue]")
@@ -52,6 +52,14 @@ def run(player, screen):
             baseM.checkCommands(choice, player,screen)
     return player
     
+
+
+
+
+
+
+
+
 
 
 
