@@ -1,7 +1,7 @@
 #NOTICE: This is currently a WIP and is not ready to be used.
 
 import pygame, sys, random, math
-from PIL import Image, ImageDraw, ImageFont
+#from PIL import Image, ImageDraw, ImageFont
 
 def initScreen():
     size = (720, 540)
