@@ -23,7 +23,7 @@ def run(player, setEnemies = None):
     choice = baseM.showText(player, "What do you do? [Fight, Run]\n",screen)
     if choice.title() in ["Fight", "F"]:
         baseM.showText(player, "You engage the {} in combat!".format(wording[1]),screen)
-        baseM.runBasicFight(player, enemies)
+        baseM.runBasicFight(screen, player, enemies)
     elif choice.title() in ["Run", "Flee", "R"]:
         baseM.showText(player, "As you fearfully flee the angry {}, {} you, dealing {} damage.".format(wording[1],wording[2],7*len(enemies)),screen)
         player.health -= 7*len(enemies)
@@ -35,6 +35,8 @@ def run(player, setEnemies = None):
 def test():
     theplayer = PChar()
     run(theplayer)
+
+
 
 
 

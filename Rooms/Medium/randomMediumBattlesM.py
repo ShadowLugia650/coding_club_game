@@ -55,7 +55,7 @@ def run(player, screen):
     choice = baseM.showText(player, "What do you do? [Fight, Run]\n",screen)
     if choice.title() in ["Fight", "F", "Attack"]:
         baseM.showText(player, "You engage the {} in combat!".format(enemies[0].type),screen)
-        baseM.runBasicFight(player, enemies)
+        baseM.runBasicFight(screen, player, enemies)
     elif choice.title() in ["Flee", "Run", "R"]:
         baseM.showText(player, "You run away from the {} and it deals {} damage to you.".format(enemies[0].type, enemies[0].baseDamage),screen)
         if type(enemies[0]) == Snak:
@@ -66,6 +66,8 @@ def run(player, screen):
         baseM.checkCommands(choice, player,screen)
         run(player, screen)
     return player
+
+
 
 
 

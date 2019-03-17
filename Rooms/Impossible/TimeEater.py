@@ -65,8 +65,10 @@ def run(player, screen):
     t.baseDamage *= player.timeClimbing
     baseM.showText(player, "You walk into a large spacious room. There are clocks all over the walls, each with a different name on it.",screen)
     baseM.showText(player, "As you continue walking you see your name. Suddenly, the clock starts to grow, and the hands reach out toward you.",screen)
-    baseM.runBasicFight(player, [t])
+    baseM.runBasicFight(screen, player, [t])
     return player
+
+
 
 
 

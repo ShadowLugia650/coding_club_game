@@ -24,7 +24,7 @@ Press 2 to leave""")
             baseM.showText(player, """You yank hard on the sword, trying to dislodge it.
 To your surprise, the floor begins to rumble and the tree trunk begins to rise.
 You realize that the tree trunk is actually the head of a massive bog giant!""")
-            baseM.runBasicFight(player, [BogGiant()], 0, True)
+            baseM.runBasicFight(screen, player, [BogGiant()], 0, True)
             return player
         elif choice.lower() in ["2", "leave", "l"]:
             print ("You suspect a trap, so you leave the sword untouched.")
@@ -32,6 +32,8 @@ You realize that the tree trunk is actually the head of a massive bog giant!""")
         else:
             baseM.showText(player, "Sorry, that is not one of your options",screen)
         
+
+
 
 
 

@@ -43,8 +43,10 @@ def run(player, screen):
     baseM.showText(player, "You encountered the Demonic warrior!",screen)
     enemies = [DemonicWarrior()]
     baseM.showText(player, "The Demonic Warrior engages you in combat!",screen)
-    baseM.runBasicFight(player, enemies)
+    baseM.runBasicFight(screen, player, enemies)
     return player
+
+
 
 
 

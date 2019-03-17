@@ -9,7 +9,7 @@ def run(player, screen):
     thisIdol = Idol()
     while True:
         if choice.lower() in ["hack pieces","hack", "h"]:
-            baseM.runBasicFight(player, [thisIdol], 0, True, 5)
+            baseM.runBasicFight(screen, player, [thisIdol], 0, True, 5)
             baseM.showText(player, "You broke "+str(round((1000-thisIdol.health(,screen),screen)/2,screen),screen)+" worth of gold fragments off the idol!",screen),screen)
             player.gold+=round((1000-thisIdol.health())/2)
             return player
@@ -31,6 +31,8 @@ class Idol(baseM.basicEnemy):
         self.options = {"Glow":0}
         self.loot=[itemStats.idolShield()]
         
+
+
 
 
 

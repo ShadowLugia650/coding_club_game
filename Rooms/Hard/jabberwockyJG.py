@@ -28,7 +28,7 @@ you spin around to find the Jabberwocky blocking your escape!
         if vb is not None:
             vb.damage = 1000
             baseM.showText(player, "The Vorpal Blade suddenly hums and glows with energy!",screen)
-        baseM.runBasicFight(player, [jabber], 0, first)
+        baseM.runBasicFight(screen, player, [jabber], 0, first)
         if player.alive:
             baseM.showText(player, "You hath slain the Jabberwock! O Frabjous Joy! Callooh! Callay!",screen)
         if vb is not None:
@@ -101,6 +101,8 @@ You stop in uffish thought under a nearby Jubjub tree.
     elif response == "3":
         nap(player, jabTrue)
     return player
+
+
 
 
 

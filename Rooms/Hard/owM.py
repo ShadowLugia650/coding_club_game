@@ -77,7 +77,7 @@ def run(player, screen):
     if choice.title() in ["Attack", "A", "Atk"]:
         baseM.showText(player, "You prepare to attack the heart. It bleeds but is ultimately unharmed.",screen)
         baseM.showText(player, "The heart suddenly attacks you back! You try to defend but your best efforts seem in vain...",screen)
-        baseM.runBasicFight(player, [Heart()])
+        baseM.runBasicFight(screen, player, [Heart()])
         if player.alive:
             baseM.showText(player, "As the heart falls, you notice a bluish-purple liquid in your bag. [Continue]",screen)
     elif choice.title() in ["Ignore", "I"]:
@@ -93,6 +93,8 @@ def run(player, screen):
         baseM.checkCommands(choice, player,screen)
         run(player, screen)
     return player
+
+
 
 
 

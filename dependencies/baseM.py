@@ -98,7 +98,7 @@ def modifyPlayerEffects(Type, player):
                 dfns = i.boostDefense(dfns)
         return dfns
 
-def playerInputFight(player, enemies, defense = 0):
+def playerInputFight(screen, player, enemies, defense = 0):
     #Asks for player input during fights (whether they should attack or defend). Returns the amount of block they gain from that turn.
     #You should not need to use this function if you're making a basic fighting room.
     curseEfx = {}
@@ -154,9 +154,9 @@ def playerInputFight(player, enemies, defense = 0):
         return defense
     else:
         checkCommands(turn, player)
-        return playerInputFight(player, enemies, defense)
+        return playerInputFight(screen, player, enemies, defense)
 
-def runBasicFight(player, enemies, pBlock = 0, playerFirst = False, turn = 0, limit = -1):
+def runBasicFight(screen, player, enemies, pBlock = 0, playerFirst = False, turn = 0, limit = -1):
     #Runs a basic fight with a given player and list of enemies. Enemies should be a class which extends basicEnemy
     #DO NOT INCLUDE A VALUE FOR pBlock! THIS IS SET WHEN THE CODE IS RUNNING.
     if turn == 0:
@@ -207,13 +207,13 @@ def runBasicFight(player, enemies, pBlock = 0, playerFirst = False, turn = 0, li
                 return player
     pBlock -=round(0.2*pBlock)
     showText(player, str(round(0.2*pBlock))+" of your block expired!",screen)
-    pBlock = playerInputFight(player, enemies, pBlock)
+    pBlock = playerInputFight(screen, player, enemies, pBlock)
     if turn == limit:
         showText(player, "Sorry! You ran out of time",screen)
         return player
     if getFirstAliveEnemy(enemies) is not None and player.alive:
         showText(player, "Your HP: {}\t\tEnemy's HP: {}".format(player.health, getFirstAliveEnemy(enemies)[0].health),screen)
-        return runBasicFight(player, enemies, pBlock, False, turn+1)
+        return runBasicFight(screen, player, enemies, pBlock, False, turn+1)
     elif not player.alive:
         return player
     else:
@@ -402,6 +402,8 @@ class ShivMan(basicEnemy):
         self.maxHp = 70
         self.loot = [("Gold", 42, shiv())]
         self.options = {"Stab":0,"Rob":-2,"Slash":+2}
+
+
 
 
 

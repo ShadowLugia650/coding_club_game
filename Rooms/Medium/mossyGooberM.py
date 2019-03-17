@@ -45,7 +45,7 @@ def run(player, screen):
             baseM.showText(player, "You leap back onto solid ground as the giant green creature rises before you.",screen)
             baseM.showText(player, "The creature turns to you and massive, moss-covered arms move toward you.",screen)
             baseM.showText(player, "The enormous creature stands before you, and it looks like it's preparing to attack...",screen)
-            baseM.runBasicFight(player, [MossyGoober()], playerFirst = True)
+            baseM.runBasicFight(screen, player, [MossyGoober()], playerFirst = True)
         else:
             baseM.showText(player, "Without a proper weapon, you are unable to cut the vines.",screen)
             run(player, screen)
@@ -58,6 +58,8 @@ def run(player, screen):
         baseM.checkCommands(choice,player,screen)
         run(player, screen)
     return player
+
+
 
 
 

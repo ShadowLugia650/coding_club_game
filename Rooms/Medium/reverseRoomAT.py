@@ -43,7 +43,7 @@ def run(player, screen):
             print ("You struggle to take control but it is too late. [continue]")
             print ("You enter the left door which reveals a statue with red glowing eyes. [continue]")
             print ("Suddenly the statue begins to move")
-            baseM.runBasicFight(player, [Gargoyle()])
+            baseM.runBasicFight(screen, player, [Gargoyle()])
             break
         elif choice.lower() in ["leave"]:
             print ("As you leave the room, your headache disappears. [continue]")
@@ -52,6 +52,8 @@ def run(player, screen):
             baseM.checkCommands(choice, player,screen)
     return player
     
+
+
 
 
 

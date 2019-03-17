@@ -48,18 +48,20 @@ Press 3 to choose the hero's blade (don't do it)
         if response.lower() == "1":
             x.baseDamage+=2
             x.loot=[("Gold",random.randint(100,120)),peasantsBlade()]
-            baseM.runBasicFight(player, enemylist, 0, True)   
+            baseM.runBasicFight(screen, player, enemylist, 0, True)   
             return player
         if response.lower() == "2":
             x.baseDamage+=8
             x.loot=[("Gold",random.randint(250,300)),kingsBlade()]
-            baseM.runBasicFight(player, enemylist, 0, True)
+            baseM.runBasicFight(screen, player, enemylist, 0, True)
             return player
         if response.lower() =="3":
             x.baseDamage+=40
             x.loot=[("Gold",random.randint(120,150)),herosBlade()]
-            baseM.runBasicFight(player, enemylist, 0, True)
+            baseM.runBasicFight(screen, player, enemylist, 0, True)
             return player
+
+
 
 
 
