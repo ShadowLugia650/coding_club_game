@@ -52,9 +52,6 @@ def checkCommands(Input, player, screen):
     else:
         showText(player, "This is not one of your options...",screen)
 
-def keyPresses(event, player):
-    pass
-
 def initIntro(player, screen):
     showText(player, """Welcome to the Coding Club dungeon crawler game!
 ************************************************
