@@ -56,14 +56,14 @@ def destree(player, screen, timesHit = 0):
 
 def waitp3(player, screen):
     ch3 = baseM.showText(player, '"Hello, traveller. What brings you here today?"["I\'m lost.", "I seek riches.", "I need healing."]',screen)
-    if ch3.title() in ["I'm Lost", "Im Lost", "Lost", "I Am Lost"]:
+    if ch3.title() in ["I'm Lost", "Im Lost", "Lost", "I Am Lost", '"I\'m Lost.']:
         baseM.showText(player, "\"Lost, are you? Here..\"",screen)
         pScript.heal(screen, player, 14)
         pScript.addItem(screen, player, itemStats.healthPotion())
         baseM.showText(player, "The hooded figure points to a large open doorway.",screen)
         baseM.showText(player, "\"There's the exit. Good luck with your journey.\"",screen)
         baseM.showText(player, "The hooded figures leave. [Continue]",screen)
-    elif ch3.title() in ["I Seek Riches", "Riches", "Gold", "Money"]:
+    elif ch3.title() in ["I Seek Riches", "Riches", "Gold", "Money", '"I Seek Riches"']:
         baseM.showText(player, "\"Ah.. Riches, yes? Then you've come to the right place..\"",screen)
         baseM.showText(player, "The hooded figure reaches up and breaks a large branch from the tree.",screen)
         baseM.showText(player, "He handles it with expertise and carefully places it in your bag.",screen)
@@ -71,7 +71,7 @@ def waitp3(player, screen):
         baseM.showText(player, "\"You have proven yourself. Continue your adventure.\"",screen)
         #baseM.showText(player, "As the hooded figures leave, you notice something glimmering in your bag..[Continue]",screen)
         #add some item here.
-    elif ch3.title() in ["I Need Healing", "Heal", "Health", "Recover"]:
+    elif ch3.title() in ["I Need Healing", "Heal", "Health", "Recover", '"I Need Healing"']:
         baseM.showText(player, "\"You have taken much damage over your journey so far. Here\"",screen)
         pScript.heal(screen, player, 27)
         if len(player.curses) > 0:

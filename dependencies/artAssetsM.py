@@ -60,25 +60,36 @@ def dispText(player, text, screen):
         screen.blit(box, (0, 420)) # modify to make it scalable with screen size
         if '\n' in text:
             txt = text.split('\n')
-            txs = [pygame.font.Font(None, 22).render(i, True, (255,255,255)) for i in txt]
-            for i in range(len(txs)):
-                screen.blit(txs[i], (box_size[0]/2-txs[i].get_size()[0]/2, 440+20*i))
-        elif len(text) <= 92:
-            tx = pygame.font.Font(None, 22).render(text, True, (255,255,255))
-            screen.blit(tx, (box_size[0]/2-tx.get_size()[0]/2, 440))
-        else:
-            txt = text.split(' ')
-            txts = []
-            for i in range(math.ceil(len(text)/92)):
-                txts.append('')
+            check = True
             for i in txt:
-                for j in range(len(txts)):
-                    if (len(txts[j]) + len(i)) < 92:
-                        txts[j] += i + ' '
-                        break
-            txs = [pygame.font.Font(None, 22).render(i, True, (255,255,255)) for i in txts]
-            for i in range(len(txs)):
-                screen.blit(txs[i], (box_size[0]/2-txs[i].get_size()[0]/2, 440+20*i))
+                if len(i) > 87:
+                    check = False
+                    break
+            if check:
+                txs = [pygame.font.Font(None, 22).render(i, True, (255,255,255)) for i in txt]
+                for i in range(len(txs)):
+                    screen.blit(txs[i], (box_size[0]/2-txs[i].get_size()[0]/2, 440+20*i))
+        if '\n' not in text or not check:
+            if '\n' in text:
+                text = text.replace('\n','')
+            if len(text) <= 87:
+                tx = pygame.font.Font(None, 22).render(text, True, (255,255,255))
+                screen.blit(tx, (box_size[0]/2-tx.get_size()[0]/2, 440))
+            else:
+                txt = text.split(' ')
+                txts = []
+                for i in range(math.ceil(len(text)/87)):
+                    txts.append('')
+                for i in txt:
+                    for j in range(len(txts)):
+                        if (len(txts[j]) + len(i)) <= 87:
+                            txts[j] += i + ' '
+                            break
+                print(txts)
+                print(txt)
+                txs = [pygame.font.Font(None, 22).render(i, True, (255,255,255)) for i in txts]
+                for i in range(len(txs)):
+                    screen.blit(txs[i], (box_size[0]/2-txs[i].get_size()[0]/2, 440+20*i))
         pygame.display.flip()
         while True:
             for event in pygame.event.get():

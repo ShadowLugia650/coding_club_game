@@ -8,7 +8,7 @@ def run(player, screen):
     trueItems = []
     while True:
         baseM.showText(player, "The passageway opens up into a small, cramped, room lined with rusty weapons and tools.",screen)
-        choice=baseM.showText(player, "Do you want to look around for something useful? [Yes, No]",screen)
+        choice=baseM.showText(player, "Do you want to look around for something useful? [Yes, No]",screen).lower()
         if choice in ["yes", "y", "si", "of course"]:
             while True:
                 baseM.showText(player, "Grab many random items, or search carefully for specific useful items?",screen)

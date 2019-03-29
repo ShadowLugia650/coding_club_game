@@ -42,15 +42,15 @@ def bigManChoice2(player, screen):
         
 def bigManChoice1(player, screen):
     choice = baseM.showText(player, "[\"I'm just looking around.\", \"How do you deal with this temperature?\", \"I would like your assistance.\"]",screen)
-    if choice.title() in ["I'm Just Looking Around", "Im Just Looking Around", "Looking", "Around", "Just Looking Around", "Looking Around"]:
+    if choice.title() in ["I'm Just Looking Around", "Im Just Looking Around", "Looking", "Around", "Just Looking Around", "Looking Around", "\"I'm Just Looking Around.\""]:
         baseM.showText(player, "\"LOOKING AROUND, HM? FEEL FREE TO TAKE ANYTHING YOU LIKE.\"",screen)
         baseM.showText(player, "You walk around the hallway and notice a few glowing weapons resting against the wall.",screen)
         pickWeapon(player, screen)
-    elif choice.title() in ["How Do You Deal With This Temperature", "Temp", "Temperature", "Heat", "Hot", "Warm"]:
+    elif choice.title() in ["How Do You Deal With This Temperature", "Temp", "Temperature", "Heat", "Hot", "Warm", "\"How Do You Deal With This Temperature?\""]:
         baseM.showText(player, "The voice laughs. \"TOO WARM FOR YOU? THE HEAT IS NECESSARY TO FORGE WEAPONRY WITH SUCH DURABILITY.\"",screen)
         baseM.showText(player, "You look around and realize that many of the weapons on the walls have existed for centuries. Despite this, they all still seem sturdy and powerful.",screen)
         baseM.showText(player, "Suddenly, ",screen)
-    elif choice.title() in ["I Would Like Your Assistance", "Assistance", "Help"]:
+    elif choice.title() in ["I Would Like Your Assistance", "Assistance", "Help", "\"I Would Like Your Assistance.\""]:
         baseM.showText(player, "\"WHAT CAN I MAKE FOR YOU?\"",screen)
         bigManChoice2(player, screen)
     else:
