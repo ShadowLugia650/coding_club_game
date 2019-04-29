@@ -60,6 +60,16 @@ class basicMagicItem(basicItem):
         self.name = "Magic Item"
         self.desc = "Abracadabra! Use this item in combat for special abilities"
         self.value = 0
+        
+class fireball(basicItem):
+    # Magic Items should have a function called magic(). This function will run whenever a player chooses the magic option in a fight
+    def magic(self, player, enemy):
+        enemy.health -= 20
+    
+    def __init__(self):
+        self.name = "Fireball"
+        self.desc = "Shoot a flaming ball of fire from your hands"
+        self.value = 150
 
 class basicPotion(basicItem):
     def drinkPotion(self, player):
