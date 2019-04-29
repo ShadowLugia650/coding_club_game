@@ -62,7 +62,6 @@ class basicMagicItem(basicItem):
         self.value = 0
         
 class fireball(basicItem):
-    # Magic Items should have a function called magic(). This function will run whenever a player chooses the magic option in a fight
     def magic(self, player, enemy):
         enemy.health -= 20
     
