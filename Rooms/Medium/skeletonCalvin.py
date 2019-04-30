@@ -2,6 +2,17 @@ import random, sys
 sys.path.insert(0, 'dependencies')
 import baseM, itemStats
 
+class Skeleton(baseM.basicEnemy):
+    def __init__(self):
+        self.type = "Skeleton"
+        self.baseDamage = 14
+        self.baseDef = 2
+        self.block = 1
+        self.health = 25
+        self.maxHp = 25
+        self.loot = [("Gold", 13), ("itemStats.shield()")]
+        self.options = {"Punch":2, "Heckle":0}
+
 def run(player):
   def grope():
         a = random.randrange(1,3)
@@ -17,8 +28,10 @@ def run(player):
   def stand():
         a = random.randrange(1,3)
         if a == 1:
-          print("While standing in the darkness you are attacked by something, and lose four health in the ensuing fight, but manage to escape the room afterwards")
-          player.health -= 4
+          print("While standing in the darkness you are hit in the face by something, knocking you to the ground.")
+          print("You scramble to your feet, and manage to escape the room")
+          print("You lose 8 health")
+          player.health -= 8
           if player.health == 0:
             gameover()
         elif a == 2:
@@ -34,19 +47,11 @@ def run(player):
       print("The passageway collapses behind you, but you pull out your torch, and see something metal glinting in the darkness. Do you go towards it, or another direction?")
       decision2 = input("metal or another:")
       if decision2 == "metal":
-        if "shield" in player.items:
-          print("You find a skeleton holding a shield who tries to punch you, but who you blocks with your shield")
-        print("You find a skeleton holding a shield; he punches you in the face")
-        player.health -= 1
-        if player.health == 0:
-          gameover()
-        elif weapons:
-          print("You destroy the skeleton, and you steal his shield")
-          player.items.append("shield")
-      else:
+        baseM.runBasicFight(player, [Skeleton()], playerFirst=False)
+      elif decision2 == "another":
         player.gold += 25
-        player.items.append("magic-scroll")
-        print("You find 25 gold pieces lying on the ground, and a magic scroll")
+        player.items.append("itemStats.fireball()")
+        print("You find 25 gold pieces lying on the ground, and a scroll that imbues you with the ability to cast a fireball")
 
   else: 
       print("The doorway closes behind you, leaving you in complete darkness. Do you want to grope your way through the darkness, or stand still?")
